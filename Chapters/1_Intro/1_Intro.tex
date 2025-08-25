@@ -1,0 +1,29 @@
+%% WEEK 1
+
+\chapter{A Recap of Undergraduate Set Theory} \label{Ch1:CH}
+\thispagestyle{empty}
+
+Set Theory can be viewed as a field of mathematics that encompasses all other mathematics. We can view set theory as beginning at the empty set $\emptyset$, also denoted $V_0$. We can construct subsequent sets $V_1, V_2, V_3, \ldots$ by taking power sets, ie, $V_1 = \Powset\of{V_0}$, $V_2 = \Powset\of{V_1}$, and so on. We can then define $V_{\omega}$ to be the union of all $V_n$, where $n < \omega$. We can then define $V_{\omega + 1} = \Powset\of{\omega}$, and so on. All of analysis, the field of mathematics Davoud Cheraghi once described as the ``rigorous study of infinite constructions'', is essentially about $V_{\omega + 1}$. In this way, set theory encompasses analysis, for example.
+
+We call the hierarchy
+\begin{align*}
+    V_0 \subset V_1 \subset \cdots \subset V_{\omega} \subset V_{\omega + 1} \subset \cdots
+\end{align*}
+the \textbf{universe of sets}. Indeed, this is often represented diagrammatically as a $V$ that contains each of these $V$s, with $V_0$ at the bottom, $V_1$ above $V_0$, and so on.
+
+There is a problem with the universe of sets: \textit{the power set operation is too strong}. That is, when we take the power set of a set, it ``throws too many elements in''. This leads to questions like the \textit{continuum hypothesis}, which asks the question of whether $\aleph_0 = \abs{\R} = \abs{V_{\omega + 1}}$ is equal to $\aleph_1$.
+
+Something we will study quite closely in this course is a slightly different version of this universe, known as \textbf{Gödel's Constructible Universe}. This is a universe of sets that is not built up from $\emptyset$ using the power set, but using a \textit{different} operation $\Defin$, defined as follows: for a set $A$, viewing it as a first-order structure $(A; \in)$,
+\begin{align*}
+    \Defin(A) &:= \setst{x}{x \text{ is a 1st-order definable structure over } (A; \in) \text{ using parameters from } A}
+\end{align*}
+We can show that for finite sets, $\Defin$ agrees with $\Powset$. Moreover, we can show that for a countable set $A$, $\Defin(A)$ is countable as well. The point is that if we then define a universe
+\begin{align*}
+    \parenth{L_0 = \emptyset} \subset \parenth{L_1 = \Defin\of{L_0}} \subset \cdots \subset \parenth{L_{\omega} = \bigcup_{n < \omega} L_n} \subset \cdots
+\end{align*}
+we not only have agreement between $L_n$ and $V_n$ for all $n \leq \omega$, but we can build a model of ZFC in which the continuum hypothesis is true!
+
+This is something we will explore in great detail in this course.
+
+\input{Chapters/1_Intro/1_1_Imp_Defs.tex}
+\input{Chapters/1_Intro/1_2_Another_Section.tex}
