@@ -1,0 +1,128 @@
+\section{The Zermelo-Fraenkel Axioms and the Axiom of Choice}
+
+We begin by reviewing the Zermelo-Fraenkel Axioms of Set Theory. We work in a first-order language with only one relation symbol, denoted $\in$. In principle, we would want to distinguish between the symbol in the language and its interpretation in any model, but we will not do this in practice.
+
+We begin with the Axiom of Extensionality.
+
+\begin{baxiom}[The Axiom of Extensionality]\label{ZFC:Ext}
+    \begin{align*}
+        \forall A \, \forall B \, \brac{\parenth{\forall x \parenth{x \in A \lr x \in B}} \to \parenth{A = B}}
+    \end{align*}
+\end{baxiom}
+
+We define the $\subseteq$ symbol, used infix as $A \subseteq B$, to be shorthand for the formula $\forall x \, \parenth{x \in A \to x \in B}$. \Cref{ZFC:Ext} tells us that
+\begin{align*}
+    \forall A \forall B \parenth{\parenth{A \subseteq B \land B \subseteq A} \to A = B}
+\end{align*}
+
+We now define the Axiom Scheme of Comprehension.
+
+\begin{baxiom}[The Axiom (Scheme) of Comprehension]\label{ZFC:Compr}
+    Let $x$ and $y$ be free variables. For all formulae $\varphi\of{x, y}$, the following is an axiom:
+    \begin{align*}
+        \forall A \forall y \exists B \forall x \brac{x \in B \lr \parenth{x \in A \land \varphi\of{x, y}}}
+    \end{align*}
+    Intuitively, this means we can define
+    \begin{align*}
+        B = \setst{x \in A}{\varphi\of{x, y}}
+    \end{align*}
+    This is an axiom scheme because we can increase the arity of $\varphi$ and have more free variables $y_1, y_2, y_3, \ldots, y_n$ for any $n$.
+\end{baxiom}
+
+Note that \Cref{ZFC:Ext} tells us that we can replace the existential quantifier for $B$ in \Cref{ZFC:Compr} with an existence and uniqueness quantifier without changing its meaning.
+
+Before proceeding further, we define the empty set. First, observe that in first order logic, structures are required to have non-empty universes. Thus, for every structure $\parenth{A, E}$ in the language of set theory, with $E \subseteq \parenth{A \times A}$ representing equality, we must have
+\begin{align*}
+    \parenth{A, E} \models \exists x \parenth{x = x}
+\end{align*}
+The Completeness Theorem then tells us that
+\begin{align*}
+    \vdash \exists x \parenth{x = x}
+\end{align*}
+ie, that the formula $\exists x \parenth{x = x}$ \textit{must be a theorem} in the language of sets. Hence, the axioms \Cref{ZFC:Ext,ZFC:Compr} tell us that
+\begin{align*}
+    \vdash \exists! A \, \forall x \, \parenth{x \notin A}
+\end{align*}
+In other words, it is a theorem in the language of sets that there is a unique set that contains no members whatsoever. This unique set is denoted $\emptyset$, and is called the \textbf{empty set}. Its existence (and uniqueness) is not a distinct axiom, but a direct consequences of \Cref{ZFC:Ext,ZFC:Compr}.
+
+Next, we give the axiom of pairing.
+
+\begin{baxiom}[The Axiom of Pairing]\label{ZFC:Pairing}
+    \begin{align*}
+        \forall x \, \forall y \, \exists A \, \parenth{x \in A \land y \in A}
+    \end{align*}
+\end{baxiom}
+
+\Cref{ZFC:Pairing} essentially gives us a way of constructing, for any $x$ and $y$, the unique set $A = \set{x, y}$ with the property that
+\begin{align*}
+    \forall z \parenth{z \in A \lr \parenth{z = x} \lor \parenth{z = y}}
+\end{align*}
+In particular, it allows us to construct, for any $x$, the set $\set{x, x}$, which, by \Cref{ZFC:Ext}, is exactly $\set{x}$. In other words, it tells us that we can stick any $x$ into a set that only contains $x$.
+
+In a similar flavour, we can construct a \textit{union} of any family of sets. Note that this is distinct from pairing, because to construct $\set{x, y}$ as a union of $\set{x}$ and $\set{y}$, one needs to know that one can construct $\set{x}$ and $\set{y}$ in the first place. This requires pairing (or some version of it).
+
+Now, we starte the axiom of unions.
+
+\begin{baxiom}[The Axiom of Unions]
+    If we denote by $\calF$ a family of sets,
+    \begin{align*}
+        \forall \calF \, \exists B \, \forall A \, \brac{A \in \calF \to A \subseteq B}
+    \end{align*}
+\end{baxiom}
+
+As usual, we can use \Cref{ZFC:Ext,ZFC:Compr} to show that
+\begin{align*}
+    \bigcup \calF = \setst{x}{\exists A \subseteq \calF \, \parenth{x \in A}}
+\end{align*}
+is well (and uniquely) defined.
+
+Next comes the power set axiom.
+
+\begin{baxiom}[The Axiom of Power Sets]
+    \begin{align*}
+        \forall A \, \exists \calF \, \forall X \, \brac{X \subseteq A \to X \in \calF}
+    \end{align*}
+\end{baxiom}
+
+Again, \Cref{ZFC:Ext,ZFC:Compr} tell us that this is equivalent to
+\begin{align*}
+    \forall A \, \exists! \calF \, \forall X \, \parenth{X \in \calF \lr X \subseteq A}
+\end{align*}
+This justifies the definition
+\begin{align*}
+    \Powset(A) := \setst{X}{X \subseteq A}
+\end{align*}
+
+Next comes the second (and last) axiom scheme in ZFC, the axiom scheme of replacement.
+
+\begin{baxiom}[The Axiom (Scheme) of Replacement]\label{ZFC:Replacement}
+    For each formula $\varphi\of{x, y, z}$ that does not contain $B$ as a free variable, the following is an axiom:
+    \begin{align*}
+        \forall A \, \forall z \, \brac{
+            \brac{\forall x \in A \, \exists! y \, \varphi\of{x, y, z}}
+            \to
+            \brac{\brac{\exists B \, \forall x \in A \, \exists y \in B \, \varphi\of{x, y, z}}}
+        }
+    \end{align*}
+    As in \Cref{ZFC:Compr}, we can introduce more free variables in lieu of $z$.
+\end{baxiom}
+
+We can unpack this slightly complicated formula using \Cref{ZFC:Ext,ZFC:Compr}: it essentially tells us that we can define
+\begin{align*}
+    \setst{y}{\exists x \in A \, \varphi\of{x, y, z}}
+\end{align*}
+The quantifiers $\forall A$ and $\forall z$ merely introduce variables. What the rest of the axiom (scheme) tells us is that \textbf{if} for every $x$, there is a unique \textit{witness} $y$ for which the formula $\varphi\of{x, y, z}$ holds, \textbf{then} we can collect all these witnesses into a set that is contained $B$, ranging over $x \in A$. Intuitively, ``the number of such witnesses is \textit{small enough} that it \textit{can be collected into a set}.''
+
+Indeed, if it looks like $\varphi\of{x, y, z}$ defines a function with domain $A$, then it really does! If we can define $A \times B = \setst{\parenth{x, y}}{x \in A \text{ and } y \in B}$ (which we have yet to show we can do, but let's say we can), then we can put
+\begin{align*}
+    f = \setst{\parenth{x, y} \in A \times B}{\varphi\of{x, y, z}}
+\end{align*}
+which is a set by \Cref{ZFC:Compr}. Effectively, \Cref{ZFC:Replacement} tells us that \textit{if the domain of a function is a set, then so is its range}: everything in its ``image'' (a \textit{witness}) can be collected into some set. Of course, we only include this comment for the sake of intuition; as far as the formalism goes, we cannot talk about domains and ranges of functions yet, because functions are not yet defined. That being said, \Cref{ZFC:Replacement} is an essential step in the process of actually \textit{defining} functions (or showing that this is something we can \textit{do}).
+
+One situation in which \Cref{ZFC:Replacement} is used (and will be used once sufficiently many axioms are stated) is in the situation we talked about at the start of \Cref{Ch1:CH}. We'll see that there is a formula $\varphi\of{n, S}$ so that $\varphi\of{n, S} \lr \parenth{n \in \omega \land S = V_n}$. Then, \Cref{ZFC:Replacement} would imply that
+\begin{align*}
+    \grpres{V_n}{n < \omega}
+\end{align*}
+really is a sequence. This allows us to define $V_\omega = \bigcup_{n < \omega} V_n$ and continue.
+
+% Next time, we will look at the Foundation Axiom.

@@ -72,5 +72,15 @@
     \end{cexample}\end{tcolorbox}
 }
 
+% \newcounter{ZFC}
+% \setcounter{ZFC}{0}
+\newtheorem{zfcaxiom}{ZFC Axiom}
+\newenvironment{baxiom}{
+    \begin{tcolorbox}[colback=cyan!10!white,colframe=cyan!70!black, breakable, enhanced]\begin{zfcaxiom}
+}{
+    \end{zfcaxiom}\end{tcolorbox}
+    % \addtocounter{ZF}{1}
+}
+
 % \def\SMALLCOLWIDTH{1.5cm}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
