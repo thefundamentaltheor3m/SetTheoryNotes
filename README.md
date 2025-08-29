@@ -1,3 +1,5 @@
 # Lecture Notes
 
-A template for [Lecture Notes](https://thefundamentaltheor3m.github.io/Lecture-Notes-Template-2025/main.pdf).
+[Lecture Notes](https://thefundamentaltheor3m.github.io/SetTheoryNotes/main.pdf) for the course 21-602 (Introduction to Set Theory I) taught by Ernest Schimmerling at Carnegie Mellon University in Fall 2025.
+
+Work in progress, being written as the course progresses.
