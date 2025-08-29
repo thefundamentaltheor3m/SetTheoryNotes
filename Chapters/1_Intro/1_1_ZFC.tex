@@ -126,3 +126,86 @@ One situation in which \Cref{ZFC:Replacement} is used (and will be used once suf
 really is a sequence. This allows us to define $V_\omega = \bigcup_{n < \omega} V_n$ and continue.
 
 % Next time, we will look at the Foundation Axiom.
+
+% 29 August
+
+We now state the most interesting of the ZFC axioms: the Axiom of Choice.
+
+\begin{baxiom}[The Axiom of Choice - (AC)]\label{ZFC:AC}
+    \hfill
+    \begin{align*}
+        \forall \calF \, \exists c \, \brac{\forall A \in \calF \, \parenth{A \neq \emptyset \to A \in \dom{c} \land c(A) \in A}}
+    \end{align*}
+    where $\calF$ is a family of sets, $c$ is a function, and $\dom{c}$ is the domain of $c$. We call $c$ a \textbf{Choice Function on $\calF$}.
+\end{baxiom}
+
+The reason we state the Axiom of Choice at this point in our discussion is that modulo the ZFC Axioms that we have seen so far, the Axiom of Choice is equivalent to each of the following.
+\begin{enumerate}
+    \item $\forall A \, \exists R \subseteq A \times A \, \parenth{A, R}$ is a well-ordering.
+    \item $\forall A \, \exists \alpha \, \exists f : A \xrightarrow{\sim} \alpha$, where $\alpha$ is an ordinal.
+\end{enumerate}
+
+Note that none of the above axioms imply the existence of the natural numbers, without which virtually none of the mathematics we know and love would be possible. We therefore come to the axiom of infinity, which posits the existence of infinite sets, the `smallest' of which is the natural numbers.
+
+\begin{baxiom}[The Axiom of Infinity]\label{ZFC:Infty}
+    \hfill
+    \begin{align*}
+        \exists I \, \parenth{\emptyset \in I \land \forall x \in I \, \parenth{x \cup \set{x} \in I}}
+    \end{align*}
+    A set $I$ as above is called an \textbf{inductive set}, and it is an axiom of ZFC that such a set exists.
+\end{baxiom}
+
+It is possible to prove, with relative ease, that given the existence of inductive sets (as posited above), there is a unique inductive set $\omega$ such that for all inductive sets $J$, $\omega \subseteq J$. Indeed, for any inductive set $K$, $\omega$ can be defined as the intersection of all inductive subsets $J \subseteq K$. It can then be shown that this intersection $\omega$ lives in all inductive sets. This minimal inductive set $\omega$ is known as the \textbf{set of natural numbers}. It is easy to see that the famed axioms of Peano are satisfied by $\omega$.
+
+Recall the sets $V_0, V_1, \ldots, V_\omega, \ldots$ defined at the start of \Cref{Ch1:CH}. It is worth asking ourselves the following question: \textit{Why does $V_{\omega}$ exist?} Or, more precisely, \textit{why is $V_{\omega}$ a set?}
+
+By induction, we know that each $V_n$ is a set. We want to essentially see that the map $n \mapsto V_n$ is a \textit{set} (ie, a \textit{function}). Then, if we take the union of the range of this function, whose domain is the set $\omega$ whose existence is given by \Cref{ZFC:Infty}, we can define $V_{\omega}$ to be that union.
+
+We invoke \Cref{ZFC:Replacement}, the Axiom of Replacement. Let $\varphi\of{x, y}$ be the formula capturing the following facts:
+\begin{enumerate}
+    \item $y$ is a function with domain $\dom{y} = x \cup \set{x}$.
+    \item If $\emptyset \in \dom{y}$, then $y\of{\emptyset} = \emptyset$.
+    \item If $z \cup \set{z} \in \dom{y}$, then $z \in \dom{y}$ and $y\of{z \cup \set{z}} = \Powset\of{z}$.
+\end{enumerate}
+The idea is that $y = \cycl{V_0, V_1, V_2, \ldots, V_{n+1}}$\footnote{By this, we mean it is a \textit{sequence}, ie, a function from $\omega$ to something that takes $0$ to $V_{0}$, $1$ to $V_{1}$, and so on.} for some $n \in \omega$. Then,
+\begin{align*}
+    \ZFC \vdash \forall n \in \omega \ \exists! y \, \varphi\of{n, y}
+\end{align*}
+Applying the Axiom of Replacement (\Cref{ZFC:Replacement}), we know that the map that takes any $n \in \omega$ to its unique witness $y$ for $n$ \textit{is, indeed, a function}. In other words,
+\begin{align*}
+    \grpres{\grpres{V_m}{m \leq n}}{n < \omega}
+\end{align*}
+is a set. From this, we can read off
+\begin{align*}
+    \grpres{V_n}{n < \omega}
+\end{align*}
+by taking a union. % OF WHAT?
+
+\begin{remark}
+    Recall that $\parenth{V_{\omega}, \in}$ is shorthand for $\parenth{V_{\omega}, R}$, where $R = \setst{\parenth{x, y} \in V_{\omega} \times V_{\omega}}{x \in y}$. It is possible to show not only that
+    \begin{align*}
+        \parenth{V_{\omega}, \in} &\models \text{ZFC without the Axiom of Infinity}
+    \end{align*}
+    but the stronger fact that
+    \begin{align*}
+        \parenth{V_{\omega}, \in} &\models \text{ZFC without the Axiom of Infinity but with its \textit{negation}}
+    \end{align*}
+    Thus,
+    \begin{align*}
+        \ZFC \vdash \text{ZFC without Infinity but with $\neg\text{Infinity}$ is consistent}
+    \end{align*}
+    Ie, from ZFC, we can deduce that the entirety of ZFC, except with the negation of the axiom of infinity instead of the axiom itself, is consistent.
+\end{remark}
+
+We note that the typical background setting for this course is the entirety of ZFC. However, as and when we need to either get rid of an axiom, or introduce a new one, we will mention it explicitly. We also use the following notational conventions.
+
+\begin{boxnotation}
+    We use $\ZFC$ to mean we have all the ZFC axioms. As and when we need variations, we do the following.
+    \begin{align*}
+        \ZF &:= \text{``ZFC without the Axiom of Choice''} \\
+        \ZFCwoF &:= \text{``ZFC without the Axiom of Foundation''} \\
+        \ZFwoF &:= \text{``ZF without the Axiom of Foundation''}
+    \end{align*}
+\end{boxnotation}
+
+Here, we end our discussion on the axioms of set theory, and proceed to consider a broader type of object than sets, known as classes.
