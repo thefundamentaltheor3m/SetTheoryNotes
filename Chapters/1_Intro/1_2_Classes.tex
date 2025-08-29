@@ -1,0 +1,37 @@
+\section{Classes}
+
+Recall Russell's Paradox: there is no set of all sets. One reason for this (which relies on the Axiom of Foundation) is that if $V$ is the set of all sets, then $V \in V$, so $V$ has no $\in$-minimal member, which contradicts the Axiom of Foundation. Without the Axiom of Foundation, if $V$ is the set of all sets, then if we set
+\begin{align*}
+    W = \setst{x \in V}{x \notin x}
+\end{align*}
+(which is a set by the Axiom of Comprehension), then if $W \in W$, then $W \notin W$, and if $W \notin W$, then $W \in W$, which is a contradiction, meaning there can be no set of all sets.
+
+Nevertheless, we really do want to write things like
+\begin{align*}
+    V = \setst{x}{x \text{ is a set}} = \setst{x}{x = x}
+\end{align*}
+We would also like to write things like
+\begin{align*}
+    \OR &= \setst{\alpha}{\alpha \text{ is an ordinal}} 
+    \setst{V_{\alpha}}{\alpha \in \OR}
+\end{align*}
+The only problem is, none of these are sets. They are, however, \textbf{classes}. In fact, these are examples of \textbf{proper classes}.
+
+Note that we would want sets to be classes. Indeed, anything of the form $\setst{x}{\varphi(x)}$, with $\varphi(x)$ a formula in the language of set theory, should be a class. Unfortunately, this is not generous enough: we want, for each set $A$, that
+\begin{align*}
+    A = \setst{x}{x \in A} = \setst{x}{\varphi\of{x, A}}
+\end{align*}
+to be included as well. In other words, we want to have formulae $\varphi$ that not only allow us to substitute free variables with input sets $x$ but also allow us to substitute more free variables with parameter sets $A$.
+
+Formulae and parameters determine the class, but the converse is not true. In other words, if
+\begin{align*}
+    \forall x \parenth{\varphi(x) \lr \varphi'(x)}
+\end{align*}
+then
+\begin{align*}
+    \setst{x}{\varphi(x)} = \setst{x}{\varphi'(x)}
+\end{align*}
+For example, we know that
+\begin{align*}
+    \varphi(x) \lr \parenth{\varphi(x) \land x = x}
+\end{align*}

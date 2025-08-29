@@ -1,8 +1,8 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}A Recap of Undergraduate Set Theory}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}The Zermelo-Fraenkel Axioms and the Axiom of Choice}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Another Section}{7}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Another Chapter}{9}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introducing the Main Object of Study in this Chapter}{9}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Another Section}{9}{section.2.2}%
-\contentsline {chapter}{Bibliography}{12}{section.2.2}%
+\contentsline {section}{\numberline {1.2}Classes}{9}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Another Chapter}{12}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introducing the Main Object of Study in this Chapter}{12}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Another Section}{12}{section.2.2}%
+\contentsline {chapter}{Bibliography}{15}{section.2.2}%
