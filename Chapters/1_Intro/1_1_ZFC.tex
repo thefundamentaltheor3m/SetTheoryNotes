@@ -200,7 +200,7 @@ The only problem is, a priori, the above intersection is not a set! This is why 
 This is a quick recap section on transitive sets, ordinals, cardinals, and more.
 
 \begin{boxdefinition}[Transitive Set]
-    A set $A$ is \textbf{transitive} if $\forall y \in A \brac{y \subseteq A \lr \forall y \in A \, \forall x \in y \m \parenth{x \in A}}$
+    A set $A$ is \textbf{transitive} if $\forall y \in A \brac{y \subseteq A \lr \forall y \in A \, \forall x \in y \, \parenth{x \in A}}$
 \end{boxdefinition}
 
 \subsection{Ordinals}
@@ -242,7 +242,7 @@ What the theorem above says is that the ordinals form a complete set of represen
     Define $V_0 = \emptyset$, $V_{\alpha + 1} = \Powset\of{V_{\alpha}}$ for any ordinal $\alpha$, and $V_{\beta} = \bigcup_{\alpha < \beta} V_{\alpha}$ for any limit ordinal $\beta$.
 \end{boxdefinition}
 
-One can show that $\alpha \le \beta \to V_{\alpha} \ssq V_{\beta}$.
+One can show that $\alpha \le \beta \to V_{\alpha} \subseteq V_{\beta}$.
 
 We can ask ourselves what exactly ZFC is describing. The answer is, \textbf{the $V$-hierarchy}.
 
