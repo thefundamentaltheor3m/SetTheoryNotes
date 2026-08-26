@@ -35,3 +35,36 @@ For example, we know that
 \begin{align*}
     \varphi(x) \lr \parenth{\varphi(x) \land x = x}
 \end{align*}
+
+\subsection{Well-Foundedness}
+
+Recall the following result from undergraduate set theory.
+
+\begin{boxtheorem}[Mostowski Collapse Theorem for Well-Orderings]
+    Let $\parenth{A, R}$ be a well-ordering. Then there is a unique ordinal $\alpha$ such that $\parenth{A, R} \simeq \parenth{\alpha, \in}$.
+\end{boxtheorem}
+
+We recall the definition of the universe of sets.
+
+\begin{boxdefinition}[Universe of Sets]
+    Define $V_0 = \emptyset$. For all ordinals $\alpha$, define $V_{\alpha+1} = \Powset(\alpha)$, and for all limit ordinals $\beta$, define $V_{\beta} = \bigcup_{\alpha < \beta} V_{\alpha}$. We denote the universe of sets $\UR$.
+\end{boxdefinition}
+
+$\UR$ is a class. We will also refer to it as the $V$-hierarchy, for obvious reasons.
+
+We also define the class of well-founded sets.
+
+\begin{boxdefinition}[Well-Founded Sets]
+    Define
+    \begin{align*}
+        \WF := \bigcup_{\alpha \in \UR} V_{\alpha}
+    \end{align*}
+    That is, $\WF$ consists of all $x$ such that there is some ordinal $\alpha$ with $x \in V_{\alpha}$.
+\end{boxdefinition}
+
+$\WF$ is also a class.
+
+Denote by $\V$ the class of all sets. We will see that under $\ZFwoF$, the Foundation Axiom and the statement that $\V = \WF$ are equivalent. In particular, in $\ZF$, we have that \textbf{every set is well-founded}.
+
+To get started, let's work in $\ZFwoF$. We need a formula $\varphi(x, y)$ that is equivalent to $x$ being an ordinal and $y = V_x$.
+
