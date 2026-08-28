@@ -11,10 +11,11 @@ scribed by Sidharth Hariharan. Derived from
 There is no code, no tests, and no linter — the deliverable is `main.pdf`.
 
 **The course is over.** These notes are settled rather than accumulating, which
-changes which skills are worth reaching for: `/fill-sorries`, `/address-comments`
-and `/organize` all apply to finished notes, while `/integrate` — which absorbs one
-lecture's raw notes — has nothing to do here unless the author goes back and writes
-up material from a lecture that never made it in.
+changes which skills are worth reaching for: `/check-correctness`, `/fill-sorries`,
+`/address-comments`, `/organize` and `/americanise` all apply to finished notes, while
+`/post-lecture` and its `/integrate` phase need a lecture to process and so have
+nothing to do here unless the author goes back and writes up material that never made
+it in.
 
 ## Building
 
@@ -105,11 +106,39 @@ there rather than defining them inline.
 
 | Skill | Acts on | Latitude |
 | --- | --- | --- |
+| `/post-lecture` | one lecture, end to end | composition; owns scope and order only |
 | `/address-comments` | `% [CLAUDE]` directives | do exactly what the directive says |
 | `/fill-sorries` | `\sorry` markers | work out the mathematics; decide and report |
+| `/check-correctness` | what is already written | fix what is false; every change adjudicated |
 | `/integrate` | one lecture's raw notes | place new material; never restructure |
 | `/organize` | the notes as they stand | rearrange only; add and delete nothing |
 | `/americanise` | British spellings | spelling only; never the mathematics |
+
+**Two of the seven have nothing to do here**, because the course is over.
+`/post-lecture` is the after-lecture pipeline — fill, address, check, respell,
+integrate, on one branch — and `/integrate` is its last phase; both need a lecture to
+process. The template ships a reusable inbox (`todays_lecture.tex`) that they read
+from, and this repository deliberately does not have one; if the author resumes
+writing up material, copy it from the template first.
+
+**Two of them do mathematics, under opposite constraints.** `/fill-sorries` supplies
+an argument that does not exist, so it has the freest hand here. `/check-correctness`
+overwrites one that does, so it changes as little as it can, puts *every* candidate
+correction to an independent agent before applying it, and — if it changed anything —
+has the result reviewed by two further independent agents on the pull request. On
+settled notes like these it is the more useful of the two by a wide margin: it is the
+only skill whose subject is whether what is written is *true*.
+
+The three markers a skill may write, none of which the author writes:
+
+| Marker | Written by | Means |
+| --- | --- | --- |
+| `% [FILLED]` | `/fill-sorries` | an argument supplied that the lecture did not give |
+| `% [CORRECTED]` | `/check-correctness` | a statement changed, original quoted for revert-by-eye |
+| `% [SUSPECT]` | `/check-correctness` | believed wrong, left unchanged, awaiting the author |
+
+Never write a `% [CLAUDE]` marker: that is the author's channel for delegating work,
+and one written by a skill is work the next run will silently do.
 
 `\sorry` is the red marker for an unfilled gap — a proof not given, a case not
 covered, a development that broke off. **There are currently none** in this
