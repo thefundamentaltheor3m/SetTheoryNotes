@@ -164,7 +164,7 @@ We won't prove this, but we'll say it's easy enough to prove and leave it at tha
     You can just do induction on $\beta$ and apply the definition of the rank (\Cref{Ch1:Def:Rank}).
 \end{proof}
 
-We can detect membership in $\WF$ one level down.
+It turns out that we can tell whether a set lies in $\WF$ by looking only at its members.
 
 \begin{boxproposition}
     $\forall y \parenth{y \in \WF \lr y \subset \WF}$
@@ -178,7 +178,7 @@ We can detect membership in $\WF$ one level down.
     \end{description}
 \end{proof}
 
-Passing to a member drops the rank strictly.
+Members have strictly smaller rank than the sets that contain them.
 
 \begin{boxproposition}\label{Ch1:Prop:Rank_Of_Members}
     \begin{align*}
@@ -189,7 +189,7 @@ Passing to a member drops the rank strictly.
     We know $x \in y \ssq V_{\rank{y}} \subset \WF$, so $x \in \WF$. This also shows that $\rank{x} + 1 \leq \rank{y}$, so $\rank{x} < \rank{y}$.
 \end{proof}
 
-This is enough to compute the rank of a set from the ranks of its members.
+From this, we can compute the rank of a set from the ranks of its members.
 
 \begin{boxproposition}[The Rank Formula]
     \begin{align*}
@@ -202,7 +202,7 @@ This is enough to compute the rank of a set from the ranks of its members.
     It suffices to show that $y \ssq V_{\sigma}$ to conclude that $\rho \leq \sigma$. Now $V_{\sigma} = \setst{x}{\rank{x} < \sigma}$. Every $x \in y$ has $\rank{x} + 1 \leq \sigma$, by the definition of $\sigma$ as a supremum, and so $\rank{x} < \sigma$. So $y$ is indeed a subset.
 \end{proof}
 
-The ordinals sit inside $\WF$ in the simplest way imaginable.
+It turns out that the ordinals are their own ranks.
 
 \begin{boxproposition}
     \begin{align*}
@@ -220,7 +220,7 @@ The ordinals sit inside $\WF$ in the simplest way imaginable.
     \end{align*}
 \end{proof}
 
-It follows that each level of the hierarchy meets $\OR$ in exactly the ordinals below its index.
+It follows that each $V_{\beta}$ contains exactly the ordinals below $\beta$.
 
 \begin{boxproposition}
     \begin{align*}
