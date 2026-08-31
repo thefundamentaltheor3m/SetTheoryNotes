@@ -15,6 +15,9 @@ the \textbf{universe of sets}. Indeed, this is often represented diagrammaticall
 % [CORRECTED] was: ``whether $\aleph_0 = \abs{\R} = \abs{V_{\omega + 1}}$ is equal to $\aleph_1$'' --- $\aleph_0 = \abs{\R}$ says $\R$ is countable, and it also made CH read ``is $\aleph_0 = \aleph_1$?'', which is refutable rather than independent
 There is a problem with the universe of sets: \textit{the power set operation is too strong}. That is, when we take the power set of a set, it ``throws too many elements in''. This leads to questions like the \textit{continuum hypothesis}, which asks the question of whether $2^{\aleph_0} = \abs{\R} = \abs{V_{\omega + 1}}$ is equal to $\aleph_1$.
 
+% [SUSPECT] $\Defin(A)$ is defined below as a class of definable \textit{structures} over $(A; \in)$; it
+% should be the definable \textit{subsets} of $A$. As written, neither ``$\Defin$ agrees with $\Powset$ on
+% finite sets'' nor the agreement of $L_n$ with $V_n$ parses. Left unchanged pending the author.
 Something we will study quite closely in this course is a slightly different version of this universe, known as \textbf{Gödel's Constructible Universe}. This is a universe of sets that is not built up from $\emptyset$ using the power set, but using a \textit{different} operation $\Defin$, defined as follows: for a set $A$, viewing it as a first-order structure $(A; \in)$,
 \begin{align*}
     \Defin(A) &:= \setst{x}{x \text{ is a 1st-order definable structure over } (A; \in) \text{ using parameters from } A}

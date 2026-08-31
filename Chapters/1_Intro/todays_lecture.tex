@@ -101,7 +101,7 @@ Indeed, their sizes are $0$, $2^0$, $2^{2^{0}}$, and so on.
 
     So $R_{n+1}$ is $R_n$ followed by a linear ordering of the finitely many sets in $V_{n+1} \setminus V_n$, which makes it a well-ordering and gives us (1). It agrees with $R_n$ on $V_n$ and places all of $V_n$ before all of $V_{n+1} \setminus V_n$, so $V_n$ is an initial segment of $\parenth{V_{n+1}, R_{n+1}}$, which gives us (2).
 
-    The point of all this is that $R_{n+1}$ is defined outright from $R_n$, with no choices made along the way, and the recursion starts from $R_0 = \emptyset$ on $V_0 = \emptyset$. Chaining (2) makes $V_n$ an initial segment of $\parenth{V_m, R_m}$ for every $m \geq n$, so each $x \in V_{\omega}$ has all of its $R_{\omega}$-predecessors inside the finite $V_n$ it came from, and every proper initial segment of $R_{\omega}$ is therefore finite. Since $\omega \ssq V_{\omega}$, the ordering is infinite, and so it has type exactly $\omega$.
+    The point of all this is that $R_{n+1}$ is defined outright from $R_n$, with no choices made along the way, and the recursion starts from $R_0 = \emptyset$ on $V_0 = \emptyset$. The $R_n$ increase, so $R_{\omega}$ linearly orders $V_{\omega}$. Chaining (2) makes $V_n$ an initial segment of $\parenth{V_m, R_m}$ for every $m \geq n$, so each $x \in V_{\omega}$ has all of its $R_{\omega}$-predecessors inside the finite $V_n$ it came from, and every proper initial segment of $R_{\omega}$ is therefore finite. Since $\omega \ssq V_{\omega}$, the ordering is infinite, so sending each $x$ to its number of predecessors is an isomorphism onto $\omega$.
 \end{proof}
 
 \begin{remark}
@@ -141,4 +141,7 @@ With AC, define
     \beth_{\beta} &:= \sup_{\alpha < \beta}\of{\beth_{\alpha}} \text{ if } \beta \text{ is a limit ordinal}
 \end{align*}
 
-It's clear 
+% The lecture of 31 Aug ends mid-sentence here. The raw notes read ``It's clear'' and stop;
+% most likely the start of a comparison of the two hierarchies, but there is more than one
+% thing it could have been, so it is marked as a gap rather than guessed at. Raised with the author.
+It's clear \sorry 
