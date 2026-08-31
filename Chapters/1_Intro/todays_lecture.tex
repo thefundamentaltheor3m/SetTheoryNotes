@@ -101,7 +101,7 @@ Indeed, their sizes are $0$, $2^0$, $2^{2^{0}}$, and so on.
 
     So $R_{n+1}$ is $R_n$ followed by a linear ordering of the finitely many sets in $V_{n+1} \setminus V_n$, which makes it a well-ordering and gives us (1). It agrees with $R_n$ on $V_n$ and places all of $V_n$ before all of $V_{n+1} \setminus V_n$, so $V_n$ is an initial segment of $\parenth{V_{n+1}, R_{n+1}}$, which gives us (2).
 
-    The point of all this is that $R_{n+1}$ is defined outright from $R_n$, with no choices made along the way. Each $x \in V_{\omega}$ lies in some $V_n$ and has all of its $R_{\omega}$-predecessors inside that finite $V_n$, so every proper initial segment of $R_{\omega}$ is finite, and $R_{\omega}$ therefore has type $\omega$.
+    The point of all this is that $R_{n+1}$ is defined outright from $R_n$, with no choices made along the way, and the recursion starts from $R_0 = \emptyset$ on $V_0 = \emptyset$. Chaining (2) makes $V_n$ an initial segment of $\parenth{V_m, R_m}$ for every $m \geq n$, so each $x \in V_{\omega}$ has all of its $R_{\omega}$-predecessors inside the finite $V_n$ it came from, and every proper initial segment of $R_{\omega}$ is therefore finite. Since $\omega \ssq V_{\omega}$, the ordering is infinite, and so it has type exactly $\omega$.
 \end{proof}
 
 \begin{remark}
@@ -118,7 +118,7 @@ Indeed, their sizes are $0$, $2^0$, $2^{2^{0}}$, and so on.
 
 Given AC, we know that $2^{\kappa} > \kappa$ and we can define $\kappa^{+}$ to be the least cardinal strictly greater than $\kappa$. Without AC, we still know, given a cardinal $\kappa$, that
 \begin{align*}
-% [CORRECTED] was: $\setst{R \ssq \kappa}{\parenth{\kappa, R} \text{ is a well-ordering}}$ --- $R$ has to be a relation on $\kappa$ for $\parenth{\kappa, R}$ to be a structure, and no subset of $\kappa$ is a set of ordered pairs, so as written the displayed class was empty
+% [CORRECTED] was: $\setst{R \ssq \kappa}{\parenth{\kappa, R} \text{ is a well-ordering}}$ --- $R$ has to be a relation on $\kappa$ for $\parenth{\kappa, R}$ to be a structure, and no ordinal is an ordered pair, so for every $\kappa \geq 2$ the displayed class was empty
     \setst{R \ssq \kappa \times \kappa}{\parenth{\kappa, R} \text{ is a well-ordering}}
 \end{align*}
 is a set. We can still have Mostowski Collapse for well-orderings. We can then conclude that

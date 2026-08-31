@@ -131,7 +131,7 @@ We will eventually see that the axiom of foundation is equivalent to saying that
     Finally, for the limit step, ie, if $\gamma$ is a limit ordinal, then $(1)_{\gamma}$ and $(2)_{\gamma}$ both follow from the fact that $\forall \beta < \gamma$, $(1)_{\beta}$ and $(2)_{\beta}$ both hold. (This is because in the limit case, constructing $V_{\gamma}$ is just done by taking unions.)
 \end{proof}
 
-\begin{boxdefinition}[Rank]
+\begin{boxdefinition}[Rank]\label{Ch1:Def:Rank}
     Define, for $x \in \WF$, the \textbf{rank} of $x$, denoted $\rank{x}$, to be the least $\alpha \in \OR$ such that $x \in V_{\alpha + 1}$.
 \end{boxdefinition}
 
@@ -154,5 +154,5 @@ We won't prove this, but we'll say it's easy enough to prove and leave it at tha
     \end{align*}
 \end{boxproposition}
 \begin{proof}[Proof sketch]
-    You can just do induction on $\beta$ and apply the definition of the rank. % [CLAUDE] add a cross-reference.
+    You can just do induction on $\beta$ and apply the definition of the rank (\Cref{Ch1:Def:Rank}).
 \end{proof}
