@@ -109,12 +109,12 @@ Gödel's constructible universe L, and a model of ZFC in which CH holds.
 
 The general Mostowski Collapse Theorem, dropping the well-ordering requirement
 and replacing "ordinal" with "transitive set".
-    Stated as the generalisation in 1.2.2. [date not recorded]
+    Stated as the generalization in 1.2.2. [date not recorded]
 
 Foundation is equivalent to $V = \WF$ over ZF without foundation.
     "We will eventually see that", in 1.4.2. [date not recorded]
 
-Formalisations of set theory inside models of set theory, and the internal
+Formalizations of set theory inside models of set theory, and the internal
 versus external perspective. "At some point, we will study these things in
 detail", in 1.4. [date not recorded]
 
