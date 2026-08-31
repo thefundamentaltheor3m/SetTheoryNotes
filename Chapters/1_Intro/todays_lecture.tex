@@ -10,7 +10,7 @@ Note that in what follows, when we say ``$\sup$'', we mean ``union over''. Just 
         \item[$\to$] Let $\beta = \rank{y}$. Then $y \ssq V_{\beta} \subset \WF$.
         \item[$\leftarrow$] Assume $y \subset \WF$. Define $f : y \to \OR$ by $f(x) = \rank{x} + 1$. We're using replacement to know that $f \in V$.
 
-        Let $\beta = \sup_{x \in y}{f(x)}$. Then, $y \ssq V_{\beta}$. So $y \in \Powset{V_{\beta}} = V_{\beta + 1} \subset \WF$.
+        Let $\beta = \sup_{x \in y}{f(x)}$. Then, $y \ssq V_{\beta}$. So $y \in \Powset\of{V_{\beta}} = V_{\beta + 1} \subset \WF$.
     \end{description}
 \end{proof}
 
@@ -29,7 +29,7 @@ Note that in what follows, when we say ``$\sup$'', we mean ``union over''. Just 
     \end{align*}
 \end{boxproposition}
 \begin{proof}
-    Put $\rho = \rank{y}$ and $\sigma = \sup_{x \in y}\of{\rank{x} + 1}$. By \Cref{Ch1:Prop:Rank_Of_Members}, if $f \in y$, then $\rank{x} < \rank{y} = \rho$, so $\rank{x} + 1 \leq \rho$. So $\sigma \leq \rho$.
+    Put $\rho = \rank{y}$ and $\sigma = \sup_{x \in y}\of{\rank{x} + 1}$. By \Cref{Ch1:Prop:Rank_Of_Members}, if $x \in y$, then $\rank{x} < \rank{y} = \rho$, so $\rank{x} + 1 \leq \rho$. So $\sigma \leq \rho$.
 
     It suffices to show that $y \ssq V_{\sigma}$ to conclude that $\rho \leq \sigma$. Now $V_{\sigma} = \setst{x}{\rank{x} < \sigma}$. Every $x \in y$ has $\rank{x} + 1 \leq \sigma$, by the definition of $\sigma$ as a supremum, and so $\rank{x} < \sigma$. So $y$ is indeed a subset.
 \end{proof}
@@ -111,14 +111,15 @@ Indeed, their sizes are $0$, $2^0$, $2^{2^{0}}$, and so on.
 \begin{remark}
     Without AC, we don't know whether the set $V_{\omega + 1} = \Powset\of{V_{\omega}}$ even has a \textit{cardinality}. With AC,
     \begin{align*}
-        \abs{V_{\omega + 1}} = \abs{\Powset\of{V_{omega}}} = 2^{\aleph_0}
+        \abs{V_{\omega + 1}} = \abs{\Powset\of{V_{\omega}}} = 2^{\aleph_0}
     \end{align*}
     where $\aleph_0 = \omega = \abs{V_{\omega}}$.
 \end{remark}
 
 Given AC, we know that $2^{\kappa} > \kappa$ and we can define $\kappa^{+}$ to be the least cardinal strictly greater than $\kappa$. Without AC, we still know, given a cardinal $\kappa$, that
 \begin{align*}
-    \setst{R \ssq \kappa}{\parenth{\kappa, R} \text{ is a well-ordering}}
+% [CORRECTED] was: $\setst{R \ssq \kappa}{\parenth{\kappa, R} \text{ is a well-ordering}}$ --- $R$ has to be a relation on $\kappa$ for $\parenth{\kappa, R}$ to be a structure, and no subset of $\kappa$ is a set of ordered pairs, so as written the displayed class was empty
+    \setst{R \ssq \kappa \times \kappa}{\parenth{\kappa, R} \text{ is a well-ordering}}
 \end{align*}
 is a set. We can still have Mostowski Collapse for well-orderings. We can then conclude that
 \begin{align*}
@@ -135,7 +136,8 @@ Without AC, define
 With AC, define
 \begin{align*}
     \beth_0 &:= \omega \\
-    \beth_{\alpha + 1} &:= 2^{\beth_0} \\
+% [CORRECTED] was: $\beth_{\alpha + 1} := 2^{\beth_0}$ --- as written the successor clause never consults $\beth_{\alpha}$, so every $\beth_{\alpha}$ with $\alpha \geq 1$ collapses to $2^{\aleph_0}$
+    \beth_{\alpha + 1} &:= 2^{\beth_{\alpha}} \\
     \beth_{\beta} &:= \sup_{\alpha < \beta}\of{\beth_{\alpha}} \text{ if } \beta \text{ is a limit ordinal}
 \end{align*}
 
