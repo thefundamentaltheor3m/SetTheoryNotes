@@ -163,3 +163,78 @@ We won't prove this, but we'll say it's easy enough to prove and leave it at tha
 \begin{proof}[Proof sketch]
     You can just do induction on $\beta$ and apply the definition of the rank (\Cref{Ch1:Def:Rank}).
 \end{proof}
+
+We can detect membership in $\WF$ one level down.
+
+\begin{boxproposition}
+    $\forall y \parenth{y \in \WF \lr y \subset \WF}$
+\end{boxproposition}
+\begin{proof}\hfill
+    \begin{description}
+        \item[$\to$] Let $\beta = \rank{y}$. Then $y \ssq V_{\beta} \subset \WF$.
+        \item[$\leftarrow$] Assume $y \subset \WF$. Define $f : y \to \OR$ by $f(x) = \rank{x} + 1$. We're using replacement to know that $f \in V$.
+
+        Let $\beta = \sup_{x \in y}{f(x)}$. Then, $y \ssq V_{\beta}$. So $y \in \Powset\of{V_{\beta}} = V_{\beta + 1} \subset \WF$.
+    \end{description}
+\end{proof}
+
+Passing to a member drops the rank strictly.
+
+\begin{boxproposition}\label{Ch1:Prop:Rank_Of_Members}
+    \begin{align*}
+        \forall y \in \WF,\, \forall x \in y,\, \brac{x \in \WF \land \rank{x} < \rank{y}}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    We know $x \in y \ssq V_{\rank{y}} \subset \WF$, so $x \in \WF$. This also shows that $\rank{x} + 1 \leq \rank{y}$, so $\rank{x} < \rank{y}$.
+\end{proof}
+
+This is enough to compute the rank of a set from the ranks of its members.
+
+\begin{boxproposition}[The Rank Formula]
+    \begin{align*}
+        \forall y \in \WF, \, \rank{y} = \sup_{x \in y}\of{\rank{x} + 1}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    Put $\rho = \rank{y}$ and $\sigma = \sup_{x \in y}\of{\rank{x} + 1}$. By \Cref{Ch1:Prop:Rank_Of_Members}, if $x \in y$, then $\rank{x} < \rank{y} = \rho$, so $\rank{x} + 1 \leq \rho$. So $\sigma \leq \rho$.
+
+    It suffices to show that $y \ssq V_{\sigma}$ to conclude that $\rho \leq \sigma$. Now $V_{\sigma} = \setst{x}{\rank{x} < \sigma}$. Every $x \in y$ has $\rank{x} + 1 \leq \sigma$, by the definition of $\sigma$ as a supremum, and so $\rank{x} < \sigma$. So $y$ is indeed a subset.
+\end{proof}
+
+The ordinals sit inside $\WF$ in the simplest way imaginable.
+
+\begin{boxproposition}
+    \begin{align*}
+        \forall \beta \in \OR, \,
+        \brac{\beta \in \WF \land \rank{\beta} = \beta}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    We argue by induction on $\beta$. Base case is trivial. In the inductive case, $\beta \ssq \WF$, so by previous prop, $\beta \in \WF$. So,
+    \begin{align*}
+        \rank{\beta}
+        &= \sup_{\alpha < \beta}\of{\rank{\alpha} + 1} \\
+        &= \sup_{\alpha < \beta}\of{\alpha + 1} \\
+        &= \beta
+    \end{align*}
+\end{proof}
+
+It follows that each level of the hierarchy meets $\OR$ in exactly the ordinals below its index.
+
+\begin{boxproposition}
+    \begin{align*}
+        \forall \beta \in \OR, \,
+        \brac{V_{\beta} \cap \OR = \beta}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    We know
+    \begin{align*}
+        V_{\beta} \cap \OR
+        &= \setst{x \in \WF}{\rank{x} < \beta} \cap \OR \\
+        &= \setst{\alpha \in \OR}{\rank{\alpha} < \beta} \\
+        &= \setst{\alpha \in \OR}{\alpha < \beta} \\
+        &= \beta
+    \end{align*}
+\end{proof}
