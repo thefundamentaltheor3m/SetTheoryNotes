@@ -1,0 +1,34 @@
+% 31 Aug
+
+
+Note that in what follows, when we say ``$\sup$'', we mean ``union over''. Just like in Lean.
+
+\begin{boxproposition}
+    $\forall y \parenth{y \in \WF \lr y \subset \WF}$
+\end{boxproposition}
+\begin{proof}\hfill
+    \begin{description}
+        \item[$\to$] Let $\beta = \rank{y}$. Then $y \ssq V_{\beta} \subset \WF$.
+        \item[$\leftarrow$] Assume $y \subset \WF$. Define $f : y \to \OR$ by $f(x) = \rank{x} + 1$. We're using replacement to know that $f \in V$.
+
+        Let $\beta = \sup_{x \in y}{f(x)}$. Then, $y \ssq V_{\beta}$. So $y \in \Powset{V_{\beta}} = V_{\beta + 1} \subset \WF$.
+    \end{description}
+\end{proof}
+
+\begin{boxproposition}
+    \begin{align*}
+        \forall y \in \WF,\, \forall x \in y,\, \brac{x \in \WF \land \rank{x} < \rank{y}}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    We know $x \in y \ssq V_{\rank{y}} \subset \WF$, so $x \in \WF$. This also shows that $\rank{x} + 1 \leq \rank{y}$, so $\rank{x} < \rank{y}$.
+\end{proof}
+
+\begin{boxproposition}[The Rank Formula]
+    \begin{align*}
+        \forall y \in \WF, \, \rank{y} = \sup_{x \in y}of{\rank{x} + 1}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    Put $\rho = \rank{y}$ and $\sigma = \sup_{x \in y}\of{\rank{x} + 1}$. By previous prop\todo{add CR}, 
+\end{proof}
