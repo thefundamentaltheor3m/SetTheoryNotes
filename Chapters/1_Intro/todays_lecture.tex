@@ -57,7 +57,7 @@ Say $A$ is a class and $R$ is a class binary relation\footnote{ie, a binary rela
     We say that $(A, R)$ is \textbf{ill-founded} if it is not well-founded.
 \end{boxdefinition}
 
-\begin{boxproposition}
+\begin{boxproposition}\label{Ch1:Prop:WF_Well_Founded}
     $\forall A \in \WF$, $\parenth{A, \in}$ is well-founded.
 \end{boxproposition}
 \begin{proof}
@@ -68,6 +68,12 @@ Say $A$ is a class and $R$ is a class binary relation\footnote{ie, a binary rela
     % [FILLED] the lecture broke off after naming $\alpha$; the rest of the argument is supplied here
     This makes sense: every $x \in S$ is a member of $A \in \WF$, so $x \in \WF$ by \Cref{Ch1:Prop:Rank_Of_Members} and has a rank, and $\OR$ is well-ordered. Pick $x \in S$ with $\rank{x} = \alpha$. If some $y \in S$ had $y \in x$, then $\rank{y} < \rank{x} = \alpha$ by \Cref{Ch1:Prop:Rank_Of_Members} again, contradicting the minimality of $\alpha$. So $x$ is $\in$-minimal in $S$.
 \end{proof}
+
+Before going further, we give a name to the smallest transitive set containing a given set.
+
+\begin{boxdefinition}[Transitive Closure]
+    Given a set $Y$, the \textbf{transitive closure} of $Y$, denoted $\trcl{Y}$, is the smallest transitive set $T$ such that $Y \ssq T$. In particular, $\trcl{\set{x}}$ is the smallest transitive set containing $x$ as a member.
+\end{boxdefinition}
 
 \begin{boxnexample}[An Ill-Founded Relation]
     One way Foundation can fail is if we have two sets $x \ne y$ such that $x = \set{y}$ and $y = \set{x}$.
@@ -89,8 +95,13 @@ Say $A$ is a class and $R$ is a class binary relation\footnote{ie, a binary rela
 \end{proof}
 
 \begin{boxlemma}
-    Given a set $Y$, put $Z_0 = Y$, $Z_{n + 1} = \bigcup Z_n$, $Z_{\omega} = \bigcup_{n < \omega} Z_n$. % [CLAUDE] put these 3 defs into an align* with each on a different line (equality signs lined up)
-    Then, the transitive closure of $Y$ is $Z_{\omega}$.
+    Given a set $Y$, put
+    \begin{align*}
+        Z_0 &= Y \\
+        Z_{n + 1} &= \bigcup Z_n \\
+        Z_{\omega} &= \bigcup_{n < \omega} Z_n
+    \end{align*}
+    Then, $\trcl{Y} = Z_{\omega}$.
 \end{boxlemma}
 
 \begin{boxproposition}[Assuming $\ZFwoF$]
@@ -102,11 +113,11 @@ Say $A$ is a class and $R$ is a class binary relation\footnote{ie, a binary rela
     \end{enumerate}
 \end{boxproposition}
 \begin{proof}
-    $(1) \iff (2)$ is clear. % [CLAUDE] briefly explain
+    $(1) \iff (2)$ is clear: taking $A = S$ in $(2)$ gives $(1)$, and conversely a nonempty $S \ssq A$ is in particular a nonempty set, so $(1)$ hands us an $\in$-minimal member of $S$.
 
-    $(3) \implies (2)$ follows from the previous proposition. % [CLAUDE] add cross-reference
+    $(3) \implies (2)$ follows from \Cref{Ch1:Prop:WF_Well_Founded}.
 
-    Let's now assume $(2)$ and prove $(3)$. $\WF \ssq V$, so we only need $V \ssq \WF$. Let $x \in V$ and let $A$ be the transitive closure of $\set{x}$ (ie, the smallest transitive set containing $x$ as a member). % [CLAUDE] make this a definition, and give it notation $\trcl{x}$ (trcl should be an operatorname - emulate the style of other macros)
+    Let's now assume $(2)$ and prove $(3)$. $\WF \ssq V$, so we only need $V \ssq \WF$. Let $x \in V$ and let $A = \trcl{\set{x}}$.
     By \Cref{Ch1:Prop:Transitive_WF}, since $A$ is transitive and $(A, \in)$ is well-founded, by our assumption $(2)$, we get that $A \in \WF$. So $x \in A \subset \WF$. Thus, $x \in \WF$.
 \end{proof}
 
@@ -138,6 +149,22 @@ But not all relations are set-like.
 
 \begin{boxnexample}
     Let $A = \OR$. Define $R$ by the following picture:
-    % [CLAUDE] put a dot at the bottom, label it 1, another above, label it 2, then vdots, then a dot labelled omega, then more dots, and then 0 (zero) at the very top, above all other ordinals
+    \begin{center}
+        \begin{tikzpicture}[every node/.style = {font = \small}, dot/.style = {circle, fill, inner sep = 1.5pt}]
+            \node[dot, label = right:{$1$}] (1) at (0, 0) {};
+            \node[dot, label = right:{$2$}] (2) at (0, 0.8) {};
+            \node (d1) at (0, 1.7) {$\vdots$};
+            \node[dot, label = right:{$\omega$}] (w) at (0, 2.6) {};
+            \node[dot, label = right:{$\omega + 1$}] (w1) at (0, 3.4) {};
+            \node (d2) at (0, 4.3) {$\vdots$};
+            \node[dot, label = right:{$0$}] (0) at (0, 5.4) {};
+            \draw (1) -- (2);
+            \draw (2) -- (d1);
+            \draw (d1) -- (w);
+            \draw (w) -- (w1);
+            \draw (w1) -- (d2);
+            \draw (d2) -- (0);
+        \end{tikzpicture}
+    \end{center}
     That is, it looks a bit like $\parenth{\OR \setminus \set{0}, <}$
 \end{boxnexample}
