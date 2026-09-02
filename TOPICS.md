@@ -47,23 +47,50 @@ The chapter file carries the intro prose, the chapter-wide `boxnotation` for
     1.3.1 The Existence of $V_{\omega}$
 
 1.4 Classes                                                  [date not recorded,
-    What a proper class is and why the axioms need one,       extended 2026-08-31]
-    then the two the course actually uses.                   1_4_Classes.tex
+    What a proper class is and why the axioms need one,       extended 2026-08-31,
+    then the two the course actually uses.                    2026-09-02]
+                                                             1_4_Classes.tex
     1.4.1 The Class of Ordinals
     1.4.2 Well-Foundedness                                   [+ 2026-08-31]
           WF, rank, and the properties of rank: the
           membership criterion, the strict drop on
           members, the Rank Formula, rank(b) = b for
           ordinals, and V_b cap OR = b.
+    1.4.3 Well-Foundedness of Membership                     [2026-09-02]
+          Well-founded class relations in general; (A, in)
+          is well-founded for A in WF; the transitive
+          closure and its construction in omega steps; a
+          transitive set with well-founded membership is in
+          WF; and, over ZF - F, Foundation iff every (A, in)
+          is well-founded iff V = WF.
 
-1.5 Cardinals and the Axiom of Choice                        [2026-08-31]
-    How big the levels of the hierarchy are, and how much    1_5_Cardinals.tex
-    of the answer needs choice. Walks to the aleph and
+1.5 Cardinals and the Axiom of Choice                        [2026-08-31,
+    How big the levels of the hierarchy are, and how much     extended 2026-09-02]
+    of the answer needs choice. Walks to the aleph and       1_5_Cardinals.tex
     beth hierarchies, of which exactly one is choice-free.
     1.5.1 The Size of $V_{\omega}$
     1.5.2 Cardinality Without Choice
     1.5.3 Cardinal Successors
-    1.5.4 The Alephs and the Beths
+    1.5.4 The Alephs and the Beths                           [+ 2026-09-02]
+          |V_{omega + eta}| = beth_eta (with AC); the
+          aleph/omega notation warning; omega + eta = eta
+          for eta >= omega^2 (without AC).
+```
+
+## 2. Induction, Recursion and Collapse  ->  `Chapters/2_Induction/`
+
+Opened on 2026-09-02 at the author's own `\chapter` heading, written live with the
+note "not sure if this should be a new chapter, but perhaps it should? it's another
+instalment of the course". It is: the objects are class relations in general, the
+vocabulary (set-like, and the well-foundedness carried over from 1.4.3) is new, and the
+title promises a development -- induction, recursion, collapse -- that is not chapter 1's
+recap. The chapter file carries two sentences of intro prose and nothing chapter-wide.
+
+```
+2.1 Set-Like Relations                                       [2026-09-02]
+    What it means for a class relation to be set-like;       2_1_Set_Like.tex
+    membership is (and this is Comprehension in disguise);
+    OR with 0 moved to the top is not.
 ```
 
 `Chapters/1_Intro/` is the author's directory name for chapter 1 across three of the
@@ -89,6 +116,20 @@ Chapter 1 is the only chapter.              ORGANIZATION.md is explicit that cha
                                             fix is not to invent chapters 2 and 3.
                                             Ends when L is written up, which the
                                             chapter's own prose says is coming.
+                                            [Ended 2026-09-02: chapter 2 opened, at
+                                            the author's heading, on induction,
+                                            recursion and collapse rather than L.]
+
+2.1 has no subsections, and chapter 2       The author's live heading under the chapter
+has one section.                            was an unnamed `\subsection{something}`
+                                            with no section above it. Its contents are
+                                            one idea (set-like relations), so it became
+                                            the section heading rather than a section
+                                            and a subsection with the same name; 8 of
+                                            the corpus's 66 sections have no subsection.
+                                            Ends when the next lecture adds a second
+                                            idea to 2.1, at which point the subsection
+                                            headings appear. [2026-09-02]
 
 1.2 is short (40 lines) against a           It is two nameable ideas and the author
 corpus median of 148.                       named them. Splitting or padding it would
@@ -110,9 +151,17 @@ Gödel's constructible universe L, and a model of ZFC in which CH holds.
 The general Mostowski Collapse Theorem, dropping the well-ordering requirement
 and replacing "ordinal" with "transitive set".
     Stated as the generalization in 1.2.2. [date not recorded]
+    Chapter 2's title, "Induction, Recursion and Collapse", says it is coming;
+    nothing about it has been written yet. [2026-09-02]
+
+Induction and recursion along well-founded set-like class relations.
+    Promised by chapter 2's title and by the definition of set-like, which is
+    introduced without yet being used for anything. [2026-09-02]
 
 Foundation is equivalent to $V = \WF$ over ZF without foundation.
     "We will eventually see that", in 1.4.2. [date not recorded]
+    Reached: proved in 1.4.3, together with the equivalence to "every (A, in) is
+    well-founded". [2026-09-02]
 
 Formalizations of set theory inside models of set theory, and the internal
 versus external perspective. "At some point, we will study these things in
@@ -136,6 +185,28 @@ continuation is plausible. Awaiting the author.
 What a run noticed but was not allowed to fix. Each entry is a standing recommendation.
 
 ```
+Two directories are numbered 2.                Chapters/2_Induction/ is the real chapter 2;
+                                            Chapters/2_Another Chapter/ is the template
+                                            placeholder, still commented out in
+                                            main.tex. Clearing the placeholder is
+                                            /organize's, once the author confirms
+                                            nothing is planned for it. [2026-09-02]
+
+The inbox is \input from chapter 1.           Chapters/1_Intro/todays_lecture.tex is
+                                            still \input at the end of 1_Intro.tex,
+                                            so the next lecture's raw notes will
+                                            preview as the tail of chapter 1 although
+                                            the course is now in chapter 2. Moving the
+                                            file or its \input line is one line and
+                                            changes the path the author types into;
+                                            left for the author to decide. [2026-09-02]
+
+The inference note at the top of this file  It predicted that chapter 2 would be L.
+predates chapter 2.                         Chapter 2 is induction, recursion and
+                                            collapse instead, and L is still promised.
+                                            /organize owns the note; revise it on the
+                                            next run. [2026-09-02]
+
 The course itself is not written up.        Chapter 1 is undergraduate revision; the
                                             material 21-602 is actually about -- L,
                                             forcing, whatever followed -- has no home
