@@ -5,7 +5,7 @@
 
 \begin{boxproposition}
     \begin{align*}
-        \forall \eta \in \OR, \, \abs{V_{\omega + \eta} = \beth_{\eta}}
+        \forall \eta \in \OR, \, \abs{V_{\omega + \eta}} = \beth_{\eta}
     \end{align*}
 \end{boxproposition}
 \begin{proof}[Proof (using AC).]
@@ -78,7 +78,7 @@ Before going further, we give a name to the smallest transitive set containing a
 \begin{boxnexample}[An Ill-Founded Relation]
     One way Foundation can fail is if we have two sets $x \ne y$ such that $x = \set{y}$ and $y = \set{x}$.
     
-    In this case, $(x, \in)$ and $(y, \in)$ are both well-founded (just because $x$ and $y$ are both singletons). But $x, y \notin \WF$, because if they were, then they would \textit{both} be, so they would both have ranks, and since $x \in \set{y}$, $\rank{x} < \rank{y}$ and similarly, since $y \in \set{x}$, $\rank{y} < \rank{x}$, which is impossible.
+    In this case, $(x, \in)$ and $(y, \in)$ are both well-founded (just because $x$ and $y$ are both singletons). But $x, y \notin \WF$, because if they were, then they would \textit{both} be, so they would both have ranks, and since $x \in y$, $\rank{x} < \rank{y}$ and similarly, since $y \in x$, $\rank{y} < \rank{x}$, which is impossible.
 
     In this example, the transitive closure of $x$ is $\set{x, y}$, which is also the transitive closure of $y$. Moreover, $\parenth{\set{x, y}, \in}$ is ill-founded.
 \end{boxnexample}
@@ -91,7 +91,7 @@ Before going further, we give a name to the smallest transitive set containing a
 
     Suppose not. Let $S = A \setminus \WF$. Then, $S$ is a nonempty subset of $A$. As $(A, \in)$ is well-founded, there is some $x \in S$ that is $\in$-minimal in $S$. Then $x \notin \WF$, so $x \not\subset \WF$.
 
-    Pick $y \in X \setminus \WF$. Then, $y \in x \in A$. Since $A$ is transitive, $y \in A$. Thus, $y \in A \setminus \WF = S$, and $y \in x$. This contradicts our choice of $x$.
+    Pick $y \in x \setminus \WF$. Then, $y \in x \in A$. Since $A$ is transitive, $y \in A$. Thus, $y \in A \setminus \WF = S$, and $y \in x$. This contradicts our choice of $x$.
 \end{proof}
 
 \begin{boxlemma}
