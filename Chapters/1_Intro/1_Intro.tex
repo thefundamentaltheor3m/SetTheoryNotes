@@ -3,7 +3,8 @@
 \chapter{A Recap of Undergraduate Set Theory} \label{Ch1:CH}
 \thispagestyle{empty}
 
-Set Theory can be viewed as a field of mathematics that encompasses all other mathematics. We can view set theory as beginning at the empty set $\emptyset$, also denoted $V_0$. We can construct subsequent sets $V_1, V_2, V_3, \ldots$ by taking power sets, ie, $V_1 = \Powset\of{V_0}$, $V_2 = \Powset\of{V_1}$, and so on. We can then define $V_{\omega}$ to be the union of all $V_n$, where $n < \omega$. We can then define $V_{\omega + 1} = \Powset\of{\omega}$, and so on. All of analysis, the field of mathematics Davoud Cheraghi once described as the ``rigorous study of infinite constructions'', is essentially about $V_{\omega + 1}$. In this way, set theory encompasses analysis, for example.
+% [CORRECTED] was: $V_{\omega + 1} = \Powset\of{\omega}$ --- $\omega \subsetneq V_{\omega}$ (eg, $\set{1} \in V_3$ but $\set{1} \notin \omega$), so $\Powset\of{\omega}$ is a proper subset of $V_{\omega + 1}$, not equal to it. The two do have the same cardinality, which is why nothing downstream noticed
+Set Theory can be viewed as a field of mathematics that encompasses all other mathematics. We can view set theory as beginning at the empty set $\emptyset$, also denoted $V_0$. We can construct subsequent sets $V_1, V_2, V_3, \ldots$ by taking power sets, ie, $V_1 = \Powset\of{V_0}$, $V_2 = \Powset\of{V_1}$, and so on. We can then define $V_{\omega}$ to be the union of all $V_n$, where $n < \omega$. We can then define $V_{\omega + 1} = \Powset\of{V_{\omega}}$, and so on. All of analysis, the field of mathematics Davoud Cheraghi once described as the ``rigorous study of infinite constructions'', is essentially about $V_{\omega + 1}$. In this way, set theory encompasses analysis, for example.
 
 We call the hierarchy
 \begin{align*}
@@ -11,8 +12,12 @@ We call the hierarchy
 \end{align*}
 the \textbf{universe of sets}. Indeed, this is often represented diagrammatically as a $V$ that contains each of these $V$s, with $V_0$ at the bottom, $V_1$ above $V_0$, and so on.
 
-There is a problem with the universe of sets: \textit{the power set operation is too strong}. That is, when we take the power set of a set, it ``throws too many elements in''. This leads to questions like the \textit{continuum hypothesis}, which asks the question of whether $\aleph_0 = \abs{\R} = \abs{V_{\omega + 1}}$ is equal to $\aleph_1$.
+% [CORRECTED] was: ``whether $\aleph_0 = \abs{\R} = \abs{V_{\omega + 1}}$ is equal to $\aleph_1$'' --- $\aleph_0 = \abs{\R}$ says $\R$ is countable, and it also made CH read ``is $\aleph_0 = \aleph_1$?'', which is refutable rather than independent
+There is a problem with the universe of sets: \textit{the power set operation is too strong}. That is, when we take the power set of a set, it ``throws too many elements in''. This leads to questions like the \textit{continuum hypothesis}, which asks the question of whether $2^{\aleph_0} = \abs{\R} = \abs{V_{\omega + 1}}$ is equal to $\aleph_1$.
 
+% [SUSPECT] $\Defin(A)$ is defined below as a class of definable \textit{structures} over $(A; \in)$; it
+% should be the definable \textit{subsets} of $A$. As written, neither ``$\Defin$ agrees with $\Powset$ on
+% finite sets'' nor the agreement of $L_n$ with $V_n$ parses. Left unchanged pending the author.
 Something we will study quite closely in this course is a slightly different version of this universe, known as \textbf{Gödel's Constructible Universe}. This is a universe of sets that is not built up from $\emptyset$ using the power set, but using a \textit{different} operation $\Defin$, defined as follows: for a set $A$, viewing it as a first-order structure $(A; \in)$,
 \begin{align*}
     \Defin(A) &:= \setst{x}{x \text{ is a 1st-order definable structure over } (A; \in) \text{ using parameters from } A}
@@ -25,8 +30,28 @@ we not only have agreement between $L_n$ and $V_n$ for all $n \leq \omega$, but 
 
 This is something we will explore in great detail in this course.
 
+We note that the typical background setting for this course is the entirety of ZFC. However, as and when we need to either get rid of an axiom, or introduce a new one, we will mention it explicitly. We also use the following notational conventions.
+
+\begin{boxnotation}
+    We use $\ZFC$ to mean we have all the ZFC axioms. As and when we need variations, we do the following.
+    \begin{align*}
+        \ZF &:= \text{``ZFC without the Axiom of Choice''} \\
+        \ZFCwoF &:= \text{``ZFC without the Axiom of Foundation''} \\
+        \ZFwoF &:= \text{``ZF without the Axiom of Foundation''}
+    \end{align*}
+\end{boxnotation}
+
+We use one further convention throughout.
+
+\begin{boxconvention}
+    When we write $\sup$, we mean ``union over''. Just like in Lean.
+\end{boxconvention}
+
 We will begin by reviewing the ZFC axioms.
 
 \input{Chapters/1_Intro/1_1_ZFC.tex}
-\input{Chapters/1_Intro/1_2_Classes.tex}
+\input{Chapters/1_Intro/1_2_Trans.tex}
+\input{Chapters/1_Intro/1_3_V_Hierarchy.tex}
+\input{Chapters/1_Intro/1_4_Classes.tex}
+\input{Chapters/1_Intro/1_5_Cardinals.tex}
 \input{Chapters/1_Intro/todays_lecture}

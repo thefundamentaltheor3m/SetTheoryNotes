@@ -1,0 +1,112 @@
+\section{Cardinals and the Axiom of Choice}\label{Ch1:Sec:Cardinals}
+
+In this section, we discuss how big the levels of the $V$-hierarchy are. The answer is elementary at the bottom of the hierarchy, but by the time we reach $V_{\omega + 1}$ it already depends on the Axiom of Choice. We end by defining two hierarchies of cardinals, only one of which needs choice.
+
+\subsection{The Size of $V_{\omega}$}
+
+We begin with the finite levels.
+
+\begin{boxproposition}
+    For all $n < \omega$, the set $V_{n}$ is finite.
+\end{boxproposition}
+
+Indeed, their sizes are $0$, $2^0$, $2^{2^{0}}$, and so on.
+
+So $V_{\omega}$ is the first infinite level. It turns out to be countable, and there are two ways of seeing it.
+
+\begin{boxproposition}
+    $V_{\omega}$ is countable.
+\end{boxproposition}
+\begin{proof}[Proof using AC]
+    Write
+    \begin{align*}
+        V_{\omega} = \bigcup_{n < \omega} V_n
+    \end{align*}
+    AC tells us that a countable union of countable sets is countable.
+\end{proof}
+\begin{proof}[Proof that avoids AC]
+    By recursion on $n < \omega$, we can define $R_n \ssq V_n \times V_n$ so that
+    \begin{enumerate}[label = (\arabic*)]
+        \item $\parenth{V_n, R_n}$ is a well-ordering
+        \item $R_{n+1}$ end-extends $R_n$
+    \end{enumerate}
+    Then, we'll be able to put $R_{\omega} = \bigcup_{n < \omega} R_n$ and show that $R_{\omega}$ is a well-ordering of type $\omega$.
+
+    Since $\parenth{V_n, R_n}$ is a well-ordering of a finite set, we may enumerate $V_n$ as
+    \begin{align*}
+        a_0 \, R_n \, a_1 \, R_n \, \cdots \, R_n \, a_{k-1}
+    \end{align*}
+    where $k = \abs{V_n}$. Every member of $V_{n+1} = \Powset\of{V_n}$ is a subset of $V_n$, so we may write any $x, y \in V_{n+1}$ as
+    \begin{align*}
+        x = \setst{a_i}{i \in I}
+        \qquad \text{and} \qquad
+        y = \setst{a_i}{i \in J}
+    \end{align*}
+    for unique $I, J \ssq k$. Now, put $x \, R_{n+1} \, y$ iff
+    \begin{enumerate}[label = (\roman*)]
+        \item $x, y \in V_n$ and $x \, R_n \, y$.
+        \item $x \in V_n$ and $y \in V_{n + 1} \setminus V_n$.
+        \item $x, y \in V_{n+1} \setminus V_n$, and $i \in J$, where $i$ is the largest natural number lying in exactly one of $I$ and $J$.
+    \end{enumerate}
+    Case (iii) makes sense because $x \neq y$ forces $I \neq J$, so some natural number lies in exactly one of them and there are only finitely many candidates. The relation it defines is the ordering of the subsets of $V_n$ by binary numerals, reading $x$ as the string whose $i$th digit records whether $i \in I$, so it is a linear ordering.
+
+    So $R_{n+1}$ is $R_n$ followed by a linear ordering of the finitely many sets in $V_{n+1} \setminus V_n$, which makes it a well-ordering and gives us (1). It agrees with $R_n$ on $V_n$ and places all of $V_n$ before all of $V_{n+1} \setminus V_n$, so $V_n$ is an initial segment of $\parenth{V_{n+1}, R_{n+1}}$, which gives us (2).
+
+    The point of the construction is that $R_{n+1}$ is defined outright from $R_n$, with no choices made along the way, and the recursion starts from $R_0 = \emptyset$ on $V_0 = \emptyset$. The $R_n$ increase, so $R_{\omega}$ linearly orders $V_{\omega}$. Chaining (2) makes $V_n$ an initial segment of $\parenth{V_m, R_m}$ for every $m \geq n$, so each $x \in V_{\omega}$ has all of its $R_{\omega}$-predecessors inside the finite $V_n$ it came from, and every proper initial segment of $R_{\omega}$ is therefore finite. Since $\omega \ssq V_{\omega}$, the ordering is infinite, so sending each $x$ to its number of predecessors is an isomorphism onto $\omega$.
+\end{proof}
+
+\subsection{Cardinality Without Choice}
+
+The reason the second proof is worth having is that without AC, countable unions are badly behaved.
+
+\begin{remark}
+    If ZF is consistent, then so is ZF $+$ ``there's a countable union of pairs that has no cardinality''.
+\end{remark}
+
+The same problem arises one level further up.
+
+\begin{remark}
+    Without AC, we don't know whether the set $V_{\omega + 1} = \Powset\of{V_{\omega}}$ even has a \textit{cardinality}. With AC,
+    \begin{align*}
+        \abs{V_{\omega + 1}} = \abs{\Powset\of{V_{\omega}}} = 2^{\aleph_0}
+    \end{align*}
+    where $\aleph_0 = \omega = \abs{V_{\omega}}$.
+\end{remark}
+
+\subsection{Cardinal Successors}
+
+It turns out that the successor of a cardinal can still be defined without choice, provided we go about it the right way.
+
+Given AC, we know that $2^{\kappa} > \kappa$ and we can define $\kappa^{+}$ to be the least cardinal strictly greater than $\kappa$. Without AC, we still know, given a cardinal $\kappa$, that
+\begin{align*}
+% [CORRECTED] was: $\setst{R \ssq \kappa}{\parenth{\kappa, R} \text{ is a well-ordering}}$ --- $R$ has to be a relation on $\kappa$ for $\parenth{\kappa, R}$ to be a structure, and no ordinal is an ordered pair, so for every $\kappa \geq 2$ the displayed class was empty
+    \setst{R \ssq \kappa \times \kappa}{\parenth{\kappa, R} \text{ is a well-ordering}}
+\end{align*}
+is a set. We can still have Mostowski Collapse for well-orderings. We can then conclude that
+\begin{align*}
+    \setst{\text{types}\of{\kappa, R}}{\parenth{\kappa, R} \text{ is a well-ordering}}
+\end{align*}
+is a set of ordinals. Then, we can set $\kappa^{+}$ to simply be the supremum of this set.
+
+\subsection{The Alephs and the Beths}
+
+We can now define the two standard hierarchies of cardinals, of which only the second needs the Axiom of Choice.
+
+Without AC, define
+\begin{align*}
+    \aleph_0 &:= \omega \\
+    \aleph_{\alpha + 1} &:= \parenth{\aleph_{\alpha}}^{+} \\
+    \aleph_{\beta} &:= \sup_{\alpha < \beta}\of{\aleph_{\alpha}} \text{ if } \beta \text{ is a limit ordinal} 
+\end{align*}
+With AC, define
+\begin{align*}
+    \beth_0 &:= \omega \\
+% [CORRECTED] was: $\beth_{\alpha + 1} := 2^{\beth_0}$ --- as written the successor clause never consults $\beth_{\alpha}$, so every $\beth_{\alpha}$ with $\alpha \geq 1$ collapses to $2^{\aleph_0}$
+    \beth_{\alpha + 1} &:= 2^{\beth_{\alpha}} \\
+    \beth_{\beta} &:= \sup_{\alpha < \beta}\of{\beth_{\alpha}} \text{ if } \beta \text{ is a limit ordinal}
+\end{align*}
+
+% The lecture of 31 Aug ends mid-sentence here. The raw notes read ``It's clear'' and stop;
+% most likely the start of a comparison of the two hierarchies, but there is more than one
+% thing it could have been, so it is marked as a gap rather than guessed at. Raised with the author.
+It's clear \sorry 

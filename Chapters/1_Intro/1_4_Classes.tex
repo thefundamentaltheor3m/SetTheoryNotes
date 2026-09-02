@@ -1,5 +1,10 @@
 \section{Classes}
 
+% [SUSPECT] ``$V \in V$, so $V$ has no $\in$-minimal member'' does not follow from Foundation as
+% stated in \Cref{Ch1:CH}'s section on the axioms: an $\in$-minimal member of $V$ is an $x \in V$ with
+% $x \cap V = \emptyset$, and $x = \emptyset$ is one. What $V \in V$ contradicts is Foundation applied to
+% $\set{V}$, whose sole member $V$ is not $\in$-minimal in it. Restated at the same fault below.
+% Left unchanged pending the author.
 Recall Russell's Paradox: there is no set of all sets. One reason for this (which relies on the Axiom of Foundation) is that if $V$ is the set of all sets, then $V \in V$, so $V$ has no $\in$-minimal member, which contradicts the Axiom of Foundation. Without the Axiom of Foundation, if $V$ is the set of all sets, then if we set
 \begin{align*}
     W = \setst{x \in V}{x \notin x}
@@ -25,6 +30,8 @@ is a set; there is no guarantee whatsoever that
 \end{align*}
 is a set. It sometimes is, but it isn't always.
 
+% [SUSPECT] same fault as flagged at the top of this section: ``it would have no $\in$-minimal
+% element'' does not follow, since $\emptyset$ is $\in$-minimal in $V$. Left unchanged pending the author.
 There are two ways you can prove that $V = \setst{x}{x = x}$ is not a set. The first is that if it were, then $V \in V$ would hold, meaning it would have no $\in$-minimal element, contradicting foundation. The second is that if it were, $W = \setst{x \in V}{x \notin x}$ would be a valid set, by comprehension. Then, $w \in W \lr w \notin W$, a contradiction.
 
 There are two perspectives we can take. The first is the \textbf{external perspective}: this is the perspective from which you would look at models of ZFC. There is also the internal perspective, where you are already inside a model of ZFC. Now this internal perspective also has a notion of logic and set theory inside of it. So there's formalisations of set theory inside models of set theory, and these formalisations have their own notions of models of set theory, and so it goes.
@@ -85,7 +92,7 @@ Let's give two such formulae based on the following.
         \begin{enumerate}[label = (\alph*)]
             \item The domain of $g$ is $\gamma + 1$
             \item $g(0) = \emptyset$
-            \item $\forall \alpha < \gamma$, $g(\alpha + 1_ = \Powset\of{g(\alpha}$
+            \item $\forall \alpha < \gamma$, $g\of{\alpha + 1} = \Powset\of{g\of{\alpha}}$
             \item $\forall \beta \leq \gamma$ with $\beta$ a limit ordinal, $g\of{\beta} = \bigcup_{\alpha < \beta} g(\alpha)$
             \item $g(\gamma) = S$
         \end{enumerate}
@@ -131,11 +138,11 @@ We will eventually see that the axiom of foundation is equivalent to saying that
     Finally, for the limit step, ie, if $\gamma$ is a limit ordinal, then $(1)_{\gamma}$ and $(2)_{\gamma}$ both follow from the fact that $\forall \beta < \gamma$, $(1)_{\beta}$ and $(2)_{\beta}$ both hold. (This is because in the limit case, constructing $V_{\gamma}$ is just done by taking unions.)
 \end{proof}
 
-\begin{boxdefinition}[Rank]
+\begin{boxdefinition}[Rank]\label{Ch1:Def:Rank}
     Define, for $x \in \WF$, the \textbf{rank} of $x$, denoted $\rank{x}$, to be the least $\alpha \in \OR$ such that $x \in V_{\alpha + 1}$.
 \end{boxdefinition}
 
-Indeed, this is equivalent to $\rank{\alpha}$ being the least $\alpha \in \OR$ such that $x \subseteq V_{\alpha}$.
+Indeed, this is equivalent to $\rank{x}$ being the least $\alpha \in \OR$ such that $x \subseteq V_{\alpha}$.
 
 \begin{boxproposition}
     The mapping
@@ -154,5 +161,80 @@ We won't prove this, but we'll say it's easy enough to prove and leave it at tha
     \end{align*}
 \end{boxproposition}
 \begin{proof}[Proof sketch]
-    You can just do induction on $\beta$ and apply the definition of the rank. % [CLAUDE] add a cross-reference.
+    You can just do induction on $\beta$ and apply the definition of the rank (\Cref{Ch1:Def:Rank}).
+\end{proof}
+
+It turns out that we can tell whether a set lies in $\WF$ by looking only at its members.
+
+\begin{boxproposition}
+    $\forall y \parenth{y \in \WF \lr y \subset \WF}$
+\end{boxproposition}
+\begin{proof}\hfill
+    \begin{description}
+        \item[$\to$] Let $\beta = \rank{y}$. Then $y \ssq V_{\beta} \subset \WF$.
+        \item[$\leftarrow$] Assume $y \subset \WF$. Define $f : y \to \OR$ by $f(x) = \rank{x} + 1$. We're using replacement to know that $f \in V$.
+
+        Let $\beta = \sup_{x \in y}{f(x)}$. Then, $y \ssq V_{\beta}$. So $y \in \Powset\of{V_{\beta}} = V_{\beta + 1} \subset \WF$.
+    \end{description}
+\end{proof}
+
+Members have strictly smaller rank than the sets that contain them.
+
+\begin{boxproposition}\label{Ch1:Prop:Rank_Of_Members}
+    \begin{align*}
+        \forall y \in \WF,\, \forall x \in y,\, \brac{x \in \WF \land \rank{x} < \rank{y}}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    We know $x \in y \ssq V_{\rank{y}} \subset \WF$, so $x \in \WF$. This also shows that $\rank{x} + 1 \leq \rank{y}$, so $\rank{x} < \rank{y}$.
+\end{proof}
+
+From this, we can compute the rank of a set from the ranks of its members.
+
+\begin{boxproposition}[The Rank Formula]
+    \begin{align*}
+        \forall y \in \WF, \, \rank{y} = \sup_{x \in y}\of{\rank{x} + 1}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    Put $\rho = \rank{y}$ and $\sigma = \sup_{x \in y}\of{\rank{x} + 1}$. By \Cref{Ch1:Prop:Rank_Of_Members}, if $x \in y$, then $\rank{x} < \rank{y} = \rho$, so $\rank{x} + 1 \leq \rho$. So $\sigma \leq \rho$.
+
+    It suffices to show that $y \ssq V_{\sigma}$ to conclude that $\rho \leq \sigma$. Now $V_{\sigma} = \setst{x}{\rank{x} < \sigma}$. Every $x \in y$ has $\rank{x} + 1 \leq \sigma$, by the definition of $\sigma$ as a supremum, and so $\rank{x} < \sigma$. So $y$ is indeed a subset.
+\end{proof}
+
+It turns out that the ordinals are their own ranks.
+
+\begin{boxproposition}
+    \begin{align*}
+        \forall \beta \in \OR, \,
+        \brac{\beta \in \WF \land \rank{\beta} = \beta}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    We argue by induction on $\beta$. Base case is trivial. In the inductive case, $\beta \ssq \WF$, so by previous prop, $\beta \in \WF$. So,
+    \begin{align*}
+        \rank{\beta}
+        &= \sup_{\alpha < \beta}\of{\rank{\alpha} + 1} \\
+        &= \sup_{\alpha < \beta}\of{\alpha + 1} \\
+        &= \beta
+    \end{align*}
+\end{proof}
+
+It follows that each $V_{\beta}$ contains exactly the ordinals below $\beta$.
+
+\begin{boxproposition}
+    \begin{align*}
+        \forall \beta \in \OR, \,
+        \brac{V_{\beta} \cap \OR = \beta}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}
+    We know
+    \begin{align*}
+        V_{\beta} \cap \OR
+        &= \setst{x \in \WF}{\rank{x} < \beta} \cap \OR \\
+        &= \setst{\alpha \in \OR}{\rank{\alpha} < \beta} \\
+        &= \setst{\alpha \in \OR}{\alpha < \beta} \\
+        &= \beta
+    \end{align*}
 \end{proof}

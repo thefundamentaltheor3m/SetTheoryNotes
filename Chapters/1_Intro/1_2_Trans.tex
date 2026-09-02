@@ -1,0 +1,40 @@
+\section{Transitive Sets}
+
+This is a quick recap section on transitive sets and ordinals. We come to cardinals in \Cref{Ch1:Sec:Cardinals}.
+
+\begin{boxdefinition}[Transitive Set]
+    A set $A$ is \textbf{transitive} if $\forall y \in A \brac{y \subseteq A \lr \forall y \in A \, \forall x \in y \, \parenth{x \in A}}$
+\end{boxdefinition}
+
+\subsection{Ordinals}
+
+\begin{boxdefinition}[Ordinal]
+    A set $\alpha$ is an \textbf{ordinal} iff $\alpha$ is a transitive set and $\parenth{\alpha, \in}$ is a well-ordering.
+\end{boxdefinition}
+
+Note that writing $\parenth{A, \in}$ really means the structure $(A, R)$ where $R = \setst{(x, y) \in A \times A}{x \in y}$. It's slightly problematic to call $\in$ itself a relation because it isn't a set: it's (strictly speaking) just a symbol, which is interpreted as a set (a relation) in a model of set theory. We have to be careful with these sorts of things.
+
+\begin{boxexample}[Examples of Ordinals]\hfill
+    \begin{enumerate}
+        \item $0 = \emptyset$, $1 = \set{0}$, $2 = \set{0, 1}$, $3 = \set{0, 1, 2}$, etc.
+        \item $\omega = \set{0, 1, 2, \ldots}$
+        \item $\omega + 1 = \omega \cup \set{\omega}$, $\omega + 2$, etc.
+        \item $\omega + \omega$
+    \end{enumerate}
+    and so on.
+\end{boxexample}
+
+\subsection{Mostowski Collapse}
+
+We will eventually prove this in more generality, but here's a useful theorem.
+
+\begin{boxtheorem}[Mostowski Collapse Theorem for Well-Orderings]
+    For all well-orderings $(A, R)$, there is a unique ordinal $\alpha$ such that there is a unique isomorphism $\pi$ from $(A, R)$ to $(\alpha, \in)$ given by
+    \begin{align*}
+        \pi(y) = \setst{\pi(x)}{x R y}
+    \end{align*}
+\end{boxtheorem}
+
+This is a special case of what's called (surprise surprise) the Mostowski Collapse Theorem. Some things we can do include removing the well/linear requirement on the ordering and replace ``ordinal'' with just ``transitive set''.
+
+What the theorem above says is that the ordinals form a complete set of representatives for the class of all well-orderings up to isomorphism.
