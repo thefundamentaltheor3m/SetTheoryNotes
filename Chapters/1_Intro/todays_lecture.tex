@@ -9,7 +9,19 @@
     \end{align*}
 \end{boxproposition}
 \begin{proof}[Proof (using AC).]
-    Do induction on $\eta$. \sorry
+    % [FILLED] the lecture stated the result and said ``induction on $\eta$''; the three cases are supplied here
+    Do induction on $\eta$. For the base case, $\abs{V_{\omega}} = \aleph_0 = \beth_0$, as $V_{\omega}$ is countable.
+
+    For the successor step, if $\abs{V_{\omega + \eta}} = \beth_{\eta}$, then
+    \begin{align*}
+        \abs{V_{\omega + \eta + 1}} = \abs{\Powset\of{V_{\omega + \eta}}} = 2^{\abs{V_{\omega + \eta}}} = 2^{\beth_{\eta}} = \beth_{\eta + 1}
+    \end{align*}
+
+    Finally, let $\eta$ be a limit ordinal. Then $\omega + \eta$ is a limit ordinal too, and every ordinal below it is either below $\omega$ or of the form $\omega + \alpha$ for some $\alpha < \eta$, so
+    \begin{align*}
+        V_{\omega + \eta} = \bigcup_{\alpha < \eta} V_{\omega + \alpha}
+    \end{align*}
+    Each $V_{\omega + \alpha}$ is a subset of $V_{\omega + \eta}$, so $\beth_{\alpha} \leq \abs{V_{\omega + \eta}}$ for every $\alpha < \eta$, and hence $\beth_{\eta} = \sup_{\alpha < \eta} \beth_{\alpha} \leq \abs{V_{\omega + \eta}}$. Conversely, $V_{\omega + \eta}$ is a union of $\abs{\eta}$ sets, each of cardinality at most $\beth_{\eta}$, so (using AC) $\abs{V_{\omega + \eta}} \leq \abs{\eta} \cdot \beth_{\eta}$. It remains to see that $\abs{\eta} \leq \beth_{\eta}$, and in fact $\alpha \leq \beth_{\alpha}$ for every ordinal $\alpha$: this is clear for $\alpha = 0$, it passes through limits by taking suprema, and it passes through successors because $\beth_{\alpha + 1} = 2^{\beth_{\alpha}} > \beth_{\alpha} \geq \alpha$ forces $\beth_{\alpha + 1} \geq \alpha + 1$. So $\abs{V_{\omega + \eta}} \leq \beth_{\eta} \cdot \beth_{\eta} = \beth_{\eta}$.
 \end{proof}
 
 \begin{boxwarning}
@@ -53,7 +65,8 @@ Say $A$ is a class and $R$ is a class binary relation\footnote{ie, a binary rela
     \begin{align*}
         \alpha = \min_{x \in S} \rank{x}
     \end{align*}
-    \sorry
+    % [FILLED] the lecture broke off after naming $\alpha$; the rest of the argument is supplied here
+    This makes sense: every $x \in S$ is a member of $A \in \WF$, so $x \in \WF$ by \Cref{Ch1:Prop:Rank_Of_Members} and has a rank, and $\OR$ is well-ordered. Pick $x \in S$ with $\rank{x} = \alpha$. If some $y \in S$ had $y \in x$, then $\rank{y} < \rank{x} = \alpha$ by \Cref{Ch1:Prop:Rank_Of_Members} again, contradicting the minimality of $\alpha$. So $x$ is $\in$-minimal in $S$.
 \end{proof}
 
 \begin{boxnexample}[An Ill-Founded Relation]
@@ -64,7 +77,7 @@ Say $A$ is a class and $R$ is a class binary relation\footnote{ie, a binary rela
     In this example, the transitive closure of $x$ is $\set{x, y}$, which is also the transitive closure of $y$. Moreover, $\parenth{\set{x, y}, \in}$ is ill-founded.
 \end{boxnexample}
 
-\begin{boxproposition}
+\begin{boxproposition}\label{Ch1:Prop:Transitive_WF}
     For every transitive set $A$, if $(A, \in)$ is well-founded, then $A \in \WF$.
 \end{boxproposition}
 \begin{proof}
@@ -94,7 +107,7 @@ Say $A$ is a class and $R$ is a class binary relation\footnote{ie, a binary rela
     $(3) \implies (2)$ follows from the previous proposition. % [CLAUDE] add cross-reference
 
     Let's now assume $(2)$ and prove $(3)$. $\WF \ssq V$, so we only need $V \ssq \WF$. Let $x \in V$ and let $A$ be the transitive closure of $\set{x}$ (ie, the smallest transitive set containing $x$ as a member). % [CLAUDE] make this a definition, and give it notation $\trcl{x}$ (trcl should be an operatorname - emulate the style of other macros)
-    By \sorry(cross-ref), since $A$ is transitive and $(A, \in)$ is well-founded, by our assumption $(2)$, we get that $A \in \WF$. So $x \in A \subset \WF$. Thus, $x \in \WF$.
+    By \Cref{Ch1:Prop:Transitive_WF}, since $A$ is transitive and $(A, \in)$ is well-founded, by our assumption $(2)$, we get that $A \in \WF$. So $x \in A \subset \WF$. Thus, $x \in \WF$.
 \end{proof}
 
 \chapter{Induction, Recursion and Collapse} % [CLAUDE] not sure if this should be a new chapter, but perhaps it should? it's another instalment of the course
