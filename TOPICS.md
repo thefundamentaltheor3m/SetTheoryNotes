@@ -10,15 +10,21 @@ What earns a chapter, a section and a subsection: `.claude/ORGANIZATION.md`.
      then the hierarchy itself, then the two classes that let us talk about it as a whole
      (OR and WF), then how big its levels are.
 
-     Where that is heading is legible from the chapter's own opening prose, which promises
-     Gödel's constructible universe L and a model of ZFC in which CH holds. Nothing about
-     L has been written up yet. When it is, it will be a chapter of its own rather than a
-     section of this one: it introduces its own objects and its own vocabulary, and the
-     prose already treats it as the destination of the course. Chapter 1 stays the recap
-     it says it is.
+     Chapter 2 leaves that ladder rather than continuing it. It generalizes: the objects
+     are class relations rather than membership, and the destination its title names --
+     induction, recursion, collapse -- is machinery rather than more hierarchy. So the
+     notes now read as groundwork and then the tools, which is a sensible order and not
+     one anybody planned.
 
-     This is the first run of /organize over these notes. The previous version of this
-     file recorded the structure as observed and unreviewed; it has now been reviewed. -->
+     An earlier version of this note predicted that chapter 2 would be Gödel's
+     constructible universe L, on the strength of chapter 1's opening prose promising it
+     and a model of ZFC in which CH holds. That was wrong about the order rather than
+     about the destination. Nothing about L is written up yet; when it is, it will be a
+     chapter of its own rather than a section of an existing one, since it introduces its
+     own objects and its own vocabulary and the prose still treats it as where the course
+     is going. The tools chapter 2 is assembling are what a construction like L needs, so
+     reading chapter 2 as preparation for it is the natural guess. Chapter 1 stays the
+     recap it says it is. -->
 
 ## 1. A Recap of Undergraduate Set Theory  ->  `Chapters/1_Intro/`
 
@@ -85,6 +91,12 @@ instalment of the course". It is: the objects are class relations in general, th
 vocabulary (set-like, and the well-foundedness carried over from 1.4.3) is new, and the
 title promises a development -- induction, recursion, collapse -- that is not chapter 1's
 recap. The chapter file carries two sentences of intro prose and nothing chapter-wide.
+
+The opening was finished on 2026-09-04, the pass that placed the material having built
+the directory and left the rest: `Chapters/2_Another Chapter/` gave up the number 2 (it
+is now `Chapters/3_Another_Chapter/`, still commented out in `main.tex`), and the inbox
+moved to `Chapters/2_Induction/todays_lecture.tex`, which is the path to type into from
+now on.
 
 ```
 2.1 Set-Like Relations                                       [2026-09-02]
@@ -184,29 +196,11 @@ continuation is plausible. Awaiting the author.
 
 What a run noticed but was not allowed to fix. Each entry is a standing recommendation.
 
+Three entries left this list on 2026-09-04, all of them consequences of opening chapter
+2 rather than things a later pass was owed: the two directories numbered 2, the inbox
+still living in chapter 1, and the stale inference note. See chapter 2 above.
+
 ```
-Two directories are numbered 2.                Chapters/2_Induction/ is the real chapter 2;
-                                            Chapters/2_Another Chapter/ is the template
-                                            placeholder, still commented out in
-                                            main.tex. Clearing the placeholder is
-                                            /organize's, once the author confirms
-                                            nothing is planned for it. [2026-09-02]
-
-The inbox is \input from chapter 1.           Chapters/1_Intro/todays_lecture.tex is
-                                            still \input at the end of 1_Intro.tex,
-                                            so the next lecture's raw notes will
-                                            preview as the tail of chapter 1 although
-                                            the course is now in chapter 2. Moving the
-                                            file or its \input line is one line and
-                                            changes the path the author types into;
-                                            left for the author to decide. [2026-09-02]
-
-The inference note at the top of this file  It predicted that chapter 2 would be L.
-predates chapter 2.                         Chapter 2 is induction, recursion and
-                                            collapse instead, and L is still promised.
-                                            /organize owns the note; revise it on the
-                                            next run. [2026-09-02]
-
 The course itself is not written up.        Chapter 1 is undergraduate revision; the
                                             material 21-602 is actually about -- L,
                                             forcing, whatever followed -- has no home
@@ -234,6 +228,21 @@ unfixed.                                    juxtaposes two class terms with no r
                                             neither is unambiguous enough to repair as
                                             typesetting. [noted 2026-08-31]
 
+\Cref{Ch1:Prop:Rank_Of_Members} is         The label is in the source, on the
+undefined, three times.                     boxproposition at 1_4_Classes.tex:183, in
+                                            the same form as the two labels either side
+                                            of it that resolve fine -- but it never
+                                            reaches main.aux, so the three \Crefs to it
+                                            (lines 200 and 266, twice) render as ??.
+                                            The build has warned about this since
+                                            dbadebe and the published PDF carries it.
+                                            A LaTeX defect rather than a structural one,
+                                            so /organize left it; whoever chases it
+                                            should start at the boxproposition
+                                            definition in environments.tex, which wraps
+                                            a breakable tcolorbox around the theorem
+                                            environment. [noted 2026-09-04]
+
 \Cref to a ZFC axiom renders as a bare      No \crefname is declared for the zfcaxiom
 number.                                     environment that baxiom wraps, so every
                                             \Cref{ZFC:...} prints without "ZFC Axiom".
@@ -250,13 +259,18 @@ One % [CLAUDE] directive outstanding.       1_1_ZFC.tex, in 1.1.6: "draw a diagr
 Placeholder content from [Lecture-Notes-Template-2026][tpl], still standing.
 
 ```
-Chapters/2_Another Chapter/      placeholder chapter, two placeholder sections, still
+Chapters/3_Another_Chapter/      placeholder chapter, two placeholder sections, still
                                  carrying the template's titles. Nothing has displaced
-                                 it, so nothing has been deleted -- but its \input in
-                                 main.tex is now commented out, because until this pass
-                                 it rendered in the published PDF as a chapter called
-                                 "Another Chapter" with a section called "Another
-                                 Section". Reversing that is one line. [2026-08-31]
+                                 its content, so nothing has been deleted -- but its
+                                 \input in main.tex is commented out, because until
+                                 2026-08-31 it rendered in the published PDF as a
+                                 chapter called "Another Chapter" with a section called
+                                 "Another Section". Reversing that is one line.
+                                 Renumbered from 2 to 3 on 2026-09-04, when the real
+                                 chapter 2 needed the number; the space in the old
+                                 directory name went with it. It takes the next free
+                                 number again if a real chapter 3 arrives. [2026-08-31,
+                                 renumbered 2026-09-04]
 Chapters/Appendices/             placeholder, \input commented out in main.tex
 ```
 
