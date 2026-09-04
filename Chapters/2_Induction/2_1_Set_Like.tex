@@ -1,0 +1,49 @@
+\section{Set-Like Relations}
+
+In what follows, let $A$ be a class and $R$ be a class relation on $A$.
+
+The property we want is that looking below any one point of $A$ only ever sees a set's worth of $A$.
+
+\begin{boxdefinition}[Set-Like]
+    We say $(A, R)$ is \textbf{set-like} iff
+    \begin{align*}
+        \forall y \in A, \, \setst{x \in A}{x \, R \, y}
+    \end{align*}
+    is a set.
+\end{boxdefinition}
+
+The example we care about most has this property for the most basic of reasons.
+
+\begin{boxexample}[Membership]
+    $(A, \in)$ is set-like for every class $A$.
+\end{boxexample}
+
+In fact, the fact in the above example is \textbf{equivalent} to the axiom scheme of comprehension (\Cref{ZFC:Compr})! Indeed, if $A = \setst{x}{\varphi\of{x, \bar{z}}}$ and $y \in A$, then
+\begin{align*}
+    \setst{x \in A}{x \in y} = \setst{x \in y}{\varphi\of{x, \bar{z}}}
+\end{align*}
+So ``membership is set-like'' is a fancy way of saying ``Comprehension''.
+
+But not all relations are set-like.
+
+\begin{boxnexample}
+    Let $A = \OR$. Define $R$ by the following picture:
+    \begin{center}
+        \begin{tikzpicture}[every node/.style = {font = \small}, dot/.style = {circle, fill, inner sep = 1.5pt}]
+            \node[dot, label = right:{$1$}] (1) at (0, 0) {};
+            \node[dot, label = right:{$2$}] (2) at (0, 0.8) {};
+            \node (d1) at (0, 1.7) {$\vdots$};
+            \node[dot, label = right:{$\omega$}] (w) at (0, 2.6) {};
+            \node[dot, label = right:{$\omega + 1$}] (w1) at (0, 3.4) {};
+            \node (d2) at (0, 4.3) {$\vdots$};
+            \node[dot, label = right:{$0$}] (0) at (0, 5.4) {};
+            \draw (1) -- (2);
+            \draw (2) -- (d1);
+            \draw (d1) -- (w);
+            \draw (w) -- (w1);
+            \draw (w1) -- (d2);
+            \draw (d2) -- (0);
+        \end{tikzpicture}
+    \end{center}
+    That is, it looks a bit like $\parenth{\OR \setminus \set{0}, <}$.
+\end{boxnexample}

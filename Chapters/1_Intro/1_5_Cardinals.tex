@@ -1,6 +1,6 @@
 \section{Cardinals and the Axiom of Choice}\label{Ch1:Sec:Cardinals}
 
-In this section, we discuss how big the levels of the $V$-hierarchy are. The answer is elementary at the bottom of the hierarchy, but by the time we reach $V_{\omega + 1}$ it already depends on the Axiom of Choice. We end by defining two hierarchies of cardinals, only one of which needs choice.
+In this section, we discuss how big the levels of the $V$-hierarchy are. The answer is elementary at the bottom of the hierarchy, but by the time we reach $V_{\omega + 1}$ it already depends on the Axiom of Choice. We end by defining two hierarchies of cardinals, only one of which needs choice, and computing the size of every level of the hierarchy in terms of the second.
 
 \subsection{The Size of $V_{\omega}$}
 
@@ -110,3 +110,50 @@ With AC, define
 % most likely the start of a comparison of the two hierarchies, but there is more than one
 % thing it could have been, so it is marked as a gap rather than guessed at. Raised with the author.
 It's clear \sorry 
+
+With the $\beth$s in hand, we can say exactly how big every level of the hierarchy is, from $V_{\omega}$ onwards.
+
+\begin{boxproposition}
+    \begin{align*}
+        \forall \eta \in \OR, \, \abs{V_{\omega + \eta}} = \beth_{\eta}
+    \end{align*}
+\end{boxproposition}
+\begin{proof}[Proof using AC]
+    % [FILLED] the lecture stated the result and said ``induction on $\eta$''; the three cases are supplied here
+    Do induction on $\eta$. For the base case, $\abs{V_{\omega}} = \aleph_0 = \beth_0$, as $V_{\omega}$ is countable.
+
+    For the successor step, if $\abs{V_{\omega + \eta}} = \beth_{\eta}$, then
+    \begin{align*}
+        \abs{V_{\omega + \eta + 1}} = \abs{\Powset\of{V_{\omega + \eta}}} = 2^{\abs{V_{\omega + \eta}}} = 2^{\beth_{\eta}} = \beth_{\eta + 1}
+    \end{align*}
+
+    Finally, let $\eta$ be a limit ordinal. Then $\omega + \eta$ is a limit ordinal too, and every ordinal below it is either below $\omega$ or of the form $\omega + \alpha$ for some $\alpha < \eta$, so
+    \begin{align*}
+        V_{\omega + \eta} = \bigcup_{\alpha < \eta} V_{\omega + \alpha}
+    \end{align*}
+    Each $V_{\omega + \alpha}$ is a subset of $V_{\omega + \eta}$, so $\beth_{\alpha} \leq \abs{V_{\omega + \eta}}$ for every $\alpha < \eta$, and hence $\beth_{\eta} = \sup_{\alpha < \eta} \beth_{\alpha} \leq \abs{V_{\omega + \eta}}$. Conversely, $V_{\omega + \eta}$ is a union of $\abs{\eta}$ sets, each of cardinality at most $\beth_{\eta}$, so (using AC) $\abs{V_{\omega + \eta}} \leq \abs{\eta} \cdot \beth_{\eta}$. It remains to see that $\abs{\eta} \leq \beth_{\eta}$, and in fact $\alpha \leq \beth_{\alpha}$ for every ordinal $\alpha$: this is clear for $\alpha = 0$, it passes through limits by taking suprema, and it passes through successors because $\beth_{\alpha + 1} = 2^{\beth_{\alpha}} > \beth_{\alpha} \geq \alpha$ forces $\beth_{\alpha + 1} \geq \alpha + 1$. So $\abs{V_{\omega + \eta}} \leq \beth_{\eta} \cdot \beth_{\eta} = \beth_{\eta}$.
+\end{proof}
+
+A word of caution before we go on.
+
+\begin{boxwarning}
+    If we continue to naïvely indulge ourselves the idealistic notion that we can use $\aleph$s to denote cardinals and $\omega$s to denote the corresponding ordinals, we will soon encounter a world of confusion and pain.
+
+    The two notations will often be used interchangeably, just as they are in practice. We will try our best, but we might not always succeed.
+\end{boxwarning}
+
+The proposition indexes the levels from $V_{\omega}$ rather than from $V_0$, but the shift by $\omega$ is invisible from $\omega^2$ onwards.
+
+\begin{boxproposition}[without AC]
+    \begin{align*}
+        \forall \eta \geq \omega^2, \, \parenth{\omega + \eta = \eta}
+    \end{align*}
+\end{boxproposition}
+Note that $\omega^2 = \omega \cdot \omega$; by ordinal arithmetic, it's a countable ordinal.
+\begin{proof}
+    First, write $\eta = \omega^2$. Then,
+    \begin{align*}
+        \omega + \omega^2 = \omega\parenth{1 + \omega} = \omega \cdot \omega = \omega^2
+    \end{align*}
+    Now, in general, for $\eta = \omega^2 + \delta$, then $\omega + \parenth{\omega^2 + \delta} = \parenth{\omega + \omega^2} + \delta = \omega^2 + \delta$.
+\end{proof}
