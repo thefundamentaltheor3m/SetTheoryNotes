@@ -110,16 +110,16 @@ there rather than defining them inline.
 | `/address-comments` | `% [CLAUDE]` directives | do exactly what the directive says |
 | `/fill-sorries` | `\sorry` markers | work out the mathematics; decide and report |
 | `/check-correctness` | what is already written | fix what is false; every change adjudicated |
-| `/integrate` | one lecture's raw notes | place new material; never restructure |
+| `/integrate` | one lecture's raw notes | place new material; restructure only to build the chapter the author opened |
 | `/organize` | the notes as they stand | rearrange only; add and delete nothing |
 | `/americanise` | British spellings | spelling only; never the mathematics |
 
 **Two of the seven have nothing to do here**, because the course is over.
-`/post-lecture` is the after-lecture pipeline — fill, address, check, respell,
-integrate, on one branch — and `/integrate` is its last phase; both need a lecture to
-process. The template ships a reusable inbox (`todays_lecture.tex`) that they read
-from, and this repository deliberately does not have one; if the author resumes
-writing up material, copy it from the template first.
+`/post-lecture` is the after-lecture pipeline — fill, address, check, respell, open the
+chapter if the lecture started one, integrate, on one branch — and `/integrate` is its
+last phase; both need a lecture to process. The reusable inbox they read from is
+`Chapters/1_Intro/todays_lecture.tex`, kept and emptied rather than deleted; it lives
+in whichever chapter is current, so opening a chapter moves it.
 
 **Two of them do mathematics, under opposite constraints.** `/fill-sorries` supplies
 an argument that does not exist, so it has the freest hand here. `/check-correctness`
