@@ -56,9 +56,13 @@ Notice that in mathematics, we define things by recursion and prove things by in
 \begin{boxwarning}
     Important subtlety: the statement ``there exists a class function'' is not a valid statement in the language of set theory, as we cannot quantify over \textit{classes}. What \textit{is} valid, though, is saying something like ``such and such a $G$ satisfies such and such a property'', where the definition shall come from the proof below.
 \end{boxwarning}
-\begin{proof} % [CLAUDE] make notation for $\dom$, using \operatorname just like similar definitions. Also add this to the notations right at the beginning of this document.
-    Let's call $g$ an \textbf{approximation} iff $g$ is a set function whose domain is an $R$-closed ubset of $A$ and $\forall y \in \dom{g}$, $g(y) = F\of{y, G \restriction \setst{x}{x \, R \, y}}$. % [CLAUDE] make this a separate definition or something
+The proof builds $G$ out of set-sized pieces, which deserve a name.
 
+\begin{boxdefinition}[Approximation]
+    We call $g$ an \textbf{approximation} iff $g$ is a set function whose domain is an $R$-closed ubset of $A$ (ie, if $y \in \dom{g}$ and $x \, R \, y$, then $x \in \dom{g}$) and $\forall y \in \dom{g}$, $g(y) = F\of{y, G \restriction \setst{x}{x \, R \, y}}$.
+\end{boxdefinition}
+
+\begin{proof}
     We'll prove uniqueness and then existence.
 
     \begin{itemize}
@@ -74,7 +78,9 @@ Notice that in mathematics, we define things by recursion and prove things by in
 
             This works! Then, put $G = \bigcup_{z \in A} g_z$.
 
-            % [CLAUDE] wrap this up nicely
+            Indeed, $h$ is a function, because any two of the $g_y$ agree on their common domain by uniqueness, and it is an approximation, because a union of $R$-closed sets is $R$-closed and each $g_y$ satisfies the defining equation on its own domain. Moreover, $z \notin \dom{h}$, as otherwise $z$ would lie on an $R$-cycle, which well-foundedness forbids. So $g_z$ is a function, its domain $\dom{h} \cup \set{z}$ is the $R$-closure of $\set{z}$, and it satisfies the defining equation at $z$ by construction and below $z$ because $h$ does.
+
+            Finally, $G$ is a class function because the $g_z$ agree wherever their domains overlap, again by uniqueness, and every $y \in A$ lies in $\dom{g_y}$, so $G(y) = g_y(y) = F\of{y, g_y \restriction \setst{x}{x \, R \, y}} = F\of{y, G \restriction \setst{x}{x \, R \, y}}$, since $G$ agrees with $g_y$ on $\dom{g_y} \supseteq \setst{x}{x \, R \, y}$. Uniqueness of $G$ in the sense of the theorem is $R$-induction once more: if $H$ satisfies the same equation, then $H(x) = G(x)$ for all $x \in A$.
     \end{itemize}
 \end{proof}
 
