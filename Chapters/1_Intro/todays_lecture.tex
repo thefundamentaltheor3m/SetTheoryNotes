@@ -15,7 +15,7 @@ In what follows, start with $A$ a class and $R \subseteq A \times A$ a class bin
     \begin{align*}
         T_0 = \set{z}
         \qquad \qquad
-        T_{n + 1} = \bigcup_{y \in T_n} \setst{x}{x \, R \, Y}
+        T_{n + 1} = \bigcup_{y \in T_n} \setst{x}{x \, R \, y}
     \end{align*}
     The fact that $(A, R)$ is set-like tells us that the union above is a union of sets, and therefore, a set.
 
@@ -29,7 +29,7 @@ In what follows, start with $A$ a class and $R \subseteq A \times A$ a class bin
 
     Assume that for all $y$, if $y$ satisfies the formula that defines $A$ (that is, $\forall y \in A$),
     \begin{align*}
-        \brac{\parenth{\forall x \, R \, y, \, \varphi\of{x, x, z}} \to \varphi\of{y, z}}
+        \brac{\parenth{\forall x \, R \, y, \, \varphi\of{x, z}} \to \varphi\of{y, z}}
     \end{align*}
     We can then conclude that $\forall x \in A$, $\varphi\of{x, z}$.
 \end{boxtheorem}
@@ -59,7 +59,8 @@ Notice that in mathematics, we define things by recursion and prove things by in
 The proof builds $G$ out of set-sized pieces, which deserve a name.
 
 \begin{boxdefinition}[Approximation]
-    We call $g$ an \textbf{approximation} iff $g$ is a set function whose domain is an $R$-closed ubset of $A$ (ie, if $y \in \dom{g}$ and $x \, R \, y$, then $x \in \dom{g}$) and $\forall y \in \dom{g}$, $g(y) = F\of{y, G \restriction \setst{x}{x \, R \, y}}$.
+    % [CORRECTED] was: $g(y) = F\of{y, G \restriction \setst{x}{x \, R \, y}}$ --- $G$ is what the proof is about to build out of the approximations, so the defining equation of an approximation has to restrict $g$ itself, as every later step of the proof uses it
+    We call $g$ an \textbf{approximation} iff $g$ is a set function whose domain is an $R$-closed ubset of $A$ (ie, if $y \in \dom{g}$ and $x \, R \, y$, then $x \in \dom{g}$) and $\forall y \in \dom{g}$, $g(y) = F\of{y, g \restriction \setst{x}{x \, R \, y}}$.
 \end{boxdefinition}
 
 \begin{proof}
@@ -67,10 +68,10 @@ The proof builds $G$ out of set-sized pieces, which deserve a name.
 
     \begin{itemize}
         \item \underline{\textbf{Uniqueness.}}
-            Suppose $g$ and $h$ are approximations. Then, $\forall y \in \dom{g} \cap \dom{h}$, $g(y) = g(h)$. You cna prove this using $R$-induction.
+            Suppose $g$ and $h$ are approximations. Then, $\forall y \in \dom{g} \cap \dom{h}$, $g(y) = h(y)$. You cna prove this using $R$-induction.
 
         \item \underline{\textbf{Existence.}}
-            We'll show that for all $z \in A$, there is some approximation $g_z$ with $\dom{g_z}$ being the $R$-closure of $z$. These $g_z$, if we can show them to exist, are unique (by above).
+            We'll show that for all $z \in A$, there is some approximation $g_z$ with $\dom{g_z}$ being the $R$-closure of $\set{z}$. These $g_z$, if we can show them to exist, are unique (by above).
 
             Use $R$-induction. The induction hypothesis says that we have $g_y$ as required for each $y \, R \, z$. Let $h = \bigcup_{y \, R \, z} g_y$. We can see that $\dom{h}$ is the $R$-closure of $\setst{y}{y \, R \, z}$.
 
@@ -85,7 +86,7 @@ The proof builds $G$ out of set-sized pieces, which deserve a name.
 \end{proof}
 
 \begin{boxlemma}
-    Given any $x \in A$ and set $S$, TFAE:
+    Given any $x \in A$ and set $s$, TFAE:
     \begin{enumerate}
         \item $G(x) = s$
         \item There exists an approximation $g$ with $x \in \dom{g}$ and $g(x) = s$.
