@@ -27,9 +27,10 @@ We invoke \Cref{ZFC:Replacement}, the Axiom of Replacement. Let $\varphi\of{x, y
 \begin{enumerate}
     \item $y$ is a function with domain $\dom{y} = x \cup \set{x}$.
     \item If $\emptyset \in \dom{y}$, then $y\of{\emptyset} = \emptyset$.
-    \item If $z \cup \set{z} \in \dom{y}$, then $z \in \dom{y}$ and $y\of{z \cup \set{z}} = \Powset\of{z}$.
+    % [CORRECTED] was: $y\of{z \cup \set{z}} = \Powset\of{z}$ --- the recursion has to take the power set of the previous \textit{value}, $y\of{z} = V_z$, not of the index $z$; with $\Powset\of{z}$ the sequence agrees with the $V_n$ only up to $n = 3$ (by the coincidences $V_0 = 0$, $V_1 = 1$, $V_2 = 2$) and gives $8$ elements rather than $16$ at $n = 4$
+    \item If $z \cup \set{z} \in \dom{y}$, then $z \in \dom{y}$ and $y\of{z \cup \set{z}} = \Powset\of{y\of{z}}$.
 \end{enumerate}
-The idea is that $y = \cycl{V_0, V_1, V_2, \ldots, V_{n+1}}$\footnote{By this, we mean it is a \textit{sequence}, ie, a function from $\omega$ to something that takes $0$ to $V_{0}$, $1$ to $V_{1}$, and so on.} for some $n \in \omega$. Then,
+The idea is that $y = \cycl{V_0, V_1, V_2, \ldots, V_{n}}$\footnote{By this, we mean it is a \textit{finite sequence}, ie, a function from $n + 1$ to something that takes $0$ to $V_{0}$, $1$ to $V_{1}$, and so on up to $n$.} for some $n \in \omega$. Then,
 \begin{align*}
     \ZFC \vdash \forall n \in \omega \ \exists! y \, \varphi\of{n, y}
 \end{align*}
