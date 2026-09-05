@@ -57,18 +57,18 @@ Notice that in mathematics, we define things by recursion and prove things by in
     Important subtlety: the statement ``there exists a class function'' is not a valid statement in the language of set theory, as we cannot quantify over \textit{classes}. What \textit{is} valid, though, is saying something like ``such and such a $G$ satisfies such and such a property'', where the definition shall come from the proof below.
 \end{boxwarning}
 \begin{proof} % [CLAUDE] make notation for $\dom$, using \operatorname just like similar definitions. Also add this to the notations right at the beginning of this document.
-    Let's call $g$ an \textbf{approximation} iff $g$ is a set function whose domain is an $R$-closed ubset of $A$ and $\forall y \in \dom(g)$, $g(y) = F\of{y, G \restriction \setst{x}{x \, R \, y}}$. % [CLAUDE] make this a separate definition or something
+    Let's call $g$ an \textbf{approximation} iff $g$ is a set function whose domain is an $R$-closed ubset of $A$ and $\forall y \in \dom{g}$, $g(y) = F\of{y, G \restriction \setst{x}{x \, R \, y}}$. % [CLAUDE] make this a separate definition or something
 
     We'll prove uniqueness and then existence.
 
     \begin{itemize}
         \item \underline{\textbf{Uniqueness.}}
-            Suppose $g$ and $h$ are approximations. Then, $\forall y \in \dom(g) \cap \dom(h)$, $g(y) = g(h)$. You cna prove this using $R$-induction.
+            Suppose $g$ and $h$ are approximations. Then, $\forall y \in \dom{g} \cap \dom{h}$, $g(y) = g(h)$. You cna prove this using $R$-induction.
 
         \item \underline{\textbf{Existence.}}
-            We'll show that for all $z \in A$, there is some approximation $g_z$ with $\dom\of{g_z}$ being the $R$-closure of $z$. These $g_z$, if we can show them to exist, are unique (by above).
+            We'll show that for all $z \in A$, there is some approximation $g_z$ with $\dom{g_z}$ being the $R$-closure of $z$. These $g_z$, if we can show them to exist, are unique (by above).
 
-            Use $R$-induction. The induction hypothesis says that we have $g_y$ as required for each $y \, R \, z$. Let $h = \bigcup_{y \, R \, z} g_y$. We can see that $\dom(h)$ is the $R$-closure of $\setst{y}{y \, R \, z}$.
+            Use $R$-induction. The induction hypothesis says that we have $g_y$ as required for each $y \, R \, z$. Let $h = \bigcup_{y \, R \, z} g_y$. We can see that $\dom{h}$ is the $R$-closure of $\setst{y}{y \, R \, z}$.
 
             Put $g_z = h \cup \set{\parenth{z, F\of{z, h \restriction \setst{x}{x \, R \, z}}}}$.
 
@@ -82,7 +82,7 @@ Notice that in mathematics, we define things by recursion and prove things by in
     Given any $x \in A$ and set $S$, TFAE:
     \begin{enumerate}
         \item $G(x) = s$
-        \item There exists an approximation $g$ with $x \in \dom(g)$ and $g(x) = s$.
-        \item For all approximations $g$, if $x \in \dom(g)$ then $g(x) = s$.
+        \item There exists an approximation $g$ with $x \in \dom{g}$ and $g(x) = s$.
+        \item For all approximations $g$, if $x \in \dom{g}$ then $g(x) = s$.
     \end{enumerate}
 \end{boxlemma}
