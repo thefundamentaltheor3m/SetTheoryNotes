@@ -46,7 +46,8 @@ ZFC is an infinite theory. We call the following an Axiom ``Scheme'' to undersco
 
 Note that \Cref{ZFC:Ext} tells us that we can replace the existential quantifier for $B$ in \Cref{ZFC:Compr} with an existence and uniqueness quantifier without changing its meaning.
 
-Before proceeding further, we define the empty set. In first order logic, structures are required to have non-empty universes. Thus, for every structure $\parenth{A, E}$ in the language of set theory, with $E \subseteq \parenth{A \times A}$ representing equality, we must have
+% [CORRECTED] was: ``with $E \subseteq \parenth{A \times A}$ representing equality'' --- the language has one relation symbol, $\in$, and $E$ is its interpretation; equality is logical and is not a component of the structure, which is also what the Completeness step just below needs
+Before proceeding further, we define the empty set. In first order logic, structures are required to have non-empty universes. Thus, for every structure $\parenth{A, E}$ in the language of set theory, with $E \subseteq \parenth{A \times A}$ representing membership, we must have
 \begin{align*}
     \parenth{A, E} \models \exists x \parenth{x = x}
 \end{align*}
@@ -91,7 +92,7 @@ Now, we state the axiom of unions.
 
 As usual, we can use \Cref{ZFC:Ext}, \Cref{ZFC:Compr} to show that
 \begin{align*}
-    \bigcup \calF = \setst{x}{\exists A \subseteq \calF \, \parenth{x \in A}}
+    \bigcup \calF = \setst{x}{\exists A \in \calF \, \parenth{x \in A}}
 \end{align*}
 is well (and uniquely) defined.
 
@@ -139,7 +140,7 @@ Ie, if for every $x$, there is a unique witness $y$ for which the formula $\varp
 
 Consider the case where $\varphi\of{x, y, \bar{z}}$ defines a function with domain $A$. If we can define $A \times B = \setst{\parenth{x, y}}{x \in A \text{ and } y \in B}$ (which we have yet to show we can do, but let's say we can), then we can put
 \begin{align*}
-    f = \setst{\parenth{x, y} \in A \times B}{\varphi\of{x, y, z}}
+    f = \setst{\parenth{x, y} \in A \times B}{\varphi\of{x, y, \bar{z}}}
 \end{align*}
 which is a set by \Cref{ZFC:Compr}. Effectively, \Cref{ZFC:Replacement} tells us that \textit{if the domain of a function is a set, then so is its range}. \Cref{ZFC:Replacement} is an essential step in the process of actually \textit{defining} functions (or showing that this is something we can \textit{do}).
 

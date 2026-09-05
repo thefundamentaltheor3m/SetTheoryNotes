@@ -1,11 +1,7 @@
 \section{Classes}
 
-% [SUSPECT] ``$V \in V$, so $V$ has no $\in$-minimal member'' does not follow from Foundation as
-% stated in \Cref{Ch1:CH}'s section on the axioms: an $\in$-minimal member of $V$ is an $x \in V$ with
-% $x \cap V = \emptyset$, and $x = \emptyset$ is one. What $V \in V$ contradicts is Foundation applied to
-% $\set{V}$, whose sole member $V$ is not $\in$-minimal in it. Restated at the same fault below.
-% Left unchanged pending the author.
-Recall Russell's Paradox: there is no set of all sets. One reason for this (which relies on the Axiom of Foundation) is that if $V$ is the set of all sets, then $V \in V$, so $V$ has no $\in$-minimal member, which contradicts the Axiom of Foundation. Without the Axiom of Foundation, if $V$ is the set of all sets, then if we set
+% [CORRECTED] was: ``so $V$ has no $\in$-minimal member'' --- $\emptyset \in V$ is $\in$-minimal in $V$, so Foundation holds for $V$ itself; the set it fails for is $\set{V}$, whose only member $V$ satisfies $V \in V$. The same repair is made where the argument is restated below.
+Recall Russell's Paradox: there is no set of all sets. One reason for this (which relies on the Axiom of Foundation) is that if $V$ is the set of all sets, then $V \in V$, so $\set{V}$ has no $\in$-minimal member, which contradicts the Axiom of Foundation. Without the Axiom of Foundation, if $V$ is the set of all sets, then if we set
 \begin{align*}
     W = \setst{x \in V}{x \notin x}
 \end{align*}
@@ -17,8 +13,8 @@ Nevertheless, we really do want to write things like
 \end{align*}
 We would also like to write things like
 \begin{align*}
-    \OR &= \setst{\alpha}{\alpha \text{ is an ordinal}} 
-    \setst{V_{\alpha}}{\alpha \in \OR}
+% [CORRECTED] was: two class terms on consecutive source lines of one align* row, typesetting as $\OR = \setst{\alpha}{\ldots} \setst{V_{\alpha}}{\ldots}$ with nothing between them; they are two separate examples of things we would like to write
+    \OR = \setst{\alpha}{\alpha \text{ is an ordinal}} \qquad \text{and} \qquad \setst{V_{\alpha}}{\alpha \in \OR}
 \end{align*}
 The only problem is, none of these are sets. Indeed, the only guarantee of the Axiom of Comprehension is that
 \begin{align*}
@@ -30,9 +26,8 @@ is a set; there is no guarantee whatsoever that
 \end{align*}
 is a set. It sometimes is, but it isn't always.
 
-% [SUSPECT] same fault as flagged at the top of this section: ``it would have no $\in$-minimal
-% element'' does not follow, since $\emptyset$ is $\in$-minimal in $V$. Left unchanged pending the author.
-There are two ways you can prove that $V = \setst{x}{x = x}$ is not a set. The first is that if it were, then $V \in V$ would hold, meaning it would have no $\in$-minimal element, contradicting foundation. The second is that if it were, $W = \setst{x \in V}{x \notin x}$ would be a valid set, by comprehension. Then, $w \in W \lr w \notin W$, a contradiction.
+% [CORRECTED] was: ``meaning it would have no $\in$-minimal element'' --- same fault as at the top of the section: $\emptyset$ is $\in$-minimal in $V$; it is $\set{V}$ that Foundation fails for
+There are two ways you can prove that $V = \setst{x}{x = x}$ is not a set. The first is that if it were, then $V \in V$ would hold, meaning $\set{V}$ would have no $\in$-minimal element, contradicting foundation. The second is that if it were, $W = \setst{x \in V}{x \notin x}$ would be a valid set, by comprehension. Then, $W \in W \lr W \notin W$, a contradiction.
 
 There are two perspectives we can take. The first is the \textbf{external perspective}: this is the perspective from which you would look at models of ZFC. There is also the internal perspective, where you are already inside a model of ZFC. Now this internal perspective also has a notion of logic and set theory inside of it. So there's formalisations of set theory inside models of set theory, and these formalisations have their own notions of models of set theory, and so it goes.
 
