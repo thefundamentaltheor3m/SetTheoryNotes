@@ -104,10 +104,10 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
         Since $M$ is the range of $G$ and $M'$ is the range of $G'$, it is enough to show that $G = G'$. By the uniqueness of recursive definitions (\Cref{Ch2:Thm:Recursion}), it is enough to see that $G'$ satisfies the same defining equation as $G$. That is, $G'(y) = \setst{G'\of{x}}{x \, R \, y}$.
 
         \begin{description}
-            \item[$(\subseteq)$]
+            \item[$(\supseteq)$]
                 $x \, R \, y \to G'(x) \in G'(y)$ just because $G'$ preserves order (by assumption).
 
-            \item[$(\supseteq)$]
+            \item[$(\subseteq)$]
                 Suppose $a \in G'(y)$. Now $G'(y) \in M'$ trivially because $M'$ is the range of $G'$. Since $M'$ is a transitive class, $G'(y) \ssq M'$. Hence, $a \in M'$. So we have some $x \in A$ such that $a = G'(x)$. Now $G'(x) \in G'(y)$. Since $G'$ is an isomorphism, this implies $x \, R \, y$.
         \end{description}
     \end{enumerate}
