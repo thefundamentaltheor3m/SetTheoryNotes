@@ -50,7 +50,9 @@ gap two lines above it has been closed.
 > "prove this" written beside it — **the directive wins and phase 1 leaves it alone.**
 > A scoped instruction the author wrote by hand is `/address-comments`' job, as
 > `fill-sorries/SKILL.md` says itself. Phase 1 fills the bare markers; phase 2 fills
-> the ones that came with instructions.
+> the ones that came with instructions. And a `\sorry` carrying an `% [IGNORE]`
+> comment is the author saying to leave it: **no phase touches it**, and the report
+> lists it as deliberately left rather than as an open gap.
 
 **`/check-correctness` goes third**, once every word this lecture is going to acquire
 has been written. It checks the author's raw notes *and* what phases 1 and 2 wrote,
