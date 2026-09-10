@@ -52,7 +52,8 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
     \begin{enumerate}
         \item $M$ is a transitive class
         \item $G$ is a class isomorphism from $(A, R)$ to $(M, \in)$
-        \item If $M'$ is a transitive class and $G' : (A, R) \simeq (M, \in)$, then $M' = M$ and $G' = G$.
+        % [CORRECTED] was: $G' : (A, R) \simeq (M, \in)$ --- with $M$ rather than $M'$ the hypothesis never mentions $M'$ and the conclusion $M' = M$ fails for any other transitive class; the proof below uses that $M'$ is the range of $G'$
+        \item If $M'$ is a transitive class and $G' : (A, R) \simeq (M', \in)$, then $M' = M$ and $G' = G$.
     \end{enumerate}
     Note that $G$ is referred to as the \textbf{Mostowski Collapse Isomorphism}.
 \end{boxtheorem}
@@ -63,7 +64,7 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
     We may assume $R \ssq A \times A$.
 
     \begin{enumerate}
-        \item Say $a \in b \in M$. We must see $a \in M$. Then, $b \in M$. As $M$ is the range of $G$, there's some $y \in  A$ such that $b = G(y)$. As $g(y) = \setst{G(x)}{x \, R \, y}$, there's some $x \, R \, y$ such that $a = G(x)$. Now $a = G(x) \in M$.
+        \item Say $a \in b \in M$. We must see $a \in M$. Then, $b \in M$. As $M$ is the range of $G$, there's some $y \in  A$ such that $b = G(y)$. As $G(y) = \setst{G(x)}{x \, R \, y}$, there's some $x \, R \, y$ such that $a = G(x)$. Now $a = G(x) \in M$.
 
         \item We need to show $G$ is an order-preserving bijection.
         
@@ -77,7 +78,7 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
     
             Fix any $y' \in A$ and assume that $G(y) = G\of{y'}$. We need to prove $y = y'$. Because $(A, R)$ is extensional, it is enough to show that
             \begin{align*}
-                \setst{x}{x \, R \, y} = \setst{x'}{x' \, R \, y}
+                \setst{x}{x \, R \, y} = \setst{x'}{x' \, R \, y'}
             \end{align*}
             \begin{description}
                 \item[$(\subseteq)$]
@@ -98,7 +99,7 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
             \item \underline{Monotonicity.} Suppose $G(x) \in G(y)$. By definition of $G(y)$, there is some $x' \, R \, y$ such that $G(x) = G\of{x'}$. As $G$ is injective, we know that $x = x'$. Thus, $x \, R \, y$.
         \end{itemize}
 
-        \item Suppose $M'$ is a transitive class and $G' : (A, R) \simeq M'$. We need $M = M'$ and $G = G'$.
+        \item Suppose $M'$ is a transitive class and $G' : (A, R) \simeq (M', \in)$. We need $M = M'$ and $G = G'$.
 
         Since $M$ is the range of $G$ and $M'$ is the range of $G'$, it is enough to show that $G = G'$. By the uniqueness of recursive definitions (\Cref{Ch2:Thm:Recursion}), it is enough to see that $G'$ satisfies the same defining equation as $G$. That is, $G'(y) = \setst{G'\of{x}}{x \, R \, y}$.
 
