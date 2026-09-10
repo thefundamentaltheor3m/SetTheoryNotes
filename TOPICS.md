@@ -229,6 +229,12 @@ sitting where they stopped as a `\sorry` with a comment rather than guessed at:
 
 What a run noticed but was not allowed to fix. Each entry is a standing recommendation.
 
+Discharged on 2026-09-10: both outstanding `% [CLAUDE]` directives. The Replacement
+diagram in 1.1.6 is drawn, and the empty marker in the recursion theorem is deleted on
+the author's instruction, having named no task. Three runs had stepped over the diagram
+because `/post-lecture` scoped its directive phase to the latest lecture; that rule is
+now reversed, so a directive is never out of scope for being old.
+
 Discharged on 2026-09-05, with the run that did it: the two directories numbered 2 and
 the inbox stranded in chapter 1 (phase 5 of the post-lecture pass, per the "Opening a
 new chapter" procedure); the stale inference note (rewritten above); the two `% [SUSPECT]`
@@ -247,16 +253,6 @@ The course itself is not written up.        Chapter 1 is undergraduate revision 
                                             is the author's to say, and not something
                                             /organize can fix by rearranging what
                                             exists.
-
-One % [CLAUDE] directive outstanding.       1_1_ZFC.tex, in 1.1.6: "draw a diagram for
-                                            this", on the Axiom of Replacement. A figure
-                                            to be drawn. Run /address-comments.
-
-One empty % [CLAUDE] marker.                2_1_Induction_Recursion.tex, in the
-                                            statement of the recursion theorem, just
-                                            before its display. It names no task, so no
-                                            pass can act on it; the author should say
-                                            what was meant or delete it. [2026-09-05]
 
 "R-closed" and "R-closure" are used but     2.1.2 defines the R-closure of a set by its
 never defined in a box.                     construction inside a proof, and 2.1.3

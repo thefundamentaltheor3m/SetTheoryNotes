@@ -130,7 +130,31 @@ Next comes the second (and last) axiom scheme in ZFC, the axiom scheme of replac
     \end{align*}
 \end{baxiom}
 
-% [CLAUDE] draw a diagram for this.
+Each $x \in A$ has exactly one witness, and what the axiom buys us is that all of those witnesses fit inside a single set $B$.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}]
+        \node[draw, thick, ellipse, minimum width = 1.8cm, minimum height = 3.2cm, label = {above:$A$}] at (0, 0) {};
+        \node[draw, thick, ellipse, minimum width = 2.2cm, minimum height = 4.2cm, label = {above:$B$}] at (4.5, 0) {};
+
+        \node[dot, label = {left:$x_0$}] (x0) at (0, 0.9) {};
+        \node[dot, label = {left:$x_1$}] (x1) at (0, 0.15) {};
+        \node[dot, label = {left:$x_2$}] (x2) at (0, -0.6) {};
+        \node at (0, -1.15) {$\vdots$};
+
+        \node[dot, label = {right:$y_0$}] (y0) at (4.5, 1.35) {};
+        \node[dot, label = {right:$y_1$}] (y1) at (4.5, 0.6) {};
+        \node[dot, label = {right:$y_2$}] (y2) at (4.5, -0.15) {};
+        \node at (4.5, -0.7) {$\vdots$};
+
+        \draw[->] (x0) -- node[above, sloped] {$\varphi$} (y0);
+        \draw[->] (x1) -- (y1);
+        \draw[->] (x2) -- (y2);
+    \end{tikzpicture}
+\end{figure}
+
+$B$ is drawn with room to spare because the axiom only asks for \textit{some} set containing the witnesses; cutting it down to exactly them is what \Cref{ZFC:Compr} does.
 
 We can unpack this slightly complicated formula using \Cref{ZFC:Ext} and \Cref{ZFC:Compr}: it essentially tells us that we can define
 \begin{align*}

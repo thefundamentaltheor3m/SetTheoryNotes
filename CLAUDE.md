@@ -159,8 +159,12 @@ wants the marker left alone. Two markers currently carry `% [IGNORE]` (the end o
 and the end of 2.2.2), both lectures that broke off mid-sentence.
 
 `% [CLAUDE]` is the other inline marker — a small, specific writing job delegated
-during a lecture. There are none in this repository at present. Do not treat one as
-ordinary commented-out content, and do not delete one without addressing it.
+during a lecture. Do not treat one as ordinary commented-out content, and do not
+delete one without addressing it. `/address-comments` sweeps **every** outstanding
+directive in the notes whenever it runs, including as phase 2 of `/post-lecture`,
+which scopes its other phases to the latest lecture but not that one: a directive from
+an earlier lecture is still a job the author delegated, and age is not a reason to skip
+it. None are outstanding at present.
 
 `TOPICS.md` at the repo root is the running map of topic to chapter/section.
 `/organize` owns it; `/integrate` appends to it.
