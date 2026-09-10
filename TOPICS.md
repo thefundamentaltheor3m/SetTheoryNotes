@@ -12,11 +12,14 @@ What earns a chapter, a section and a subsection: `.claude/ORGANIZATION.md`.
 
      Chapter 2 leaves the ladder and generalizes. Its objects are class relations rather
      than membership, and its title names machinery -- induction, recursion, collapse --
-     rather than more hierarchy. Two of the three have now been delivered (the theorem
-     schemes for proofs by induction and definitions by recursion along a well-founded
-     set-like class relation); "Collapse" is still to come, and the general Mostowski
-     Collapse Theorem promised in 1.2.2 is the obvious candidate. So the notes read as
-     groundwork and then tools, an order nobody planned but a sensible one.
+     rather than more hierarchy. All three have now been delivered: the theorem schemes
+     for proofs by induction and definitions by recursion along a well-founded set-like
+     class relation (2.1), and the general Mostowski Collapse Theorem Scheme promised in
+     1.2.2 (2.2), whose examples the lecture of 9 Sep had only begun. So the notes read
+     as groundwork and then tools, an order nobody planned but a sensible one. What the
+     tools are for is still unsaid; the chapter's title has been paid off, and the next
+     lecture that is not an example of collapsing will probably be the start of
+     chapter 3.
 
      An earlier version of this note predicted chapter 2 would be Gödel's L. It was wrong
      about the order, not the destination: L is still promised by chapter 1's opening
@@ -44,7 +47,10 @@ author's request), and the chapter-wide `boxconvention` that `sup` means "union 
     The objects the hierarchy is built out of, and the       1_2_Trans.tex
     sense in which the ordinals exhaust the well-orderings.
     1.2.1 Ordinals
-    1.2.2 Mostowski Collapse
+    1.2.2 Mostowski Collapse for Well-Orderings              [retitled 2026-09-10]
+          The special case, stated without proof; the general
+          theorem is 2.2. Retitled so the two do not share a
+          name in the contents.
 
 1.3 The $V$-Hierarchy                                        [date not recorded]
     The hierarchy itself, what ZFC is a description of,      1_3_V_Hierarchy.tex
@@ -119,7 +125,28 @@ chapter file. **That is the path to type into from now on.**
           warning that "there is a class function" is not
           a sentence of set theory, approximations, the
           proof, and the lemma that G(x) = s is first-order.
+
+2.2 Mostowski Collapse                                       [2026-09-09]
+    The structure theorem for well-founded set-like          2_2_Mostowski.tex
+    extensional class relations: each is isomorphic to a
+    unique transitive class under membership, by a unique
+    map. Uses neither Choice nor Foundation.
+    2.2.1 Extensional Relations
+          The definition; a two-element non-example; transitive
+          classes under membership and class linear orderings
+          as examples.
+    2.2.2 The Collapse Theorem
+          The Mostowski Collapse Theorem Scheme, the remark
+          that the uniqueness is not definitional, and the
+          proof (transitivity of the range, injectivity by
+          R-induction using extensionality, monotonicity,
+          uniqueness via the recursion theorem). Ends at the
+          start of the examples, which the lecture did not
+          finish; see Unplaced.
 ```
+
+The lecture date is the one written in the file (`% 9 September`); the commit that
+brought it is dated 2026-09-10, the next day's sync. The written date is used.
 
 ## Deliberate deviations
 
@@ -135,16 +162,13 @@ chapter file. **That is the path to type into from now on.**
                                             there: the definition, the monotonicity
                                             and "what ZFC describes" are one idea.
 
-Chapter 2 has one section.                  Set-like relations, induction and recursion
-                                            are one line of enquiry with one
+Chapter 2 had one section until 2026-09-10. Set-like relations, induction and
+                                            recursion are one line of enquiry with one
                                             destination (the recursion theorem), so
-                                            they are one section; the author's own live
-                                            heading put set-like relations at
-                                            subsection level, which is where they now
-                                            sit. A chapter with too few sections
-                                            self-heals: "Collapse" is the next section
-                                            when the lecture supplying it arrives.
-                                            [2026-09-05]
+                                            they are one section; "Collapse" arrived on
+                                            2026-09-09 and is the second, as predicted.
+                                            No longer a deviation. [2026-09-05, ended
+                                            2026-09-10]
 
 1.2 is short (40 lines) against a           It is two nameable ideas and the author
 corpus median of 148.                       named them. Splitting or padding it would
@@ -172,13 +196,6 @@ Gödel's constructible universe L, and a model of ZFC in which CH holds.
     Promised in the chapter 1 intro prose, "something we will explore in great
     detail in this course". [date not recorded]
 
-The general Mostowski Collapse Theorem, dropping the well-ordering requirement
-and replacing "ordinal" with "transitive set".
-    Stated as the generalization in 1.2.2. [date not recorded]
-    Chapter 2's title, "Induction, Recursion and Collapse", says it is coming, and
-    the recursion theorem of 2.1.3 is the tool it needs; nothing about it has been
-    written yet. [2026-09-02, 2026-09-05]
-
 Formalizations of set theory inside models of set theory, and the internal
 versus external perspective. "At some point, we will study these things in
 detail", in 1.4. [date not recorded]
@@ -190,16 +207,23 @@ Consistency of ZF + "there is a countable union of pairs with no cardinality".
 Reached, and so no longer signposts: Foundation iff V = WF (promised in 1.4.2, proved
 in 1.4.3 on 2026-09-02); induction and recursion along well-founded set-like class
 relations (promised by chapter 2's title on 2026-09-02, delivered in 2.1.2-2.1.3 on
-2026-09-05).
+2026-09-05); the general Mostowski Collapse Theorem (promised in 1.2.2 and by chapter
+2's title, proved in 2.2.2 on 2026-09-09).
 
 ## Unplaced
 
 Nothing.
 
-One gap rather than an unplaced item: the lecture of 2026-08-31 breaks off mid-sentence
-at "It's clear", just after the alephs and the beths are defined. It sits at the end of
-1.5.4 as a `\sorry` with a comment, rather than guessed at, because more than one
-continuation is plausible. Awaiting the author.
+Two gaps rather than unplaced items, both lectures that broke off mid-sentence, both
+sitting where they stopped as a `\sorry` with a comment rather than guessed at:
+
+- 2026-08-31, at the end of 1.5.4, at "It's clear", just after the alephs and the beths
+  are defined. More than one continuation is plausible. Awaiting the author.
+- 2026-09-09, at the end of 2.2.2, inside the first of two announced examples of
+  collapsing a class well-ordering ("If G ... is the Mostowski collapse isomorphism,").
+  The second example, a proper class well-ordering, was not reached. The next lecture
+  presumably continues here; if it does, the `\sorry` goes with the raw notes that
+  replace it.
 
 ## Structural pressure
 
