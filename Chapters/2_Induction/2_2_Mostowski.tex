@@ -1,54 +1,8 @@
-\section{Set-Like Relations}
+\section{Mostowski Collapse}
 
-In what follows, let $A$ be a class and $R$ be a class relation on $A$.
+In \Cref{Ch1:Thm:Mostowski_WO} we saw that every well-ordering is isomorphic to a unique ordinal, by a map that sends each point to the set of images of its predecessors. In this section we prove the general version promised there: the ordering hypothesis is dropped, and ``ordinal'' becomes ``transitive class''. One more property of the relation is needed to make the map injective, and we begin with it.
 
-The property we want is that looking below any one point of $A$ only ever sees a set's worth of $A$.
-
-\begin{boxdefinition}[Set-Like]
-    We say $(A, R)$ is \textbf{set-like} iff
-    \begin{align*}
-        \forall y \in A, \, \setst{x \in A}{x \, R \, y}
-    \end{align*}
-    is a set.
-\end{boxdefinition}
-
-The example we care about most has this property for the most basic of reasons.
-
-\begin{boxexample}[Membership]
-    $(A, \in)$ is set-like for every class $A$.
-\end{boxexample}
-
-In fact, the fact in the above example is \textbf{equivalent} to the axiom scheme of comprehension (\Cref{ZFC:Compr})! Indeed, if $A = \setst{x}{\varphi\of{x, \bar{z}}}$ and $y \in A$, then
-\begin{align*}
-    \setst{x \in A}{x \in y} = \setst{x \in y}{\varphi\of{x, \bar{z}}}
-\end{align*}
-So ``membership is set-like'' is a fancy way of saying ``Comprehension''.
-
-But not all relations are set-like.
-
-\begin{boxnexample}
-    Let $A = \OR$. Define $R$ by the following picture:
-    \begin{center}
-        \begin{tikzpicture}[every node/.style = {font = \small}, dot/.style = {circle, fill, inner sep = 1.5pt}]
-            \node[dot, label = right:{$1$}] (1) at (0, 0) {};
-            \node[dot, label = right:{$2$}] (2) at (0, 0.8) {};
-            \node (d1) at (0, 1.7) {$\vdots$};
-            \node[dot, label = right:{$\omega$}] (w) at (0, 2.6) {};
-            \node[dot, label = right:{$\omega + 1$}] (w1) at (0, 3.4) {};
-            \node (d2) at (0, 4.3) {$\vdots$};
-            \node[dot, label = right:{$0$}] (0) at (0, 5.4) {};
-            \draw (1) -- (2);
-            \draw (2) -- (d1);
-            \draw (d1) -- (w);
-            \draw (w) -- (w1);
-            \draw (w1) -- (d2);
-            \draw (d2) -- (0);
-        \end{tikzpicture}
-    \end{center}
-    That is, it looks a bit like $\parenth{\OR \setminus \set{0}, <}$.
-\end{boxnexample}
-
-% 9 September
+\subsection{Extensional Relations}
 
 \begin{boxdefinition}[Extensionality]
     $(A, R)$ is \textbf{extensional} iff $\forall y, z \in A$,
@@ -85,9 +39,11 @@ But many are.
     \end{enumerate}
 \end{boxexample}
 
+\subsection{The Collapse Theorem}
+
 We are now ready to state and prove Mostowski Collapse. Note that it will use neither Choice nor Foundation.
 
-\begin{boxtheorem}[Mostowski Collapse Theorem Scheme]
+\begin{boxtheorem}[Mostowski Collapse Theorem Scheme]\label{Ch2:Thm:Mostowski}
     Let $(A, R)$ be a class structure that's well-founded, set-like and extensional. Define, using the theorem scheme on definitions by recursion, the mapping $G : A \to V$ by
     \begin{align*}
         \forall y \in A, G(y) = \setst{G(x)}{x \in A \text{ and } x \, R \, y}
@@ -96,7 +52,8 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
     \begin{enumerate}
         \item $M$ is a transitive class
         \item $G$ is a class isomorphism from $(A, R)$ to $(M, \in)$
-        \item If $M'$ is a transitive class and $G' : (A, R) \simeq (M, \in)$, then $M' = M$ and $G' = G$.
+        % [CORRECTED] was: $G' : (A, R) \simeq (M, \in)$ --- with $M$ rather than $M'$ the hypothesis never mentions $M'$ and the conclusion $M' = M$ fails for any other transitive class; the proof below uses that $M'$ is the range of $G'$
+        \item If $M'$ is a transitive class and $G' : (A, R) \simeq (M', \in)$, then $M' = M$ and $G' = G$.
     \end{enumerate}
     Note that $G$ is referred to as the \textbf{Mostowski Collapse Isomorphism}.
 \end{boxtheorem}
@@ -107,12 +64,12 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
     We may assume $R \ssq A \times A$.
 
     \begin{enumerate}
-        \item Say $a \in b \in M$. We must see $a \in M$. Then, $b \in M$. As $M$ is the range of $G$, there's some $y \in  A$ such that $b = G(y)$. As $g(y) = \setst{G(x)}{x \, R \, y}$, there's some $x \, R \, y$ such that $a = G(x)$. Now $a = G(x) \in M$.
+        \item Say $a \in b \in M$. We must see $a \in M$. Then, $b \in M$. As $M$ is the range of $G$, there's some $y \in  A$ such that $b = G(y)$. As $G(y) = \setst{G(x)}{x \, R \, y}$, there's some $x \, R \, y$ such that $a = G(x)$. Now $a = G(x) \in M$.
 
         \item We need to show $G$ is an order-preserving bijection.
         
-        \begin{itemize}
-            \item \underline{Bijectivity.} It's clear that $G$ is surjective, because $M$ is the range of $G$. To show $G$ is injective, it is enough to show that for every $x \in  A$,
+        \begin{description}
+            \item[\underline{Bijectivity.}] It's clear that $G$ is surjective, because $M$ is the range of $G$. To show $G$ is injective, it is enough to show that for every $x \in  A$,
             \begin{align}
                 \forall x' \in A \brac{G(x) = G\of{x'} \to x = x'}
                 \label{Ch2:Eq:Mostowski-pf-expr}
@@ -121,7 +78,7 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
     
             Fix any $y' \in A$ and assume that $G(y) = G\of{y'}$. We need to prove $y = y'$. Because $(A, R)$ is extensional, it is enough to show that
             \begin{align*}
-                \setst{x}{x \, R \, y} = \setst{x'}{x' \, R \, y}
+                \setst{x}{x \, R \, y} = \setst{x'}{x' \, R \, y'}
             \end{align*}
             \begin{description}
                 \item[$(\subseteq)$]
@@ -139,19 +96,18 @@ We are now ready to state and prove Mostowski Collapse. Note that it will use ne
                     So there's some $x \, R \, y$ such that $G\of{x'} = G(x)$. By \eqref{Ch2:Eq:Mostowski-pf-expr} for $x$, $x' \, R \, y$.
             \end{description}
 
-            \item \underline{Monotonicity.} Suppose $G(x) \in G(y)$. By definition of $G(y)$, there is some $x' \, R \, y$ such that $G(x) = G\of{x'}$. As $G$ is injective, we know that $x = x'$. Thus, $x \, R \, y$.
-        \end{itemize}
+            \item[\underline{Monotonicity.}] Suppose $G(x) \in G(y)$. By definition of $G(y)$, there is some $x' \, R \, y$ such that $G(x) = G\of{x'}$. As $G$ is injective, we know that $x = x'$. Thus, $x \, R \, y$.
+        \end{description}
 
-        \item Suppose $M'$ is a transitive class and $G' : (A, R) \simeq M'$. We need $M = M'$ and $G = G'$.
+        \item Suppose $M'$ is a transitive class and $G' : (A, R) \simeq (M', \in)$. We need $M = M'$ and $G = G'$.
 
-        Since $M$ is the range of $G$ and $M'$ is the range of $G'$, it is enough to show that $G = G'$. By the uniqueness of recursive definitions, % [CLAUDE] add a cross-reference for this
-        it is enough to see that $G'$ satisfies the same defining equation as $G$. That is, $G'(y) = \setst{G'\of{x}}{x \, R \, y}$.
+        Since $M$ is the range of $G$ and $M'$ is the range of $G'$, it is enough to show that $G = G'$. By the uniqueness of recursive definitions (\Cref{Ch2:Thm:Recursion}), it is enough to see that $G'$ satisfies the same defining equation as $G$. That is, $G'(y) = \setst{G'\of{x}}{x \, R \, y}$.
 
         \begin{description}
-            \item[$(\subseteq)$]
+            \item[$(\supseteq)$]
                 $x \, R \, y \to G'(x) \in G'(y)$ just because $G'$ preserves order (by assumption).
 
-            \item[$(\supseteq)$]
+            \item[$(\subseteq)$]
                 Suppose $a \in G'(y)$. Now $G'(y) \in M'$ trivially because $M'$ is the range of $G'$. Since $M'$ is a transitive class, $G'(y) \ssq M'$. Hence, $a \in M'$. So we have some $x \in A$ such that $a = G'(x)$. Now $G'(x) \in G'(y)$. Since $G'$ is an isomorphism, this implies $x \, R \, y$.
         \end{description}
     \end{enumerate}
@@ -163,5 +119,7 @@ Suppose $(A, R)$ is a class well-ordering. There are two possibilities:
 \begin{enumerate}
     \item $(A, R)$ is a set structure (so a \textit{set} well-ordering).
 
-    If $G : (A, R) \simeq (M, \in)$ is the Mostowski collapse isomorphism,
+    % The lecture of 9 Sep ends mid-sentence here, inside the first of the two cases it announced; the second (a proper class well-ordering) was not reached. Marked rather than guessed at. Whoever continues it: a class well-ordering need not be set-like (the non-example in 2.1.1 is one), so the proper-class case needs set-likeness as a hypothesis before the collapse applies.
+    % [IGNORE] Author's instruction (10 Sep 2026): leave this \sorry as it is. /fill-sorries, /post-lecture and every other skill skip it; the next lecture's raw notes are expected to replace it.
+    If $G : (A, R) \simeq (M, \in)$ is the Mostowski collapse isomorphism, \sorry
 \end{enumerate}

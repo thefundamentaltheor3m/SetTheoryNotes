@@ -53,6 +53,20 @@ If the user named a file, a comment, or a topic, restrict to that. Otherwise tak
 them all, and list them to the user up front with file, line, and the directive
 quoted, so they can see what is in scope before you start writing.
 
+**Age is not a reason to skip one, and neither is the lecture it belongs to.** A
+directive written three lectures ago is as much a delegation as one written today, and
+the fact that it has survived every pass since is evidence that nobody will come back
+for it unless this run does. This holds when the skill runs as a phase of
+`/post-lecture` too: that pass scopes its other phases to the latest lecture's
+material, and **explicitly does not scope this one**. Every outstanding directive in
+the notes is in scope. If you leave one, name it and say why.
+
+**A directive that names no task cannot be executed and must not be guessed at.** A
+bare `% [CLAUDE]` with nothing after the tag, or one whose text was lost in an edit,
+is not a licence to invent work: whatever you wrote for it would be work the author
+never asked for, arriving in their notes under their own name. Leave it in place,
+report it, and ask what was meant. Delete it only if they say so.
+
 ## 2. Read each comment in context, not on its own
 
 A directive is written in the middle of an argument and means almost nothing outside

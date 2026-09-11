@@ -137,20 +137,34 @@ The three markers a skill may write, none of which the author writes:
 | `% [CORRECTED]` | `/check-correctness` | a statement changed, original quoted for revert-by-eye |
 | `% [SUSPECT]` | `/check-correctness` | believed wrong, left unchanged, awaiting the author |
 
+And two the author writes, which no skill may write:
+
+| Marker | Means |
+| --- | --- |
+| `% [CLAUDE] ...` | a small, specific writing job delegated to `/address-comments` |
+| `% [IGNORE] ...` | leave the `\sorry` (or passage) this sits on exactly as it is; every skill skips it |
+
 Never write a `% [CLAUDE]` marker: that is the author's channel for delegating work,
-and one written by a skill is work the next run will silently do.
+and one written by a skill is work the next run will silently do. Never write an
+`% [IGNORE]` either: deciding that a gap stays open is the author's call.
 
 `\sorry` is the red marker for an unfilled gap — a proof not given, a case not
-covered, a development that broke off. **There are currently none** in this
-repository's content — the only `\sorry` in the tree is the macro's own definition in
-`TeX_Setup/shortcuts.tex`. `/fill-sorries` closes them, and it is the one skill
-authorized to work the mathematics out for itself rather than following an
+covered, a development that broke off. `/fill-sorries` closes them, and it is the one
+skill authorized to work the mathematics out for itself rather than following an
 instruction; it marks what it supplied with a `% [FILLED]` comment so the notes stay
-honest about which arguments came from the lecturer.
+honest about which arguments came from the lecturer. **Read the comment lines around a
+`\sorry` before touching it**: a plain comment records where the lecture broke off and
+is the best evidence of where the argument was going; an `% [IGNORE]` means the author
+wants the marker left alone. Two markers currently carry `% [IGNORE]` (the end of 1.5.4
+and the end of 2.2.2), both lectures that broke off mid-sentence.
 
 `% [CLAUDE]` is the other inline marker — a small, specific writing job delegated
-during a lecture. There are none in this repository at present. Do not treat one as
-ordinary commented-out content, and do not delete one without addressing it.
+during a lecture. Do not treat one as ordinary commented-out content, and do not
+delete one without addressing it. `/address-comments` sweeps **every** outstanding
+directive in the notes whenever it runs, including as phase 2 of `/post-lecture`,
+which scopes its other phases to the latest lecture but not that one: a directive from
+an earlier lecture is still a job the author delegated, and age is not a reason to skip
+it. None are outstanding at present.
 
 `TOPICS.md` at the repo root is the running map of topic to chapter/section.
 `/organize` owns it; `/integrate` appends to it.

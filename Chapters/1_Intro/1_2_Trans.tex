@@ -3,7 +3,8 @@
 This is a quick recap section on transitive sets and ordinals. We come to cardinals in \Cref{Ch1:Sec:Cardinals}.
 
 \begin{boxdefinition}[Transitive Set]
-    A set $A$ is \textbf{transitive} if $\forall y \in A \brac{y \subseteq A \lr \forall y \in A \, \forall x \in y \, \parenth{x \in A}}$
+    % [CORRECTED] was: $\forall y \in A \brac{y \subseteq A \lr \forall y \in A \, \forall x \in y \, \parenth{x \in A}}$ --- the inner $\forall y$ rebinds $y$, so the bracket reads ``$y \subseteq A$ iff $A$ is transitive'' and is satisfied by non-transitive sets such as $\set{\set{\emptyset}}$; the two formulations were meant as equivalent restatements, not as a biconditional inside the quantifier
+    A set $A$ is \textbf{transitive} if $\forall y \in A \, \parenth{y \subseteq A}$, ie, if $\forall y \in A \, \forall x \in y \, \parenth{x \in A}$
 \end{boxdefinition}
 
 \subsection{Ordinals}
@@ -24,11 +25,11 @@ Note that writing $\parenth{A, \in}$ really means the structure $(A, R)$ where $
     and so on.
 \end{boxexample}
 
-\subsection{Mostowski Collapse}
+\subsection{Mostowski Collapse for Well-Orderings}
 
-We will eventually prove this in more generality, but here's a useful theorem.
+We will eventually prove this in more generality (\Cref{Ch2:Thm:Mostowski}), but here's a useful theorem.
 
-\begin{boxtheorem}[Mostowski Collapse Theorem for Well-Orderings]
+\begin{boxtheorem}[Mostowski Collapse Theorem for Well-Orderings]\label{Ch1:Thm:Mostowski_WO}
     For all well-orderings $(A, R)$, there is a unique ordinal $\alpha$ such that there is a unique isomorphism $\pi$ from $(A, R)$ to $(\alpha, \in)$ given by
     \begin{align*}
         \pi(y) = \setst{\pi(x)}{x R y}

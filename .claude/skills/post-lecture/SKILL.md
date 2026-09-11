@@ -50,7 +50,9 @@ gap two lines above it has been closed.
 > "prove this" written beside it — **the directive wins and phase 1 leaves it alone.**
 > A scoped instruction the author wrote by hand is `/address-comments`' job, as
 > `fill-sorries/SKILL.md` says itself. Phase 1 fills the bare markers; phase 2 fills
-> the ones that came with instructions.
+> the ones that came with instructions. And a `\sorry` carrying an `% [IGNORE]`
+> comment is the author saying to leave it: **no phase touches it**, and the report
+> lists it as deliberately left rather than as an open gap.
 
 **`/check-correctness` goes third**, once every word this lecture is going to acquire
 has been written. It checks the author's raw notes *and* what phases 1 and 2 wrote,
@@ -108,15 +110,27 @@ conventions the author may not have followed today, and material typed without o
 still this lecture's material. Where a written date and the commit date disagree, ask
 — one of them is a typo and guessing picks the wrong one.
 
-Write the scope down as a list of files and line ranges, and **give the same scope to
-every phase.** This is the one thing this file adds to the component skills, and it
-matters, because three of them will otherwise take the whole document: `/fill-sorries`
-sweeps every `\sorry` in the repository, `/address-comments` every directive,
-`/americanise` every British spelling. Under `/post-lecture` all three are confined to
-this lecture. A marker from three lectures ago that nobody has closed is not this
-run's business; note it in the report and leave it.
+Write the scope down as a list of files and line ranges, and **give that scope to every
+phase except phase 2.** This is the one thing this file adds to the component skills,
+and it matters, because `/fill-sorries` would otherwise sweep every `\sorry` in the
+repository and `/americanise` every British spelling. Under `/post-lecture` both are
+confined to this lecture: an unfilled `\sorry` from three lectures ago is not this
+run's business, so note it in the report and leave it.
 
-Two exceptions, both narrow. `/check-correctness` follows a correction into an earlier
+**Phase 2 is the exception, and it is deliberate: `/address-comments` takes every
+outstanding `% [CLAUDE]` directive in the notes, wherever it sits and whenever it was
+written.** A `\sorry` is a gap somebody noticed; a `% [CLAUDE]` is a job the author
+delegated by hand, and it stays undone until a run does it. Scoping phase 2 to the
+current lecture is exactly how one gets skipped forever: the pass that could have done
+it rules it out of scope, the next pass rules the same way for the same reason, and the
+directive quietly becomes permanent. That is not a hypothetical — it is what happened
+to "draw a diagram for this" on the Axiom of Replacement, which three consecutive runs
+stepped over while dutifully reporting it. **Age is never a reason to skip a
+directive.** Run the repository-wide grep from step 1 of
+`address-comments/SKILL.md`, address everything it finds, and account in the report for
+any you deliberately left.
+
+Two further exceptions, both narrow. `/check-correctness` follows a correction into an earlier
 section when the passage it is checking depends on one — a `\Cref` pointing at the
 wrong result, a definition that contradicts this lecture's use of it. And `/integrate`
 necessarily writes into the sections it places material in. Neither licenses a general

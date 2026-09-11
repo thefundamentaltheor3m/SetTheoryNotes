@@ -15,12 +15,10 @@ the \textbf{universe of sets}. Indeed, this is often represented diagrammaticall
 % [CORRECTED] was: ``whether $\aleph_0 = \abs{\R} = \abs{V_{\omega + 1}}$ is equal to $\aleph_1$'' --- $\aleph_0 = \abs{\R}$ says $\R$ is countable, and it also made CH read ``is $\aleph_0 = \aleph_1$?'', which is refutable rather than independent
 There is a problem with the universe of sets: \textit{the power set operation is too strong}. That is, when we take the power set of a set, it ``throws too many elements in''. This leads to questions like the \textit{continuum hypothesis}, which asks the question of whether $2^{\aleph_0} = \abs{\R} = \abs{V_{\omega + 1}}$ is equal to $\aleph_1$.
 
-% [SUSPECT] $\Defin(A)$ is defined below as a class of definable \textit{structures} over $(A; \in)$; it
-% should be the definable \textit{subsets} of $A$. As written, neither ``$\Defin$ agrees with $\Powset$ on
-% finite sets'' nor the agreement of $L_n$ with $V_n$ parses. Left unchanged pending the author.
+% [CORRECTED] was: $\Defin(A) := \setst{x}{x \text{ is a 1st-order definable structure over } (A; \in) \text{ using parameters from } A}$ --- the operation that builds $L$ collects the definable \textit{subsets} of $A$; without $x \ssq A$ neither the agreement with $\Powset$ on finite sets nor $L_n = V_n$ holds (a definable binary relation on $\set{\emptyset}$ is already not a subset of it)
 Something we will study quite closely in this course is a slightly different version of this universe, known as \textbf{Gödel's Constructible Universe}. This is a universe of sets that is not built up from $\emptyset$ using the power set, but using a \textit{different} operation $\Defin$, defined as follows: for a set $A$, viewing it as a first-order structure $(A; \in)$,
 \begin{align*}
-    \Defin(A) &:= \setst{x}{x \text{ is a 1st-order definable structure over } (A; \in) \text{ using parameters from } A}
+    \Defin(A) &:= \setst{x \ssq A}{x \text{ is 1st-order definable over } (A; \in) \text{ using parameters from } A}
 \end{align*}
 We can show that for finite sets, $\Defin$ agrees with $\Powset$. Moreover, we can show that for a countable set $A$, $\Defin(A)$ is countable as well. The point is that if we then define a universe
 \begin{align*}
@@ -41,6 +39,12 @@ We note that the typical background setting for this course is the entirety of Z
     \end{align*}
 \end{boxnotation}
 
+We also fix some notation for functions.
+
+\begin{boxnotation}
+    For a function $f$, we write $\dom{f}$ for its domain.
+\end{boxnotation}
+
 We use one further convention throughout.
 
 \begin{boxconvention}
@@ -54,4 +58,3 @@ We will begin by reviewing the ZFC axioms.
 \input{Chapters/1_Intro/1_3_V_Hierarchy.tex}
 \input{Chapters/1_Intro/1_4_Classes.tex}
 \input{Chapters/1_Intro/1_5_Cardinals.tex}
-\input{Chapters/1_Intro/todays_lecture}

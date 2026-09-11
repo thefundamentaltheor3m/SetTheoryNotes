@@ -127,6 +127,30 @@ you spot one, report it and suggest a `\sorry`; do not fill it. The marker is th
 author's signal that they want it filled, and filling unmarked gaps would make every
 run unbounded.
 
+### 1a. Read the comments around each one
+
+A `\sorry` rarely stands alone. Before deciding anything about a marker, read the
+comment lines immediately above it and any comment on its own line, because they
+change what the marker means:
+
+| The comment says | What it means for you |
+| --- | --- |
+| `% [IGNORE] ...` | **The author has said to leave this one alone.** Skip it entirely: do not fill it, do not narrow it, do not rewrite the text around it. List it in the report under "deliberately left, at the author's instruction" and move on. This overrides everything else in this skill, including a user request to "fill all the sorries", unless the user names this marker specifically. |
+| `% [CLAUDE] ...` on or beside the same gap | A scoped instruction. The gap is `/address-comments`' job, not yours; leave it and say so. |
+| A plain comment — where the lecture broke off, what the argument was probably heading for, what was said aloud | The strongest evidence you have about the intended destination. Use it, quote it in the report, and say whether you followed it. If it names more than one plausible continuation and picks none, that is the author telling you the gap is genuinely open: ask rather than guess. |
+| Nothing | Work the gap out from the surrounding mathematics as described below. |
+
+Grep for the comments as well as the markers, so that an `% [IGNORE]` two lines above
+a `\sorry` is never missed:
+
+```bash
+grep -rn -B3 "\\\\sorry" --include=*.tex Chapters/ | grep -n "IGNORE\|CLAUDE\|%"
+```
+
+`% [IGNORE]` is the author's marker, like `% [CLAUDE]`: never write one yourself. If
+you believe a `\sorry` should stay open, leave it open and say why in the report; the
+author decides whether to make that permanent.
+
 ### 2. Work out what each gap actually is
 
 The kind of gap decides the shape of the fill:
