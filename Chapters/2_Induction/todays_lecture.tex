@@ -35,9 +35,9 @@
 \begin{boxexample}[ZFC]
     Consider any $\alpha \in \OR$. Recall that $V_{\alpha}$ is a transitive set, so $\parenth{V_{\alpha}, \in}$ is extensional, set-like and well-founded. \\
 
-    Now, you can formalise all of mathematics in ZFC, including Model Theory---in particular, the downwards Löwenheim-Skolem Theorem (DLS). (We will do this eventually in this course.) \\
+    Now, you can formalize all of mathematics in ZFC, including Model Theory---in particular, the downwards Löwenheim-Skolem Theorem (DLS). (We will do this eventually in this course.) \\
 
-    Indeed, within the ZFC formalisation, we can define the notion of an \textbf{elementary substructure} as follows: we say $X \preceq Y$ iff for every ``formula''\footnote{There are no formulae because we're in a formalism where everything's a set! But there are ``formulae'': just make air quotes and change your tone of voice and everything is ok :D} $\varphi\of{\bar{u}}$ and every matching $\bar{a}$ from $X$, $X \models \varphi\of{\bar{a}}$ iff $Y \models \varphi\of{\bar{a}}$. You can imagine that with similar handwaving, we can formalise other notions, like DLS. \\
+    Indeed, within the ZFC formalization, we can define the notion of an \textbf{elementary substructure} as follows: we say $X \preceq Y$ iff for every ``formula''\footnote{There are no formulae because we're in a formalism where everything's a set! But there are ``formulae'': just make air quotes and change your tone of voice and everything is ok :D} $\varphi\of{\bar{u}}$ and every matching $\bar{a}$ from $X$, $X \models \varphi\of{\bar{a}}$ iff $Y \models \varphi\of{\bar{a}}$. You can imagine that with similar handwaving, we can formalize other notions, like DLS. \\
 
     Once we have done all of this, we can prove that there is some countable $X$ such that $(X, \in) \preceq \parenth{V_{\alpha}, \in}$. Moreover, note that
     \begin{itemize}
@@ -66,7 +66,7 @@
     \end{itemize}
     Let $G : \parenth{X, \in} \simeq \parenth{M, \in}$ be the Mostowski Collapse Isomorphism (ie, if $G$ is the Mostowski Collapse Isomorphism, then $(M, \in)$ is the Mostowski Collapse---the range of $G$). As this is an isomorphism, $M$ is transitive. Note that $G\inv : M \to V_{\alpha}$ is an elementary embedding (we compose $G\inv : M \simeq X$ with the inclusion $X \inj V_{\alpha}$). In particular, $M$ and $V_{\alpha}$ satisfy the same ``sentences''. \\
 
-    Intuitively, what's going on is that we have built some countable microcosm---some tiny, countable analogue---of the entire $V$-universe, \textit{inside of the ZFC formalism}. This is one of the most important subroutines in set theory: the idea that you can take a big initial piece of $V$, take some elementary substructure via DLS, take its Mostowski Collapse, and do something with it. We will see a lot of this later on.
+    Intuitively, what's going on is that we have built some countable microcosm---some tiny, countable analog---of the entire $V$-universe, \textit{inside of the ZFC formalism}. This is one of the most important subroutines in set theory: the idea that you can take a big initial piece of $V$, take some elementary substructure via DLS, take its Mostowski Collapse, and do something with it. We will see a lot of this later on.
 
     \begin{figure}[H]
         \centering
