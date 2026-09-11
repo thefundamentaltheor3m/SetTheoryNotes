@@ -3,8 +3,6 @@
 % material has been placed into the sections, /integrate empties the file again and leaves
 % this header behind. Do not delete the file or its \input line.
 
-% [CLAUDE] remove the preceding example "suppose (A, R) is a class well-ordering..."
-
 \subsection{Examples}
 
 \begin{boxexample}[Sequences of Ordinals]
@@ -24,8 +22,7 @@
         \begin{align*}
             \setst{t \in \brac{\OR}^{< \omega}}{t <_{\lex} s} \ssq \brac{\max(S) + 1}^{< \omega}
         \end{align*}
-        We can apply the Mostowski Collapse Theorem % [CLAUDE] add cross-ref - MCT should be \label{SP:MCT} or something
-        to get a map
+        We can apply the Mostowski Collapse Theorem Scheme (\Cref{Ch2:Thm:Mostowski}) to get a map
         \begin{align*}
             G : \parenth{\brac{\OR}^{< \omega}, <_{\lex}} \simeq \parenth{\OR, <}
         \end{align*}
@@ -59,11 +56,29 @@
         \end{align*}
         as well. This is equivalent to $(X, \in)$ being extensional. \\
 
-        We can also argue more directly for extensionality. If $X$ is not extensional, then there exist $b \neq c$ in $X$ and some $a \in b \symmdiff c$ that also lies in $V_{\alpha}$ (where $b \symdiff c$ is the symmetric difference of $b$ and $c$). But there can be no such $a \in X$: the point is that $X \preceq V_{\alpha}$. % [CLAUDE] make this a bit clearer, I'm not too sure what's being said here
+        We can also argue more directly for extensionality, which asks that any two distinct members of $X$ be told apart by a member of $X$. Say $b, c \in X$ with $b \ne c$. Since $V_{\alpha}$ is extensional, some $a \in V_{\alpha}$ lies in the symmetric difference $b \symdiff c$, so that
+        \begin{align*}
+            V_{\alpha} \models \exists a \parenth{a \in b \symdiff c}
+        \end{align*}
+        This is a ``formula'' whose parameters $b$ and $c$ both come from $X$, and $X \preceq V_{\alpha}$, so $X$ satisfies it too. The witness it supplies is a member of $X$ lying in $b \symdiff c$, which is exactly what we wanted.
     \end{itemize}
     Let $G : \parenth{X, \in} \simeq \parenth{M, \in}$ be the Mostowski Collapse Isomorphism (ie, if $G$ is the Mostowski Collapse Isomorphism, then $(M, \in)$ is the Mostowski Collapse---the range of $G$). As this is an isomorphism, $M$ is transitive. Note that $G\inv : M \to V_{\alpha}$ is an elementary embedding (we compose $G\inv : M \simeq X$ with the inclusion $X \inj V_{\alpha}$). In particular, $M$ and $V_{\alpha}$ satisfy the same ``sentences''. \\
 
     Intuitively, what's going on is that we have built some countable microcosm---some tiny, countable analogue---of the entire $V$-universe, \textit{inside of the ZFC formalism}. This is one of the most important subroutines in set theory: the idea that you can take a big initial piece of $V$, take some elementary substructure via DLS, take its Mostowski Collapse, and do something with it. We will see a lot of this later on.
 
-    % [CLAUDE] draw a picture, with a big triangle (or V) for the V universe, maybe cut off with a dashed line (the ``third side of the triangle'') indicating some V_{\alpha}; then a small V that represents V; and an arrow, labelled G\inv, from the small one to the big one.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[every node/.style = {font = \small}]
+            \draw[thick] (2.6, 4.4) -- (0, 0) -- (-2.6, 4.4);
+            \draw[thick, dashed] (-2.6, 4.4) -- node[above] {$V_{\alpha}$} (2.6, 4.4);
+            \draw[thick, dotted] (-2.6, 4.4) -- (-3.1, 5.2);
+            \draw[thick, dotted] (2.6, 4.4) -- (3.1, 5.2);
+            \node at (0, 5.2) {$V$};
+
+            \draw[thick] (-6.2, 3.2) -- (-6.9, 2.0) -- (-7.6, 3.2);
+            \draw[thick, dashed] (-7.6, 3.2) -- node[above] {$M$} (-6.2, 3.2);
+
+            \draw[->, thick] (-6.0, 2.6) -- node[above] {$G\inv$} (-1.6, 2.6);
+        \end{tikzpicture}
+    \end{figure}
 \end{boxexample}
