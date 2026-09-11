@@ -2,3 +2,68 @@
 % it: it is \input from the chapter file, so the Overleaf preview builds them live. Once the
 % material has been placed into the sections, /integrate empties the file again and leaves
 % this header behind. Do not delete the file or its \input line.
+
+% [CLAUDE] remove the preceding example "suppose (A, R) is a class well-ordering..."
+
+\subsection{Examples}
+
+\begin{boxexample}[Sequences of Ordinals]
+    Consider the following classes:
+    \begin{align*}
+        ^{< \omega}\OR &= \setst{f}{\exists n < \omega, \, f : n \to \OR} \\
+        \OR^{< \omega} &= \setst{t}{\exists n < \omega, \, t \text{ is an $n$-tuple of ordinals}} \\
+        [\OR]^{< \omega} &= \setst{s}{\exists n < \omega , \abs{S} = n \text{ and } S \subset \OR}
+    \end{align*}
+    The above are pairwise in bijection. No parameters are necessary ofr anything here. \\
+
+    Let's consider $[\OR]^{< \omega}$. Say $s \in [\OR]^{< \omega}$. Say $n < \omega$ and $s \in [\OR]^{n}$. List $s$ in decreasing order as $s_0 > s_1 > \cdots > s_{n - 1}$, where if $s_0 = \emptyset$. Identify $s$ with the $n$-tuple $\parenth{s_0, \ldots, s_{n-1}}$. Let $<_{\lex}$ denote the lexicographic ordering on members of $[\OR]^{< \omega}$ under this identification. We see that
+    \begin{itemize}
+        \item $<_{\lex}$ is a class well-ordering of $[\OR]^{< \omega}$ that is definable without parameters
+        \item $\parenth{\brac{\OR}^{<\omega}, <_{\lex}}$ is well-founded and extensional
+        \item $<_{\lex}$ is set-like: given $s \in \brac{\OR}^{< \omega}$,
+        \begin{align*}
+            \setst{t \in \brac{\OR}^{< \omega}}{t <_{\lex} s} \ssq \brac{\max(S) + 1}^{< \omega}
+        \end{align*}
+        We can apply the Mostowski Collapse Theorem % [CLAUDE] add cross-ref - MCT should be \label{SP:MCT} or something
+        to get a map
+        \begin{align*}
+            G : \parenth{\brac{\OR}^{< \omega}, <_{\lex}} \simeq \parenth{\OR, <}
+        \end{align*}
+        In particular, $G$ is a class bijection between $\brac{\OR}^{< \omega}$ and $\OR$ that is definable without parameters.
+    \end{itemize}
+\end{boxexample}
+
+\begin{boxexample}[ZFC]
+    Consider any $\alpha \in \OR$. Recall that $V_{\alpha}$ is a transitive set, so $\parenth{V_{\alpha}, \in}$ is extensional, set-like and well-founded. \\
+
+    Now, you can formalise all of mathematics in ZFC, including Model Theory---in particular, the downwards Löwenheim-Skolem Theorem (DLS). (We will do this eventually in this course.) \\
+
+    Indeed, within the ZFC formalisation, we can define the notion of an \textbf{elementary substructure} as follows: we say $X \preceq Y$ iff for every ``formula''\footnote{There are no formulae because we're in a formalism where everything's a set! But there are ``formulae'': just make air quotes and change your tone of voice and everything is ok :D} $\varphi\of{\bar{u}}$ and every matching $\bar{a}$ from $X$, $X \models \varphi\of{\bar{a}}$ iff $Y \models \varphi\of{\bar{A}}$. You can imagine that with similar handwaving, we can formalise other notions, like DLS. \\
+
+    Once we have done all of this, we can prove that there is some countable $X$ such that $(X, \in) \preceq \parenth{V_{\alpha}, \in}$. Moreover, note that
+    \begin{itemize}
+        \item if $\alpha \leq \omega$ then $X = V_{\alpha}$
+        \item if $\alpha \geq \omega + 1$, then $X \subsetneq V_{\alpha}$ ($X$ is countable but $V_{\alpha}$ is uncountable).
+    \end{itemize}
+    Observe that $(X, \in)$ is
+    \begin{itemize}
+        \item \underline{well-founded:} $X \subseteq V_{\alpha} \to X \in V_{\alpha + 1} \subset \WF$
+        \item \underline{set-like:} clear
+        \item \underline{extensional:} we know that $V_{\alpha}$ is transitive, hence extensional. This is equivalent to the following fact (\textit{within the ZFC-formalism of ZFC}):
+        \begin{align*}
+            V_{\alpha} \models \text{``Extensionality Axiom''}
+        \end{align*}
+        Then, since $X \preceq V_{\alpha}$,
+        \begin{align*}
+            X \models \text{``Extensionality Axiom''}
+        \end{align*}
+        as well. This is equivalent to $(X, \in)$ being extensional. \\
+
+        We can also argue more directly for extensionality. If $X$ is not extensional, then there exist $b \neq c$ in $X$ and some $a \in b \symmdiff c$ that also lies in $V_{\alpha}$ (where $b \symdiff c$ is the symmetric difference of $b$ and $c$). But there can be no such $a \in X$: the point is that $X \preceq V_{\alpha}$. % [CLAUDE] make this a bit clearer, I'm not too sure what's being said here
+    \end{itemize}
+    Let $G : \parenth{X, \in} \simeq \parenth{M, \in}$ be the Mostowski Collapse Isomorphism (ie, if $G$ is the Mostowski Collapse Isomorphism, then $(M, \in)$ is the Mostowski Collapse---the range of $G$). As this is an isomorphism, $M$ is transitive. Note that $G\inv : M \to V_{\alpha}$ is an elementary embedding (we compose $G\inv : M \simeq X$ with the inclusion $X \inj V_{\alpha}$). In particular, $M$ and $V_{\alpha}$ satisfy the same ``sentences''. \\
+
+    Intuitively, what's going on is that we have built some countable microcosm---some tiny, countable analogue---of the entire $V$-universe, \textit{inside of the ZFC formalism}. This is one of the most important subroutines in set theory: the idea that you can take a big initial piece of $V$, take some elementary substructure via DLS, take its Mostowski Collapse, and do something with it. We will see a lot of this later on.
+
+    % [CLAUDE] draw a picture, with a big triangle (or V) for the V universe, maybe cut off with a dashed line (the ``third side of the triangle'') indicating some V_{\alpha}; then a small V that represents V; and an arrow, labelled G\inv, from the small one to the big one.
+\end{boxexample}
