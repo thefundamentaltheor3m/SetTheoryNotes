@@ -14,8 +14,9 @@
     \end{align*}
     The above are pairwise in bijection. No parameters are necessary ofr anything here. \\
 
+    % [CORRECTED] the clause fixing the length convention for $<_{\lex}$ is inserted; the text stated none, and the other reading (a proper initial segment counts as \textit{larger}) is false here --- it makes $\emptyset$ the maximum, so the predecessors of $\emptyset$ are a proper class, set-likeness fails, and the collapse cannot land on $(\OR, <)$, which has no largest element
     % [CORRECTED] was: ``where if $s_0 = \emptyset$'' --- a fragment with no consequent, and the only claim in it is false: $s_0$ is $\max(s)$, so $s_0 = \emptyset$ says $s = \set{0}$, which is the case $n = 1$. What the identification needs at this point is the degenerate case $n = 0$, where the displayed list has no terms and $s$ is the empty set
-    Let's consider $[\OR]^{< \omega}$. Say $s \in [\OR]^{< \omega}$. Say $n < \omega$ and $s \in [\OR]^{n}$. List $s$ in decreasing order as $s_0 > s_1 > \cdots > s_{n - 1}$, where $s = \emptyset$ if $n = 0$. Identify $s$ with the $n$-tuple $\parenth{s_0, \ldots, s_{n-1}}$. Let $<_{\lex}$ denote the lexicographic ordering on members of $[\OR]^{< \omega}$ under this identification. We see that
+    Let's consider $[\OR]^{< \omega}$. Say $s \in [\OR]^{< \omega}$. Say $n < \omega$ and $s \in [\OR]^{n}$. List $s$ in decreasing order as $s_0 > s_1 > \cdots > s_{n - 1}$, where $s = \emptyset$ if $n = 0$. Identify $s$ with the $n$-tuple $\parenth{s_0, \ldots, s_{n-1}}$. Let $<_{\lex}$ denote the lexicographic ordering on members of $[\OR]^{< \omega}$ under this identification, where a tuple counts as smaller than any tuple properly extending it. We see that
     \begin{itemize}
         \item $<_{\lex}$ is a class well-ordering of $[\OR]^{< \omega}$ that is definable without parameters
         \item $\parenth{\brac{\OR}^{<\omega}, <_{\lex}}$ is well-founded and extensional
