@@ -10,17 +10,18 @@
     \begin{align*}
         ^{< \omega}\OR &= \setst{f}{\exists n < \omega, \, f : n \to \OR} \\
         \OR^{< \omega} &= \setst{t}{\exists n < \omega, \, t \text{ is an $n$-tuple of ordinals}} \\
-        [\OR]^{< \omega} &= \setst{s}{\exists n < \omega , \abs{S} = n \text{ and } S \subset \OR}
+        [\OR]^{< \omega} &= \setst{s}{\exists n < \omega , \abs{s} = n \text{ and } s \subset \OR}
     \end{align*}
     The above are pairwise in bijection. No parameters are necessary ofr anything here. \\
 
-    Let's consider $[\OR]^{< \omega}$. Say $s \in [\OR]^{< \omega}$. Say $n < \omega$ and $s \in [\OR]^{n}$. List $s$ in decreasing order as $s_0 > s_1 > \cdots > s_{n - 1}$, where if $s_0 = \emptyset$. Identify $s$ with the $n$-tuple $\parenth{s_0, \ldots, s_{n-1}}$. Let $<_{\lex}$ denote the lexicographic ordering on members of $[\OR]^{< \omega}$ under this identification. We see that
+    % [CORRECTED] was: ``where if $s_0 = \emptyset$'' --- a fragment with no consequent, and the only claim in it is false: $s_0$ is $\max(s)$, so $s_0 = \emptyset$ says $s = \set{0}$, which is the case $n = 1$. What the identification needs at this point is the degenerate case $n = 0$, where the displayed list has no terms and $s$ is the empty set
+    Let's consider $[\OR]^{< \omega}$. Say $s \in [\OR]^{< \omega}$. Say $n < \omega$ and $s \in [\OR]^{n}$. List $s$ in decreasing order as $s_0 > s_1 > \cdots > s_{n - 1}$, where $s = \emptyset$ if $n = 0$. Identify $s$ with the $n$-tuple $\parenth{s_0, \ldots, s_{n-1}}$. Let $<_{\lex}$ denote the lexicographic ordering on members of $[\OR]^{< \omega}$ under this identification. We see that
     \begin{itemize}
         \item $<_{\lex}$ is a class well-ordering of $[\OR]^{< \omega}$ that is definable without parameters
         \item $\parenth{\brac{\OR}^{<\omega}, <_{\lex}}$ is well-founded and extensional
         \item $<_{\lex}$ is set-like: given $s \in \brac{\OR}^{< \omega}$,
         \begin{align*}
-            \setst{t \in \brac{\OR}^{< \omega}}{t <_{\lex} s} \ssq \brac{\max(S) + 1}^{< \omega}
+            \setst{t \in \brac{\OR}^{< \omega}}{t <_{\lex} s} \ssq \brac{\max(s) + 1}^{< \omega}
         \end{align*}
         We can apply the Mostowski Collapse Theorem Scheme (\Cref{Ch2:Thm:Mostowski}) to get a map
         \begin{align*}
@@ -35,7 +36,7 @@
 
     Now, you can formalise all of mathematics in ZFC, including Model Theory---in particular, the downwards Löwenheim-Skolem Theorem (DLS). (We will do this eventually in this course.) \\
 
-    Indeed, within the ZFC formalisation, we can define the notion of an \textbf{elementary substructure} as follows: we say $X \preceq Y$ iff for every ``formula''\footnote{There are no formulae because we're in a formalism where everything's a set! But there are ``formulae'': just make air quotes and change your tone of voice and everything is ok :D} $\varphi\of{\bar{u}}$ and every matching $\bar{a}$ from $X$, $X \models \varphi\of{\bar{a}}$ iff $Y \models \varphi\of{\bar{A}}$. You can imagine that with similar handwaving, we can formalise other notions, like DLS. \\
+    Indeed, within the ZFC formalisation, we can define the notion of an \textbf{elementary substructure} as follows: we say $X \preceq Y$ iff for every ``formula''\footnote{There are no formulae because we're in a formalism where everything's a set! But there are ``formulae'': just make air quotes and change your tone of voice and everything is ok :D} $\varphi\of{\bar{u}}$ and every matching $\bar{a}$ from $X$, $X \models \varphi\of{\bar{a}}$ iff $Y \models \varphi\of{\bar{a}}$. You can imagine that with similar handwaving, we can formalise other notions, like DLS. \\
 
     Once we have done all of this, we can prove that there is some countable $X$ such that $(X, \in) \preceq \parenth{V_{\alpha}, \in}$. Moreover, note that
     \begin{itemize}
