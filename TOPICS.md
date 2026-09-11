@@ -140,10 +140,21 @@ chapter file. **That is the path to type into from now on.**
           that the uniqueness is not definitional, and the
           proof (transitivity of the range, injectivity by
           R-induction using extensionality, monotonicity,
-          uniqueness via the recursion theorem). Ends at the
-          start of the examples, which the lecture did not
-          finish; see Unplaced.
+          uniqueness via the recursion theorem).
+    2.2.3 Examples                                           [2026-09-11]
+          Two applications of the collapse. The finite subsets
+          of OR under the lexicographic ordering of their
+          decreasing enumerations collapse onto (OR, <), giving
+          a parameter-free class bijection. And, for any alpha,
+          a countable X elementary in V_alpha (by DLS, inside
+          the ZFC formalization) collapses onto a countable
+          transitive M with G^{-1} : M -> V_alpha elementary --
+          the countable-microcosm subroutine, with a figure.
 ```
+
+2.2.3 replaces the abandoned example the lecture of 9 Sep broke off in. The
+author's own `% [CLAUDE]` directive in this lecture's notes said to remove it,
+which is what the entry under `## Unplaced` had predicted would happen.
 
 The lecture date is the one written in the file (`% 9 September`); the commit that
 brought it is dated 2026-09-10, the next day's sync. The written date is used.
@@ -202,6 +213,16 @@ detail", in 1.4. [date not recorded]
 
 Consistency of ZF + "there is a countable union of pairs with no cardinality".
     Asserted, not proved, in 1.5.2. [2026-08-31]
+
+Formalizing all of mathematics in ZFC, Model Theory included, and the downwards
+Löwenheim-Skolem Theorem inside that formalization. 2.2.3 leans on both and
+says "we will do this eventually in this course". Sharpens the 1.4 signpost
+above, which was about the internal/external perspective in general. [2026-09-11]
+
+The elementary-substructure-then-collapse subroutine: take a big initial piece
+of V, take a countable elementary substructure by DLS, collapse it, work with
+the result. 2.2.3 calls it "one of the most important subroutines in set
+theory" and promises "a lot of this later on". [2026-09-11]
 ```
 
 Reached, and so no longer signposts: Foundation iff V = WF (promised in 1.4.2, proved
@@ -214,16 +235,19 @@ relations (promised by chapter 2's title on 2026-09-02, delivered in 2.1.2-2.1.3
 
 Nothing.
 
-Two gaps rather than unplaced items, both lectures that broke off mid-sentence, both
-sitting where they stopped as a `\sorry` with a comment rather than guessed at:
+One gap rather than an unplaced item, a lecture that broke off mid-sentence and sits
+where it stopped as a `\sorry` with a comment rather than being guessed at:
 
 - 2026-08-31, at the end of 1.5.4, at "It's clear", just after the alephs and the beths
   are defined. More than one continuation is plausible. Awaiting the author.
-- 2026-09-09, at the end of 2.2.2, inside the first of two announced examples of
-  collapsing a class well-ordering ("If G ... is the Mostowski collapse isomorphism,").
-  The second example, a proper class well-ordering, was not reached. The next lecture
-  presumably continues here; if it does, the `\sorry` goes with the raw notes that
-  replace it.
+
+Closed on 2026-09-11: the 2026-09-09 gap at the end of 2.2.2, inside the first of two
+announced examples of collapsing a class well-ordering. It did not get continued —
+the lecture of 11 Sep gave two different examples instead, and the author's
+`% [CLAUDE]` directive said to remove the abandoned one outright. Its `\sorry` and its
+`% [IGNORE]` went with it, and 2.2.3 stands where it stood. The announced proper-class
+well-ordering case was never reached and is not recorded as owed: nothing in the notes
+now promises it.
 
 ## Structural pressure
 
@@ -264,6 +288,18 @@ never defined in a box.                     construction inside a proof, and 2.1
                                             /organize's; a % [CLAUDE] directive from the
                                             author would let /address-comments do it.
                                             [2026-09-05]
+
+"Elementary substructure" is defined         2.2.3 introduces X <= Y in bold inside
+inside a boxexample rather than in a         the ZFC example, where the whole
+boxdefinition.                               discussion is deliberately informal (the
+                                             "air quotes" footnote). STYLE.md wants a
+                                             term used across several results
+                                             introduced in a boxdefinition, and this
+                                             one is promised heavy future use. Whether
+                                             to promote it is a judgment about how
+                                             formal the course means to be here, and
+                                             /integrate is not the pass to make it.
+                                             [2026-09-11]
 ```
 
 ## Template scaffolding
