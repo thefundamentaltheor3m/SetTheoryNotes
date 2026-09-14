@@ -61,4 +61,49 @@ Together with the above theorem scheme, we get that $\ZFwoF$ is inconsistent. % 
 
 \subsection{Complexity of Formulae}
 
-% [TODO] 
+Whether a formula says the same thing inside a class as it does in $V$ depends on how its quantifiers range, so we need a way of measuring that. The first step is to give the quantifiers that range over a set, rather than over the whole universe, notation of their own.
+
+\begin{boxnotation}[Bounded Quantifiers] \hfill
+    \begin{itemize}
+        \item $\forall u \in v \, \varphi$ stands for $\forall u \brac{u \in v \to \varphi}$
+
+        \item $\exists u \in v \, \varphi$ stands for $\exists u \brac{u \in v \land \varphi}$
+    \end{itemize}
+    Quantifiers written this way are said to be \textbf{bounded}.
+\end{boxnotation}
+
+A formula all of whose quantifiers are bounded can only ever look inside the sets it is handed, and such formulae sit at the bottom of the hierarchy we are about to build.
+
+\begin{boxdefinition}[$\Delta_0$ Formulae]
+    A formula is $\Delta_0$ iff every quantifier occurring in it is bounded.
+\end{boxdefinition}
+
+Everything above the bottom level is obtained by putting a block of unbounded quantifiers, all of the same kind, in front of a $\Delta_0$ formula.
+
+\begin{boxdefinition}[$\Sigma_1$ and $\Pi_1$ Formulae] \hfill
+    \begin{itemize}
+        \item $\Sigma_1$ formulae look like
+        \begin{align*}
+            \exists u_0 \exists u_1 \cdots \exists u_n \, \varphi
+        \end{align*}
+        where $\varphi$ is $\Delta_0$.
+
+        \item $\Pi_1$ formulae look like
+        \begin{align*}
+            \forall u_0 \forall u_1 \cdots \forall u_n \, \psi
+        \end{align*}
+        where $\psi$ is $\Delta_0$.
+    \end{itemize}
+\end{boxdefinition}
+
+There are no $\Delta_1$ formulae: a block of existential quantifiers is not a block of universal ones, so no formula is syntactically of both shapes. What there are is $\Delta_1^T$ formulae, and to get them we first have to fix a theory to do the translating for us.
+
+\begin{boxdefinition}[Complexity Relative to a Theory]
+    Let $T$ be a theory and let $\psi\of{\bar{u}}$ be a formula. We say $\psi\of{\bar{u}}$ is $\Delta_0^T$ iff there is a $\Delta_0$ formula $\varphi\of{\bar{u}}$ such that
+    \begin{align*}
+        T \vdash \forall \bar{u} \brac{\psi\of{\bar{u}} \leftrightarrow \varphi\of{\bar{u}}}
+    \end{align*}
+    Similarly for $\Sigma_1^T$ and $\Pi_1^T$. We say $\psi\of{\bar{u}}$ is $\Delta_1^T$ iff it is both $\Sigma_1^T$ and $\Pi_1^T$.
+\end{boxdefinition}
+
+Keep going to get $\Sigma_n$ and $\Pi_n$ formulae, and also $\Sigma_n^T$, $\Pi_n^T$ and $\Delta_n^T$ formulae. 
