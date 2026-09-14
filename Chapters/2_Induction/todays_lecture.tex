@@ -13,7 +13,9 @@ Here are some complications with this technique:
     \item There might be parameters involved in the definitions of $A$ and $R$. For instance, if $A$ is a set, then ``$A = \setst{x}{x \in A}$'' takes in a set $A$ as a parameter.
 \end{itemize}
 
-Look at $A = \setst{x}{\varphi(x)}$. As a scheme, define $\psi^A\of{\bar{v}}$ (with $\bar{v}$ denoting free variables) by recursion on the complexity of $\psi\of{\bar{v}}$ as follows. We will have atomic, propositional and quantifier steps. Before each step, if $u$ is any variable that occurs in $\psi$, use some other $u$ instead: ie, $A = \setst{x}{\varphi'(x)}$ where $\varphi'$ is $\varphi\of{u / u'}$. % [CLAUDE] make this more precize and add an explanation.
+Look at $A = \setst{x}{\varphi(x)}$. As a scheme, define $\psi^A\of{\bar{v}}$ (with $\bar{v}$ denoting free variables) by recursion on the complexity of $\psi\of{\bar{v}}$ as follows. We will have atomic, propositional and quantifier steps.
+
+Before starting, rename the bound variables of $\varphi$ so that no variable occurring in $\psi$ is bound in $\varphi$: if $u$ occurs in $\psi$ and $\varphi$ binds $u$, replace $\varphi$ by $\varphi\of{u / u'}$ for some fresh $u'$. Write $\varphi'$ for the result, so that $A = \setst{x}{\varphi'(x)}$ still, and use $\varphi'$ in place of $\varphi$ throughout. The reason is the quantifier step below, which substitutes a variable $u$ of $\psi$ for the free variable $x$ of $\varphi$: were $u$ bound in $\varphi$, that substitution would capture it, and $\varphi\of{u}$ would say something other than ``$u \in A$''.
 \begin{itemize}
     \item \underline{Atomic:} We interpret equality and membership symbols as equality and membership. Ie,
     \begin{align*}
@@ -23,14 +25,18 @@ Look at $A = \setst{x}{\varphi(x)}$. As a scheme, define $\psi^A\of{\bar{v}}$ (w
 
     \item \underline{Propositional:} If $\psi$ is a propositional combination of $\psi_0$ and $\psi_1$, then $\psi^A$ is the same propositional combination of $\psi_0^A$ and $\psi_1^A$.
 
-    \item \underline{Quantifiers:} \sorry % [CLAUDE] just write it out, briefly, in the obvious way
+    \item \underline{Quantifiers:} We relativise a quantifier by restricting it to $A$. Ie,
+    \begin{align*}
+        \parenth{\forall u \, \psi}^A &\text{ is } \forall u \brac{\varphi'(u) \to \psi^A} \\
+        \parenth{\exists u \, \psi}^A &\text{ is } \exists u \brac{\varphi'(u) \land \psi^A}
+    \end{align*}
 \end{itemize}
 
-So for instance, if $R = \setst{(x, y)}{\varphi_R\of{x, y, q}}$, we'd recursively replace occurrences of $v_0 \in v_1$ in $\psi$ with $\varphi_R\of{v_0, v_1, q}$. % [CLAUDE] wut?
+The atomic step above is written for the case $R = \in$. For a general $R$ it is that step which changes, because ``$\in$'' is a symbol of the language we are interpreting, and what it is interpreted as in $(A, R)$ is $R$. So if $R = \setst{(x, y)}{\varphi_R\of{x, y, q}}$, then $\parenth{v_0 \in v_1}^{(A, R)}$ is $\varphi_R\of{v_0, v_1, q}$, and since the recursion bottoms out at the atomic subformulae, this replaces every occurrence of $\in$ in $\psi$. The parameter $q$ simply comes along for the ride, and $\varphi_R$ needs its bound variables renamed away from those of $\psi$ for the same reason $\varphi$ did.
 
 Why are we doing all of this? Here's one reason.
 
-\begin{boxtheorem}[working in $\ZFwoF$]
+\begin{boxtheorem}[working in $\ZFwoF$] \label{Ch2:Thm:ZF_Relativises_To_WF}
     For each axiom $\sigma \in \ZF$ (\textbf{including} foundation), $\sigma^{\WF}$.
 \end{boxtheorem}
 The above reads, ``The relativisation of each $\ZF$ axiom to $\WF$ is true, working in $\ZFwoF$.'' Another equivalent formulation is that for all axioms $\sigma$ of $\ZF$,
@@ -38,8 +44,13 @@ The above reads, ``The relativisation of each $\ZF$ axiom to $\WF$ is true, work
     \ZFwoF \vdash \sigma^{\WF}
 \end{align}
 
-Theorem \sorry % [CLAUDE] add cross-ref
-yields the following corollary.
+Before drawing the consequence we are after, we isolate the fact about relativisation that the argument will run on. We built $\psi^A$ to be the interpretation of $\psi$ in $A$, and an interpretation ought to carry proofs and not just statements: reading every quantifier of a proof as ranging over $A$ turns each of its steps into a step about $A$. The one thing that can go wrong is $A$ being empty, since first-order logic assumes a non-empty domain and proves $\forall u \, \psi \to \exists u \, \psi$.
+
+\begin{boxlemma}[Scheme] \label{Ch2:Lemma:Relativisation_Preserves_Proofs}
+    Let $A$ be a non-empty class, say with no parameters. Then, in the meta-theory, whenever $\sigma \vdash \tau$, we have $\sigma^A \vdash \tau^A$.
+\end{boxlemma}
+
+\Cref{Ch2:Thm:ZF_Relativises_To_WF} and \Cref{Ch2:Lemma:Relativisation_Preserves_Proofs} together yield the following corollary.
 
 \begin{boxcorollary}
     If $\ZFwoF$ is consistent, then so is $\ZF$.
@@ -49,15 +60,13 @@ yields the following corollary.
     \begin{align*}
         \set{\sigma_1, \ldots, \sigma_n} \cup \set{F} \vdash \varphi \land \neg\varphi
     \end{align*}
-    As a scheme (in the meta-theory), we can show that if $A$ is a non-empty class (say, with no parameters), then whenever $\sigma \vdash \tau$, $\sigma^A \vdash \tau^A$. % [CLAUDE] factor this out as a separate lemma and add 2-3 short sentences of intuition preceding it that tie it to the stuff we did earlier on in the lecture. Replace "Apply this" below with a cross-reference after you've factored this out.
-
-    Apply this to what we have to get that
+    Apply \Cref{Ch2:Lemma:Relativisation_Preserves_Proofs} with $\sigma$ the conjunction $\sigma_1 \land \cdots \land \sigma_n \land F$ and $\tau$ the contradiction. Relativisation commutes with the propositional connectives, by the propositional step of the definition, so what comes out is
     \begin{align*}
         \set{\sigma_1^{\WF}, \ldots, \sigma_n^{\WF}} \cup \set{F^{\WF}} \vdash \varphi^{\WF} \land \neg \varphi^{\WF}
     \end{align*}
 \end{proof}
 
-Together with the above theorem scheme, we get that $\ZFwoF$ is inconsistent. % [CLAUDE] justify
+Together with the above theorem scheme, we get that $\ZFwoF$ is inconsistent. Indeed, \Cref{Ch2:Thm:ZF_Relativises_To_WF} gives $\ZFwoF \vdash \sigma_i^{\WF}$ for each $i$, and also $\ZFwoF \vdash F^{\WF}$, so every hypothesis on the left of that display is already a theorem of $\ZFwoF$. Hence $\ZFwoF \vdash \varphi^{\WF} \land \neg\varphi^{\WF}$.
 
 \subsection{Complexity of Formulae}
 
