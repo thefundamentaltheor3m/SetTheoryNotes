@@ -1,0 +1,122 @@
+\section{Relativization}
+
+In \Cref{Ch1:CH} we built $\WF$ and saw that Foundation says exactly that every set lies in it. To ask whether the rest of the axioms are true \textit{in} $\WF$, we need a notion of truth in a class, and satisfaction will not do: it is a notion about sets. Relativization is what replaces it.
+
+\subsection{Relativization to a Class}
+
+Relativization is essentially like satisfaction, just for classes. Our ultimate goal is the following: given $(A, R)$ a class structure and a formula $\psi$, we'd want to define $\psi^{(A, R)}$ to be the relativization (think ``interpretation'') of $\psi$ to $(A, R)$.
+
+Here are some complications with this technique:
+\begin{itemize}
+    \item $R$ might not be $\in$
+    \item There might be parameters involved in the definitions of $A$ and $R$. For instance, if $A$ is a set, then ``$A = \setst{x}{x \in A}$'' takes in a set $A$ as a parameter.
+\end{itemize}
+
+Look at $A = \setst{x}{\varphi(x)}$. As a scheme, define $\psi^A\of{\bar{v}}$ (with $\bar{v}$ denoting free variables) by recursion on the complexity of $\psi\of{\bar{v}}$ as follows. We will have atomic, propositional and quantifier steps.
+
+Before starting, rename the variables of $\varphi$ other than $x$ so that none of them occurs in $\psi$. Write $\varphi'$ for the result, so that $A = \setst{x}{\varphi'(x)}$ still, and use $\varphi'$ in place of $\varphi$ throughout. Both directions of the clash matter. The quantifier step below substitutes a variable $u$ of $\psi$ for the free variable $x$, so a $u$ bound in $\varphi$ would be captured and $\varphi\of{u}$ would say something other than ``$u \in A$''; and what that substitution produces is then dropped underneath the quantifiers of $\psi$, so a parameter of $\varphi$ sharing its name with a variable that $\psi$ binds would be captured the other way.
+\begin{itemize}
+    \item \underline{Atomic:} We interpret equality and membership symbols as equality and membership. Ie,
+    \begin{align*}
+        \parenth{v_0 = v_1}^A &\text{ is } v_0 = v_1 \\
+        \parenth{v_0 \in v_1}^A &\text{ is } v_0 \in v_1 
+    \end{align*}
+
+    \item \underline{Propositional:} If $\psi$ is a propositional combination of $\psi_0$ and $\psi_1$, then $\psi^A$ is the same propositional combination of $\psi_0^A$ and $\psi_1^A$.
+
+    \item \underline{Quantifiers:} We relativize a quantifier by restricting it to $A$. Ie,
+    \begin{align*}
+        \parenth{\forall u \, \psi}^A &\text{ is } \forall u \brac{\varphi'(u) \to \psi^A} \\
+        \parenth{\exists u \, \psi}^A &\text{ is } \exists u \brac{\varphi'(u) \land \psi^A}
+    \end{align*}
+\end{itemize}
+
+The atomic step above is written for the case $R = \in$. For a general $R$ it is that step which changes, because ``$\in$'' is a symbol of the language we are interpreting, and what it is interpreted as in $(A, R)$ is $R$. So if $R = \setst{(x, y)}{\varphi_R\of{x, y, q}}$, then $\parenth{v_0 \in v_1}^{(A, R)}$ is $\varphi_R\of{v_0, v_1, q}$, and since the recursion bottoms out at the atomic subformulae, this replaces every occurrence of $\in$ in $\psi$. The parameter $q$ simply comes along for the ride, which is exactly why $\varphi_R$ needs the same renaming as $\varphi$ did, in both directions: in particular $q$ must not be a variable that $\psi$ binds.
+
+\subsection{The Relative Consistency of $\ZF$}
+
+Why are we doing all of this? Here's one reason.
+
+\begin{boxtheorem}[working in $\ZFwoF$] \label{Ch2:Thm:ZF_Relativizes_To_WF}
+    For each axiom $\sigma \in \ZF$ (\textbf{including} foundation), $\sigma^{\WF}$.
+\end{boxtheorem}
+The above reads, ``The relativization of each $\ZF$ axiom to $\WF$ is true, working in $\ZFwoF$.'' Another equivalent formulation is that for all axioms $\sigma$ of $\ZF$,
+\begin{align}
+    \ZFwoF \vdash \sigma^{\WF}
+\end{align}
+
+Before drawing the consequence we are after, we isolate the fact about relativization that the argument will run on. We built $\psi^A$ to be the interpretation of $\psi$ in $A$, and an interpretation ought to carry proofs and not just statements: reading every quantifier of a proof as ranging over $A$ turns each of its steps into a step about $A$. The one thing that can go wrong is $A$ being empty, since first-order logic assumes a non-empty domain and proves $\forall u \, \psi \to \exists u \, \psi$; so non-emptiness is carried as a hypothesis rather than as a side condition, being a sentence of the object language like any other.
+
+% [CORRECTED] was: ``if $A$ is a non-empty class (say, with no parameters), then whenever $\sigma \vdash \tau$, $\sigma^A \vdash \tau^A$'' --- read literally that is false, because ``$A$ is non-empty'' is a sentence of the object language rather than a side condition on $A$. Take $\sigma$ to be $\forall u \parenth{u = u}$ and $\tau$ to be $\exists u \parenth{u = u}$, both valid; then $\sigma^A$ is valid too, while $\tau^A$ says exactly that $A \neq \emptyset$, which pure logic does not prove. So the hypothesis belongs on the left of the turnstile. The restriction to sentences is needed for the same reason: with $v$ free, $v = v \vdash \exists u \parenth{u = v}$, but the relativization of the conclusion says $v \in A$, which nothing forces
+\begin{boxlemma}[Scheme] \label{Ch2:Lemma:Relativization_Preserves_Proofs}
+    Let $A = \setst{x}{\varphi(x)}$, say with no parameters, and let $\sigma$ and $\tau$ be sentences. Then, in the meta-theory, whenever $\sigma \vdash \tau$, we have $\sigma^A, \, \exists x \, \varphi(x) \vdash \tau^A$.
+\end{boxlemma}
+
+\Cref{Ch2:Thm:ZF_Relativizes_To_WF} and \Cref{Ch2:Lemma:Relativization_Preserves_Proofs} together yield the following corollary.
+
+\begin{boxcorollary}
+    If $\ZFwoF$ is consistent, then so is $\ZF$.
+\end{boxcorollary}
+\begin{proof}
+    We argue by contraposition. Suppose $\ZF$ is inconsistent. Say $\sigma_1, \ldots, \sigma_n$ are axioms of $\ZFwoF$ and
+    \begin{align*}
+        \set{\sigma_1, \ldots, \sigma_n} \cup \set{F} \vdash \varphi \land \neg\varphi
+    \end{align*}
+    Apply \Cref{Ch2:Lemma:Relativization_Preserves_Proofs} with $\sigma$ the conjunction $\sigma_1 \land \cdots \land \sigma_n \land F$ and $\tau$ the contradiction. Relativization commutes with the propositional connectives, by the propositional step of the definition, so what comes out is
+    % [CORRECTED] $\exists x \parenth{x \in \WF}$ is added to the left of the display, which had only the relativized axioms --- the lemma's non-emptiness hypothesis is not logically valid and the relativized axioms do not prove it, so it has to be carried here and discharged in the paragraph below, where we are working in $\ZFwoF$ and $\emptyset \in \WF$ is available
+    \begin{align*}
+        \set{\sigma_1^{\WF}, \ldots, \sigma_n^{\WF}} \cup \set{F^{\WF}} \cup \set{\exists x \parenth{x \in \WF}} \vdash \varphi^{\WF} \land \neg \varphi^{\WF}
+    \end{align*}
+\end{proof}
+
+% [CORRECTED] ``still under the supposition that $\ZF$ is'' is inserted --- the sentence sits outside the proof environment, whose QED has closed the scope of ``Suppose $\ZF$ is inconsistent'', so as written it asserts the inconsistency of $\ZFwoF$ flatly
+Together with the above theorem scheme, we get that $\ZFwoF$ is inconsistent---still under the supposition that $\ZF$ is. Indeed, \Cref{Ch2:Thm:ZF_Relativizes_To_WF} gives $\ZFwoF \vdash \sigma_i^{\WF}$ for each $i$, and also $\ZFwoF \vdash F^{\WF}$; and $\ZFwoF \vdash \exists x \parenth{x \in \WF}$, since $\emptyset \in V_1$. So every hypothesis on the left of that display is a theorem of $\ZFwoF$, and hence $\ZFwoF \vdash \varphi^{\WF} \land \neg\varphi^{\WF}$.
+
+\subsection{Complexity of Formulae}
+
+Whether a formula says the same thing inside a class as it does in $V$ depends on how its quantifiers range, so we need a way of measuring that. The first step is to give the quantifiers that range over a set, rather than over the whole universe, notation of their own.
+
+\begin{boxnotation}[Bounded Quantifiers] \hfill
+    \begin{itemize}
+        \item $\forall u \in v \, \varphi$ stands for $\forall u \brac{u \in v \to \varphi}$
+
+        \item $\exists u \in v \, \varphi$ stands for $\exists u \brac{u \in v \land \varphi}$
+    \end{itemize}
+    Quantifiers written this way are said to be \textbf{bounded}.
+\end{boxnotation}
+
+A formula all of whose quantifiers are bounded can only ever look inside the sets it is handed, and such formulae sit at the bottom of the hierarchy we are about to build.
+
+\begin{boxdefinition}[$\Delta_0$ Formulae]
+    A formula is $\Delta_0$ iff every quantifier occurring in it is bounded.
+\end{boxdefinition}
+
+Everything above the bottom level is obtained by putting a block of unbounded quantifiers, all of the same kind, in front of a $\Delta_0$ formula.
+
+\begin{boxdefinition}[$\Sigma_1$ and $\Pi_1$ Formulae] \hfill
+    \begin{itemize}
+        \item $\Sigma_1$ formulae look like
+        \begin{align*}
+            \exists u_0 \exists u_1 \cdots \exists u_n \, \varphi
+        \end{align*}
+        where $\varphi$ is $\Delta_0$.
+
+        \item $\Pi_1$ formulae look like
+        \begin{align*}
+            \forall u_0 \forall u_1 \cdots \forall u_n \, \psi
+        \end{align*}
+        where $\psi$ is $\Delta_0$.
+    \end{itemize}
+\end{boxdefinition}
+
+There are no $\Delta_1$ formulae. On the shapes above, a formula cannot begin with both an unbounded $\exists$ and an unbounded $\forall$; and allowing either block to be empty only puts the $\Delta_0$ formulae into both classes, which buys us nothing we did not already have. What there are is $\Delta_1^T$ formulae, and to get them we first have to fix a theory to do the translating for us.
+
+\begin{boxdefinition}[Complexity Relative to a Theory]
+    Let $T$ be a theory and let $\psi\of{\bar{u}}$ be a formula. We say $\psi\of{\bar{u}}$ is $\Delta_0^T$ iff there is a $\Delta_0$ formula $\varphi\of{\bar{u}}$ such that
+    \begin{align*}
+        T \vdash \forall \bar{u} \brac{\psi\of{\bar{u}} \leftrightarrow \varphi\of{\bar{u}}}
+    \end{align*}
+    Similarly for $\Sigma_1^T$ and $\Pi_1^T$. We say $\psi\of{\bar{u}}$ is $\Delta_1^T$ iff it is both $\Sigma_1^T$ and $\Pi_1^T$.
+\end{boxdefinition}
+
+Keep going to get $\Sigma_n$ and $\Pi_n$ formulae, and also $\Sigma_n^T$, $\Pi_n^T$ and $\Delta_n^T$ formulae.

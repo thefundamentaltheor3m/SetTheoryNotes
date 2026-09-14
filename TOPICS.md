@@ -150,6 +150,28 @@ chapter file. **That is the path to type into from now on.**
           the ZFC formalization) collapses onto a countable
           transitive M with G^{-1} : M -> V_alpha elementary --
           the countable-microcosm subroutine, with a figure.
+
+2.3 Relativization                                           [2026-09-14]
+    Truth in a class rather than in a set, and the first     2_3_Relativization.tex
+    thing it buys: ZF is consistent if ZF - F is.
+    2.3.1 Relativization to a Class
+          The recursion defining psi^A -- atomic,
+          propositional and quantifier steps -- the variable
+          renaming it needs in both directions, and how the
+          atomic step changes when the relation is some R
+          other than membership.
+    2.3.2 The Relative Consistency of ZF
+          The theorem scheme that ZF - F proves sigma^WF for
+          every ZF axiom including Foundation; the scheme
+          that relativization carries proofs, for sentences
+          and given a non-empty class; and the corollary, by
+          contraposition, that Con(ZF - F) implies Con(ZF).
+    2.3.3 Complexity of Formulae
+          Bounded quantifiers, Delta_0 formulae, the Sigma_1
+          and Pi_1 shapes, why there are no Delta_1 formulae,
+          and complexity relative to a theory: Delta_0^T,
+          Sigma_1^T, Pi_1^T and Delta_1^T, with the promise of
+          Sigma_n and Pi_n to come.
 ```
 
 2.2.3 replaces the abandoned example the lecture of 9 Sep broke off in. The
@@ -223,6 +245,18 @@ The elementary-substructure-then-collapse subroutine: take a big initial piece
 of V, take a countable elementary substructure by DLS, collapse it, work with
 the result. 2.2.3 calls it "one of the most important subroutines in set
 theory" and promises "a lot of this later on". [2026-09-11]
+
+The Levy hierarchy above the first level. 2.3.3 closes with "keep going to
+get Sigma_n and Pi_n formulae, and also Sigma_n^T, Pi_n^T and Delta_n^T
+formulae", which is a promise rather than a development. What the hierarchy
+is *for* -- absoluteness -- is not said either, though 2.3.3's opening
+sentence gestures at it. [2026-09-14]
+
+The proof of the theorem scheme that ZF - F proves sigma^WF for every ZF
+axiom. Stated in 2.3.2 and used immediately; the lecture gave no proof and
+left no \sorry, so this is an unmarked gap rather than a marked one. Same for
+the scheme in the lemma that relativization carries proofs, which the author
+introduced with "we can show that". [2026-09-14]
 ```
 
 Reached, and so no longer signposts: Foundation iff V = WF (promised in 1.4.2, proved
@@ -269,6 +303,26 @@ marker quoting the original); the missing `\crefname` for the `zfcaxiom` environ
 and multiple references no longer print `??`).
 
 ```
+2.3 is not about what chapter 2 says it   The chapter is titled "Induction, Recursion
+is about.                                 and Collapse" and its intro prose says it
+                                          studies well-founded relations on classes.
+                                          Relativization is a different body of theory
+                                          with its own vocabulary -- interpretation,
+                                          the object/meta distinction, the Levy
+                                          hierarchy -- and it is the one L will be
+                                          built out of, which is what chapter 1's
+                                          intro prose promised. The inference note
+                                          above predicted that the first lecture past
+                                          collapse would open chapter 3, and this is
+                                          that lecture. It was placed as 2.3 anyway,
+                                          because the author wrote \section and not
+                                          \chapter, and /integrate may not open a
+                                          chapter the author did not. Run /organize:
+                                          the likely move is that 2.3 becomes chapter
+                                          3, and 2.3.3 a section of it once the Levy
+                                          hierarchy is developed past Sigma_1.
+                                          [2026-09-14]
+
 The course itself is not written up.        Chapter 1 is undergraduate revision and
                                             chapter 2 its first tools; the material
                                             21-602 is heading for -- L, and whatever
