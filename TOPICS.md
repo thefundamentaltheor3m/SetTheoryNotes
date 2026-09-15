@@ -16,16 +16,24 @@ What earns a chapter, a section and a subsection: `.claude/ORGANIZATION.md`.
      for proofs by induction and definitions by recursion along a well-founded set-like
      class relation (2.1), and the general Mostowski Collapse Theorem Scheme promised in
      1.2.2 (2.2), whose examples the lecture of 9 Sep had only begun. So the notes read
-     as groundwork and then tools, an order nobody planned but a sensible one. What the
-     tools are for is still unsaid; the chapter's title has been paid off, and the next
-     lecture that is not an example of collapsing will probably be the start of
-     chapter 3.
+     as groundwork and then tools, an order nobody planned but a sensible one.
+
+     Chapter 3 was opened on 2026-09-15, out of the section the lecture of 14 Sep had
+     been placed in. The previous version of this note predicted it: "the next lecture
+     that is not an example of collapsing will probably be the start of chapter 3", and
+     relativization is that lecture. Its objects are neither sets nor class relations but
+     *formulae* -- what it takes for one to be true in a class, and how far up the
+     universe a formula has to look before we can tell -- and that is a body of theory
+     with its own vocabulary rather than a fourth item on chapter 2's list. So the notes
+     now read as groundwork, then tools, then the language those tools get applied
+     through.
 
      An earlier version of this note predicted chapter 2 would be Gödel's L. It was wrong
      about the order, not the destination: L is still promised by chapter 1's opening
-     prose and still wants a chapter of its own when it arrives, and the tools chapter 2
-     is assembling are what a construction like L needs. Chapter 1 stays the recap it
-     says it is. -->
+     prose and still wants a chapter of its own when it arrives, and chapter 3 is much of
+     what a construction like L needs -- L is built by relativizing the definability
+     operation, and absoluteness, which 3.3 is the setup for, is how one proves anything
+     about it. Chapter 1 stays the recap it says it is. -->
 
 ## 1. A Recap of Undergraduate Set Theory  ->  `Chapters/1_Intro/`
 
@@ -102,10 +110,11 @@ vocabulary (set-like, and the well-foundedness carried over from 1.4.3) is new, 
 title promises a development -- induction, recursion, collapse -- that is not chapter 1's
 recap. The chapter file carries two sentences of intro prose and nothing chapter-wide.
 
-The opening was finished on 2026-09-05: `Chapters/2_Another Chapter/` gave up the number
-2 (it is now `Chapters/3_Another_Chapter/`, still commented out in `main.tex`), and the
-inbox moved to `Chapters/2_Induction/todays_lecture.tex`, `\input` at the end of the
-chapter file. **That is the path to type into from now on.**
+The opening was finished on 2026-09-05: the template's placeholder chapter gave up the
+number 2 (it has since been pushed on to 4; see `## Template scaffolding`), and the
+inbox moved to `Chapters/2_Induction/todays_lecture.tex`. It has since moved on to
+chapter 3 -- **the path to type into is now
+`Chapters/3_Relativization/todays_lecture.tex`.**
 
 ```
 2.1 Induction and Recursion                                  [2026-09-02,
@@ -150,28 +159,6 @@ chapter file. **That is the path to type into from now on.**
           the ZFC formalization) collapses onto a countable
           transitive M with G^{-1} : M -> V_alpha elementary --
           the countable-microcosm subroutine, with a figure.
-
-2.3 Relativization                                           [2026-09-14]
-    Truth in a class rather than in a set, and the first     2_3_Relativization.tex
-    thing it buys: ZF is consistent if ZF - F is.
-    2.3.1 Relativization to a Class
-          The recursion defining psi^A -- atomic,
-          propositional and quantifier steps -- the variable
-          renaming it needs in both directions, and how the
-          atomic step changes when the relation is some R
-          other than membership.
-    2.3.2 The Relative Consistency of ZF
-          The theorem scheme that ZF - F proves sigma^WF for
-          every ZF axiom including Foundation; the scheme
-          that relativization carries proofs, for sentences
-          and given a non-empty class; and the corollary, by
-          contraposition, that Con(ZF - F) implies Con(ZF).
-    2.3.3 Complexity of Formulae
-          Bounded quantifiers, Delta_0 formulae, the Sigma_1
-          and Pi_1 shapes, why there are no Delta_1 formulae,
-          and complexity relative to a theory: Delta_0^T,
-          Sigma_1^T, Pi_1^T and Delta_1^T, with the promise of
-          Sigma_n and Pi_n to come.
 ```
 
 2.2.3 replaces the abandoned example the lecture of 9 Sep broke off in. The
@@ -180,6 +167,53 @@ which is what the entry under `## Unplaced` had predicted would happen.
 
 The lecture date is the one written in the file (`% 9 September`); the commit that
 brought it is dated 2026-09-10, the next day's sync. The written date is used.
+
+## 3. Relativization  ->  `Chapters/3_Relativization/`
+
+Opened on 2026-09-15, out of the section the lecture of 14 Sep had been placed in.
+The author wrote `\section{Relativisation}` live, with `% [CLAUDE] as usual, figure
+out where to put this` beside it, so the placement was delegated rather than decided;
+`/integrate` placed it as 2.3 because it may not open a chapter the author did not,
+and recorded the mismatch as structural pressure. This pass acted on it. The chapter
+takes the section's title, and the section's three subsections are its three sections
+-- one heading level shed because one was gained above, with no title invented and
+none lost. The chapter file carries two paragraphs of intro prose and nothing
+chapter-wide.
+
+`Chapters/3_Another_Chapter/` gave up the number 3 and is now
+`Chapters/4_Another_Chapter/`, still commented out in `main.tex`. The inbox moved
+with the course: **type into `Chapters/3_Relativization/todays_lecture.tex` from now
+on.**
+
+```
+3.1 Relativization to a Class                                [2026-09-14]
+    The recursion defining psi^A: atomic, propositional      3_1_Rel_To_Class.tex
+    and quantifier steps, the variable renaming it needs
+    in both directions, and how the atomic step changes
+    when the relation is some R other than membership.
+    No subsections.
+
+3.2 The Relative Consistency of ZF                           [2026-09-14]
+    What relativization is first used for. The theorem       3_2_Consistency.tex
+    scheme that ZF - F proves sigma^WF for every ZF axiom
+    including Foundation; the scheme that relativization
+    carries proofs, for sentences and given a non-empty
+    class; and the corollary, by contraposition, that
+    Con(ZF - F) implies Con(ZF). No subsections.
+
+3.3 Complexity of Formulae                                   [2026-09-14]
+    How far up the universe a formula has to look.          3_3_Complexity.tex
+    Bounded quantifiers, Delta_0 formulae, the Sigma_1
+    and Pi_1 shapes, why there are no Delta_1 formulae,
+    and complexity relative to a theory: Delta_0^T,
+    Sigma_1^T, Pi_1^T and Delta_1^T, with the promise of
+    Sigma_n and Pi_n to come. No subsections.
+```
+
+Three `% [CORRECTED]` markers sit in 3.2, all from the correctness pass of 2026-09-14
+and all on the same argument: the transfer scheme's non-emptiness hypothesis, its
+restriction to sentences, and the hypothesis carried on the left of the corollary's
+display. Each quotes what it replaced.
 
 ## Deliberate deviations
 
@@ -217,6 +251,32 @@ corpus IQR of 99-229.                       section: its destination is the two 
                                             material about WF that is not about
                                             Foundation, at which point 1.4.2-1.4.3 want
                                             a section of their own.
+
+Chapter 3 is one lecture long, and none     Deliberate, and the cheaper of the two
+of its three sections has a subsection.     mistakes available. ORGANIZATION.md says a
+                                            chapter with too few sections self-heals --
+                                            the next lecture adds 3.4 and nothing
+                                            already written moves -- while fusing two
+                                            lines of enquiry into one heading does not.
+                                            Keeping relativization inside chapter 2
+                                            would have been the second kind. Subsections
+                                            arrive when a section acquires a second idea;
+                                            3.3 will be first, since the Levy hierarchy
+                                            above Sigma_1 is already promised.
+                                            [2026-09-15]
+
+3.1 is short (30 lines) and is one          Its content is one idea -- the recursion
+definition rather than a line of            defining psi^A -- which is the subsection
+enquiry with a destination.                 test, not the section test. It is a section
+                                            only because promoting the subsections
+                                            wholesale was the move that invented no
+                                            headings. Ends when more of the definitional
+                                            groundwork arrives (parameters done properly,
+                                            class structures (A, R) in general), at which
+                                            point 3.1 has subsections and reads as a
+                                            section; or, if it does not, 3.1 and 3.2
+                                            merge into one section with two subsections.
+                                            [2026-09-15]
 ```
 
 ## Signposted
@@ -302,27 +362,13 @@ marker quoting the original); the missing `\crefname` for the `zfcaxiom` environ
 (declared in `TeX_Setup/environments.tex`, so `\Cref` to an axiom now prints "ZFC Axiom"
 and multiple references no longer print `??`).
 
-```
-2.3 is not about what chapter 2 says it   The chapter is titled "Induction, Recursion
-is about.                                 and Collapse" and its intro prose says it
-                                          studies well-founded relations on classes.
-                                          Relativization is a different body of theory
-                                          with its own vocabulary -- interpretation,
-                                          the object/meta distinction, the Levy
-                                          hierarchy -- and it is the one L will be
-                                          built out of, which is what chapter 1's
-                                          intro prose promised. The inference note
-                                          above predicted that the first lecture past
-                                          collapse would open chapter 3, and this is
-                                          that lecture. It was placed as 2.3 anyway,
-                                          because the author wrote \section and not
-                                          \chapter, and /integrate may not open a
-                                          chapter the author did not. Run /organize:
-                                          the likely move is that 2.3 becomes chapter
-                                          3, and 2.3.3 a section of it once the Levy
-                                          hierarchy is developed past Sigma_1.
-                                          [2026-09-14]
+Discharged on 2026-09-15: 2.3 was not about what chapter 2 says it is about. It is now
+chapter 3, its three subsections are its three sections, the placeholder gave up the
+number, the inbox moved with the course, and the two labels that changed chapter were
+rewritten together with their cross-references. Recorded by the run that placed the
+material, acted on by the next one.
 
+```
 The course itself is not written up.        Chapter 1 is undergraduate revision and
                                             chapter 2 its first tools; the material
                                             21-602 is heading for -- L, and whatever
@@ -361,7 +407,7 @@ boxdefinition.                               discussion is deliberately informal
 Placeholder content from [Lecture-Notes-Template-2026][tpl], still standing.
 
 ```
-Chapters/3_Another_Chapter/      placeholder chapter, two placeholder sections, still
+Chapters/4_Another_Chapter/      placeholder chapter, two placeholder sections, still
                                  carrying the template's titles. Nothing has displaced
                                  its content, so nothing has been deleted -- but its
                                  \input in main.tex is commented out, because until
@@ -369,9 +415,11 @@ Chapters/3_Another_Chapter/      placeholder chapter, two placeholder sections, 
                                  chapter called "Another Chapter" with a section called
                                  "Another Section". Renumbered from 2 to 3 on
                                  2026-09-05, when the real chapter 2 needed the number;
-                                 the space in the old directory name went with it. It
-                                 takes the next free number again if a real chapter 3
-                                 arrives. [2026-08-31, renumbered 2026-09-05]
+                                 the space in the old directory name went with it. Then
+                                 from 3 to 4 on 2026-09-15, when the real chapter 3
+                                 needed that one. It takes the next free number again
+                                 each time a real chapter arrives.
+                                 [2026-08-31, renumbered 2026-09-05 and 2026-09-15]
 Chapters/Appendices/             placeholder, \input commented out in main.tex
 ```
 

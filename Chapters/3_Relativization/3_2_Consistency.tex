@@ -1,0 +1,38 @@
+\section{The Relative Consistency of $\ZF$}
+
+Why are we doing all of this? Here's one reason.
+
+\begin{boxtheorem}[working in $\ZFwoF$] \label{Ch3:Thm:ZF_Relativizes_To_WF}
+    For each axiom $\sigma \in \ZF$ (\textbf{including} foundation), $\sigma^{\WF}$.
+\end{boxtheorem}
+The above reads, ``The relativization of each $\ZF$ axiom to $\WF$ is true, working in $\ZFwoF$.'' Another equivalent formulation is that for all axioms $\sigma$ of $\ZF$,
+\begin{align}
+    \ZFwoF \vdash \sigma^{\WF}
+\end{align}
+
+Before drawing the consequence we are after, we isolate the fact about relativization that the argument will run on. We built $\psi^A$ to be the interpretation of $\psi$ in $A$, and an interpretation ought to carry proofs and not just statements: reading every quantifier of a proof as ranging over $A$ turns each of its steps into a step about $A$. The one thing that can go wrong is $A$ being empty, since first-order logic assumes a non-empty domain and proves $\forall u \, \psi \to \exists u \, \psi$; so non-emptiness is carried as a hypothesis rather than as a side condition, being a sentence of the object language like any other.
+
+% [CORRECTED] was: ``if $A$ is a non-empty class (say, with no parameters), then whenever $\sigma \vdash \tau$, $\sigma^A \vdash \tau^A$'' --- read literally that is false, because ``$A$ is non-empty'' is a sentence of the object language rather than a side condition on $A$. Take $\sigma$ to be $\forall u \parenth{u = u}$ and $\tau$ to be $\exists u \parenth{u = u}$, both valid; then $\sigma^A$ is valid too, while $\tau^A$ says exactly that $A \neq \emptyset$, which pure logic does not prove. So the hypothesis belongs on the left of the turnstile. The restriction to sentences is needed for the same reason: with $v$ free, $v = v \vdash \exists u \parenth{u = v}$, but the relativization of the conclusion says $v \in A$, which nothing forces
+\begin{boxlemma}[Scheme] \label{Ch3:Lemma:Relativization_Preserves_Proofs}
+    Let $A = \setst{x}{\varphi(x)}$, say with no parameters, and let $\sigma$ and $\tau$ be sentences. Then, in the meta-theory, whenever $\sigma \vdash \tau$, we have $\sigma^A, \, \exists x \, \varphi(x) \vdash \tau^A$.
+\end{boxlemma}
+
+\Cref{Ch3:Thm:ZF_Relativizes_To_WF} and \Cref{Ch3:Lemma:Relativization_Preserves_Proofs} together yield the following corollary.
+
+\begin{boxcorollary}
+    If $\ZFwoF$ is consistent, then so is $\ZF$.
+\end{boxcorollary}
+\begin{proof}
+    We argue by contraposition. Suppose $\ZF$ is inconsistent. Say $\sigma_1, \ldots, \sigma_n$ are axioms of $\ZFwoF$ and
+    \begin{align*}
+        \set{\sigma_1, \ldots, \sigma_n} \cup \set{F} \vdash \varphi \land \neg\varphi
+    \end{align*}
+    Apply \Cref{Ch3:Lemma:Relativization_Preserves_Proofs} with $\sigma$ the conjunction $\sigma_1 \land \cdots \land \sigma_n \land F$ and $\tau$ the contradiction. Relativization commutes with the propositional connectives, by the propositional step of the definition, so what comes out is
+    % [CORRECTED] $\exists x \parenth{x \in \WF}$ is added to the left of the display, which had only the relativized axioms --- the lemma's non-emptiness hypothesis is not logically valid and the relativized axioms do not prove it, so it has to be carried here and discharged in the paragraph below, where we are working in $\ZFwoF$ and $\emptyset \in \WF$ is available
+    \begin{align*}
+        \set{\sigma_1^{\WF}, \ldots, \sigma_n^{\WF}} \cup \set{F^{\WF}} \cup \set{\exists x \parenth{x \in \WF}} \vdash \varphi^{\WF} \land \neg \varphi^{\WF}
+    \end{align*}
+\end{proof}
+
+% [CORRECTED] ``still under the supposition that $\ZF$ is'' is inserted --- the sentence sits outside the proof environment, whose QED has closed the scope of ``Suppose $\ZF$ is inconsistent'', so as written it asserts the inconsistency of $\ZFwoF$ flatly
+Together with the above theorem scheme, we get that $\ZFwoF$ is inconsistent---still under the supposition that $\ZF$ is. Indeed, \Cref{Ch3:Thm:ZF_Relativizes_To_WF} gives $\ZFwoF \vdash \sigma_i^{\WF}$ for each $i$, and also $\ZFwoF \vdash F^{\WF}$; and $\ZFwoF \vdash \exists x \parenth{x \in \WF}$, since $\emptyset \in V_1$. So every hypothesis on the left of that display is a theorem of $\ZFwoF$, and hence $\ZFwoF \vdash \varphi^{\WF} \land \neg\varphi^{\WF}$.
