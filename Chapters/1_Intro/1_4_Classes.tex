@@ -241,7 +241,7 @@ We now say what it means for a relation on a class to be well-founded. Say $A$ i
     \parenth{A, R \cap \parenth{A \times A}}
 \end{align*}
 
-% [CORRECTED] was: ``for every nonempty $S \ssq A$'' --- $S$ has to be a \textit{set}. As written it reads as quantifying over subclasses, and then it is not a formula of the language of set theory at all but a scheme, which the uses below need it not to be: both ``$\forall A \in \WF$, $(A, \in)$ is well-founded'' and the TFAE bind $A$, so ``well-founded'' must be a formula with $A$ free. It also makes chapter 2's first proposition --- billed there as extending well-foundedness from subsets to subclasses --- a restatement of the definition, with its set-likeness hypothesis and its whole proof idle
+% [CORRECTED] was: ``for every nonempty $S \ssq A$'' --- $S$ has to be a \textit{set}. As written it reads as quantifying over subclasses, which bites wherever $A$ is a proper class: it stops being a single formula of the language of set theory and becomes a scheme, and it makes chapter 2's first proposition --- billed there as extending well-foundedness from subsets to subclasses --- a restatement of the definition, with its set-likeness hypothesis and its whole proof idle. Where $A$ is a set variable, as in ``$\forall A \in \WF$, $(A, \in)$ is well-founded'' and in the TFAE below, the two readings agree by Comprehension, so nothing in this section was affected
 \begin{boxdefinition}[Well-Foundedness]
     We say that $(A, R)$ is \textbf{well-founded} if for every nonempty set $S \ssq A$, $\exists x \in S$ such that $\forall y \in S$, $\neg \parenth{y \, R \, x}$.
 
