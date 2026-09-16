@@ -241,8 +241,9 @@ We now say what it means for a relation on a class to be well-founded. Say $A$ i
     \parenth{A, R \cap \parenth{A \times A}}
 \end{align*}
 
+% [CORRECTED] was: ``for every nonempty $S \ssq A$'' --- $S$ has to be a \textit{set}. As written it reads as quantifying over subclasses, which makes the definition a scheme rather than a single formula, and makes chapter 2's first proposition --- billed there as extending well-foundedness from subsets to subclasses --- a restatement of the definition, with its set-likeness hypothesis and its whole proof idle. The two readings are not far apart in extension: where $A$ is a set, as everywhere in this section, they agree by Comprehension, and for set-like $(A, R)$ their equivalence is exactly what that proposition proves. It is the trivialization, not a change in which structures count as well-founded, that forces the word
 \begin{boxdefinition}[Well-Foundedness]
-    We say that $(A, R)$ is \textbf{well-founded} if for every nonempty $S \ssq A$, $\exists x \in S$ such that $\forall y \in S$, $\neg \parenth{y \, R \, x}$.
+    We say that $(A, R)$ is \textbf{well-founded} if for every nonempty set $S \ssq A$, $\exists x \in S$ such that $\forall y \in S$, $\neg \parenth{y \, R \, x}$.
 
     We say that $(A, R)$ is \textbf{ill-founded} if it is not well-founded.
 \end{boxdefinition}

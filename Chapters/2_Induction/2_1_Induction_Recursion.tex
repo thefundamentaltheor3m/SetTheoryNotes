@@ -70,7 +70,8 @@ The first fact is that well-foundedness, which speaks of subsets of $A$, extends
 
     Next, put $T = \bigcup_{n < \omega} T_n$. This is the smallest $R$-closed set that has $z$ as a member.
 
-    Now, $S \cap T$ is a nonempty subset of $A$. So it has an $R$-minimal member, say $x$. Here, using well-foundedness of $(A, R)$, it is easy to show that $x$ is $R$-minimal among members of $S$. Otherwise, we'd have $y \, R \, x$, with $y \in S$. Since $x \in T$ and $T$ is $R$-closed, we have $y \in T$. This contradicts $R$-minimality of $x$ in $S \cap T$.
+    % [CORRECTED] was: ``using well-foundedness of $(A, R)$'' --- well-foundedness is used once in this proof, in the sentence before, to get an $R$-minimal member of the set $S \cap T$. What upgrades that to $R$-minimality in $S$ is $R$-closedness of $T$: the argument goes through verbatim for relations that are not well-founded, and breaks at once if $T$ is not $R$-closed
+    Now, $S \cap T$ is a nonempty subset of $A$. So it has an $R$-minimal member, say $x$. Here, using the fact that $T$ is $R$-closed, it is easy to show that $x$ is $R$-minimal among members of $S$. Otherwise, we'd have $y \, R \, x$, with $y \in S$. Since $x \in T$ and $T$ is $R$-closed, we have $y \in T$. This contradicts $R$-minimality of $x$ in $S \cap T$.
 \end{proof}
 
 From this we get induction along $R$.
