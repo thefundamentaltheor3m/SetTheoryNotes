@@ -86,9 +86,25 @@ For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, rel
 
     By $\Delta_0$-absoluteness, \sorry % [CLAUDE] just 2 short sentences concluding/wrapping up here should be more than enough
 
-    \item \underline{Comprehension:} Assume (here on after) that \underline{$M$ is transitive}. \sorry
+    \item \underline{Comprehension:} Assume (here on after) that \underline{$M$ is transitive}.
+    % [FILLED] the rest of this item is supplied; the lecture's notes stop at the transitivity assumption
+    For a formula $\varphi\of{x, \bar{y}}$, the corresponding instance of Comprehension, relativized to $M$, reads
+    \begin{align*}
+        \forall A \in M \, \forall \bar{y} \in M \, \exists B \in M \, \forall x \in M \brac{x \in B \lr \parenth{x \in A \land \varphi^M\of{x, \bar{y}}}}
+    \end{align*}
+    Fix $A, \bar{y} \in M$. Since $M$ is transitive, $A$ and every $B \in M$ are subsets of $M$, so for $x \notin M$ both sides of the biconditional are false, and the innermost $\forall x \in M$ may as well range over every $x$. So what is being asked of $B$ is exactly that $B = \setst{x \in A}{\varphi^M\of{x, \bar{y}}}$, and Comprehension$^M$ holds iff
+    \begin{align*}
+        \setst{x \in A}{\varphi^M\of{x, \bar{y}}} \in M
+    \end{align*}
+    for every formula $\varphi\of{x, \bar{y}}$ and all $A, \bar{y} \in M$. In particular, it holds if every subset of a member of $M$ is itself a member of $M$.
 
-    \item \underline{Pairing:} \sorry 
+    \item \underline{Pairing:}
+    % [FILLED] supplied; the lecture's notes have only the heading
+    Atomic formulae relativize to themselves, so Pairing$^M$ reads
+    \begin{align*}
+        \forall x \in M \, \forall y \in M \, \exists A \in M \, \parenth{x \in A \land y \in A}
+    \end{align*}
+    ie, any two members of $M$ lie in a common member of $M$. This certainly holds if $\set{x, y} \in M$ whenever $x, y \in M$. If Comprehension$^M$ holds, the converse is true as well: given $x, y \in A \in M$, the above gives $\setst{z \in A}{z = x \lor z = y} \in M$, since $z = x \lor z = y$ is its own relativization, and that set is $\set{x, y}$. So, given Comprehension$^M$, Pairing$^M$ holds iff $\set{x, y} \in M$ for all $x, y \in M$.
 \end{itemize}
 
 % [CLAUDE] here is a digression, now you need to figure out where it's going
@@ -111,8 +127,12 @@ For today, let $T$ denote the theory consisting of Extensionality, Comprehension
     We can show that Replacement does not relativise to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
     \begin{enumerate}
         \item $G(n) = S$ iff $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$
+        % [FILLED] the second definition and everything after it are supplied; the lecture's notes stop after the first
+        \item $G(n) = S$ iff $\forall g \brac{\parenth{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}}} \to g(n) = S}$
     \end{enumerate}
-    \sorry
+    The first is $\Sigma_1$ and the second $\Pi_1$: the conditions on $g$ inside the brackets can be written using bounded quantifiers only, with $\omega$ as a parameter. For each $n < \omega$, the only $g$ meeting them is $g_n = \setst{\parenth{i, \omega + i}}{i \leq n}$, and $g_n \in V_{\omega + \omega}$, being a finite set of pairs of ordinals below $\omega + n + 1$, so a member of $V_{\omega + n + 4}$. Since $V_{\omega + \omega}$ is transitive and contains $\omega$, $\Delta_0$-absoluteness says that a $g \in V_{\omega + \omega}$ meets the conditions in the sense of $V_{\omega + \omega}$ iff it really meets them, ie, iff $g = g_n$. So the first definition relativized to $V_{\omega + \omega}$ says that $g_n(n) = S$, because $g_n$ is a witness in $V_{\omega + \omega}$; and so does the second, because $g_n$ is the one and only $g \in V_{\omega + \omega}$ its antecedent applies to. Either way, for $n < \omega$ and $S \in V_{\omega + \omega}$, $G(n) = S$ holds in $V_{\omega + \omega}$ iff $S = \omega + n$.
+
+    Now take the instance of Replacement given by either definition, with $A = \omega \in V_{\omega + \omega}$. In $V_{\omega + \omega}$, its hypothesis holds: each $n < \omega$ has exactly one $S \in V_{\omega + \omega}$ with $G(n) = S$ there, namely $\omega + n \in V_{\omega + \omega}$. Its conclusion asks for some $B \in V_{\omega + \omega}$ with $\omega + n \in B$ for every $n < \omega$. But then $\rank{B} > \rank{\omega + n} = \omega + n$ for every $n$, by \Cref{Ch1:Prop:Rank_Of_Members}, so $\rank{B} \geq \omega + \omega$ and $B \notin V_{\omega + \omega}$. So this instance of Replacement fails in $V_{\omega + \omega}$.
 \end{boxnexample}
 
 Let's make some definitions about cardinals.
