@@ -186,11 +186,11 @@ Let's make some definitions about cardinals.
 
 % [CORRECTED] was: ``of a set $A$'' --- ``unbounded in $A$'' needs an ordering on $A$, which an arbitrary set does not come with; every use of cofinality here is at an ordinal
 \begin{boxdefinition}[Cofinality]
-    The \textbf{cofinality} of an ordinal $A$, denoted $\cf(A)$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
+    The \textbf{cofinality} of an ordinal $A$, denoted $\cf{A}$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
 \end{boxdefinition}
 
 \begin{boxdefinition}[Regularity/Singularity]
-    A cardinal $\mu$ is \textbf{regular} if $\cf(\mu) = \mu$. If $\mu$ is not regular, we say $\mu$ is \textbf{singular}.
+    A cardinal $\mu$ is \textbf{regular} if $\cf{\mu} = \mu$. If $\mu$ is not regular, we say $\mu$ is \textbf{singular}.
 \end{boxdefinition}
 
 \begin{boxdefinition}[Weak/Strong Inaccessibility]
@@ -215,5 +215,5 @@ Let's make some definitions about cardinals.
 
     Successor case: if $\beth_{\alpha} < \mu$, then $\beth_{\alpha + 1} = 2^{\beth_{\alpha}} < \mu$, because $\beth_{\alpha}$ is a cardinal below $\mu$ and $\mu$ is a strong limit cardinal.
 
-    Limit case: let $\lambda < \mu$ be a limit ordinal with $\beth_{\alpha} < \mu$ for all $\alpha < \lambda$. If $\beth_{\lambda} = \sup_{\alpha < \lambda} \beth_{\alpha}$ were not below $\mu$, then $\alpha \mapsto \beth_{\alpha}$ would be a function from $\lambda$ to $\mu$ with unbounded image, so $\cf(\mu) \leq \abs{\lambda} < \mu$, contradicting the regularity of $\mu$.
+    Limit case: let $\lambda < \mu$ be a limit ordinal with $\beth_{\alpha} < \mu$ for all $\alpha < \lambda$. If $\beth_{\lambda} = \sup_{\alpha < \lambda} \beth_{\alpha}$ were not below $\mu$, then $\alpha \mapsto \beth_{\alpha}$ would be a function from $\lambda$ to $\mu$ with unbounded image, so $\cf{\mu} \leq \abs{\lambda} < \mu$, contradicting the regularity of $\mu$.
 \end{proof}
