@@ -2,13 +2,14 @@
 
 Whether a formula says the same thing inside a class as it does in $V$ depends on how its quantifiers range, so we need a way of measuring that. The first step is to give the quantifiers that range over a set, rather than over the whole universe, notation of their own.
 
+% [CORRECTED] ``with $u$ and $v$ distinct variables'' is inserted, at the author's instruction --- without it, $\exists v \in v \, \varphi$ counts as bounded, but it stands for $\exists v \brac{v \in v \land \varphi}$, whose quantifier ranges over everything. Without Foundation that breaks $\Delta_0$-absoluteness in 3.4: $\exists v \in v \parenth{v = v}$ is false in the transitive class $\emptyset$ but true in $\set{a} \supseteq \emptyset$ if $a = \set{a}$, which $\ZFwoF$ does not rule out
 \begin{boxnotation}[Bounded Quantifiers] \hfill
     \begin{itemize}
         \item $\forall u \in v \, \varphi$ stands for $\forall u \brac{u \in v \to \varphi}$
 
         \item $\exists u \in v \, \varphi$ stands for $\exists u \brac{u \in v \land \varphi}$
     \end{itemize}
-    Quantifiers written this way are said to be \textbf{bounded}.
+    Quantifiers written this way, with $u$ and $v$ distinct variables, are said to be \textbf{bounded}.
 \end{boxnotation}
 
 A formula all of whose quantifiers are bounded can only ever look inside the sets it is handed, and such formulae sit at the bottom of the hierarchy we are about to build.
