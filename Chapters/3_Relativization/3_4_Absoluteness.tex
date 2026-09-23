@@ -135,3 +135,38 @@ ie, any two members of $M$ lie in a common member of $M$. With Comprehension$^M$
 \begin{proof}
     If $\set{x, y} \in M$ whenever $x, y \in M$, then Pairing$^M$ certainly holds. Conversely, given $x, y \in A \in M$, \Cref{Ch3:Lemma:Comprehension_In_M} gives $\setst{z \in A}{z = x \lor z = y} \in M$, since $z = x \lor z = y$ is its own relativization, and that set is $\set{x, y}$.
 \end{proof}
+
+Unions and Power Sets both say that some class is contained in a set, so to say what they become in $M$ we relativize classes as well as formulae.
+
+\begin{boxnotation}[Relativized Classes]
+    Say $M$ is a transitive class and $A$ another class. Say $A = \setst{x}{\vp(x)}$. We might write $A^M$ to mean $\setst{x \in M}{\vp^M(x)}$ even though it may depend on the choice of $\varphi$ with this notation.
+\end{boxnotation}
+
+% [FILLED] from here to the end of the section is supplied, answering the author's directive on the notation above (``now you need to figure out where it's going''); the lecture's notes stop at the notation
+The dependence is real. By Pairing, $V = \setst{x}{x = x}$ is also $\setst{x}{\exists y \parenth{x \in y}}$. Relativized to the transitive class $M = \set{\emptyset}$, the first formula gives $V^M = M$, but the second gives $\emptyset$, since $\emptyset$ has no members. When $\varphi$ is $\Delta_0$ with its parameters in $M$, though, there is no ambiguity: $\Delta_0$-absoluteness gives $\vp^M(x) \lr \vp(x)$ for every $x \in M$, and so $A^M = A \cap M$.
+
+Both classes the next two axioms talk about are of this kind, being $\bigcup \calF = \setst{x}{\exists A \in \calF \, \parenth{x \in A}}$ and $\Powset(A) = \setst{X}{X \ssq A}$. So for $\calF, A \in M$,
+\begin{align*}
+    \parenth{\bigcup \calF}^M = \bigcup \calF
+    \qquad \text{and} \qquad
+    \Powset(A)^M = \Powset(A) \cap M
+\end{align*}
+where $\bigcup \calF \cap M = \bigcup \calF$ because $M$ is transitive. The first of these says that $M$ computes unions correctly.
+
+\begin{boxlemma}
+    Unions$^M$ holds iff $\bigcup \calF \in M$ for all $\calF \in M$.
+\end{boxlemma}
+\begin{proof}
+    Relativized to $M$, Unions says that every $\calF \in M$ has some $B \in M$ with $A \ssq B$ for every $A \in \calF \cap M$, the inclusion being $\Delta_0$ and so meaning the same in $M$ as in $V$. Since $M$ is transitive, $\calF \cap M = \calF$, so this asks for some $B \in M$ with $\bigcup \calF \ssq B$. If $\bigcup \calF \in M$, it is such a $B$. Conversely, given such a $B$, \Cref{Ch3:Lemma:Comprehension_In_M} puts $\setst{x \in B}{\exists A \in \calF \, \parenth{x \in A}} \in M$, the formula being $\Delta_0$, and that set is $\bigcup \calF$.
+\end{proof}
+
+Power Sets is where the relativized class and the real one part ways.
+
+\begin{boxlemma}
+    Power Sets$^M$ holds iff $\Powset(A) \cap M \in M$ for all $A \in M$.
+\end{boxlemma}
+\begin{proof}
+    Relativized to $M$, Power Sets says that every $A \in M$ has some $\calF \in M$ with $X \in \calF$ for every $X \in M$ with $X \ssq A$, ie, with $\Powset(A) \cap M \ssq \calF$. If $\Powset(A) \cap M \in M$, it is such an $\calF$. Conversely, given such an $\calF$, \Cref{Ch3:Lemma:Comprehension_In_M} puts $\setst{X \in \calF}{X \ssq A} \in M$, and since $\calF \ssq M$, that set is $\Powset(A) \cap M$.
+\end{proof}
+
+So the power set of $A$ in the sense of $M$ is $\Powset(A) \cap M$, which can be much smaller than $\Powset(A)$: $M$ only sees those subsets of $A$ that are members of $M$. For instance, $\omega$ is transitive, and $\Powset(2) \cap \omega = \set{0, 1, 2}$ misses $\set{1}$.

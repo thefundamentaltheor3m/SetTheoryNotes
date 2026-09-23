@@ -28,9 +28,3 @@ Before starting, rename the variables of $\varphi$ other than $x$ so that none o
 \end{itemize}
 
 The atomic step above is written for the case $R = \in$. For a general $R$ it is that step which changes, because ``$\in$'' is a symbol of the language we are interpreting, and what it is interpreted as in $(A, R)$ is $R$. So if $R = \setst{(x, y)}{\varphi_R\of{x, y, q}}$, then $\parenth{v_0 \in v_1}^{(A, R)}$ is $\varphi_R\of{v_0, v_1, q}$, and since the recursion bottoms out at the atomic subformulae, this replaces every occurrence of $\in$ in $\psi$. The parameter $q$ simply comes along for the ride, which is exactly why $\varphi_R$ needs the same renaming as $\varphi$ did, in both directions: in particular $q$ must not be a variable that $\psi$ binds.
-
-Classes can be relativized as well as formulae, by relativizing the formula that defines them.
-
-\begin{boxnotation}[Relativized Classes]
-    Say $M$ is a transitive class and $A$ another class. Say $A = \setst{x}{\vp(x)}$. We might write $A^M$ to mean $\setst{x \in M}{\vp^M(x)}$ even though it may depend on the choice of $\varphi$ with this notation.
-\end{boxnotation}
