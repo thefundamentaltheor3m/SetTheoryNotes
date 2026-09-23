@@ -2,3 +2,156 @@
 % it: it is \input from the chapter file, so the Overleaf preview builds them live. Once the
 % material has been placed into the sections, /integrate empties the file again and leaves
 % this header behind. Do not delete the file or its \input line.
+
+\section{Absoluteness}
+
+% [CLAUDE] factor out the definitions of absolute, upwards-absolute, and downwards-absolute. just make one definition, called \textbf{absolunteness}, and make bullet-points for downwards, upwards and absolute. I have a certain style of writing definitions. Please emulate that style.
+
+\subsection{Absoluteness Theorems}
+
+Every absoluteness theorem we prove will have an assumption that the smaller model (or sometimes, both models) are transitive. There are no absoluteness theorems in this course that do not mention transitivity, and it is a common mistake to try and apply them in cases where there isn't transitivity.
+
+\begin{boxlemma}[$\Delta_0$-Absoluteness]
+    Let $M$ and $N$ be classes\footnote{possibly proper classes, possibly sets}, with $M \ssq N$. Assume $M$ is transitive. Then, for every $\Delta_0$ formula $\varphi\of{\bar{u}}$ and $\bar{x} \in M^{<\omega}$ (matching $\bar{u}$ in length),
+    \begin{align*}
+        \varphi^M\of{\bar{x}} \lr \varphi^N\of{\bar{x}}
+    \end{align*}
+    We say \textbf{$\varphi\of{\bar{u}}$ is absolute between $M$ and $N$}.
+\end{boxlemma}
+\begin{proof}
+    We argue by induction on the complexity of $\varphi\of{\bar{u}}$.
+
+    \begin{itemize}
+        \item \underline{Atomic Case.} Note that
+        \begin{align*}
+            \parenth{u_0 = u_1}^M
+            \qquad
+            u_0 = u_1
+            \qquad
+            \parenth{u_0 = u_1}^N
+        \end{align*}
+        are all exactly the same. Similarly,
+        \begin{align*}
+            \parenth{u_0 \in u_1}^M
+            \qquad
+            u_0 \in u_1
+            \qquad
+            \parenth{u_0 \in u_1}^N
+        \end{align*}
+        are all exactly the same.
+
+        \item \underline{Propositional Case.} If $\varphi$ is some propositional combination of $\varphi_0$ and $\varphi_1$, then the statement for $\vp$ is clear from the induction hypotheses for $\vp_0$ and $\vp_1$.
+
+        \item \underline{Bounded Quantifiers.} Say $\vp\of{\bar{u}}$ is of the form $\exists v \in W \, \parenth{\psi\of{\bar{u}, v, w}}$. (This is enough, because bounded universal can be formulated as a negation of a bounded existential, and the propositional case covers negations.)
+
+        Let $y, z \in M$. Then, the following are equivalent:
+        \begin{itemize}
+            \item $\brac{\exists v \in z, \, \psi\of{\bar{x}, v, z}}^M$
+            \item There is $y \in z \cap M$ such that $\psi^M\of{\bar{x}, y, z}$
+            \item There is $y \in z$ such that $\psi^M\of{\bar{x}, y, z}$ (because $M$ is transitive, so $z = z \cap M$)
+            \item There is $y \in z \cap N$ such that $\psi^M\of{\bar{x}, y, z}$ (because $z \ssq M \ssq N$, so $z = z \cap N$)
+            \item There is $y \in z \cap N$ such that $\psi^N\of{\bar{x}, y, z}$
+            \item $\brac{\exists v \in z, \, \psi\of{\bar{x}, v, z}}^N$
+        \end{itemize}
+    \end{itemize}
+\end{proof}
+
+\begin{boxlemma}
+    In the same situation as above, we have upward absoluteness from $M$ to $N$ for $\Sigma_1$ formulae and downward absoluteness from $N$ to $M$ for $\Pi_1$ formulae.
+\end{boxlemma}
+
+\begin{boxlemma}
+    Let $T$ be a theory and $M \ssq N$ be models of $T$ (with $M$ transitive). Then,
+    \begin{itemize}
+        \item $\Sigma_1^T$ formulae are upwards-absolute
+        \item $\Pi_1^T$ formulae are downwards-absolute
+        \item $\Delta_1^T$ formulae are absolute
+    \end{itemize}
+\end{boxlemma}
+
+\subsection{Absoluteness of ZFC Axioms}
+
+For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativised to $M$.
+
+\begin{itemize}  % [CLAUDE] maybe turn each of these into its own little lemma or something and add fillers like "From now on, assume <insert axiom name>^M" (as the case may be)
+    \item \underline{Extensionality:}
+    \begin{align*}
+        \brac{\forall A \forall B \brac{\forall x \parenth{x \in A \lr x \in B} \to A = B}}^M
+    \end{align*}
+    Or, equivalently,
+    \begin{align*}
+        \brac{\forall A \forall B \brac{\parenth{A \ssq B \land B \ssq A} \to A = B}}^M
+    \end{align*}
+    where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of the above are $\Delta_0$.
+
+    By $\Delta_0$-absoluteness, \sorry % [CLAUDE] just 2 short sentences concluding/wrapping up here should be more than enough
+
+    \item \underline{Comprehension:} Assume (here on after) that \underline{$M$ is transitive}. \sorry
+
+    \item \underline{Pairing:} \sorry 
+\end{itemize}
+
+% [CLAUDE] here is a digression, now you need to figure out where it's going
+
+Say $M$ is a transitive class and $A$ another class. Say $A = \setst{x}{\vp(x)}$. We might write $A^M$ to mean $\setst{x \in M}{\vp^M(x)}$ even though it may depend on the choice of $\varphi$ with this notation.
+
+% 21 Sep 2026
+
+For today, let $T$ denote the theory consisting of Extensionality, Comprehension, Pairing, Unions, and Power Sets. % [CLAUDE] I don't like this convention, what you should do is wherever $T$ appears in today's notes, replace it with the set {Extensionality, Comprehension, Pairing, Unions, Power Sets} or something. And if it's $T + something$ you should add the something to your set.
+
+\begin{boxproposition}
+    For each axiom $\sigma$ of $T$, for all limit ordinals $\alpha$, $\sigma^{V_{\alpha}}$.
+\end{boxproposition}
+
+\begin{boxproposition}
+    For each axiom $\sigma$ of $T \cup \set{\text{Replacement}}$, $\sigma^{V_{\omega}}$.
+\end{boxproposition}
+
+\begin{boxnexample}[$V_{\omega + \omega}$]
+    We can show that Replacement does not relativise to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
+    \begin{enumerate}
+        \item $G(n) = S$ iff $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$
+    \end{enumerate}
+    \sorry
+\end{boxnexample}
+
+Let's make some definitions about cardinals.
+
+\begin{boxdefinition}[(Strong) Limit Cardinals]
+    $\mu$ is a
+    \begin{itemize}
+        \item \textbf{limit cardinal} iff for all cardinals $\kappa < \mu$, $\kappa^+ < \mu$.
+        \item \textbf{strong limit cardinal} iff for all cardinals $\kappa < \mu$, $2^{\kappa} < \mu$.
+    \end{itemize}
+\end{boxdefinition}
+
+\begin{boxdefinition}[Cofinality]
+    The \textbf{cofinality} of a set $A$, denoted $\cf(A)$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
+\end{boxdefinition}
+
+\begin{boxdefinition}[Regularity/Singularity]
+    A cardinal $\mu$ is \textbf{regular} if $\cf(\mu) = \mu$. If $\mu$ is not regular, we say $\mu$ is \textbf{singular}.
+\end{boxdefinition}
+
+\begin{boxdefinition}[Weak/Strong Inaccessibility]
+    We say a cardinal $\mu$ is
+    \begin{itemize}
+        \item \textbf{weakly inaccessible} iff $\mu$ is an uncountable, regular limit cardinal.
+        \item \textbf{strongly inaccessible} iff $\mu$ is an uncountable, regular, strong limit cardinal.
+    \end{itemize}
+\end{boxdefinition}
+
+\begin{boxproposition}
+    If $\mu$ is strongly inaccessible, then $\beth_{\mu} = \mu$.
+\end{boxproposition}
+\begin{proof}
+    By induction, $\beth_{\alpha} \geq \alpha$ for every ordinal $\alpha$, so $\beth_{\mu} \geq \mu$.
+
+    It's enough to show that $\forall \alpha < \mu$, $\beth_{\alpha} < \mu$, because the fact that $\mu$ is a limit ordinal means that, by definition, $\beth_{\mu} = \sup_{\alpha < \mu} \beth_{\alpha}$.
+
+    Now perform induction on $\alpha < \mu$.
+    
+    Base case: $\beth_0 < \mu$ because $\beth_0 = \omega$ and $\mu$ is uncountable.
+
+    Successor case: \aorry % [CLAUDE] this shouldn't take you more than 6 lines to prove.
+\end{proof}
