@@ -166,7 +166,7 @@ Power Sets is where the relativized class and the real one part ways.
     Power Sets$^M$ holds iff $\Powset(A) \cap M \in M$ for all $A \in M$.
 \end{boxlemma}
 \begin{proof}
-    Relativized to $M$, Power Sets says that every $A \in M$ has some $\calF \in M$ with $X \in \calF$ for every $X \in M$ with $X \ssq A$, ie, with $\Powset(A) \cap M \ssq \calF$. If $\Powset(A) \cap M \in M$, it is such an $\calF$. Conversely, given such an $\calF$, \Cref{Ch3:Lemma:Comprehension_In_M} puts $\setst{X \in \calF}{X \ssq A} \in M$, and since $\calF \ssq M$, that set is $\Powset(A) \cap M$.
+    Relativized to $M$, Power Sets says that every $A \in M$ has some $\calF \in M$ with $X \in \calF$ for every $X \in M$ with $X \ssq A$, ie, with $\Powset(A) \cap M \ssq \calF$. If $\Powset(A) \cap M \in M$, it is such an $\calF$. Conversely, given such an $\calF$, \Cref{Ch3:Lemma:Comprehension_In_M} puts $\setst{X \in \calF}{X \ssq A} \in M$, the formula being $\Delta_0$, and since $\calF \ssq M$, that set is $\Powset(A) \cap M$.
 \end{proof}
 
-So the power set of $A$ in the sense of $M$ is $\Powset(A) \cap M$, which can be much smaller than $\Powset(A)$: $M$ only sees those subsets of $A$ that are members of $M$. For instance, $\omega$ is transitive, and $\Powset(2) \cap \omega = \set{0, 1, 2}$ misses $\set{1}$.
+So the power set of $A$ in the sense of $M$ is $\Powset(A) \cap M$, which can be smaller than $\Powset(A)$: $M$ only sees those subsets of $A$ that are members of $M$. For instance, $\omega$ is a transitive set, and $\Powset(2)^{\omega} = \Powset(2) \cap \omega = \set{0, 1, 2}$ misses $\set{1}$.
