@@ -1,0 +1,102 @@
+\section{Levels of the $V$-Hierarchy as Models}
+
+We now put the previous section to work on the levels of the $V$-hierarchy, and ask which of them satisfy which of the axioms.
+
+\subsection{The Axioms at Limit Levels}
+
+Five of the axioms hold at every limit level of the $V$-hierarchy.
+
+\begin{boxproposition}
+    For each axiom $\sigma$ of
+    \begin{align*}
+        \set{\text{Extensionality}, \text{Comprehension}, \text{Pairing}, \text{Unions}, \text{Power Sets}}
+    \end{align*}
+    for all limit ordinals $\alpha$, $\sigma^{V_{\alpha}}$.
+\end{boxproposition}
+
+At the first infinite level we get Replacement as well.
+
+\begin{boxproposition}
+    For each axiom $\sigma$ of
+    \begin{align*}
+        \set{\text{Extensionality}, \text{Comprehension}, \text{Pairing}, \text{Unions}, \text{Power Sets}, \text{Replacement}}
+    \end{align*}
+    we have $\sigma^{V_{\omega}}$.
+\end{boxproposition}
+
+But Replacement fails already at the next limit level.
+
+\begin{boxnexample}[$V_{\omega + \omega}$]
+    We can show that Replacement does not relativize to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
+    \begin{enumerate}
+        % [CORRECTED] was: $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$ --- the closing brace had swallowed $g(n) = S$ into a set, $i$ was never quantified, and $w$ stood for $\omega$; ``$g$ is a function'' is added, as in the second definition
+        \item $G(n) = S$ iff
+        \begin{align*}
+            &\exists g \left[ g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \right. \\
+            &\qquad \left. \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)} = g(i) + 1} \land g(n) = S \right]
+        \end{align*}
+        % [FILLED] the second definition and everything after it are supplied; the lecture's notes stop after the first
+        \item $G(n) = S$ iff
+        \begin{align*}
+            &\forall g \left[ \left( g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \right. \right. \\
+            &\qquad \left. \left. \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}} \right) \to g(n) = S \right]
+        \end{align*}
+    \end{enumerate}
+    The first is $\Sigma_1$ and the second $\Pi_1$: the conditions on $g$ inside the brackets can be written using bounded quantifiers only, with $\omega$ as a parameter. For each $n < \omega$, the only $g$ meeting them is $g_n = \setst{\parenth{i, \omega + i}}{i \leq n}$, and $g_n \in V_{\omega + \omega}$, being a finite set of pairs of ordinals below $\omega + n + 1$, so a member of $V_{\omega + n + 4}$. Since $V_{\omega + \omega}$ is transitive and contains $\omega$, $\Delta_0$-absoluteness says that a $g \in V_{\omega + \omega}$ meets the conditions in the sense of $V_{\omega + \omega}$ iff it really meets them, ie, iff $g = g_n$. So the first definition relativized to $V_{\omega + \omega}$ says that $g_n(n) = S$, because $g_n$ is a witness in $V_{\omega + \omega}$; and so does the second, because $g_n$ is the one and only $g \in V_{\omega + \omega}$ its antecedent applies to. Either way, for $n < \omega$ and $S \in V_{\omega + \omega}$, $G(n) = S$ holds in $V_{\omega + \omega}$ iff $S = \omega + n$.
+
+    Now take the instance of Replacement given by either definition, with $A = \omega \in V_{\omega + \omega}$. In $V_{\omega + \omega}$, its hypothesis holds: each $n < \omega$ has exactly one $S \in V_{\omega + \omega}$ with $G(n) = S$ there, namely $\omega + n \in V_{\omega + \omega}$. Its conclusion asks for some $B \in V_{\omega + \omega}$ with $\omega + n \in B$ for every $n < \omega$. But then $\rank{B} > \rank{\omega + n} = \omega + n$ for every $n$, by \Cref{Ch1:Prop:Rank_Of_Members}, so $\rank{B} \geq \omega + \omega$ and $B \notin V_{\omega + \omega}$. So this instance of Replacement fails in $V_{\omega + \omega}$.
+\end{boxnexample}
+
+\subsection{Inaccessible Cardinals}
+
+Let's make some definitions about cardinals.
+
+\begin{boxdefinition}[(Strong) Limit Cardinals]
+    $\mu$ is a
+    \begin{itemize}
+        \item \textbf{limit cardinal} iff for all cardinals $\kappa < \mu$, $\kappa^+ < \mu$.
+        \item \textbf{strong limit cardinal} iff for all cardinals $\kappa < \mu$, $2^{\kappa} < \mu$.
+    \end{itemize}
+\end{boxdefinition}
+
+Next, we measure how many steps it takes to climb to the top of an ordinal.
+
+% [CORRECTED] was: ``of a set $A$'' --- ``unbounded in $A$'' needs an ordering on $A$, which an arbitrary set does not come with; every use of cofinality here is at an ordinal
+\begin{boxdefinition}[Cofinality]
+    The \textbf{cofinality} of an ordinal $A$, denoted $\cf{A}$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
+\end{boxdefinition}
+
+A cardinal that cannot be climbed in fewer steps than itself gets a name.
+
+\begin{boxdefinition}[Regularity/Singularity]
+    A cardinal $\mu$ is \textbf{regular} if $\cf{\mu} = \mu$. If $\mu$ is not regular, we say $\mu$ is \textbf{singular}.
+\end{boxdefinition}
+
+Putting all of this together gives two kinds of inaccessible cardinal.
+
+\begin{boxdefinition}[Weak/Strong Inaccessibility]
+    We say a cardinal $\mu$ is
+    \begin{itemize}
+        \item \textbf{weakly inaccessible} iff $\mu$ is an uncountable, regular limit cardinal.
+        \item \textbf{strongly inaccessible} iff $\mu$ is an uncountable, regular, strong limit cardinal.
+    \end{itemize}
+\end{boxdefinition}
+
+The $\beth$s cannot get past a strongly inaccessible cardinal from below.
+
+\begin{boxproposition}
+    If $\mu$ is strongly inaccessible, then $\beth_{\mu} = \mu$.
+\end{boxproposition}
+\begin{proof}
+    By induction, $\beth_{\alpha} \geq \alpha$ for every ordinal $\alpha$, so $\beth_{\mu} \geq \mu$.
+
+    It's enough to show that $\forall \alpha < \mu$, $\beth_{\alpha} < \mu$, because the fact that $\mu$ is a limit ordinal means that, by definition, $\beth_{\mu} = \sup_{\alpha < \mu} \beth_{\alpha}$.
+
+    Now perform induction on $\alpha < \mu$.
+    
+    Base case: $\beth_0 < \mu$ because $\beth_0 = \omega$ and $\mu$ is uncountable.
+
+    Successor case: if $\beth_{\alpha} < \mu$, then $\beth_{\alpha + 1} = 2^{\beth_{\alpha}} < \mu$, because $\beth_{\alpha}$ is a cardinal below $\mu$ and $\mu$ is a strong limit cardinal.
+
+    Limit case: let $\lambda < \mu$ be a limit ordinal with $\beth_{\alpha} < \mu$ for all $\alpha < \lambda$. If $\beth_{\lambda} = \sup_{\alpha < \lambda} \beth_{\alpha}$ were not below $\mu$, then $\alpha \mapsto \beth_{\alpha}$ would be a function from $\lambda$ to $\mu$ with unbounded image, so $\cf{\mu} \leq \abs{\lambda} < \mu$, contradicting the regularity of $\mu$.
+\end{proof}

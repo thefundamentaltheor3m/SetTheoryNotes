@@ -1,0 +1,172 @@
+\section{Absoluteness}
+
+The question in this section is when a formula says the same thing in a class as it does in a bigger one.
+
+\begin{boxdefinition}[Absoluteness]
+    Let $M \ssq N$ be classes. We say a formula $\varphi\of{\bar{u}}$ is
+    \begin{itemize}
+        \item \textbf{downwards-absolute} from $N$ to $M$ iff for all $\bar{x} \in M^{<\omega}$ (matching $\bar{u}$ in length), $\varphi^N\of{\bar{x}} \to \varphi^M\of{\bar{x}}$.
+        \item \textbf{upwards-absolute} from $M$ to $N$ iff for all $\bar{x} \in M^{<\omega}$, $\varphi^M\of{\bar{x}} \to \varphi^N\of{\bar{x}}$.
+        \item \textbf{absolute} between $M$ and $N$ iff it is both, ie, iff for all $\bar{x} \in M^{<\omega}$, $\varphi^M\of{\bar{x}} \lr \varphi^N\of{\bar{x}}$.
+    \end{itemize}
+\end{boxdefinition}
+
+\subsection{Absoluteness Theorems}
+
+Every absoluteness theorem we prove will have an assumption that the smaller model (or sometimes, both models) are transitive. There are no absoluteness theorems in this course that do not mention transitivity, and it is a common mistake to try and apply them in cases where there isn't transitivity.
+
+\begin{boxlemma}[$\Delta_0$-Absoluteness]
+    Let $M$ and $N$ be classes\footnote{possibly proper classes, possibly sets}, with $M \ssq N$. Assume $M$ is transitive. Then, for every $\Delta_0$ formula $\varphi\of{\bar{u}}$ and $\bar{x} \in M^{<\omega}$ (matching $\bar{u}$ in length),
+    \begin{align*}
+        \varphi^M\of{\bar{x}} \lr \varphi^N\of{\bar{x}}
+    \end{align*}
+    That is, $\varphi\of{\bar{u}}$ is absolute between $M$ and $N$.
+\end{boxlemma}
+\begin{proof}
+    We argue by induction on the complexity of $\varphi\of{\bar{u}}$.
+
+    \begin{itemize}
+        \item \underline{Atomic Case.} Note that
+        \begin{align*}
+            \parenth{u_0 = u_1}^M
+            \qquad
+            u_0 = u_1
+            \qquad
+            \parenth{u_0 = u_1}^N
+        \end{align*}
+        are all exactly the same. Similarly,
+        \begin{align*}
+            \parenth{u_0 \in u_1}^M
+            \qquad
+            u_0 \in u_1
+            \qquad
+            \parenth{u_0 \in u_1}^N
+        \end{align*}
+        are all exactly the same.
+
+        \item \underline{Propositional Case.} If $\varphi$ is some propositional combination of $\varphi_0$ and $\varphi_1$, then the statement for $\vp$ is clear from the induction hypotheses for $\vp_0$ and $\vp_1$.
+
+        \item \underline{Bounded Quantifiers.} Say $\vp\of{\bar{u}}$ is of the form $\exists v \in w \, \parenth{\psi\of{\bar{u}, v, w}}$. (This is enough, because bounded universal can be formulated as a negation of a bounded existential, and the propositional case covers negations.)
+
+        Let $\bar{x}, z \in M$. Then, the following are equivalent:
+        \begin{itemize}
+            \item $\brac{\exists v \in z, \, \psi\of{\bar{x}, v, z}}^M$
+            \item There is $y \in z \cap M$ such that $\psi^M\of{\bar{x}, y, z}$
+            \item There is $y \in z$ such that $\psi^M\of{\bar{x}, y, z}$ (because $M$ is transitive, so $z = z \cap M$)
+            \item There is $y \in z \cap N$ such that $\psi^M\of{\bar{x}, y, z}$ (because $z \ssq M \ssq N$, so $z = z \cap N$)
+            \item There is $y \in z \cap N$ such that $\psi^N\of{\bar{x}, y, z}$
+            \item $\brac{\exists v \in z, \, \psi\of{\bar{x}, v, z}}^N$
+        \end{itemize}
+    \end{itemize}
+\end{proof}
+
+Putting a block of unbounded quantifiers in front of a $\Delta_0$ formula costs us one of the two directions.
+
+\begin{boxlemma}
+    In the same situation as above, we have upward absoluteness from $M$ to $N$ for $\Sigma_1$ formulae and downward absoluteness from $N$ to $M$ for $\Pi_1$ formulae.
+\end{boxlemma}
+
+The same goes for formulae that are only $\Sigma_1$ or $\Pi_1$ up to provable equivalence in a theory, as long as both classes satisfy it.
+
+% [CORRECTED] ``and non-empty'' is inserted --- the notes use ``theory'' for a set of axioms (``ZFC is an infinite theory''; ``For each axiom $\sigma \in \ZF$ (\textbf{including} foundation), $\sigma^{\WF}$''), so for a class, ``model of $T$'' reads as $\sigma^M$ for every axiom $\sigma$ of $T$, which $M = \emptyset$ satisfies whenever every axiom of $T$ begins with $\forall$. Then $\exists u \parenth{u = u}$ is $\Delta_1^T$, being logically equivalent to $\forall u \parenth{u = u}$, but it is true in any non-empty $N$ and false in $M$: the $T$-equivalence only carries over to a non-empty class, as in the proof-transfer lemma of the section on relative consistency. If ``model of $T$'' is instead read as $\theta^M$ for every \textit{theorem} $\theta$ of $T$, or, for a set $M$, as $\parenth{M, \in} \models T$, whose universe is non-empty by definition, then $M \neq \emptyset$ already and the insertion is redundant, though harmless
+\begin{boxlemma}
+    Let $T$ be a theory and $M \ssq N$ be models of $T$ (with $M$ transitive and non-empty). Then,
+    \begin{itemize}
+        \item $\Sigma_1^T$ formulae are upwards-absolute
+        \item $\Pi_1^T$ formulae are downwards-absolute
+        \item $\Delta_1^T$ formulae are absolute
+    \end{itemize}
+\end{boxlemma}
+
+\subsection{Absoluteness of ZFC Axioms}
+
+For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativized to $M$.
+
+We begin with Extensionality, which relativized to $M$ reads
+\begin{align*}
+    \brac{\forall A \forall B \brac{\forall x \parenth{x \in A \lr x \in B} \to A = B}}^M
+\end{align*}
+Or, equivalently,
+\begin{align*}
+    \brac{\forall A \forall B \brac{\parenth{A \ssq B \land B \ssq A} \to A = B}}^M
+\end{align*}
+% [CORRECTED] was: ``Indeed, all sub-formulae of the above are $\Delta_0$.'' --- both displays begin with the unbounded $\forall A \forall B$, and the first also has an unbounded $\forall x$, so read as a claim about them it is false; what is $\Delta_0$, and what the lemma below uses, is the formula under the two leading quantifiers
+where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of $\parenth{A \ssq B \land B \ssq A} \to A = B$ are $\Delta_0$.
+
+\begin{boxlemma}
+    If $M$ is transitive, then Extensionality$^M$.
+\end{boxlemma}
+\begin{proof}
+    By $\Delta_0$-absoluteness, for $A, B \in M$ the formula $\parenth{A \ssq B \land B \ssq A} \to A = B$ holds in $M$ iff it holds in $V$. Extensionality says it holds in $V$ for all $A$ and $B$, so in particular it holds in $M$ for all $A, B \in M$, which is what Extensionality$^M$ says.
+\end{proof}
+
+Assume (here on after) that \underline{$M$ is transitive}.
+
+% [FILLED] this lemma and its proof are supplied; the lecture's notes stop at the transitivity assumption
+Next comes Comprehension. For a formula $\varphi\of{x, \bar{y}}$, the corresponding instance of Comprehension, relativized to $M$, reads
+\begin{align*}
+    \forall A \in M \, \forall \bar{y} \in M \, \exists B \in M \, \forall x \in M \brac{x \in B \lr \parenth{x \in A \land \varphi^M\of{x, \bar{y}}}}
+\end{align*}
+and transitivity lets us say exactly when this holds.
+
+\begin{boxlemma}[Scheme] \label{Ch3:Lemma:Comprehension_In_M}
+    For each formula $\varphi\of{x, \bar{y}}$, the instance of Comprehension for $\varphi$ holds in $M$ iff
+    \begin{align*}
+        \setst{x \in A}{\varphi^M\of{x, \bar{y}}} \in M
+    \end{align*}
+    for all $A, \bar{y} \in M$. In particular, Comprehension$^M$ holds if every subset of a member of $M$ is itself a member of $M$.
+\end{boxlemma}
+\begin{proof}
+    Fix $A, \bar{y} \in M$. Since $M$ is transitive, $A$ and every $B \in M$ are subsets of $M$, so for $x \notin M$ both sides of the biconditional above are false, and the innermost $\forall x \in M$ may as well range over every $x$. So what is being asked of $B$ is exactly that $B = \setst{x \in A}{\varphi^M\of{x, \bar{y}}}$, and there is such a $B$ in $M$ iff this set is a member of $M$. It is a subset of $A$, which gives the last part.
+\end{proof}
+
+From now on, assume Comprehension$^M$.
+
+% [FILLED] this lemma and its proof are supplied; the lecture's notes have only the heading
+Pairing is simpler, because atomic formulae relativize to themselves: Pairing$^M$ reads
+\begin{align*}
+    \forall x \in M \, \forall y \in M \, \exists A \in M \, \parenth{x \in A \land y \in A}
+\end{align*}
+ie, any two members of $M$ lie in a common member of $M$. With Comprehension$^M$ in hand, we can cut that common member down to size.
+
+\begin{boxlemma}
+    Pairing$^M$ holds iff $\set{x, y} \in M$ for all $x, y \in M$.
+\end{boxlemma}
+\begin{proof}
+    If $\set{x, y} \in M$ whenever $x, y \in M$, then Pairing$^M$ certainly holds. Conversely, given $x, y \in A \in M$, \Cref{Ch3:Lemma:Comprehension_In_M} gives $\setst{z \in A}{z = x \lor z = y} \in M$, since $z = x \lor z = y$ is its own relativization, and that set is $\set{x, y}$.
+\end{proof}
+
+Unions and Power Sets both say that some class is contained in a set, so to say what they become in $M$ we relativize classes as well as formulae.
+
+\begin{boxnotation}[Relativized Classes]
+    Say $M$ is a transitive class and $A$ another class. Say $A = \setst{x}{\vp(x)}$. We might write $A^M$ to mean $\setst{x \in M}{\vp^M(x)}$ even though it may depend on the choice of $\varphi$ with this notation.
+\end{boxnotation}
+
+% [FILLED] from here to the end of the section is supplied, answering the author's directive on the notation above (``now you need to figure out where it's going''); the lecture's notes stop at the notation
+The dependence is real. By Pairing, $V = \setst{x}{x = x}$ is also $\setst{x}{\exists y \parenth{x \in y}}$. Relativized to the transitive class $M = \set{\emptyset}$, the first formula gives $V^M = M$, but the second gives $\emptyset$, since $\emptyset$ has no members. When $\varphi$ is $\Delta_0$ with its parameters in $M$, though, there is no ambiguity: $\Delta_0$-absoluteness gives $\vp^M(x) \lr \vp(x)$ for every $x \in M$, and so $A^M = A \cap M$.
+
+Both classes the next two axioms talk about are of this kind, being $\bigcup \calF = \setst{x}{\exists A \in \calF \, \parenth{x \in A}}$ and $\Powset(A) = \setst{X}{X \ssq A}$. So for $\calF, A \in M$,
+\begin{align*}
+    \parenth{\bigcup \calF}^M = \bigcup \calF
+    \qquad \text{and} \qquad
+    \Powset(A)^M = \Powset(A) \cap M
+\end{align*}
+where $\bigcup \calF \cap M = \bigcup \calF$ because $M$ is transitive. The first of these says that $M$ computes unions correctly.
+
+\begin{boxlemma}
+    Unions$^M$ holds iff $\bigcup \calF \in M$ for all $\calF \in M$.
+\end{boxlemma}
+\begin{proof}
+    Relativized to $M$, Unions says that every $\calF \in M$ has some $B \in M$ with $A \ssq B$ for every $A \in \calF \cap M$, the inclusion being $\Delta_0$ and so meaning the same in $M$ as in $V$. Since $M$ is transitive, $\calF \cap M = \calF$, so this asks for some $B \in M$ with $\bigcup \calF \ssq B$. If $\bigcup \calF \in M$, it is such a $B$. Conversely, given such a $B$, \Cref{Ch3:Lemma:Comprehension_In_M} puts $\setst{x \in B}{\exists A \in \calF \, \parenth{x \in A}} \in M$, the formula being $\Delta_0$, and that set is $\bigcup \calF$.
+\end{proof}
+
+Power Sets is where the relativized class and the real one part ways.
+
+\begin{boxlemma}
+    Power Sets$^M$ holds iff $\Powset(A) \cap M \in M$ for all $A \in M$.
+\end{boxlemma}
+\begin{proof}
+    Relativized to $M$, Power Sets says that every $A \in M$ has some $\calF \in M$ with $X \in \calF$ for every $X \in M$ with $X \ssq A$, ie, with $\Powset(A) \cap M \ssq \calF$. If $\Powset(A) \cap M \in M$, it is such an $\calF$. Conversely, given such an $\calF$, \Cref{Ch3:Lemma:Comprehension_In_M} puts $\setst{X \in \calF}{X \ssq A} \in M$, the formula being $\Delta_0$, and since $\calF \ssq M$, that set is $\Powset(A) \cap M$.
+\end{proof}
+
+So the power set of $A$ in the sense of $M$ is $\Powset(A) \cap M$, which can be smaller than $\Powset(A)$: $M$ only sees those subsets of $A$ that are members of $M$. For instance, $\omega$ is a transitive set, and $\Powset(2)^{\omega} = \Powset(2) \cap \omega = \set{0, 1, 2}$ misses $\set{1}$.
