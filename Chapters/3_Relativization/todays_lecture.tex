@@ -51,9 +51,9 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
 
         \item \underline{Propositional Case.} If $\varphi$ is some propositional combination of $\varphi_0$ and $\varphi_1$, then the statement for $\vp$ is clear from the induction hypotheses for $\vp_0$ and $\vp_1$.
 
-        \item \underline{Bounded Quantifiers.} Say $\vp\of{\bar{u}}$ is of the form $\exists v \in W \, \parenth{\psi\of{\bar{u}, v, w}}$. (This is enough, because bounded universal can be formulated as a negation of a bounded existential, and the propositional case covers negations.)
+        \item \underline{Bounded Quantifiers.} Say $\vp\of{\bar{u}}$ is of the form $\exists v \in w \, \parenth{\psi\of{\bar{u}, v, w}}$. (This is enough, because bounded universal can be formulated as a negation of a bounded existential, and the propositional case covers negations.)
 
-        Let $y, z \in M$. Then, the following are equivalent:
+        Let $\bar{x}, z \in M$. Then, the following are equivalent:
         \begin{itemize}
             \item $\brac{\exists v \in z, \, \psi\of{\bar{x}, v, z}}^M$
             \item There is $y \in z \cap M$ such that $\psi^M\of{\bar{x}, y, z}$
@@ -69,8 +69,9 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
     In the same situation as above, we have upward absoluteness from $M$ to $N$ for $\Sigma_1$ formulae and downward absoluteness from $N$ to $M$ for $\Pi_1$ formulae.
 \end{boxlemma}
 
+% [CORRECTED] ``and non-empty'' is inserted --- for a class, ``model of $T$'' can only mean $\sigma^M$ for every $\sigma \in T$, which $M = \emptyset$ satisfies whenever every axiom of $T$ begins with $\forall$. Then $\exists u \parenth{u = u}$ is $\Delta_1^T$, being logically equivalent to $\forall u \parenth{u = u}$, but it is true in $N$ and false in $M$: the $T$-equivalence only carries over to a non-empty class, as in the proof-transfer lemma of the section on relative consistency
 \begin{boxlemma}
-    Let $T$ be a theory and $M \ssq N$ be models of $T$ (with $M$ transitive). Then,
+    Let $T$ be a theory and $M \ssq N$ be models of $T$ (with $M$ transitive and non-empty). Then,
     \begin{itemize}
         \item $\Sigma_1^T$ formulae are upwards-absolute
         \item $\Pi_1^T$ formulae are downwards-absolute
@@ -90,7 +91,8 @@ Or, equivalently,
 \begin{align*}
     \brac{\forall A \forall B \brac{\parenth{A \ssq B \land B \ssq A} \to A = B}}^M
 \end{align*}
-where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of the above are $\Delta_0$.
+% [CORRECTED] was: ``Indeed, all sub-formulae of the above are $\Delta_0$.'' --- both displays begin with the unbounded $\forall A \forall B$, and the first also has an unbounded $\forall x$, so read as a claim about them it is false; what is $\Delta_0$, and what the lemma below uses, is the formula under the two leading quantifiers
+where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of $\parenth{A \ssq B \land B \ssq A} \to A = B$ are $\Delta_0$.
 
 \begin{boxlemma}
     If $M$ is transitive, then Extensionality$^M$.
@@ -162,7 +164,8 @@ Five of the axioms hold at every limit level of the $V$-hierarchy.
 \begin{boxnexample}[$V_{\omega + \omega}$]
     We can show that Replacement does not relativise to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
     \begin{enumerate}
-        \item $G(n) = S$ iff $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$
+        % [CORRECTED] was: $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$ --- the closing brace had swallowed $g(n) = S$ into a set, $i$ was never quantified, and $w$ stood for $\omega$; ``$g$ is a function'' is added, as in the second definition
+        \item $G(n) = S$ iff $\exists g \brac{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)} = g(i) + 1} \land g(n) = S}$
         % [FILLED] the second definition and everything after it are supplied; the lecture's notes stop after the first
         \item $G(n) = S$ iff $\forall g \brac{\parenth{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}}} \to g(n) = S}$
     \end{enumerate}
@@ -181,8 +184,9 @@ Let's make some definitions about cardinals.
     \end{itemize}
 \end{boxdefinition}
 
+% [CORRECTED] was: ``of a set $A$'' --- ``unbounded in $A$'' needs an ordering on $A$, which an arbitrary set does not come with; every use of cofinality here is at an ordinal
 \begin{boxdefinition}[Cofinality]
-    The \textbf{cofinality} of a set $A$, denoted $\cf(A)$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
+    The \textbf{cofinality} of an ordinal $A$, denoted $\cf(A)$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
 \end{boxdefinition}
 
 \begin{boxdefinition}[Regularity/Singularity]
