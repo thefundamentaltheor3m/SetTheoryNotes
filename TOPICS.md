@@ -192,6 +192,10 @@ on.**
     in both directions, and how the atomic step changes
     when the relation is some R other than membership.
     No subsections.
+    + The notation A^M for a class relativized to a         [+ 2026-09-16/18]
+      transitive class, in a boxnotation at the end. The
+      lecture said it in the middle of the absoluteness
+      material and the author flagged it as a digression.
 
 3.2 The Relative Consistency of ZF                           [2026-09-14]
     What relativization is first used for. The theorem       3_2_Consistency.tex
@@ -208,7 +212,57 @@ on.**
     and complexity relative to a theory: Delta_0^T,
     Sigma_1^T, Pi_1^T and Delta_1^T, with the promise of
     Sigma_n and Pi_n to come. No subsections.
+
+3.4 Absoluteness                                             [2026-09-16/18,
+    When a formula says the same thing in a transitive        undated]
+    class as in a bigger one, and what that says about       3_4_Absoluteness.tex
+    the axioms relativized to a transitive class. The
+    section opens with the one definition of
+    downwards-absolute, upwards-absolute and absolute.
+    3.4.1 Absoluteness Theorems
+          Delta_0-absoluteness for transitive M in N, with
+          proof; the one-directional Sigma_1 and Pi_1
+          versions; and the Sigma_1^T, Pi_1^T and Delta_1^T
+          versions for non-empty transitive models of T.
+    3.4.2 Absoluteness of ZFC Axioms
+          For a transitive class M: Extensionality^M always;
+          Comprehension^M exactly when M contains each set
+          {x in A : phi^M} it should; and, given that,
+          Pairing^M exactly when M is closed under pairs.
+          The list stops at Pairing.
+
+3.5 Levels of the V-Hierarchy as Models                      [2026-09-21]
+    Which levels of the hierarchy satisfy which axioms,      3_5_V_Models.tex
+    and the cardinals needed to go further.
+    3.5.1 The Axioms at Limit Levels
+          Extensionality, Comprehension, Pairing, Unions and
+          Power Sets hold in every V_alpha with alpha a
+          limit; V_omega also satisfies Replacement; and
+          V_{omega + omega} does not, via n |-> omega + n.
+    3.5.2 Inaccessible Cardinals
+          Limit and strong limit cardinals, cofinality,
+          regular and singular cardinals, weak and strong
+          inaccessibility, and beth_mu = mu for strongly
+          inaccessible mu.
 ```
+
+3.4 and 3.5 came in one commit (`1f1265d`, "feat: latest lectures", dated 2026-09-23). The
+author's `% 21 Sep 2026` marker divides them. Everything above it is undated. The course
+meets on Mondays, Wednesdays and Fridays, so that material is from 16 Sep, 18 Sep or both,
+and the date is recorded as 2026-09-16/18 until the author says which.
+
+The author wrote `\section{Absoluteness}` and its two subsections live. All three are
+kept as written. The 21 Sep material came with no headings; its section and both
+subsections are new. It is a separate section, not a continuation of 3.4, because it asks
+a different question: 3.4 asks which formulae and axioms survive the passage to a
+transitive class, and 3.5 asks which levels of V satisfy which axioms. A 3.4 whose last
+subsection was about inaccessible cardinals would also no longer be about absoluteness.
+The relativized-class notation went to 3.1 rather than staying in 3.4.2, answering the
+author's `% [CLAUDE] here is a digression, now you need to figure out where it's going`.
+It is notation for relativization, and 3.1 is where relativization is defined.
+
+3.4 carries three `% [CORRECTED]` markers and 3.5 two, all from the correctness pass of
+this lecture. 3.4.2 carries two `% [FILLED]` markers and 3.5.1 one.
 
 Three `% [CORRECTED]` markers sit in 3.2, all from the correctness pass of 2026-09-14
 and all on the same argument: the transfer scheme's non-emptiness hypothesis, its
@@ -264,6 +318,10 @@ of its three sections has a subsection.     mistakes available. ORGANIZATION.md 
                                             3.3 will be first, since the Levy hierarchy
                                             above Sigma_1 is already promised.
                                             [2026-09-15]
+                                            Partly ended on 2026-09-21: chapter 3
+                                            now spans three lectures, and 3.4 and
+                                            3.5 arrived with subsections; 3.1 to
+                                            3.3 still have none.
 
 3.1 is short (30 lines) and is one          Its content is one idea -- the recursion
 definition rather than a line of            defining psi^A -- which is the subsection
@@ -277,6 +335,11 @@ enquiry with a destination.                 test, not the section test. It is a 
                                             section; or, if it does not, 3.1 and 3.2
                                             merge into one section with two subsections.
                                             [2026-09-15]
+                                            3.1 gained the relativized-class
+                                            notation [2026-09-16/18]. That is
+                                            groundwork of the kind named above, but
+                                            it is one box rather than a second idea,
+                                            so the condition still stands.
 ```
 
 ## Signposted
@@ -311,6 +374,24 @@ get Sigma_n and Pi_n formulae, and also Sigma_n^T, Pi_n^T and Delta_n^T
 formulae", which is a promise rather than a development. What the hierarchy
 is *for* -- absoluteness -- is not said either, though 2.3.3's opening
 sentence gestures at it. [2026-09-14]
+Absoluteness itself arrived in 3.4 [2026-09-16/18]. The hierarchy above
+Sigma_1 is still owed.
+
+The rest of the axioms relativized to a transitive class. 3.4.2 opens with
+"Let's list out the axioms of ZF - F, relativized to M" and reaches
+Extensionality, Comprehension and Pairing. Unions, Power Sets, Replacement,
+Infinity and Foundation are not reached, though 3.5.1 states results about
+Unions and Power Sets in V_alpha. [2026-09-16/18]
+
+Proofs of four results stated without one and left without a \sorry: the
+Sigma_1/Pi_1 and Sigma_1^T lemmas in 3.4.1, and both propositions in 3.5.1.
+For the propositions, the criteria in 3.4.2 do most of the work. These are
+unmarked gaps, not marked ones. [2026-09-16/18, 2026-09-21]
+
+Inaccessible cardinals, defined in 3.5.2 with one property (beth_mu = mu) and
+no use yet. By inference, not from anything the lecture said, they are
+heading for V_mu as a model of ZFC: 3.5.1 has just shown Replacement failing
+at V_{omega + omega}. [2026-09-21]
 
 The proof of the theorem scheme that ZF - F proves sigma^WF for every ZF
 axiom. Stated in 2.3.2 and used immediately; the lecture gave no proof and
@@ -400,6 +481,15 @@ boxdefinition.                               discussion is deliberately informal
                                              formal the course means to be here, and
                                              /integrate is not the pass to make it.
                                              [2026-09-11]
+
+Cofinality, regularity and inaccessibility   They were introduced as the tool for
+live in 3.5.2, while cardinal arithmetic     3.5's question and are placed with it.
+otherwise lives in 1.5.                      If the course develops them as cardinal
+                                             theory in their own right (cofinality of
+                                             the alephs, cardinal exponentiation), they
+                                             want a section of their own or a place
+                                             beside 1.5. Run /organize then.
+                                             [2026-09-21]
 ```
 
 ## Template scaffolding
