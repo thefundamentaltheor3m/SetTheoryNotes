@@ -81,7 +81,7 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
 
 \subsection{Absoluteness of ZFC Axioms}
 
-For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativised to $M$.
+For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativized to $M$.
 
 We begin with Extensionality, which relativized to $M$ reads
 \begin{align*}
@@ -162,7 +162,7 @@ Five of the axioms hold at every limit level of the $V$-hierarchy.
 \end{boxproposition}
 
 \begin{boxnexample}[$V_{\omega + \omega}$]
-    We can show that Replacement does not relativise to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
+    We can show that Replacement does not relativize to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
     \begin{enumerate}
         % [CORRECTED] was: $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$ --- the closing brace had swallowed $g(n) = S$ into a set, $i$ was never quantified, and $w$ stood for $\omega$; ``$g$ is a function'' is added, as in the second definition
         \item $G(n) = S$ iff $\exists g \brac{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)} = g(i) + 1} \land g(n) = S}$
