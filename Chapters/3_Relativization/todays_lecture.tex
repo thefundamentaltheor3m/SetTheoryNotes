@@ -5,7 +5,16 @@
 
 \section{Absoluteness}
 
-% [CLAUDE] factor out the definitions of absolute, upwards-absolute, and downwards-absolute. just make one definition, called \textbf{absolunteness}, and make bullet-points for downwards, upwards and absolute. I have a certain style of writing definitions. Please emulate that style.
+The question in this section is when a formula says the same thing in a class as it does in a bigger one.
+
+\begin{boxdefinition}[Absoluteness]
+    Let $M \ssq N$ be classes. We say a formula $\varphi\of{\bar{u}}$ is
+    \begin{itemize}
+        \item \textbf{downwards-absolute} from $N$ to $M$ iff for all $\bar{x} \in M^{<\omega}$ (matching $\bar{u}$ in length), $\varphi^N\of{\bar{x}} \to \varphi^M\of{\bar{x}}$.
+        \item \textbf{upwards-absolute} from $M$ to $N$ iff for all $\bar{x} \in M^{<\omega}$, $\varphi^M\of{\bar{x}} \to \varphi^N\of{\bar{x}}$.
+        \item \textbf{absolute} between $M$ and $N$ iff it is both, ie, iff for all $\bar{x} \in M^{<\omega}$, $\varphi^M\of{\bar{x}} \lr \varphi^N\of{\bar{x}}$.
+    \end{itemize}
+\end{boxdefinition}
 
 \subsection{Absoluteness Theorems}
 
@@ -16,7 +25,7 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
     \begin{align*}
         \varphi^M\of{\bar{x}} \lr \varphi^N\of{\bar{x}}
     \end{align*}
-    We say \textbf{$\varphi\of{\bar{u}}$ is absolute between $M$ and $N$}.
+    That is, $\varphi\of{\bar{u}}$ is absolute between $M$ and $N$.
 \end{boxlemma}
 \begin{proof}
     We argue by induction on the complexity of $\varphi\of{\bar{u}}$.
@@ -73,39 +82,58 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
 
 For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativised to $M$.
 
-\begin{itemize}  % [CLAUDE] maybe turn each of these into its own little lemma or something and add fillers like "From now on, assume <insert axiom name>^M" (as the case may be)
-    \item \underline{Extensionality:}
-    \begin{align*}
-        \brac{\forall A \forall B \brac{\forall x \parenth{x \in A \lr x \in B} \to A = B}}^M
-    \end{align*}
-    Or, equivalently,
-    \begin{align*}
-        \brac{\forall A \forall B \brac{\parenth{A \ssq B \land B \ssq A} \to A = B}}^M
-    \end{align*}
-    where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of the above are $\Delta_0$.
+We begin with Extensionality, which relativized to $M$ reads
+\begin{align*}
+    \brac{\forall A \forall B \brac{\forall x \parenth{x \in A \lr x \in B} \to A = B}}^M
+\end{align*}
+Or, equivalently,
+\begin{align*}
+    \brac{\forall A \forall B \brac{\parenth{A \ssq B \land B \ssq A} \to A = B}}^M
+\end{align*}
+where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of the above are $\Delta_0$.
 
-    By $\Delta_0$-absoluteness, \sorry % [CLAUDE] just 2 short sentences concluding/wrapping up here should be more than enough
+\begin{boxlemma}
+    If $M$ is transitive, then Extensionality$^M$.
+\end{boxlemma}
+\begin{proof}
+    By $\Delta_0$-absoluteness, for $A, B \in M$ the formula $\parenth{A \ssq B \land B \ssq A} \to A = B$ holds in $M$ iff it holds in $V$. Extensionality says it holds in $V$ for all $A$ and $B$, so in particular it holds in $M$ for all $A, B \in M$, which is what Extensionality$^M$ says.
+\end{proof}
 
-    \item \underline{Comprehension:} Assume (here on after) that \underline{$M$ is transitive}.
-    % [FILLED] the rest of this item is supplied; the lecture's notes stop at the transitivity assumption
-    For a formula $\varphi\of{x, \bar{y}}$, the corresponding instance of Comprehension, relativized to $M$, reads
-    \begin{align*}
-        \forall A \in M \, \forall \bar{y} \in M \, \exists B \in M \, \forall x \in M \brac{x \in B \lr \parenth{x \in A \land \varphi^M\of{x, \bar{y}}}}
-    \end{align*}
-    Fix $A, \bar{y} \in M$. Since $M$ is transitive, $A$ and every $B \in M$ are subsets of $M$, so for $x \notin M$ both sides of the biconditional are false, and the innermost $\forall x \in M$ may as well range over every $x$. So what is being asked of $B$ is exactly that $B = \setst{x \in A}{\varphi^M\of{x, \bar{y}}}$, and Comprehension$^M$ holds iff
+Assume (here on after) that \underline{$M$ is transitive}.
+
+% [FILLED] this lemma and its proof are supplied; the lecture's notes stop at the transitivity assumption
+Next comes Comprehension. For a formula $\varphi\of{x, \bar{y}}$, the corresponding instance of Comprehension, relativized to $M$, reads
+\begin{align*}
+    \forall A \in M \, \forall \bar{y} \in M \, \exists B \in M \, \forall x \in M \brac{x \in B \lr \parenth{x \in A \land \varphi^M\of{x, \bar{y}}}}
+\end{align*}
+and transitivity lets us say exactly when this holds.
+
+\begin{boxlemma}[Scheme] \label{Ch3:Lemma:Comprehension_In_M}
+    For each formula $\varphi\of{x, \bar{y}}$, the instance of Comprehension for $\varphi$ holds in $M$ iff
     \begin{align*}
         \setst{x \in A}{\varphi^M\of{x, \bar{y}}} \in M
     \end{align*}
-    for every formula $\varphi\of{x, \bar{y}}$ and all $A, \bar{y} \in M$. In particular, it holds if every subset of a member of $M$ is itself a member of $M$.
+    for all $A, \bar{y} \in M$. In particular, Comprehension$^M$ holds if every subset of a member of $M$ is itself a member of $M$.
+\end{boxlemma}
+\begin{proof}
+    Fix $A, \bar{y} \in M$. Since $M$ is transitive, $A$ and every $B \in M$ are subsets of $M$, so for $x \notin M$ both sides of the biconditional above are false, and the innermost $\forall x \in M$ may as well range over every $x$. So what is being asked of $B$ is exactly that $B = \setst{x \in A}{\varphi^M\of{x, \bar{y}}}$, and there is such a $B$ in $M$ iff this set is a member of $M$. It is a subset of $A$, which gives the last part.
+\end{proof}
 
-    \item \underline{Pairing:}
-    % [FILLED] supplied; the lecture's notes have only the heading
-    Atomic formulae relativize to themselves, so Pairing$^M$ reads
-    \begin{align*}
-        \forall x \in M \, \forall y \in M \, \exists A \in M \, \parenth{x \in A \land y \in A}
-    \end{align*}
-    ie, any two members of $M$ lie in a common member of $M$. This certainly holds if $\set{x, y} \in M$ whenever $x, y \in M$. If Comprehension$^M$ holds, the converse is true as well: given $x, y \in A \in M$, the above gives $\setst{z \in A}{z = x \lor z = y} \in M$, since $z = x \lor z = y$ is its own relativization, and that set is $\set{x, y}$. So, given Comprehension$^M$, Pairing$^M$ holds iff $\set{x, y} \in M$ for all $x, y \in M$.
-\end{itemize}
+From now on, assume Comprehension$^M$.
+
+% [FILLED] this lemma and its proof are supplied; the lecture's notes have only the heading
+Pairing is simpler, because atomic formulae relativize to themselves: Pairing$^M$ reads
+\begin{align*}
+    \forall x \in M \, \forall y \in M \, \exists A \in M \, \parenth{x \in A \land y \in A}
+\end{align*}
+ie, any two members of $M$ lie in a common member of $M$. With Comprehension$^M$ in hand, we can cut that common member down to size.
+
+\begin{boxlemma}
+    Pairing$^M$ holds iff $\set{x, y} \in M$ for all $x, y \in M$.
+\end{boxlemma}
+\begin{proof}
+    If $\set{x, y} \in M$ whenever $x, y \in M$, then Pairing$^M$ certainly holds. Conversely, given $x, y \in A \in M$, \Cref{Ch3:Lemma:Comprehension_In_M} gives $\setst{z \in A}{z = x \lor z = y} \in M$, since $z = x \lor z = y$ is its own relativization, and that set is $\set{x, y}$.
+\end{proof}
 
 % [CLAUDE] here is a digression, now you need to figure out where it's going
 
@@ -113,14 +141,22 @@ Say $M$ is a transitive class and $A$ another class. Say $A = \setst{x}{\vp(x)}$
 
 % 21 Sep 2026
 
-For today, let $T$ denote the theory consisting of Extensionality, Comprehension, Pairing, Unions, and Power Sets. % [CLAUDE] I don't like this convention, what you should do is wherever $T$ appears in today's notes, replace it with the set {Extensionality, Comprehension, Pairing, Unions, Power Sets} or something. And if it's $T + something$ you should add the something to your set.
+Five of the axioms hold at every limit level of the $V$-hierarchy.
 
 \begin{boxproposition}
-    For each axiom $\sigma$ of $T$, for all limit ordinals $\alpha$, $\sigma^{V_{\alpha}}$.
+    For each axiom $\sigma$ of
+    \begin{align*}
+        \set{\text{Extensionality}, \text{Comprehension}, \text{Pairing}, \text{Unions}, \text{Power Sets}}
+    \end{align*}
+    for all limit ordinals $\alpha$, $\sigma^{V_{\alpha}}$.
 \end{boxproposition}
 
 \begin{boxproposition}
-    For each axiom $\sigma$ of $T \cup \set{\text{Replacement}}$, $\sigma^{V_{\omega}}$.
+    For each axiom $\sigma$ of
+    \begin{align*}
+        \set{\text{Extensionality}, \text{Comprehension}, \text{Pairing}, \text{Unions}, \text{Power Sets}, \text{Replacement}}
+    \end{align*}
+    we have $\sigma^{V_{\omega}}$.
 \end{boxproposition}
 
 \begin{boxnexample}[$V_{\omega + \omega}$]
@@ -173,5 +209,7 @@ Let's make some definitions about cardinals.
     
     Base case: $\beth_0 < \mu$ because $\beth_0 = \omega$ and $\mu$ is uncountable.
 
-    Successor case: \aorry % [CLAUDE] this shouldn't take you more than 6 lines to prove.
+    Successor case: if $\beth_{\alpha} < \mu$, then $\beth_{\alpha + 1} = 2^{\beth_{\alpha}} < \mu$, because $\beth_{\alpha}$ is a cardinal below $\mu$ and $\mu$ is a strong limit cardinal.
+
+    Limit case: let $\lambda < \mu$ be a limit ordinal with $\beth_{\alpha} < \mu$ for all $\alpha < \lambda$. If $\beth_{\lambda} = \sup_{\alpha < \lambda} \beth_{\alpha}$ were not below $\mu$, then $\alpha \mapsto \beth_{\alpha}$ would be a function from $\lambda$ to $\mu$ with unbounded image, so $\cf(\mu) \leq \abs{\lambda} < \mu$, contradicting the regularity of $\mu$.
 \end{proof}
