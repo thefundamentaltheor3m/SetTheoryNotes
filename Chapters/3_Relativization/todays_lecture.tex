@@ -153,5 +153,72 @@ Let's make some definitions about cardinals.
     
     Base case: $\beth_0 < \mu$ because $\beth_0 = \omega$ and $\mu$ is uncountable.
 
-    Successor case: \aorry % [CLAUDE] this shouldn't take you more than 6 lines to prove.
+    Successor case: \sorry % [CLAUDE] this shouldn't take you more than 6 lines to prove.
+\end{proof}
+
+% 23 September
+
+We now continue going through the axioms.
+
+Let's look at Foundation.
+
+We want to see if $\F^M$, that is,
+\begin{align*}
+    \brac{\forall A \parenth{A \ne \emptyset \to \exists x \in A, \, \forall y \in A, \, y \notin x}}^M
+\end{align*}
+Consider the statement
+\begin{align*}
+    \forall A \in M \parenth{A \ne \emptyset \to \exists x \in A, \, \forall y \in A, \, x \notin x}
+\end{align*}
+This is true if $M \ssq \WF$.
+
+We know the following:
+\begin{itemize}
+    \item if $A \in \WF$, then $A \subset \WF$
+    \item if $x \in A$ with $\rank{x} = \min\setst{\rank{y}}{y \in A}$ then $x$ is $\in$-minimal in $A$.
+    \item if $y \in x$ then $\rank{y} < \rank{x}$
+\end{itemize}
+In particular, $\F^{\WF}$ and $\F^{V_{\alpha}}$.
+
+Finally, for infinity, we can show that if $\omega \in M$, then infinity relativises to $M$; in particular, infinity relativises to $\WF$ and to $V_{\alpha}$ for $\alpha > \omega$ a limit.
+
+We're now done showing that every axiom of $\ZF$ without infinity relativises to $V_{\omega}$, and furthermore, that every axiom of $\ZF$ relativises to $\WF$. As we saw earlier, this gives us the following.
+
+\begin{boxcorollary}
+If $\ZFwoF$ is consistent, then so is $\ZF$.
+\end{boxcorollary}
+
+Now, let's study choice. We know that under $\ZFwoF$, this is equivalent to the well-ordering principle.
+
+We want to show, effectively, that
+\begin{align*}
+    \brac{\forall A \exists R \parenth{(A, R) \text{ is a w.o.}}}^M
+\end{align*}
+This is equivalent to
+\begin{align*}
+    \forall A \in M, \, \exists R \in M \, \brac{\parenth{(A, R) \text{ is a w.o.}}}^M
+\end{align*}
+because the statement ``$(A, R)$ is a w.o.'' is $\Pi_1$, and thus, downwards absolute.
+
+Indeed, the reason this statement is $\Pi_1$ is that $(A, R)$ is a w.o. iff $(A, R)$ is a l.o. (which is a $\Delta_0$ statement) and $(A, R)$ is well-founded (which is $\Pi_1$ because \sorry).
+
+In the background, now, assume $\ZFCwoF$. Let $A \in \WF$ and suppose $A \ssq V_{\alpha}$ for some $\alpha$. In $V$, we have some $R \ssq A \times A$ such that $R$ is a w.o. Then $R \ssq V_{\alpha} \times V_{\alpha}$, so $R \in V_{\alpha + 3} \subset \WF$. By $\Pi_1$ downwards absoluteness, we conclude that $\brac{(A, R) \text{ is a w.o.}}^{\WF}$.
+
+\begin{boxcorollary}
+    $(\mathbf{AC})^{\WF}$, $(\mathbf{AC})^{\V_{\alpha}}$ for all limit $\alpha$.
+\end{boxcorollary}
+
+\begin{boxcorollary}
+    If $\ZFCwoF$ is consistent, then so is $\ZFC$.
+\end{boxcorollary}
+
+\begin{boxcorollary}
+    If $M$ is strongly inaccessible, then $\sigma^{V_M}$ for all axioms $\sigma$ of $\ZFC$.
+\end{boxcorollary}
+
+\begin{boxlemma}
+    If we denote by $T$ the theory consisting of $\ZF$ without power sets, infinity and foundation, the statement ``$(A, R)$ is a w.o.'' is also $\Sigma_1^T$.
+\end{boxlemma}
+\begin{proof}
+    $(A, R)$ is a w.o. iff there is some $F : A \to \OR$ such that $\forall x, y \in A \parenth{x \, R \, Y \to F(x) < F(y)}$
 \end{proof}
