@@ -81,7 +81,7 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
 
 \subsection{Absoluteness of ZFC Axioms}
 
-For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativised to $M$.
+For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativized to $M$.
 
 We start with Extensionality, which relativized to $M$ reads
 \begin{align*}
@@ -155,7 +155,7 @@ Let's see which axioms hold in the levels of the $V$-hierarchy.
 \end{boxproposition}
 
 \begin{boxnexample}[$V_{\omega + \omega}$]
-    We can show that Replacement does not relativise to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
+    We can show that Replacement does not relativize to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
     \begin{enumerate}
         % [CORRECTED] was: $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$ --- $i$ was never quantified, the brace closed around $g(n) = S$, $w$ stood for $\omega$, and nothing said $g$ is a function, so it did not express $S = \omega + n$
         \item $G(n) = S$ iff $\exists g \brac{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}} \land g(n) = S}$
@@ -237,9 +237,9 @@ We know the following:
 \end{itemize}
 In particular, $\F^{\WF}$ and $\F^{V_{\alpha}}$.
 
-Finally, for infinity, we can show that if $\omega \in M$, then infinity relativises to $M$; in particular, infinity relativises to $\WF$ and to $V_{\alpha}$ for $\alpha > \omega$ a limit.
+Finally, for infinity, we can show that if $\omega \in M$, then infinity relativizes to $M$; in particular, infinity relativizes to $\WF$ and to $V_{\alpha}$ for $\alpha > \omega$ a limit.
 
-We're now done showing that every axiom of $\ZF$ without infinity relativises to $V_{\omega}$, and furthermore, that every axiom of $\ZF$ relativises to $\WF$. As we saw earlier, this gives us the following.
+We're now done showing that every axiom of $\ZF$ without infinity relativizes to $V_{\omega}$, and furthermore, that every axiom of $\ZF$ relativizes to $\WF$. As we saw earlier, this gives us the following.
 
 \begin{boxcorollary}
 If $\ZFwoF$ is consistent, then so is $\ZF$.
@@ -297,7 +297,7 @@ For today, let $M$ be a transitive class model of $\ZFwoP$.
     $[M]^{< \omega} \ssq M$.
 \end{boxlemma}
 \begin{proof}
-    Given $x_1. \ldots, x_n \in M$, $\set{x_1, \ldots, x_n} = \bigcup_{j=1}^{n} \set{x_j}$.
+    Given $x_1, \ldots, x_n \in M$, $\set{x_1, \ldots, x_n} = \bigcup_{j=1}^{n} \set{x_j}$.
 \end{proof}
 
 The formula ``$A$ is finite'' is absolute for $M$. In fact, we can do better.
@@ -624,7 +624,7 @@ So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
 \end{proof}
 
 \begin{boxlemma} \label{Ch3:Lemma:H_Kappa_Replacement}
-    If $\kappa = \cf(\kappa)$ (ie, $\kappa$ is regular), then each axiom $\sigma$ of the Replacement scheme holds relativised to $H_{\kappa}$, ie, $\sigma^{H_{\kappa}}$.
+    If $\kappa = \cf(\kappa)$ (ie, $\kappa$ is regular), then each axiom $\sigma$ of the Replacement scheme holds relativized to $H_{\kappa}$, ie, $\sigma^{H_{\kappa}}$.
 \end{boxlemma}
 \begin{proof}
     If $A \in H_{\kappa}$ and $f : A \to H_{\kappa}$, then, letting $B = \range\of{f}$, we have
@@ -714,11 +714,11 @@ The first cardinal not covered by the corollary is $\aleph_{\omega}$, which is s
     This needs us to talk about satisfaction in sets, which we have not yet formalized; we do so in the next section, and the proof is given there (\Cref{Ch3:Thm:H_Kappa_Sigma1}).
 \end{proof}
 
-\section{Relativisaiton vs Satisfaction}
+\section{Relativization vs Satisfaction}
 
-Can we formalise into Set Theory the notion of ``$M \models \vp\of{\bar{x}}$''?
+Can we formalize into Set Theory the notion of ``$M \models \vp\of{\bar{x}}$''?
 
-Pick ``symbols'' and formalise the following using $\ZFwoP$:
+Pick ``symbols'' and formalize the following using $\ZFwoP$:
 \begin{itemize}
     \item syntax of first-order logic
     \item definition of satisfaction
@@ -726,7 +726,7 @@ Pick ``symbols'' and formalise the following using $\ZFwoP$:
     \item completeness theorem
 \end{itemize}
 
-The way we define what ``formulae'' are internally is using Gödel numbers. Ie, for each formlua $\vp$ (\textit{external}), there exists some set $\ulcorner \vp \urcorner$ that is analogous to it. We still write $M \models \vp\of{\bar{x}}$.
+The way we define what ``formulae'' are internally is using Gödel numbers. Ie, for each formula $\vp$ (\textit{external}), there exists some set $\ulcorner \vp \urcorner$ that is analogous to it. We still write $M \models \vp\of{\bar{x}}$.
 
 It is possible to show that our analogies translate both ways, ie, $\vp\of{\bar{x}}^M$ iff ``$M \models \vp\of{\bar{x}}$'', simply by structural induction on $\vp$.
 
@@ -793,7 +793,7 @@ Note that $H_{\kappa} \prec_{\Sigma_1} V$ means $\Sigma_1$ formulas are absolute
 
 % 5 Oct
 
-We have see that $H_{\kappa} \prec_{\Sigma_1} V$ for all uncountable cardinals $\kappa$. It follows that for such $\kappa$, $\kappa = \beth_{\kappa}$ iff $H_{\kappa} = V_{\kappa}$, which in turn implies that $V_{\kappa} \prec_{\Sigma_1} V$.
+We have seen that $H_{\kappa} \prec_{\Sigma_1} V$ for all uncountable cardinals $\kappa$. It follows that for such $\kappa$, $\kappa = \beth_{\kappa}$ iff $H_{\kappa} = V_{\kappa}$, which in turn implies that $V_{\kappa} \prec_{\Sigma_1} V$.
 
 Observe that $V_{\kappa} \prec_{\Sigma_1} V$ is \underline{not} a formula in the language of set theory. But $\kappa = \beth_{\kappa}$ and $H_{\kappa} = V_{\kappa}$ \textit{are}. By comprehension, put
 \begin{align*}
@@ -811,7 +811,7 @@ Note that $C_1$ is club in $\OR$. Indeed, we proved that the set of $\beth$-fixe
 The range of $f$ is a cub and, for every limit ordinal $\beta$, $f(\beta) = \beth_{f(\beta)}$; that is, every element of $\lim\of{\range\of{f}}$\footnote{This is the class of limit points of $\range(f)$, and as we know, the class of limit points of a club is a club} is a $\beth$-fixed point. So $C_1$ contains a club. So $C_1$ is unbounded. Moreover, $C_1$ is closed. So it's a club in $\OR$.
 
 \begin{boxtheorem}
-    Suppose $\mu$ is a strongly inaccessible cardinal. Let $C = \setst{\kappa < \mu}{V_{\kappa} \prec V_{\mu}}$. Then $C$ os a club subset of $\mu$.
+    Suppose $\mu$ is a strongly inaccessible cardinal. Let $C = \setst{\kappa < \mu}{V_{\kappa} \prec V_{\mu}}$. Then $C$ is a club subset of $\mu$.
 \end{boxtheorem}
 
 \begin{remark}
@@ -920,7 +920,7 @@ Here's an interesting corollary.
 Let $\sigma_0, \ldots, \sigma_{\ell}$ be finitely many axioms of $\ZFC$. By the reflection theorem scheme, there are club many $\alpha \in \OR$ so that $\forall  i \leq \ell$, $\sigma_i^{V_{\alpha}}$. Equivalently, $\forall i \leq \ell$, $V_{\alpha} \models \sigma_i$. Rephrasing:
 
 \begin{boxcorollary}
-    For every finite sub=theory $T$ of $\ZFC$,
+    For every finite sub-theory $T$ of $\ZFC$,
     \begin{align*}
         \ZFC \vdash \text{``$T$ has a transitive model''}
     \end{align*}
