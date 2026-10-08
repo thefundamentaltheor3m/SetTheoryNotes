@@ -5,7 +5,17 @@
 
 \section{Absoluteness}
 
-% [CLAUDE] factor out the definitions of absolute, upwards-absolute, and downwards-absolute. just make one definition, called \textbf{absolunteness}, and make bullet-points for downwards, upwards and absolute. I have a certain style of writing definitions. Please emulate that style.
+We will constantly be comparing what a formula says in a smaller class with what it says in a bigger one, so we give the possible outcomes names.
+
+\begin{boxdefinition}[Absoluteness]
+    Let $M \ssq N$ be classes and let $\vp\of{\bar{u}}$ be a formula. We say $\vp\of{\bar{u}}$ is
+    \begin{itemize}
+        \item \textbf{downwards absolute} from $N$ to $M$ iff for all $\bar{x} \in M^{<\omega}$ matching $\bar{u}$, $\vp^N\of{\bar{x}} \to \vp^M\of{\bar{x}}$.
+        \item \textbf{upwards absolute} from $M$ to $N$ iff for all $\bar{x} \in M^{<\omega}$ matching $\bar{u}$, $\vp^M\of{\bar{x}} \to \vp^N\of{\bar{x}}$.
+        \item \textbf{absolute} between $M$ and $N$ iff it is both, ie, iff for all $\bar{x} \in M^{<\omega}$ matching $\bar{u}$, $\vp^M\of{\bar{x}} \lr \vp^N\of{\bar{x}}$.
+    \end{itemize}
+    When $N = V$, we just say $\vp\of{\bar{u}}$ is downwards absolute, upwards absolute or absolute \textbf{for $M$}.
+\end{boxdefinition}
 
 \subsection{Absoluteness Theorems}
 
@@ -16,7 +26,7 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
     \begin{align*}
         \varphi^M\of{\bar{x}} \lr \varphi^N\of{\bar{x}}
     \end{align*}
-    We say \textbf{$\varphi\of{\bar{u}}$ is absolute between $M$ and $N$}.
+    That is, $\varphi\of{\bar{u}}$ is absolute between $M$ and $N$.
 \end{boxlemma}
 \begin{proof}
     We argue by induction on the complexity of $\varphi\of{\bar{u}}$.
@@ -73,48 +83,75 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
 
 For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativised to $M$.
 
-\begin{itemize}  % [CLAUDE] maybe turn each of these into its own little lemma or something and add fillers like "From now on, assume <insert axiom name>^M" (as the case may be)
-    \item \underline{Extensionality:}
-    \begin{align*}
-        \brac{\forall A \forall B \brac{\forall x \parenth{x \in A \lr x \in B} \to A = B}}^M
-    \end{align*}
-    Or, equivalently,
-    \begin{align*}
-        \brac{\forall A \forall B \brac{\parenth{A \ssq B \land B \ssq A} \to A = B}}^M
-    \end{align*}
-    where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of the above are $\Delta_0$.
+We start with Extensionality, which relativized to $M$ reads
+\begin{align*}
+    \brac{\forall A \forall B \brac{\forall x \parenth{x \in A \lr x \in B} \to A = B}}^M
+\end{align*}
+Or, equivalently,
+\begin{align*}
+    \brac{\forall A \forall B \brac{\parenth{A \ssq B \land B \ssq A} \to A = B}}^M
+\end{align*}
+where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of the above are $\Delta_0$.
 
-    By $\Delta_0$-absoluteness, \sorry % [CLAUDE] just 2 short sentences concluding/wrapping up here should be more than enough
+This is all we need, as long as $M$ is transitive.
 
-    \item \underline{Comprehension:} Assume (here on after) that \underline{$M$ is transitive}. % [FILLED] the analysis of Comprehension^M, and the closure condition that secures it, are supplied here; the lecture broke off after the transitivity assumption
+\begin{boxlemma}[Extensionality]
+    If $M$ is transitive, then $(\text{Extensionality})^M$.
+\end{boxlemma}
+\begin{proof}
+    By $\Delta_0$-absoluteness, for $A, B \in M$ the formula $\parenth{A \ssq B \land B \ssq A} \to A = B$ says the same thing in $M$ as it does in $V$, where it is true. So it holds in $M$ for all $A, B \in M$, which is exactly $(\text{Extensionality})^M$.
+\end{proof}
+
+From now on, assume that \underline{$M$ is transitive}, so that $(\text{Extensionality})^M$.
+
+Comprehension needs $M$ to contain enough subsets of its members.
+
+\begin{boxlemma}[Comprehension]
+    If $M$ is closed under subsets, ie, $A \in M$ and $B \ssq A$ imply $B \in M$, then $(\text{Comprehension})^M$.
+\end{boxlemma}
+\begin{proof} % [FILLED] the analysis of Comprehension^M, and the closure condition that secures it, are supplied here; the lecture broke off after the transitivity assumption
     For each formula $\vp\of{x, \bar{y}}$, the corresponding instance relativized to $M$ is
     \begin{align*}
         \forall A \in M \, \forall \bar{y} \in M \, \exists B \in M \, \forall x \in M \brac{x \in B \lr \parenth{x \in A \land \vp^M\of{x, \bar{y}}}}
     \end{align*}
-    As $M$ is transitive, any such $B$ and the given $A$ are subsets of $M$, so the bracket pins $B$ down completely: it must be $\setst{x \in A}{\vp^M\of{x, \bar{y}}}$. So Comprehension relativizes to $M$ iff each of these sets lies in $M$, and in particular it does whenever $M$ is closed under subsets, ie, whenever $A \in M$ and $B \ssq A$ imply $B \in M$.
+    As $M$ is transitive, any such $B$ and the given $A$ are subsets of $M$, so the bracket pins $B$ down completely: it must be $\setst{x \in A}{\vp^M\of{x, \bar{y}}}$. So Comprehension relativizes to $M$ iff each of these sets lies in $M$, and in particular it does whenever $M$ is closed under subsets.
+\end{proof}
 
-    \item \underline{Pairing:} % [FILLED] the lecture left Pairing blank
+From now on, assume $(\text{Comprehension})^M$ as well.
+
+Pairing only needs $M$ to be closed under pairs.
+
+\begin{boxlemma}[Pairing]
+    If $\set{x, y} \in M$ for all $x, y \in M$, then $(\text{Pairing})^M$.
+\end{boxlemma}
+\begin{proof} % [FILLED] the lecture left Pairing blank
     Relativized to $M$, Pairing says
     \begin{align*}
         \forall x \in M \, \forall y \in M \, \exists A \in M \, \parenth{x \in A \land y \in A}
     \end{align*}
-    This holds as soon as $\set{x, y} \in M$ for all $x, y \in M$, since $\set{x, y}$ is then a witness. (Here we did not even need transitivity, because the formula under the quantifiers is atomic.)
-\end{itemize}
+    If $\set{x, y} \in M$, then it is a witness. (Here we did not even need transitivity, because the formula under the quantifiers is atomic.)
+\end{proof}
 
-% [CLAUDE] here is a digression, now you need to figure out where it's going
+We will want to relativize classes as well as formulae, and it is convenient to have notation for it.
 
-Say $M$ is a transitive class and $A$ another class. Say $A = \setst{x}{\vp(x)}$. We might write $A^M$ to mean $\setst{x \in M}{\vp^M(x)}$ even though it may depend on the choice of $\varphi$ with this notation.
+\begin{boxnotation}
+    Say $M$ is a transitive class and $A$ another class. Say $A = \setst{x}{\vp(x)}$. We might write $A^M$ to mean $\setst{x \in M}{\vp^M(x)}$ even though it may depend on the choice of $\varphi$ with this notation.
+
+    $A^M$ is what $M$ thinks $A$ is. When it agrees with $A \cap M$, ie, when $\vp(x)$ is absolute for $M$, we say $A$ is \textbf{absolute} for $M$.
+\end{boxnotation}
+
+This is where the digression is going: below, we ask whether $\OR^M = \OR \cap M$, and whether a class function $G$ defined by recursion satisfies $G^M = G \restriction \parenth{A \cap M}$.
 
 % 21 Sep 2026
 
-For today, let $T$ denote the theory consisting of Extensionality, Comprehension, Pairing, Unions, and Power Sets. % [CLAUDE] I don't like this convention, what you should do is wherever $T$ appears in today's notes, replace it with the set {Extensionality, Comprehension, Pairing, Unions, Power Sets} or something. And if it's $T + something$ you should add the something to your set.
+Let's see which axioms hold in the levels of the $V$-hierarchy.
 
 \begin{boxproposition}
-    For each axiom $\sigma$ of $T$, for all limit ordinals $\alpha$, $\sigma^{V_{\alpha}}$.
+    For each axiom $\sigma$ of $\set{\text{Extensionality}, \text{Comprehension}, \text{Pairing}, \text{Unions}, \text{Power Sets}}$, for all limit ordinals $\alpha$, $\sigma^{V_{\alpha}}$.
 \end{boxproposition}
 
 \begin{boxproposition}
-    For each axiom $\sigma$ of $T \cup \set{\text{Replacement}}$, $\sigma^{V_{\omega}}$.
+    For each axiom $\sigma$ of $\set{\text{Extensionality}, \text{Comprehension}, \text{Pairing}, \text{Unions}, \text{Power Sets}, \text{Replacement}}$, $\sigma^{V_{\omega}}$.
 \end{boxproposition}
 
 \begin{boxnexample}[$V_{\omega + \omega}$]
@@ -169,7 +206,9 @@ Let's make some definitions about cardinals.
     
     Base case: $\beth_0 < \mu$ because $\beth_0 = \omega$ and $\mu$ is uncountable.
 
-    Successor case: \sorry % [CLAUDE] this shouldn't take you more than 6 lines to prove.
+    Successor case: if $\alpha + 1 < \mu$ and $\beth_{\alpha} < \mu$, then $\beth_{\alpha + 1} = 2^{\beth_{\alpha}} < \mu$, because $\beth_{\alpha}$ is a cardinal below $\mu$ and $\mu$ is a strong limit.
+
+    Limit case: if $\alpha < \mu$ is a limit and $\beth_{\gamma} < \mu$ for all $\gamma < \alpha$, then $\beth_{\alpha} = \sup_{\gamma < \alpha} \beth_{\gamma}$ is a supremum of $\abs{\alpha} < \mu$ many ordinals below $\mu$, so it is below $\mu$, as $\mu$ is regular.
 \end{proof}
 
 % 23 September
@@ -306,7 +345,7 @@ The formula ``$A$ is finite'' is absolute for $M$. In fact, we can do better.
     \end{align*}
 \end{boxlemma}
 
-% [CLAUDE] some sort of section break here
+\subsection{Absoluteness of Recursive Definitions}
 
 Often, we have $(A, R)$ well-founded and set-like, and some $F : A \times V \to V$. We then define $G : A \to V$ by recursion so that
 \begin{align*}
@@ -429,13 +468,29 @@ so
     \abs{\trcl{\set{z}}} = 1 \+ \abs{\trcl{z}}
 \end{align*}
 
+We can also unwind $\trcl{z}$ one level further, through the members of $z$.
+
+\begin{boxproposition}
+    For all sets $z$,
+    \begin{align*}
+        \trcl{\set{z}} = \set{z} \cup \bigcup_{x \in z} \trcl{\set{z}}
+    \end{align*}
+\end{boxproposition}
+
+Nothing is assumed about $z$ here: it need not be transitive, let alone an ordinal.
+
 We will work in $\ZFC$ because we need choice to be able to work comfortably with cardinalities.
 
 \begin{boxlemma}
     Each $H_K$ is a transitive class and, if $\kappa < \lambda$, then $H_{\kappa} \subsetneq H_{\lambda}$.
 \end{boxlemma}
 \begin{proof}
-    ``Clear.'' % [CLAUDE] this is not clear to me, please fill it out
+    \hfill
+    \begin{description}
+        \item[\underline{Transitivity.}] Let $z \in H_{\kappa}$ and $y \in z$. Then $y \in \trcl{\set{z}}$, so $\trcl{\set{z}}$ is a transitive set with $y$ as a member, and so it contains the smallest such set: $\trcl{\set{y}} \ssq \trcl{\set{z}}$. Hence $\abs{\trcl{\set{y}}} \leq \abs{\trcl{\set{z}}} < \kappa$, and $y \in H_{\kappa}$.
+
+        \item[\underline{Monotonicity.}] If $\kappa < \lambda$, then $\abs{\trcl{\set{z}}} < \kappa$ implies $\abs{\trcl{\set{z}}} < \lambda$, so $H_{\kappa} \ssq H_{\lambda}$. The inclusion is strict because $\kappa \in H_{\lambda} \setminus H_{\kappa}$: $\trcl{\set{\kappa}} = \kappa + 1$ (it is transitive and has $\kappa$ as a member, and any transitive set with $\kappa$ as a member contains $\kappa$ and all its members), and $\abs{\kappa + 1} = \kappa$, as $\kappa$ is infinite, which is below $\lambda$ but not below $\kappa$.
+    \end{description}
 \end{proof}
 
 \begin{boxlemma}
@@ -454,7 +509,7 @@ We will work in $\ZFC$ because we need choice to be able to work comfortably wit
     \end{align*}
     This is a contradiction! So $\sigma$ is transitive as desired.
 
-    This then tells us that $\sigma = \rank{z} + 1$. % [CLAUDE] why?
+    This then tells us that $\sigma = \rank{z} + 1$: a transitive set of ordinals is an ordinal, and an ordinal whose largest element is $\rank{z}$ is $\rank{z} + 1$.
     Then, we get
     \begin{align*}
         \abs{\sigma} \leq \sigma < \abs{\sigma}^+ \leq \abs{\trcl{\set{z}}}^+ \leq \kappa
@@ -490,7 +545,9 @@ We will show that $\HC$ is a model of $\ZFwoP$. In fact, so is $H_{\kappa^+}$ fo
     $\OR \cap H_{\kappa} = \kappa$
 \end{boxlemma}
 \begin{proof}
-    If $\alpha \in \OR$, then $\trcl{\set{\alpha}} = \alpha + 1$. The rest is clear. % [CLAUDE] not clear to me... elaborate.
+    If $\alpha \in \OR$, then $\trcl{\set{\alpha}} = \alpha + 1$, because $\alpha + 1 = \alpha \cup \set{\alpha}$ is transitive and has $\alpha$ as a member, and any transitive set with $\alpha$ as a member contains $\alpha$ and all its members. So $\alpha \in H_{\kappa}$ iff $\abs{\alpha + 1} < \kappa$.
+
+    If $\alpha < \kappa$, then $\alpha + 1 < \kappa$ too, because $\kappa$ is an infinite cardinal and so a limit ordinal; so $\abs{\alpha + 1} \leq \alpha + 1 < \kappa$. If $\alpha \geq \kappa$, then $\abs{\alpha + 1} \geq \abs{\kappa} = \kappa$. So the ordinals in $H_{\kappa}$ are exactly those below $\kappa$.
 \end{proof}
 
 \begin{boxlemma}
@@ -499,16 +556,9 @@ We will show that $\HC$ is a model of $\ZFwoP$. In fact, so is $H_{\kappa^+}$ fo
 
 % 30 September
 
-Recall that $\setst{\kappa}{\kappa = \beth_{\kappa}}$ is a club class of cardinals: it is closed because the $\beth$ operation is ``continuous'', in the sense that it consists of limits upon limits, and it is unbounded because a sup of $\beth$-fixed points is a $\beth$-fixed point. % [CLAUDE] check this
+Recall that $\setst{\kappa}{\kappa = \beth_{\kappa}}$ is a club class of cardinals. It is closed because the $\beth$ operation is ``continuous'': if $\lambda$ is a limit of $\beth$-fixed points, then, as $\alpha \mapsto \beth_{\alpha}$ is increasing, $\beth_{\lambda} = \sup_{\alpha < \lambda} \beth_{\alpha}$ is also the supremum of $\beth_{\kappa} = \kappa$ over the fixed points $\kappa < \lambda$, which is $\lambda$. So a sup of $\beth$-fixed points is a $\beth$-fixed point. It is unbounded because, given any $\alpha$, the sequence $\kappa_0 = \alpha$, $\kappa_{n + 1} = \beth_{\kappa_n}$ is non-decreasing (as $\beth_{\gamma} \geq \gamma$) and its supremum $\lambda \geq \alpha$ is a fixed point: either the sequence is eventually constant, at a fixed point, or $\lambda$ is a limit and $\beth_{\lambda} = \sup_{n} \beth_{\kappa_n} = \sup_n \kappa_{n + 1} = \lambda$.
 
 We also saw that if $\mu$ is a strongly inaccessible cardinal, then $\mu = \beth_{\mu}$.
-
-\begin{boxproposition} % [CLAUDE] move this to an appropriate place and also specify the generality of z (should this work for all transitive sets or  just ordinals?)
-    For all $z$,
-    \begin{align*}
-        \trcl{\set{z}} = \set{z} \cup \bigcup_{x \in z} \trcl{\set{z}}
-    \end{align*}
-\end{boxproposition}
 
 Here is a useful lemma.
 
@@ -567,11 +617,20 @@ So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
     Follows from the fact that $k > \omega \lr \omega \in H_{\kappa}$.
 \end{proof}
 
-\begin{boxlemma}
+\begin{boxlemma} \label{Ch3:Lemma:H_Kappa_Replacement}
     If $\kappa = \cf(\kappa)$ (ie, $\kappa$ is regular), then each axiom $\sigma$ of the Replacement scheme holds relativised to $H_{\kappa}$, ie, $\sigma^{H_{\kappa}}$.
 \end{boxlemma}
 \begin{proof}
-    % [CLAUDE] do from picture
+    If $A \in H_{\kappa}$ and $f : A \to H_{\kappa}$, then, letting $B = \range\of{f}$, we have
+    \begin{align*}
+        \abs{\trcl{\set{B}}}
+        &= \abs{\set{B} \cup \bigcup_{x \in A} \trcl{\set{f(x)}}} \\
+        &\leq 1 \+ \underbrace{\sum_{x \in A}}_{\text{fewer than } \kappa \text{ terms}} \underbrace{\abs{\trcl{\set{f(x)}}}}_{\text{each } < \kappa} \\
+        &< \kappa
+    \end{align*}
+    There are strictly fewer than $\kappa$ terms because $A \ssq \trcl{\set{A}}$, and a sum of fewer than $\kappa$ cardinals, each below $\kappa$, is below $\kappa$ because $\kappa$ is regular. So $B \in H_{\kappa}$.
+
+    This is exactly what Replacement in $H_{\kappa}$ needs. If $A, \bar{z} \in H_{\kappa}$ and each $x \in A$ has a unique $y \in H_{\kappa}$ with $\vp^{H_{\kappa}}\of{x, y, \bar{z}}$, let $f(x)$ be that $y$; $f$ is a set by Replacement in $V$, as $A \ssq H_{\kappa}$, and $B = \range\of{f} \in H_{\kappa}$ is the witness the axiom asks for.
 \end{proof}
 
 \begin{boxlemma}
@@ -584,7 +643,7 @@ So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
     $\Powset(\kappa) \ssq H_{\lambda}$ but $\Powset(\kappa) \notin H_{\lambda}$.
 \end{proof}
 
-\begin{boxlemma}
+\begin{boxlemma} \label{Ch3:Lemma:H_Kappa_Power_Set}
     TFAE:
     \begin{enumerate}[label = (\arabic*)]
         \item $(\text{Power Set})^{H_{\lambda}}$
@@ -612,7 +671,29 @@ So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
     \end{enumerate}
 \end{boxcorollary}
 
-% [CLAUDE] also show from picture that $H_{\aleph_{\omega}}$ models everything except Replacement and Power Set.
+The first cardinal not covered by the corollary is $\aleph_{\omega}$, which is singular, and it shows that the regularity hypothesis in \Cref{Ch3:Lemma:H_Kappa_Replacement} cannot be dropped.
+
+\begin{boxexample}[$H_{\aleph_{\omega}}$]
+    Everything but Replacement and Power Set holds in $H_{\aleph_{\omega}}$: Extensionality, Comprehension, Pairing, Union, Choice and Foundation hold in every $H_{\kappa}$, and Infinity holds because $\aleph_{\omega} > \omega$.
+
+    Replacement fails. There's a formula $\vp\of{u, v}$ so that, for all $n \in \omega$ and $\kappa \in H_{\aleph_{\omega}}$,
+    \begin{align*}
+        \vp\of{n, \kappa}^{H_{\aleph_{\omega}}} \lr \kappa = \aleph_n
+    \end{align*}
+    Namely, $\vp\of{n, \kappa}$ says that there is a function $g$ with domain $n + 1$ such that $g(0) = \omega$, each $g(i + 1)$ is the least cardinal above $g(i)$, and $g(n) = \kappa$. This relativizes correctly because the witness $\grpres{\aleph_i}{i \leq n}$ lies in $H_{\aleph_{\omega}}$, and because an ordinal below $\aleph_{\omega}$ is a cardinal in $H_{\aleph_{\omega}}$ iff it is one in $V$, as every bijection between two ordinals below $\aleph_{\omega}$ lies in $H_{\aleph_{\omega}}$. So $\vp$ defines $f : n \mapsto \aleph_n$ over $H_{\aleph_{\omega}}$, on the domain $\omega \in H_{\aleph_{\omega}}$, but $f \notin H_{\aleph_{\omega}}$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}]
+            \drawcone{2}{4.5}{$H_{\aleph_{\omega}}$}
+            \node[dot, label = {left:$\omega$}] (w) at (0.1, 0.7) {};
+            \node[dot, label = {left:$\aleph_n$}] (a) at (-0.5, 3.2) {};
+            \draw[->, thick] (w) to[bend right = 60] node[right] {$f : n \mapsto \aleph_n$} (a);
+        \end{tikzpicture}
+    \end{figure}
+    Indeed, any $B$ with every $\aleph_n \in B$ has $\aleph_{\omega} = \bigcup_{n < \omega} \aleph_n \ssq \trcl{\set{B}}$, so $\abs{\trcl{\set{B}}} \geq \aleph_{\omega}$ and $B \notin H_{\aleph_{\omega}}$. So no set in $H_{\aleph_{\omega}}$ collects the values of $f$.
+
+    Whether Power Set holds in $H_{\aleph_{\omega}}$ is, by \Cref{Ch3:Lemma:H_Kappa_Power_Set}, the question of whether $\aleph_{\omega}$ is a strong limit, which $\ZFC$ does not settle.
+\end{boxexample}
 
 \begin{boxlemma}
     Let $\kappa$ be an uncountable cardinal. Then $H_{\kappa} \prec_{\Sigma_1} V$.
@@ -793,14 +874,37 @@ Indeed, there will be examples where $Z \ne V$.
     Let's define a class sequence of ordinals $\grpres{\alpha_{\eta}}{\eta \in \OR}$ as follows.
     \begin{itemize}
         \item \underline{Base:} Define $\alpha_0 = 0$.
-        \item \underline{Successor:} Given $\alpha_{\eta}$, define $\alpha_{\eta + 1}$ to be the least $\beta \in C \setminus \parenth{\alpha_{\eta} + 1}$ so that for all $j < \ell$, if $\vp_{j}\of{\bar{u}}$ is of the form $\exists v, \vp_i\of{\bar{u}, v}$, then for all $\bar{x}$ from $Z_{\alpha_{\eta}}$ that match $\bar{u}$, if there is $y \in Z$ such that $\vp_i\of{\bar{x}, y}^Z$, then there is $y \in Z_{p}$ such that $\vp_i\of{\bar{x}, y}^Z$. % [CLAUDE] USE PICTURE TO ILLUSTRATE. Also remark on why we only need to focus on existential formulae - maybe because relativisation is fairly straightforward in the other cases.
+        \item \underline{Successor:} Given $\alpha_{\eta}$, define $\alpha_{\eta + 1}$ to be the least $\beta \in C \setminus \parenth{\alpha_{\eta} + 1}$ so that for all $j < \ell$, if $\vp_{j}\of{\bar{u}}$ is of the form $\exists v, \vp_i\of{\bar{u}, v}$, then for all $\bar{x}$ from $Z_{\alpha_{\eta}}$ that match $\bar{u}$, if there is $y \in Z$ such that $\vp_i\of{\bar{x}, y}^Z$, then there is $y \in Z_{p}$ such that $\vp_i\of{\bar{x}, y}^Z$.
         \item \underline{Limit case:} If $\theta$ is a limit ordinal, define
         \begin{align*}
             \alpha_{\theta} = \sup_{\eta < \theta} \of{\alpha_{\eta}} \in \lim(C) \subset C
         \end{align*}
         (because $C$ is club).
     \end{itemize}
-    Then take $D$ to be $\setst{\alpha_{\theta}}{\theta \text{ is a limit ordinal}}$. \sorry % [CLAUDE] finish from pictures
+
+    The successor step is where the work happens. A tuple $\bar{x}$ from $Z_{\alpha_{\eta}}$ may have a witness $y'$ only higher up, in some $Z_{\beta'}$, and $\alpha_{\eta + 1}$ is chosen high enough to catch a witness for every such $\bar{x}$ at once:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}]
+            \drawcone{2.2}{5}{$Z$}
+            \drawconelevel{2.2}{5}{1.6}{$Z_{\alpha_{\eta}}$}
+            \drawconelevel{2.2}{5}{4.2}{$Z_{\beta'}$}
+            \node[dot, label = {right:$\bar{x}$}] at (-0.15, 1.0) {};
+            \node[dot, label = {right:$y'$}] at (0.3, 3.6) {};
+        \end{tikzpicture}
+    \end{figure}
+    Only existential formulae need this treatment. We may take every $\vp_j$ to be built from atomic formulae using $\neg$, $\land$ and $\exists$ alone, writing $\forall$ as $\neg \exists \neg$. Relativization leaves atomic formulae unchanged, so they mean the same in $Z_{\alpha}$ as in $Z$, and it commutes with $\neg$ and $\land$, so absoluteness passes through them. The one place it can fail is $\exists v$, where $Z$ may have a witness that $Z_{\alpha}$ lacks.
+
+    The successor step makes sense. For each $j < \ell$ of the form above and each $\bar{x}$ from $Z_{\alpha_{\eta}}$ that has a witness $y \in Z$, there is a least $\gamma \in C$ with a witness in $Z_{\gamma}$, as $Z = \bigcup_{\gamma \in C} Z_{\gamma}$. There are only set many such pairs $\parenth{j, \bar{x}}$, as $Z_{\alpha_{\eta}}$ is a set, so these $\gamma$ have a supremum, and as $C$ is unbounded there is some $\beta \in C$ above it and above $\alpha_{\eta}$. Any such $\beta$ works, since $Z_{\gamma} \ssq Z_{\beta}$ for $\gamma \leq \beta$ in $C$.
+
+    Then take $D$ to be $\setst{\alpha_{\theta}}{\theta \text{ is a limit ordinal}}$. The sequence $\grpres{\alpha_{\eta}}{\eta \in \OR}$ is strictly increasing and continuous at limits, so $D$ is a club class: it is unbounded since $\alpha_{\theta} \geq \theta$, and closed since a supremum of $\alpha_{\theta}$s over limit ordinals $\theta$ in some set $\Theta$ with no largest element is $\alpha_{\sup \Theta}$, and $\sup \Theta$ is a limit ordinal. And $D \ssq C$ by the limit case.
+
+    Finally, fix $\alpha = \alpha_{\theta} \in D$; we show that each $\vp_i$ is absolute between $Z_{\alpha}$ and $Z$, by induction on $i$. The atomic and propositional cases are as above, so suppose $\vp_j\of{\bar{u}}$ is $\exists v \, \vp_i\of{\bar{u}, v}$ with $i < j$, and let $\bar{x}$ from $Z_{\alpha}$ match $\bar{u}$.
+    \begin{description}
+        \item[\underline{From $Z_{\alpha}$ to $Z$.}] If $y \in Z_{\alpha}$ and $\vp_i\of{\bar{x}, y}^{Z_{\alpha}}$, then $y \in Z$ and $\vp_i\of{\bar{x}, y}^Z$ by the induction hypothesis, so $\vp_j\of{\bar{x}}^Z$.
+
+        \item[\underline{From $Z$ to $Z_{\alpha}$.}] Suppose $\vp_j\of{\bar{x}}^Z$. As $\alpha_{\theta}$ is a limit point of $C$, $Z_{\alpha_{\theta}} = \bigcup_{\gamma \in C \cap \alpha_{\theta}} Z_{\gamma} = \bigcup_{\eta < \theta} Z_{\alpha_{\eta}}$, and $\bar{x}$ is a finite tuple, so $\bar{x}$ is from $Z_{\alpha_{\eta}}$ for some $\eta < \theta$. By the choice of $\alpha_{\eta + 1}$, there is $y \in Z_{\alpha_{\eta + 1}} \ssq Z_{\alpha}$ with $\vp_i\of{\bar{x}, y}^Z$, and by the induction hypothesis $\vp_i\of{\bar{x}, y}^{Z_{\alpha}}$. So $\vp_j\of{\bar{x}}^{Z_{\alpha}}$.
+    \end{description}
 \end{proof}
 
 Here's an interesting corollary.
@@ -815,12 +919,11 @@ Let $\sigma_0, \ldots, \sigma_{\ell}$ be finitely many axioms of $\ZFC$. By the 
     where the quotes (``read with a different tone of voice'')
 \end{boxcorollary}
 
-Wtih Choice, given
+With Choice, we can make the model countable as well. Given $\alpha$ with
 \begin{align*}
-    V_{\alpha} \models \bigwedge_{i \leq \ell}
+    V_{\alpha} \models \bigwedge_{i \leq \ell} \sigma_i
 \end{align*}
-we can apply Downwards Löwenheim-Skolem to get some countable $X \prec V_{\alpha}$. Then apply Mostowski to get $X \simeq M$ with $M$ transitive and countable.
-% [CLAUDE] make this a little clearer
+we can apply Downwards Löwenheim-Skolem to get some countable $X \prec V_{\alpha}$, so that $X \models \bigwedge_{i \leq \ell} \sigma_i$ too. As $V_{\alpha}$ is transitive, it satisfies Extensionality, and hence so does $X$; so $\in$ is extensional on $X$, as well as well-founded and set-like. Then apply Mostowski (\Cref{Ch2:Thm:Mostowski}) to get $X \simeq M$ with $M$ transitive and countable, and $M \models \bigwedge_{i \leq \ell} \sigma_i$, because satisfaction is preserved by isomorphisms. So in fact $\ZFC$ proves that every finite sub-theory of $\ZFC$ has a countable transitive model.
 
 
 
