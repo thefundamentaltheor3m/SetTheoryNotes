@@ -52,9 +52,9 @@ Every absoluteness theorem we prove will have an assumption that the smaller mod
 
         \item \underline{Propositional Case.} If $\varphi$ is some propositional combination of $\varphi_0$ and $\varphi_1$, then the statement for $\vp$ is clear from the induction hypotheses for $\vp_0$ and $\vp_1$.
 
-        \item \underline{Bounded Quantifiers.} Say $\vp\of{\bar{u}}$ is of the form $\exists v \in W \, \parenth{\psi\of{\bar{u}, v, w}}$. (This is enough, because bounded universal can be formulated as a negation of a bounded existential, and the propositional case covers negations.)
+        \item \underline{Bounded Quantifiers.} Say $\vp\of{\bar{u}}$ is of the form $\exists v \in w \, \parenth{\psi\of{\bar{u}, v, w}}$. (This is enough, because bounded universal can be formulated as a negation of a bounded existential, and the propositional case covers negations.)
 
-        Let $y, z \in M$. Then, the following are equivalent:
+        Let $\bar{x} \in M^{<\omega}$ and $z \in M$. Then, the following are equivalent:
         \begin{itemize}
             \item $\brac{\exists v \in z, \, \psi\of{\bar{x}, v, z}}^M$
             \item There is $y \in z \cap M$ such that $\psi^M\of{\bar{x}, y, z}$
@@ -157,7 +157,8 @@ Let's see which axioms hold in the levels of the $V$-hierarchy.
 \begin{boxnexample}[$V_{\omega + \omega}$]
     We can show that Replacement does not relativise to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
     \begin{enumerate}
-        \item $G(n) = S$ iff $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$
+        % [CORRECTED] was: $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$ --- $i$ was never quantified, the brace closed around $g(n) = S$, $w$ stood for $\omega$, and nothing said $g$ is a function, so it did not express $S = \omega + n$
+        \item $G(n) = S$ iff $\exists g \brac{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}} \land g(n) = S}$
         % [FILLED] the second definition and the argument after it are supplied here; the lecture announced two definitions, gave one, and stopped
         \item $G(n) = S$ iff $\forall g \brac{\parenth{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}}} \to g(n) = S}$
     \end{enumerate}
@@ -179,7 +180,8 @@ Let's make some definitions about cardinals.
 \end{boxdefinition}
 
 \begin{boxdefinition}[Cofinality]
-    The \textbf{cofinality} of a set $A$, denoted $\cf(A)$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
+    % [CORRECTED] was: ``of a set $A$'' --- ``unbounded in $A$'' needs an order on $A$, and the notes only take cofinalities of ordinals
+    The \textbf{cofinality} of an ordinal $A$, denoted $\cf(A)$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
 \end{boxdefinition}
 
 \begin{boxdefinition}[Regularity/Singularity]
@@ -223,7 +225,7 @@ We want to see if $\F^M$, that is,
 \end{align*}
 Consider the statement
 \begin{align*}
-    \forall A \in M \parenth{A \ne \emptyset \to \exists x \in A, \, \forall y \in A, \, x \notin x}
+    \forall A \in M \parenth{A \ne \emptyset \to \exists x \in A, \, \forall y \in A, \, y \notin x}
 \end{align*}
 This is true if $M \ssq \WF$.
 
@@ -249,9 +251,10 @@ We want to show, effectively, that
 \begin{align*}
     \brac{\forall A \exists R \parenth{(A, R) \text{ is a w.o.}}}^M
 \end{align*}
-This is equivalent to
+% [CORRECTED] was: ``This is equivalent to $\forall A \in M, \, \exists R \in M \, \brac{\parenth{(A, R) \text{ is a w.o.}}}^M$ because \ldots'' --- that equivalence holds by the definition of relativization, so the reason given did no work; the absoluteness is what transfers ``w.o.'' from $V$ down to $M$, which is how the argument below uses it
+This follows from
 \begin{align*}
-    \forall A \in M, \, \exists R \in M \, \brac{\parenth{(A, R) \text{ is a w.o.}}}^M
+    \forall A \in M, \, \exists R \in M \, \parenth{(A, R) \text{ is a w.o.}}
 \end{align*}
 because the statement ``$(A, R)$ is a w.o.'' is $\Pi_1$, and thus, downwards absolute.
 
@@ -272,10 +275,11 @@ In the background, now, assume $\ZFCwoF$. Let $A \in \WF$ and suppose $A \ssq V_
 \end{boxcorollary}
 
 \begin{boxlemma}
-    If we denote by $T$ the theory consisting of $\ZF$ without power sets, infinity and foundation, the statement ``$(A, R)$ is a w.o.'' is also $\Sigma_1^T$.
+    % [CORRECTED] was: ``without power sets, infinity and foundation'' --- the proof needs Foundation to make ``$x$ is an ordinal'' a $\Delta_0$ condition, and without Foundation the statement fails (a transitive, $\in$-linear, ill-founded set can witness the $\Sigma_1$ form)
+    If we denote by $T$ the theory consisting of $\ZF$ without power sets and infinity, the statement ``$(A, R)$ is a w.o.'' is also $\Sigma_1^T$.
 \end{boxlemma}
 \begin{proof}
-    $(A, R)$ is a w.o. iff there is some $F : A \to \OR$ such that $\forall x, y \in A \parenth{x \, R \, Y \to F(x) < F(y)}$ % [FILLED] the rest of the proof is supplied here; the lecture stated the characterization and stopped
+    $(A, R)$ is a w.o. iff there is some $F : A \to \OR$ such that $\forall x, y \in A \parenth{x \, R \, y \to F(x) < F(y)}$ % [FILLED] the rest of the proof is supplied here; the lecture stated the characterization and stopped
     and $(A, R)$ is a l.o. From left to right, take $F$ to be the collapsing map of \Cref{Ch1:Thm:Mostowski_WO}, which is order-preserving with ordinal values; its construction is a recursion along a well-ordering of a set, and uses Replacement but neither Power Set nor Infinity. From right to left, given a nonempty $S \ssq A$, the set $F[S]$ is a nonempty set of ordinals, so it has a least element $F(x)$ with $x \in S$, and no $y \in S$ has $y \, R \, x$, as that would give $F(y) < F(x)$.
 
     So, in $T$, ``$(A, R)$ is a w.o.'' is equivalent to
@@ -310,9 +314,9 @@ The formula ``$A$ is finite'' is absolute for $M$. In fact, we can do better.
         \end{align*}
         where $f : n \iso A$ means $f$ is injective and surjective.
 
-        We know that $f : \iso A$ because we already know it is absolute.
+        We know that $f : n \iso A$ because we already know it is absolute.
 
-        \item[\underline{Downwards absoluteness.}] We have that $f \iso A$ in $V$. But $f \ssq_{\text{finite}} n \times A \ssq M$. And indeed we've checked already that Cartesian products are absolute.
+        \item[\underline{Downwards absoluteness.}] We have that $f : n \iso A$ in $V$. But $f \ssq_{\text{finite}} n \times A \ssq M$. And indeed we've checked already that Cartesian products are absolute.
 
         Then, by the previous lemma, $f \in M$.
 
@@ -331,11 +335,11 @@ The formula ``$A$ is finite'' is absolute for $M$. In fact, we can do better.
 \end{proof}
 
 \begin{boxlemma}
-    If $A \in M$ and $A$ is finite (in both $M$ and $V$), then $\Powset(A) \in M$. Therefore, $A \mapsto \Powset(A)$ is an absolute class function for $M$.
+    If $A \in M$ and $A$ is finite (in both $M$ and $V$), then $\Powset(A) \in M$. Therefore, $A \mapsto \Powset(A)$, restricted to finite sets $A$, is an absolute class function for $M$. % [CORRECTED] ``restricted to finite sets $A$'' inserted --- for infinite $A$ it fails, eg, $\Powset(\omega) \notin \HC$
 
     For the remainder of this argument, let's work in $M$.
     
-    We argue by recursion. We have that $A$ is finite, so there is some $n < \omega$ and $f \iso A$. Denote by $2^n$ the set of all $n$-tuples of $0$s and $1$s. For each $x \in 2^n$, write
+    We argue by recursion. We have that $A$ is finite, so there is some $n < \omega$ and $f : n \iso A$. Denote by $2^n$ the set of all $n$-tuples of $0$s and $1$s. For each $x \in 2^n$, write
     \begin{align*}
         B_x = \setst{f(i)}{x_i = 1} \ssq A
     \end{align*}
@@ -424,7 +428,7 @@ There are many useful applications of absoluteness.
 
 % 28 Sept
 
-If $M$ is a transitive model of $\ZFwoP$, we claim that the statement ``$\alpha$ is absolute for $M$'' is absolute for $M$.
+If $M$ is a transitive model of $\ZFwoP$, we claim that the statement ``$\alpha$ is an ordinal'' is absolute for $M$. % [CORRECTED] was: ``$\alpha$ is absolute for $M$'' --- absoluteness is a property of formulae, and what the next display unpacks is the formula ``$\alpha$ is an ordinal'\,'
 
 But what does it even mean? It means
 \begin{align*}
@@ -450,12 +454,12 @@ This gives both halves of the dichotomy.
 
 Now let's study the uncountable ordinals in $M$.
 
-Denote by $\omega^1$ what ``$M$ thinks'' is the least uncountable ordinal. If $\parenth{\omega_1 \text{ exists}}^M$, ie, if the notion of the existence of the least uncountable ordinal is even definable in $M$, then $\omega_1^M \leq \omega$ (where $\le$ is just the usual $\le$ on ordinals---recall that $\OR$ is absolute, which means precisely that whatever a class \textit{thinks} is an ordinal is, indeed, an ordinal in $V$).
+Denote by $\omega_1^M$ what ``$M$ thinks'' is the least uncountable ordinal. If $\parenth{\omega_1 \text{ exists}}^M$, ie, if the notion of the existence of the least uncountable ordinal is even definable in $M$, then $\omega_1^M \leq \omega_1$ (where $\le$ is just the usual $\le$ on ordinals---recall that $\OR$ is absolute, which means precisely that whatever a class \textit{thinks} is an ordinal is, indeed, an ordinal in $V$).
 
 \begin{boxdefinition}
     For each cardinal $\kappa \geq \omega$, define the class
     \begin{align*}
-        H_k = \setst{z}{\abs{\trcl{\set{z}}} < \kappa}
+        H_{\kappa} = \setst{z}{\abs{\trcl{\set{z}}} < \kappa}
     \end{align*}
 \end{boxdefinition}
 
@@ -470,10 +474,11 @@ so
 
 We can also unwind $\trcl{z}$ one level further, through the members of $z$.
 
+% [CORRECTED] was: $\bigcup_{x \in z} \trcl{\set{z}}$ --- true, but only because the index $x$ never appears, so it says nothing; the uses below need $\trcl{\set{x}}$
 \begin{boxproposition}
     For all sets $z$,
     \begin{align*}
-        \trcl{\set{z}} = \set{z} \cup \bigcup_{x \in z} \trcl{\set{z}}
+        \trcl{\set{z}} = \set{z} \cup \bigcup_{x \in z} \trcl{\set{x}}
     \end{align*}
 \end{boxproposition}
 
@@ -482,7 +487,7 @@ Nothing is assumed about $z$ here: it need not be transitive, let alone an ordin
 We will work in $\ZFC$ because we need choice to be able to work comfortably with cardinalities.
 
 \begin{boxlemma}
-    Each $H_K$ is a transitive class and, if $\kappa < \lambda$, then $H_{\kappa} \subsetneq H_{\lambda}$.
+    Each $H_{\kappa}$ is a transitive class and, if $\kappa < \lambda$, then $H_{\kappa} \subsetneq H_{\lambda}$.
 \end{boxlemma}
 \begin{proof}
     \hfill
@@ -572,13 +577,13 @@ Here is a useful lemma.
     Call the RHS $I$. We show $H_{\kappa} = I$.
 
     \begin{description}
-        \item[\underline{$H_{\kappa} \ssq I$.}] Let $z \in H_{\kappa}$ and $x \in \trcl{\set{x}}$. Then $x \ssq \trcl{\set{z}}$ and $\abs{x} \le \abs{\trcl{\set{z}}} < \kappa$.
+        \item[\underline{$H_{\kappa} \ssq I$.}] Let $z \in H_{\kappa}$ and $x \in \trcl{\set{z}}$. Then $x \ssq \trcl{\set{z}}$ and $\abs{x} \le \abs{\trcl{\set{z}}} < \kappa$.
 
         \item[\underline{$H_{\kappa} \supseteq I$.}] We apply $\in$-induction. Ie, we assume that for $x \in z$, since $x \in I$ (by transitivity of $I$), $x \in H_{\kappa}$, and therefore, $\abs{\trcl{\set{x}}} < \kappa$.
 
         Performing the induction, we calculate
         \begin{align*}
-            \abs{\trcl{\set{z}}} \le 1 \+ \bigoplus_{x \in z} \underbrace{\abs{\trcl{\set{z}}}}_{< \kappa}
+            \abs{\trcl{\set{z}}} \le 1 \+ \bigoplus_{x \in z} \underbrace{\abs{\trcl{\set{x}}}}_{< \kappa}
         \end{align*}
         As $z \in I$, $\abs{z} < \kappa$. So we are summing $< \kappa$ many cardinals that are all $< \kappa$, resulting in something $< \kappa$.
     \end{description}
@@ -601,8 +606,9 @@ So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
     \begin{enumerate}
         \item $H_{\kappa}$ is transitive.
         \item If $A \in H_{\kappa}$ and $B \ssq A$, then $B \in H_{\kappa}$.
-        \item Essentially just because $H_{\kappa}$ is a set.
-        \item Essentially just because $H_{\kappa}$ is a set.
+        % [CORRECTED] items 3 and 4 were both: ``Essentially just because $H_{\kappa}$ is a set.'' --- that a class is a set gives no member of it containing $x$ and $y$ (eg, $2 = \set{0, 1}$ is a transitive set in which Pairing fails); what is needed is closure of $H_{\kappa}$ under pairs and unions
+        \item If $x, y \in H_{\kappa}$, then $\set{x, y} \in H_{\kappa}$, since $\trcl{\set{\set{x, y}}} = \set{\set{x, y}} \cup \trcl{\set{x}} \cup \trcl{\set{y}}$ has cardinality below $\kappa$, as $\kappa$ is infinite.
+        \item If $A \in H_{\kappa}$, then $\bigcup A \in H_{\kappa}$, since $\bigcup A \ssq \trcl{A}$, and so $\trcl{\set{\bigcup A}} \ssq \set{\bigcup A} \cup \trcl{A}$.
         \item Let $A \in H_{\kappa}$. Pick a well-ordering $R$ of $A$ (assuming AC in $V$). Then, as $R \ssq A \times A$, $R \in H_{\kappa}$. Use downwards $\Pi_1$-absoluteness to see that
         \begin{align*}
             \brac{(A, R) \text{ is a well-ordering}}^{H_{\kappa}}
@@ -614,7 +620,7 @@ So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
     Infinity holds in $H_{\kappa}$ iff $\kappa > \omega$.
 \end{boxlemma}
 \begin{proof}
-    Follows from the fact that $k > \omega \lr \omega \in H_{\kappa}$.
+    Follows from the fact that $\kappa > \omega \lr \omega \in H_{\kappa}$.
 \end{proof}
 
 \begin{boxlemma} \label{Ch3:Lemma:H_Kappa_Replacement}
@@ -652,7 +658,7 @@ So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
 \end{boxlemma}
 \begin{proof} \hfill
     \begin{description}
-        \item[\underline{$(2) \to (1)$.}] Assume $(2)$. Let $A \in H_{\kappa}$. Then
+        \item[\underline{$(2) \to (1)$.}] Assume $(2)$. Let $A \in H_{\lambda}$. Then
         \begin{align*}
             \abs{\trcl{\set{\Powset(A)}}}
             = \abs{\set{\Powset(A)} \cup \Powset(A) \cup \trcl{A}}
@@ -729,7 +735,7 @@ It is possible to show that our analogies translate both ways, ie, $\vp\of{\bar{
 Note, about $M \models \vp\of{\bar{x}}$:
 \begin{enumerate}
     \item $\vp$ is not a set. There's a set $\ulcorner \vp \urcorner$ that is analogous to $\vp$. Nevertheless, we just write $M \models \vp\of{\bar{x}}$.
-    \item This requires $M \ne \emptyset$ and $\bar{x} \in M^n$, where $v_0, \ldots, v_n$ are the free variables of $\vp$. Contrast with $\vp^M\of{\bar{x}}$.
+    \item This requires $M \ne \emptyset$ and $\bar{x} \in M^{n + 1}$, where $v_0, \ldots, v_n$ are the free variables of $\vp$. Contrast with $\vp^M\of{\bar{x}}$.
     \item $\vp^M\of{\bar{x}}$ was defined for each $\vp$ and each class $M$. $M \models \vp\of{\bar{x}}$ is defined only for sets $M$:
     \begin{align*}
         \models \; \ssq \; \setst{\parenth{M, c, \bar{x}}}{M \ne \emptyset, \, c \text{ a Gödel number}, \, \bar{x} \in M^{<\omega}}
@@ -799,9 +805,10 @@ Note that $C_1$ is club in $\OR$. Indeed, we proved that the set of $\beth$-fixe
 \begin{itemize}
     \item $f(0) = \beth_0$
     \item $f(\alpha + 1) = \beth_{f(\alpha) + 1}$
-    \item $f(\beta) = \sup_{\alpha < \beta}$
+    \item $f(\beta) = \sup_{\alpha < \beta} f(\alpha)$
 \end{itemize}
-The range of $f$ is a cub and, for every limit $\beta \in \lim\of{\range\of{f}}$\footnote{This is the class of limit points of $\range(f)$, and as we know, the class of limit points of a club is a club}, then $\beta = f(\beta) = \beth_{\beta}$. So $C_1$ contains a club. So $C_1$ is unbounded. Moreover, $C_1$ is closed. So it's a club in $\OR$.
+% [CORRECTED] was: ``for every limit $\beta \in \lim\of{\range\of{f}}$, then $\beta = f(\beta) = \beth_{\beta}$'' --- $f$ is strictly increasing, so $f(\beta) > \beta$ in general (eg, $\beta = f(\omega)$); what holds is that the values of $f$ at limits, which are exactly the limit points of its range, are $\beth$-fixed points
+The range of $f$ is a cub and, for every limit ordinal $\beta$, $f(\beta) = \beth_{f(\beta)}$; that is, every element of $\lim\of{\range\of{f}}$\footnote{This is the class of limit points of $\range(f)$, and as we know, the class of limit points of a club is a club} is a $\beth$-fixed point. So $C_1$ contains a club. So $C_1$ is unbounded. Moreover, $C_1$ is closed. So it's a club in $\OR$.
 
 \begin{boxtheorem}
     Suppose $\mu$ is a strongly inaccessible cardinal. Let $C = \setst{\kappa < \mu}{V_{\kappa} \prec V_{\mu}}$. Then $C$ os a club subset of $\mu$.
@@ -821,14 +828,14 @@ The range of $f$ is a cub and, for every limit $\beta \in \lim\of{\range\of{f}}$
     \begin{itemize}
         \item It follows, for $\kappa < \kappa' < \mu$ with $\kappa, \kappa' \in C$, that $V_{\kappa} \prec V_{\kappa'}$.
 
-        \item Then, $\grpres{V_{\kappa}}{\kappa \in C \cap \mu}$ is a chain of elementary substructures of $V_{\kappa}$, so its union is also an elementary substructure of $V_{\mu}$.
+        \item Then, $\grpres{V_{\kappa}}{\kappa \in C \cap \lambda}$ is a chain of elementary substructures of $V_{\mu}$, so its union is also an elementary substructure of $V_{\mu}$.
 
         \item $V_{\lambda} \prec V_{\mu}$, so $\lambda \in C$.
 
         \item It also follows that $V_{\kappa} \prec V_{\lambda}$ for $\kappa \in C \cap \lambda$.
     \end{itemize}
 
-    Now let $\kappa_0 < \mu$ be an arbitrary uncountable cardinal. By Downwards Löwenheim-Skolem, we have $X_0 \prec V_{\mu}$ with $V_{\kappa_0} \cup \set{\kappa_0} \ssq X$ and $\abs{X} = \abs{V_{\kappa_0} \cup \set{\kappa_0}} = \beth_{\kappa_0} < \beth_{\mu} = \mu$.
+    Now let $\kappa_0 < \mu$ be an arbitrary uncountable cardinal. By Downwards Löwenheim-Skolem, we have $X_0 \prec V_{\mu}$ with $V_{\kappa_0} \cup \set{\kappa_0} \ssq X_0$ and $\abs{X_0} = \abs{V_{\kappa_0} \cup \set{\kappa_0}} = \beth_{\kappa_0} < \beth_{\mu} = \mu$.
 
     % IDEA: Take X_0, fill in things of smaller rank, then take X_1, fill in evrything of smaller rank, and so on. Each X_i is obtained by applying DLS to $V_{\mu}$. We then get $V_{\kappa} \bigcup_{n < \omega} V_{\kappa_n} = \bigcup_{n < \omega} X_n \prec V_{\kappa}$ where we konw the chain is elementary by the elementary chain theorem.
 \end{proof}
@@ -869,12 +876,13 @@ Indeed, there will be examples where $Z \ne V$.
     Suppose $\varphi_i$ for $i < \ell < \omega$ are formulae in the language of set theory. Suppose that $\grpres{Z_{\alpha}}{\alpha \in C}$ is a hierarchy. Then there's a club class $D \ssq C$ such that for every $\alpha \in D$ and $i < \ell$, $\vp_i$ is absolute between $Z_{\alpha}$ and $Z$.
 \end{boxtheorem}
 \begin{proof}
-    WLOG, assume that for all $j < \ell$ and subformulae $\psi$ of $\varphi$, there is some $i < j$ such that $\psi$ is $\vp_{i}$. Ie, we are setting up an induction on the complexity of $\vp$ by setting up an induction on ordinals.
+    WLOG, assume that for all $j < \ell$ and proper subformulae $\psi$ of $\varphi_j$, there is some $i < j$ such that $\psi$ is $\vp_{i}$. Ie, we are setting up an induction on the complexity of $\vp$ by setting up an induction on ordinals.
 
     Let's define a class sequence of ordinals $\grpres{\alpha_{\eta}}{\eta \in \OR}$ as follows.
     \begin{itemize}
-        \item \underline{Base:} Define $\alpha_0 = 0$.
-        \item \underline{Successor:} Given $\alpha_{\eta}$, define $\alpha_{\eta + 1}$ to be the least $\beta \in C \setminus \parenth{\alpha_{\eta} + 1}$ so that for all $j < \ell$, if $\vp_{j}\of{\bar{u}}$ is of the form $\exists v, \vp_i\of{\bar{u}, v}$, then for all $\bar{x}$ from $Z_{\alpha_{\eta}}$ that match $\bar{u}$, if there is $y \in Z$ such that $\vp_i\of{\bar{x}, y}^Z$, then there is $y \in Z_{p}$ such that $\vp_i\of{\bar{x}, y}^Z$.
+        % [CORRECTED] was: $\alpha_0 = 0$ --- $Z_{\alpha}$ is only defined for $\alpha \in C$, and $0$ need not be in $C$ (it is not for $\grpres{H_{\kappa}}{\kappa \text{ an infinite cardinal}}$), while the successor step uses $Z_{\alpha_0}$; the board also says to maintain $\alpha_{\eta} \in C$ for all $\eta$
+        \item \underline{Base:} Define $\alpha_0 = \min(C)$.
+        \item \underline{Successor:} Given $\alpha_{\eta}$, define $\alpha_{\eta + 1}$ to be the least $\beta \in C \setminus \parenth{\alpha_{\eta} + 1}$ so that for all $j < \ell$, if $\vp_{j}\of{\bar{u}}$ is of the form $\exists v, \vp_i\of{\bar{u}, v}$, then for all $\bar{x}$ from $Z_{\alpha_{\eta}}$ that match $\bar{u}$, if there is $y \in Z$ such that $\vp_i\of{\bar{x}, y}^Z$, then there is $y \in Z_{\beta}$ such that $\vp_i\of{\bar{x}, y}^Z$.
         \item \underline{Limit case:} If $\theta$ is a limit ordinal, define
         \begin{align*}
             \alpha_{\theta} = \sup_{\eta < \theta} \of{\alpha_{\eta}} \in \lim(C) \subset C
