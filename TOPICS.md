@@ -208,7 +208,87 @@ on.**
     and complexity relative to a theory: Delta_0^T,
     Sigma_1^T, Pi_1^T and Delta_1^T, with the promise of
     Sigma_n and Pi_n to come. No subsections.
+
+3.4 Absoluteness                                             [2026-09-16 to
+    When a formula means the same in a transitive class as     2026-09-28]
+    in V, and which constructions are computed correctly      3_4_Absoluteness.tex
+    there.
+    3.4.1 Absoluteness Theorems
+          Absoluteness (downwards, upwards, for M); the
+          notation A^M; Delta_0-absoluteness; Sigma_1 up,
+          Pi_1 down; the same relative to a theory T.
+    3.4.2 Finite Sets                                        [2026-09-25]
+          M a transitive model of ZF - P: [M]^{<omega} in
+          M, |A| = n and finiteness absolute, P(A) for
+          finite A.
+    3.4.3 Absoluteness of Recursive Definitions              [2026-09-25]
+          Absolute data give an absolute recursion; ordinal
+          arithmetic as the example.
+    3.4.4 Ordinals in Transitive Models                      [2026-09-28]
+          OR^M = OR cap M, an ordinal iff M is a set and OR
+          otherwise; omega_1^M <= omega_1.
+
+3.5 Relativizing the Axioms of ZFC                           [2026-09-18 to
+    Which axioms hold in which transitive classes, and the    2026-09-23]
+    consistency results that follow.                         3_5_Axioms.tex
+    3.5.1 The First Few Axioms
+          Extensionality, Comprehension and Pairing in M,
+          as closure conditions.
+    3.5.2 The Levels of the V-Hierarchy                      [2026-09-21,
+          The axioms in V_alpha for limit alpha and in        2026-09-23]
+          V_omega; Replacement fails in V_{omega+omega};
+          Foundation and Infinity.
+    3.5.3 Choice                                             [2026-09-23]
+          "w.o." is Pi_1 (and Sigma_1 over ZF - P - I);
+          AC^WF, AC^{V_alpha}; Con(ZFC - F) -> Con(ZFC).
+    3.5.4 Inaccessible Cardinals                             [2026-09-21,
+          (Strong) limits, cofinality, regularity,            2026-09-23]
+          inaccessibility; beth_mu = mu; V_mu |= ZFC.
+
+3.6 Relativization vs Satisfaction                           [undated, between
+    The formalized |=, how it differs from phi^M (sets         2026-09-30 and
+    only), the Fact scheme relating the two, and why no        2026-10-05]
+    formula can define definability. No subsections.         3_6_Satisfaction.tex
+    Partly transcribed from board photographs.
+
+3.7 The Sets H_kappa                                         [2026-09-28 to
+    Sets that are hereditarily small, the axioms they         2026-10-05]
+    satisfy, and their Sigma_1-correctness.                  3_7_H_Kappa.tex
+    3.7.1 Hereditary Cardinality
+          H_kappa, trcl identities, transitivity, H_kappa
+          inside V_kappa, HF = V_omega, HC, OR cap H_kappa =
+          kappa, and the regular-kappa characterization.
+    3.7.2 The Axioms in H_kappa                              [2026-09-30]
+          Everything but Replacement and Power Set;
+          Replacement for regular kappa; Power Set iff a
+          strong limit; H_{aleph_omega} (board photograph).
+    3.7.3 Sigma_1-Correctness                                [2026-09-30 to
+          H_kappa <_{Sigma_1} V (stated 30 Sep, proved after   2026-10-05]
+          satisfaction); the beth-fixed points form a club C_1
+          of kappa with V_kappa <_{Sigma_1} V.
+
+3.8 Reflection                                               [2026-10-05,
+    How a hierarchy reflects finitely many formulae down to   2026-10-07]
+    club many of its levels.                                 3_8_Reflection.tex
+    3.8.1 Reflection Below an Inaccessible
+          {kappa < mu : V_kappa < V_mu} is club in mu.
+          Closure proved; the lecture broke off during
+          unboundedness (\sorry, with the author's IDEA
+          comment).
+    3.8.2 Hierarchies
+    3.8.3 The Reflection Theorem
+          The scheme, its proof (finished from board
+          photographs), and the corollary that ZFC proves
+          each finite fragment has a countable transitive
+          model.
 ```
+
+The material of 3.4-3.8 arrived in one inbox across three commits (2026-09-23,
+2026-09-24, 2026-10-07). The dates are the ones the author wrote in the file. The
+material before the first written date (`% 21 Sep 2026`) is dated 2026-09-16/18,
+the two lectures after the pass of 2026-09-15. Two directives of the author's
+shaped it: the section break before 3.4.3, and the placement of the A^M notation,
+which the author called a digression and asked to have placed (it opens 3.4.1).
 
 Three `% [CORRECTED]` markers sit in 3.2, all from the correctness pass of 2026-09-14
 and all on the same argument: the transfer scheme's non-emptiness hypothesis, its
@@ -325,6 +405,20 @@ relations (promised by chapter 2's title on 2026-09-02, delivered in 2.1.2-2.1.3
 2026-09-05); the general Mostowski Collapse Theorem (promised in 1.2.2 and by chapter
 2's title, proved in 2.2.2 on 2026-09-09).
 
+Partly reached on 2026-09-23: the proof of the theorem scheme that ZF - F proves
+sigma^WF (3.2). 3.5 checks Extensionality, Comprehension and Pairing in general
+transitive classes, Unions and Power Set only at limit levels V_alpha (stated
+without proof), and Foundation, Infinity and Choice in WF. Replacement in WF is
+still asserted rather than proved.
+
+Stated without proof in the lectures of 2026-09-18 to 2026-10-07, and left
+unmarked, as previous passes did for 3.2's theorem: the Sigma_1/Pi_1 and
+Sigma_1^T absoluteness lemmas (3.4.1); the two propositions on V_alpha and V_omega
+and the Infinity claim (3.5.2); V_mu |= ZFC for inaccessible mu (3.5.4); H_kappa =
+V_alpha implies kappa = alpha (3.7.1); R in H_kappa in the Choice item of the
+axioms lemma (3.7.2); the Fact scheme (3.6). The Foundation item of the H_kappa
+axioms lemma is marked \sorry, as is the unbounded half of 3.8.1.
+
 ## Unplaced
 
 Nothing.
@@ -400,6 +494,21 @@ boxdefinition.                               discussion is deliberately informal
                                              formal the course means to be here, and
                                              /integrate is not the pass to make it.
                                              [2026-09-11]
+
+Chapter 3 has eight sections, the        3.1-3.3 are about formulae (relativization
+corpus maximum, and three bodies of      and complexity), 3.4-3.5 about absoluteness
+theory.                                  and the axioms in transitive classes, and
+                                         3.6-3.8 about models of fragments of ZFC
+                                         (satisfaction, H_kappa, reflection). The
+                                         last group has its own objects (hierarchies,
+                                         H_kappa, elementary V_kappa < V_mu) and may
+                                         want a chapter of its own, on models of set
+                                         theory. The author opened no chapter for it,
+                                         so this pass did not either. Separately,
+                                         3.6 is one idea with no subsections and
+                                         would sit naturally beside 3.1, but that
+                                         moves settled material. Recommend /organize.
+                                         [2026-10-08]
 ```
 
 ## Template scaffolding
