@@ -86,9 +86,19 @@ For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, rel
 
     By $\Delta_0$-absoluteness, \sorry % [CLAUDE] just 2 short sentences concluding/wrapping up here should be more than enough
 
-    \item \underline{Comprehension:} Assume (here on after) that \underline{$M$ is transitive}. \sorry
+    \item \underline{Comprehension:} Assume (here on after) that \underline{$M$ is transitive}. % [FILLED] the analysis of Comprehension^M, and the closure condition that secures it, are supplied here; the lecture broke off after the transitivity assumption
+    For each formula $\vp\of{x, \bar{y}}$, the corresponding instance relativized to $M$ is
+    \begin{align*}
+        \forall A \in M \, \forall \bar{y} \in M \, \exists B \in M \, \forall x \in M \brac{x \in B \lr \parenth{x \in A \land \vp^M\of{x, \bar{y}}}}
+    \end{align*}
+    As $M$ is transitive, any such $B$ and the given $A$ are subsets of $M$, so the bracket pins $B$ down completely: it must be $\setst{x \in A}{\vp^M\of{x, \bar{y}}}$. So Comprehension relativizes to $M$ iff each of these sets lies in $M$, and in particular it does whenever $M$ is closed under subsets, ie, whenever $A \in M$ and $B \ssq A$ imply $B \in M$.
 
-    \item \underline{Pairing:} \sorry 
+    \item \underline{Pairing:} % [FILLED] the lecture left Pairing blank
+    Relativized to $M$, Pairing says
+    \begin{align*}
+        \forall x \in M \, \forall y \in M \, \exists A \in M \, \parenth{x \in A \land y \in A}
+    \end{align*}
+    This holds as soon as $\set{x, y} \in M$ for all $x, y \in M$, since $\set{x, y}$ is then a witness. (Here we did not even need transitivity, because the formula under the quantifiers is atomic.)
 \end{itemize}
 
 % [CLAUDE] here is a digression, now you need to figure out where it's going
@@ -111,8 +121,14 @@ For today, let $T$ denote the theory consisting of Extensionality, Comprehension
     We can show that Replacement does not relativise to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
     \begin{enumerate}
         \item $G(n) = S$ iff $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$
+        % [FILLED] the second definition and the argument after it are supplied here; the lecture announced two definitions, gave one, and stopped
+        \item $G(n) = S$ iff $\forall g \brac{\parenth{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}}} \to g(n) = S}$
     \end{enumerate}
-    \sorry
+    Both say that $S$ is the last value of the function $g$ on $n + 1$ that starts at $\omega$ and takes a successor at each step, and in both, everything after the unbounded quantifier over $g$ is $\Delta_0$ in $g$, $n$, $S$ and the parameter $\omega$. So the first is $\Sigma_1$ and the second is $\Pi_1$.
+
+    Now fix $n < \omega$. The unique $g$ in question is $\setst{\parenth{i, \omega + i}}{i \leq n}$, and each of its pairs lies in $V_{\omega + n + 3}$, so $g \in V_{\omega + n + 4} \ssq V_{\omega + \omega}$. Hence, for $S \in V_{\omega + \omega}$, the first formula relativized to $V_{\omega + \omega}$ holds iff $S = \omega + n$: the witness $g$ is available inside $V_{\omega + \omega}$, and the $\Delta_0$ part means the same thing there as in $V$ by $\Delta_0$-absoluteness. (The second formula relativizes correctly too, by downward absoluteness of $\Pi_1$ formulae, so it does not matter which definition we use.)
+
+    So the hypothesis of the instance of Replacement for this formula, with $A = \omega \in V_{\omega + \omega}$ and parameter $\omega$, holds in $V_{\omega + \omega}$. If the conclusion did too, we would have $B \in V_{\omega + \omega}$ with $\omega + n \in B$ for every $n < \omega$. But $B \in V_{\omega + k + 1}$ for some $k < \omega$, so $B \ssq V_{\omega + k}$, and then $\omega + k \in V_{\omega + k}$, ie, $\rank{\omega + k} < \omega + k$, which is absurd since ordinals are their own ranks.
 \end{boxnexample}
 
 Let's make some definitions about cardinals.
@@ -200,7 +216,7 @@ This is equivalent to
 \end{align*}
 because the statement ``$(A, R)$ is a w.o.'' is $\Pi_1$, and thus, downwards absolute.
 
-Indeed, the reason this statement is $\Pi_1$ is that $(A, R)$ is a w.o. iff $(A, R)$ is a l.o. (which is a $\Delta_0$ statement) and $(A, R)$ is well-founded (which is $\Pi_1$ because \sorry).
+Indeed, the reason this statement is $\Pi_1$ is that $(A, R)$ is a w.o. iff $(A, R)$ is a l.o. (which is a $\Delta_0$ statement) and $(A, R)$ is well-founded (which is $\Pi_1$ because it says $\forall S \brac{\parenth{\emptyset \ne S \ssq A} \to \exists x \in S \, \forall y \in S \, \neg\parenth{y \, R \, x}}$, and everything after $\forall S$ is $\Delta_0$: the quantifiers over $x$ and $y$ are bounded by $S$, and $\neg\parenth{y \, R \, x}$ says that the ordered pair $\parenth{y, x}$ is not a member of $R$, which needs only quantifiers bounded by $R$). % [FILLED] the reason well-foundedness is Pi_1 is supplied here
 
 In the background, now, assume $\ZFCwoF$. Let $A \in \WF$ and suppose $A \ssq V_{\alpha}$ for some $\alpha$. In $V$, we have some $R \ssq A \times A$ such that $R$ is a w.o. Then $R \ssq V_{\alpha} \times V_{\alpha}$, so $R \in V_{\alpha + 3} \subset \WF$. By $\Pi_1$ downwards absoluteness, we conclude that $\brac{(A, R) \text{ is a w.o.}}^{\WF}$.
 
@@ -220,7 +236,14 @@ In the background, now, assume $\ZFCwoF$. Let $A \in \WF$ and suppose $A \ssq V_
     If we denote by $T$ the theory consisting of $\ZF$ without power sets, infinity and foundation, the statement ``$(A, R)$ is a w.o.'' is also $\Sigma_1^T$.
 \end{boxlemma}
 \begin{proof}
-    $(A, R)$ is a w.o. iff there is some $F : A \to \OR$ such that $\forall x, y \in A \parenth{x \, R \, Y \to F(x) < F(y)}$ \sorry
+    $(A, R)$ is a w.o. iff there is some $F : A \to \OR$ such that $\forall x, y \in A \parenth{x \, R \, Y \to F(x) < F(y)}$ % [FILLED] the rest of the proof is supplied here; the lecture stated the characterization and stopped
+    and $(A, R)$ is a l.o. From left to right, take $F$ to be the collapsing map of \Cref{Ch1:Thm:Mostowski_WO}, which is order-preserving with ordinal values; its construction is a recursion along a well-ordering of a set, and uses Replacement but neither Power Set nor Infinity. From right to left, given a nonempty $S \ssq A$, the set $F[S]$ is a nonempty set of ordinals, so it has a least element $F(x)$ with $x \in S$, and no $y \in S$ has $y \, R \, x$, as that would give $F(y) < F(x)$.
+
+    So, in $T$, ``$(A, R)$ is a w.o.'' is equivalent to
+    \begin{align*}
+        \text{$(A, R)$ is a l.o.} \land \exists F \brac{F \text{ is a function} \land \dom{F} = A \land \forall x \in A \, \parenth{F(x) \in \OR} \land \forall x, y \in A \, \parenth{x \, R \, y \to F(x) \in F(y)}}
+    \end{align*}
+    Everything after $\exists F$ is $\Delta_0$ provided ``$F(x) \in \OR$'' is, and this is where Foundation is used: in its presence, an ordinal is just a transitive set that is linearly ordered by $\in$, which is a $\Delta_0$ condition.
 \end{proof}
 
 % 25 September
@@ -377,7 +400,14 @@ To see this, note that foundation is equivalent to $(V, \in)$ being well-founded
 
 Now if we also give ourselves the power set axiom, then we can define the $V$-hierarchy, and conclude that $G(y) = \rank{y}$. But without power sets, \textit{we cannot even define the $V$-hierarchy}, so there is no meaningful notion of rank!
 
-By the theorem scheme on absoluteness of recursively defined class functions, $G$ is an absolute class function for $M$. In other words, $G^M = G \restriction M$. Also, $G^M : M \to \OR^M$ is surjective. \sorry
+By the theorem scheme on absoluteness of recursively defined class functions, $G$ is an absolute class function for $M$. In other words, $G^M = G \restriction M$. Also, $G^M : M \to \OR^M$ is surjective. % [FILLED] the surjectivity and the two cases of the dichotomy are argued here; the lecture asserted them
+Indeed, each value of $G^M$ is an ordinal in $M$, and $G(\alpha) = \alpha$ for every ordinal $\alpha$, by induction: $G(\alpha) = \sup_{\beta < \alpha}\of{G(\beta) + 1} = \sup_{\beta < \alpha}\of{\beta + 1} = \alpha$. So every $\alpha \in \OR^M = \OR \cap M$ is $G^M(\alpha)$.
+
+This gives both halves of the dichotomy.
+\begin{itemize}
+    \item If $M$ is a set, then $\OR \cap M = G[M]$ is a set by Replacement, and a transitive set of ordinals is an ordinal, so $\OR^M \in \OR$.
+    \item If $M$ is a proper class, suppose $\OR \cap M$ were a set, hence an ordinal $\alpha$. In $V$ we do have Power Set, so $G(y) = \rank{y}$ for every $y$. So, for every $y \in M$, $\rank{y} = G^M(y) \in \OR \cap M = \alpha$, ie, $y \in V_{\alpha}$. Then $M \ssq V_{\alpha}$, and $M$ would be a set by Comprehension. So $\OR^M$ is a transitive proper class of ordinals, which can only be $\OR$.
+\end{itemize}
 
 Now let's study the uncountable ordinals in $M$.
 
@@ -593,7 +623,8 @@ So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
 \begin{proof}
     We already know upwards absoluteness, so the only remaining question is downwards absoluteness.
 
-    \sorry
+    % [FILLED] forward reference supplied here; the lecture deferred this proof until satisfaction had been formalized
+    This needs us to talk about satisfaction in sets, which we have not yet formalized; we do so in the next section, and the proof is given there (\Cref{Ch3:Thm:H_Kappa_Sigma1}).
 \end{proof}
 
 \section{Relativisaiton vs Satisfaction}
@@ -643,7 +674,7 @@ Otherwise, the least undefinable ordinal would exist and be definable (because t
 
 Let's now go back to cardinals.
 
-\begin{boxtheorem}
+\begin{boxtheorem} \label{Ch3:Thm:H_Kappa_Sigma1}
     If $\kappa$ is an uncountable cardinal, then $H_{\kappa} \prec_{\Sigma_1} V$.
 \end{boxtheorem}
 
@@ -659,7 +690,18 @@ Note that $H_{\kappa} \prec_{\Sigma_1} V$ means $\Sigma_1$ formulas are absolute
 
     Pick any $y$ such that $\psi\of{x, y}$. Let $N = \trcl{\set{x, y}}$. Then $x, y \in N$ and $N$ is transitive. By $\Delta_0$ absoluteness, we know $\psi(x, y)^N$. Can write ``$N \models \psi(x, y)$''.
 
-    Apply Downwards Löwenheim-Skolem to find $Z \prec N$ with \sorry
+    % [FILLED] the proof from here on is supplied; the lecture broke off at the application of Downwards Löwenheim-Skolem
+    Apply Downwards Löwenheim-Skolem to find $Z \prec N$ with $\trcl{\set{x}} \ssq Z$ and $\abs{Z} \leq \abs{\trcl{\set{x}}} + \aleph_0$. As $x \in H_{\kappa}$ and $\kappa$ is uncountable, $\abs{Z} < \kappa$.
+
+    $N$ is transitive, so Extensionality holds in $N$, and hence in $Z \prec N$; so $\in$ is extensional on $Z$. It is also well-founded and set-like there, so by the Mostowski Collapse Theorem Scheme (\Cref{Ch2:Thm:Mostowski}) there is a transitive set $M$ and an isomorphism $\pi : \parenth{Z, \in} \to \parenth{M, \in}$, given by $\pi(z) = \setst{\pi(w)}{w \in z \cap Z}$. Two things about $\pi$:
+    \begin{itemize}
+        \item $\pi(w) = w$ for every $w \in \trcl{\set{x}}$. Indeed, by $\in$-induction: such a $w$ is a subset of the transitive set $\trcl{\set{x}} \ssq Z$, so $w \cap Z = w$, and $\pi(w) = \setst{\pi(v)}{v \in w} = w$. In particular, $\pi(x) = x$.
+        \item $\abs{M} = \abs{Z} < \kappa$.
+    \end{itemize}
+
+    Now $N \models \exists v \, \psi\of{x, v}$, so, as $Z \prec N$ and $x \in Z$, there is $y' \in Z$ with $Z \models \psi\of{x, y'}$. Applying the isomorphism, $M \models \psi\of{x, \pi(y')}$, ie, $\psi\of{x, \pi(y')}^M$. As $M$ is transitive and $\psi$ is $\Delta_0$, $\Delta_0$-absoluteness gives $\psi\of{x, \pi(y')}$.
+
+    Finally, $\pi(y') \in M$ and $M$ is transitive, so $\trcl{\set{\pi(y')}} \ssq M$ and $\abs{\trcl{\set{\pi(y')}}} \leq \abs{M} < \kappa$. So $\pi(y') \in H_{\kappa}$, and as $H_{\kappa}$ is transitive, $\Delta_0$-absoluteness gives $\psi\of{x, \pi(y')}^{H_{\kappa}}$. So $\parenth{\exists v \, \psi\of{x, v}}^{H_{\kappa}}$.
 \end{proof}
 
 % 5 Oct
