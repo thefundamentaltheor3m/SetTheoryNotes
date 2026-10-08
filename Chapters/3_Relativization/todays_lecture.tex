@@ -612,6 +612,35 @@ The way we define what ``formulae'' are internally is using Gödel numbers. Ie, 
 
 It is possible to show that our analogies translate both ways, ie, $\vp\of{\bar{x}}^M$ iff ``$M \models \vp\of{\bar{x}}$'', simply by structural induction on $\vp$.
 
+% Transcribed from the board photographs supplied with the post-lecture pass of 8 Oct 2026; these boards were not typed up during the lecture.
+
+Note, about $M \models \vp\of{\bar{x}}$:
+\begin{enumerate}
+    \item $\vp$ is not a set. There's a set $\ulcorner \vp \urcorner$ that is analogous to $\vp$. Nevertheless, we just write $M \models \vp\of{\bar{x}}$.
+    \item This requires $M \ne \emptyset$ and $\bar{x} \in M^n$, where $v_0, \ldots, v_n$ are the free variables of $\vp$. Contrast with $\vp^M\of{\bar{x}}$.
+    \item $\vp^M\of{\bar{x}}$ was defined for each $\vp$ and each class $M$. $M \models \vp\of{\bar{x}}$ is defined only for sets $M$:
+    \begin{align*}
+        \models \; \ssq \; \setst{\parenth{M, c, \bar{x}}}{M \ne \emptyset, \, c \text{ a Gödel number}, \, \bar{x} \in M^{<\omega}}
+    \end{align*}
+\end{enumerate}
+
+\begin{boxlemma}[Fact (Scheme)]
+    Consider any formula $\vp\of{v_0, \ldots, v_n}$. For each $M \ne \emptyset$ and $\bar{x} \in M^{n + 1}$,
+    \begin{align*}
+        \vp\of{\bar{x}}^M \text{ iff } ``M \models \vp\of{\bar{x}}"
+    \end{align*}
+\end{boxlemma}
+
+For now, work in $\ZF$. Given a formula $\vp(u)$ and a set $x$, say $\vp(u)$ \textbf{defines} $x$ iff
+\begin{align*}
+    \forall u \brac{u = x \lr \vp(u)} \tag{$\star$}
+\end{align*}
+Observe: there is no formula $\delta\of{r, x}$ so that, for every formula $\vp(u)$,
+\begin{align*}
+    \forall x \brac{\delta\of{\ulcorner \vp(u) \urcorner, x} \lr \underbrace{\vp(u) \text{ defines } x}_{(\star)}}
+\end{align*}
+Otherwise, the least undefinable ordinal would exist and be definable (because there are only countably many Gödel numbers).
+
 Let's now go back to cardinals.
 
 \begin{boxtheorem}
