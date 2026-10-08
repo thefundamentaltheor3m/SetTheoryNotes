@@ -1,0 +1,219 @@
+\section{Relativizing the Axioms of $\ZFC$}
+
+We now put absoluteness to work on the axioms themselves, asking which of them hold relativized to which transitive classes. This is what \Cref{Ch3:Thm:ZF_Relativizes_To_WF} needed for $\WF$, and it also finds models of large fragments of $\ZFC$ among the levels of the $V$-hierarchy.
+
+\subsection{The First Few Axioms}
+
+For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativized to $M$.
+
+We start with Extensionality, which relativized to $M$ reads
+\begin{align*}
+    \brac{\forall A \forall B \brac{\forall x \parenth{x \in A \lr x \in B} \to A = B}}^M
+\end{align*}
+Or, equivalently,
+\begin{align*}
+    \brac{\forall A \forall B \brac{\parenth{A \ssq B \land B \ssq A} \to A = B}}^M
+\end{align*}
+where $A \ssq B$ is the $\Delta_0$ formula $\parenth{\forall x \in A}\parenth{x \in B}$. Indeed, all sub-formulae of the above are $\Delta_0$.
+
+This is all we need, as long as $M$ is transitive.
+
+\begin{boxlemma}[Extensionality]
+    If $M$ is transitive, then $(\text{Extensionality})^M$.
+\end{boxlemma}
+\begin{proof}
+    By $\Delta_0$-absoluteness, for $A, B \in M$ the formula $\parenth{A \ssq B \land B \ssq A} \to A = B$ says the same thing in $M$ as it does in $V$, where it is true. So it holds in $M$ for all $A, B \in M$, which is exactly $(\text{Extensionality})^M$.
+\end{proof}
+
+From now on, assume that \underline{$M$ is transitive}, so that $(\text{Extensionality})^M$.
+
+Comprehension needs $M$ to contain enough subsets of its members.
+
+\begin{boxlemma}[Comprehension]
+    If $M$ is closed under subsets, ie, $A \in M$ and $B \ssq A$ imply $B \in M$, then $(\text{Comprehension})^M$.
+\end{boxlemma}
+\begin{proof} % [FILLED] the analysis of Comprehension^M, and the closure condition that secures it, are supplied here; the lecture broke off after the transitivity assumption
+    For each formula $\vp\of{x, \bar{y}}$, the corresponding instance relativized to $M$ is
+    \begin{align*}
+        \forall A \in M \, \forall \bar{y} \in M \, \exists B \in M \, \forall x \in M \brac{x \in B \lr \parenth{x \in A \land \vp^M\of{x, \bar{y}}}}
+    \end{align*}
+    As $M$ is transitive, any such $B$ and the given $A$ are subsets of $M$, so the bracket pins $B$ down completely: it must be $\setst{x \in A}{\vp^M\of{x, \bar{y}}}$. So Comprehension relativizes to $M$ iff each of these sets lies in $M$, and in particular it does whenever $M$ is closed under subsets.
+\end{proof}
+
+From now on, assume $(\text{Comprehension})^M$ as well.
+
+Pairing only needs $M$ to be closed under pairs.
+
+\begin{boxlemma}[Pairing]
+    If $\set{x, y} \in M$ for all $x, y \in M$, then $(\text{Pairing})^M$.
+\end{boxlemma}
+\begin{proof} % [FILLED] the lecture left Pairing blank
+    Relativized to $M$, Pairing says
+    \begin{align*}
+        \forall x \in M \, \forall y \in M \, \exists A \in M \, \parenth{x \in A \land y \in A}
+    \end{align*}
+    If $\set{x, y} \in M$, then it is a witness. (Here we did not even need transitivity, because the formula under the quantifiers is atomic.)
+\end{proof}
+
+\subsection{The Levels of the $V$-Hierarchy}
+
+Let's see which axioms hold in the levels of the $V$-hierarchy.
+
+\begin{boxproposition}
+    For each axiom $\sigma$ of $\set{\text{Extensionality}, \text{Comprehension}, \text{Pairing}, \text{Unions}, \text{Power Sets}}$, for all limit ordinals $\alpha$, $\sigma^{V_{\alpha}}$.
+\end{boxproposition}
+
+At $V_{\omega}$, Replacement holds as well.
+
+\begin{boxproposition}
+    For each axiom $\sigma$ of $\set{\text{Extensionality}, \text{Comprehension}, \text{Pairing}, \text{Unions}, \text{Power Sets}, \text{Replacement}}$, $\sigma^{V_{\omega}}$.
+\end{boxproposition}
+
+Above $V_{\omega}$, a limit level need not satisfy Replacement.
+
+\begin{boxnexample}[$V_{\omega + \omega}$]
+    We can show that Replacement does not relativize to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
+    \begin{enumerate}
+        % [CORRECTED] was: $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$ --- $i$ was never quantified, the brace closed around $g(n) = S$, $w$ stood for $\omega$, and nothing said $g$ is a function, so it did not express $S = \omega + n$
+        \item $G(n) = S$ iff $\exists g \brac{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}} \land g(n) = S}$
+        % [FILLED] the second definition and the argument after it are supplied here; the lecture announced two definitions, gave one, and stopped
+        \item $G(n) = S$ iff $\forall g \brac{\parenth{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}}} \to g(n) = S}$
+    \end{enumerate}
+    Both say that $S$ is the last value of the function $g$ on $n + 1$ that starts at $\omega$ and takes a successor at each step, and in both, everything after the unbounded quantifier over $g$ is $\Delta_0$ in $g$, $n$, $S$ and the parameter $\omega$. So the first is $\Sigma_1$ and the second is $\Pi_1$.
+
+    Now fix $n < \omega$. The unique $g$ in question is $\setst{\parenth{i, \omega + i}}{i \leq n}$, and each of its pairs lies in $V_{\omega + n + 3}$, so $g \in V_{\omega + n + 4} \ssq V_{\omega + \omega}$. Hence, for $S \in V_{\omega + \omega}$, the first formula relativized to $V_{\omega + \omega}$ holds iff $S = \omega + n$: the witness $g$ is available inside $V_{\omega + \omega}$, and the $\Delta_0$ part means the same thing there as in $V$ by $\Delta_0$-absoluteness. (The second formula relativizes correctly too, by downward absoluteness of $\Pi_1$ formulae, so it does not matter which definition we use.)
+
+    So the hypothesis of the instance of Replacement for this formula, with $A = \omega \in V_{\omega + \omega}$ and parameter $\omega$, holds in $V_{\omega + \omega}$. If the conclusion did too, we would have $B \in V_{\omega + \omega}$ with $\omega + n \in B$ for every $n < \omega$. But $B \in V_{\omega + k + 1}$ for some $k < \omega$, so $B \ssq V_{\omega + k}$, and then $\omega + k \in V_{\omega + k}$, ie, $\rank{\omega + k} < \omega + k$, which is absurd since ordinals are their own ranks.
+\end{boxnexample}
+
+We now continue going through the axioms.
+
+Let's look at Foundation.
+
+We want to see if $\F^M$, that is,
+\begin{align*}
+    \brac{\forall A \parenth{A \ne \emptyset \to \exists x \in A, \, \forall y \in A, \, y \notin x}}^M
+\end{align*}
+Consider the statement
+\begin{align*}
+    \forall A \in M \parenth{A \ne \emptyset \to \exists x \in A, \, \forall y \in A, \, y \notin x}
+\end{align*}
+This is true if $M \ssq \WF$.
+
+We know the following:
+\begin{itemize}
+    \item if $A \in \WF$, then $A \subset \WF$
+    \item if $x \in A$ with $\rank{x} = \min\setst{\rank{y}}{y \in A}$ then $x$ is $\in$-minimal in $A$.
+    \item if $y \in x$ then $\rank{y} < \rank{x}$
+\end{itemize}
+In particular, $\F^{\WF}$ and $\F^{V_{\alpha}}$.
+
+Finally, for infinity, we can show that if $\omega \in M$, then infinity relativizes to $M$; in particular, infinity relativizes to $\WF$ and to $V_{\alpha}$ for $\alpha > \omega$ a limit.
+
+We're now done showing that every axiom of $\ZF$ without infinity relativizes to $V_{\omega}$, and furthermore, that every axiom of $\ZF$ relativizes to $\WF$. As we saw earlier, this is what gives us \Cref{Ch3:Cor:Con_ZF}: if $\ZFwoF$ is consistent, then so is $\ZF$.
+
+\subsection{Choice}
+
+Now, let's study choice. We know that under $\ZFwoF$, this is equivalent to the well-ordering principle.
+
+We want to show, effectively, that
+\begin{align*}
+    \brac{\forall A \exists R \parenth{(A, R) \text{ is a w.o.}}}^M
+\end{align*}
+% [CORRECTED] was: ``This is equivalent to $\forall A \in M, \, \exists R \in M \, \brac{\parenth{(A, R) \text{ is a w.o.}}}^M$ because \ldots'' --- that equivalence holds by the definition of relativization, so the reason given did no work; the absoluteness is what transfers ``w.o.'' from $V$ down to $M$, which is how the argument below uses it
+This follows from
+\begin{align*}
+    \forall A \in M, \, \exists R \in M \, \parenth{(A, R) \text{ is a w.o.}}
+\end{align*}
+because the statement ``$(A, R)$ is a w.o.'' is $\Pi_1$, and thus, downwards absolute.
+
+Indeed, the reason this statement is $\Pi_1$ is that $(A, R)$ is a w.o. iff $(A, R)$ is a l.o. (which is a $\Delta_0$ statement) and $(A, R)$ is well-founded (which is $\Pi_1$ because it says $\forall S \brac{\parenth{\emptyset \ne S \ssq A} \to \exists x \in S \, \forall y \in S \, \neg\parenth{y \, R \, x}}$, and everything after $\forall S$ is $\Delta_0$: the quantifiers over $x$ and $y$ are bounded by $S$, and $\neg\parenth{y \, R \, x}$ says that the ordered pair $\parenth{y, x}$ is not a member of $R$, which needs only quantifiers bounded by $R$). % [FILLED] the reason well-foundedness is Pi_1 is supplied here
+
+In the background, now, assume $\ZFCwoF$. Let $A \in \WF$ and suppose $A \ssq V_{\alpha}$ for some $\alpha$. In $V$, we have some $R \ssq A \times A$ such that $R$ is a w.o. Then $R \ssq V_{\alpha} \times V_{\alpha}$, so $R \in V_{\alpha + 3} \subset \WF$. By $\Pi_1$ downwards absoluteness, we conclude that $\brac{(A, R) \text{ is a w.o.}}^{\WF}$.
+
+\begin{boxcorollary}
+    $(\mathbf{AC})^{\WF}$, $(\mathbf{AC})^{\V_{\alpha}}$ for all limit $\alpha$.
+\end{boxcorollary}
+
+Since $\WF$ satisfies Choice, the relative consistency result of \Cref{Ch3:Cor:Con_ZF} extends to $\ZFC$.
+
+\begin{boxcorollary}
+    If $\ZFCwoF$ is consistent, then so is $\ZFC$.
+\end{boxcorollary}
+
+Being a well-ordering is in fact also $\Sigma_1$, over a weak enough theory, so it is absolute for transitive models of that theory and not merely downwards absolute.
+
+\begin{boxlemma}
+    % [CORRECTED] was: ``without power sets, infinity and foundation'' --- the proof needs Foundation to make ``$x$ is an ordinal'' a $\Delta_0$ condition: without it, a transitive, $\in$-linear, ill-founded set can witness the displayed $\Sigma_1$ form for a relation that is not a well-ordering. That only shows this particular $\Sigma_1$ form fails; that no $\Sigma_1$ form works without Foundation was argued by the adjudicator via Boffa's anti-foundation axiom, and is not checked here
+    If we denote by $T$ the theory consisting of $\ZF$ without power sets and infinity, the statement ``$(A, R)$ is a w.o.'' is also $\Sigma_1^T$.
+\end{boxlemma}
+\begin{proof}
+    $(A, R)$ is a w.o. iff there is some $F : A \to \OR$ such that $\forall x, y \in A \parenth{x \, R \, y \to F(x) < F(y)}$ % [FILLED] the rest of the proof is supplied here; the lecture stated the characterization and stopped
+    and $(A, R)$ is a l.o. From left to right, take $F$ to be the collapsing map of \Cref{Ch1:Thm:Mostowski_WO}, which is order-preserving with ordinal values; its construction is a recursion along a well-ordering of a set, and uses Replacement but neither Power Set nor Infinity. From right to left, given a nonempty $S \ssq A$, the set $F[S]$ is a nonempty set of ordinals, so it has a least element $F(x)$ with $x \in S$, and no $y \in S$ has $y \, R \, x$, as that would give $F(y) < F(x)$.
+
+    So, in $T$, ``$(A, R)$ is a w.o.'' is equivalent to
+    \begin{align*}
+        \text{$(A, R)$ is a l.o.} \land \exists F \brac{F \text{ is a function} \land \dom{F} = A \land \forall x \in A \, \parenth{F(x) \in \OR} \land \forall x, y \in A \, \parenth{x \, R \, y \to F(x) \in F(y)}}
+    \end{align*}
+    Everything after $\exists F$ is $\Delta_0$ provided ``$F(x) \in \OR$'' is, and this is where Foundation is used: in its presence, an ordinal is just a transitive set that is linearly ordered by $\in$, which is a $\Delta_0$ condition.
+\end{proof}
+
+\subsection{Inaccessible Cardinals}
+
+To get a level of the $V$-hierarchy satisfying all of $\ZFC$, we need a level that is closed under everything, and that calls for some definitions about cardinals.
+
+\begin{boxdefinition}[(Strong) Limit Cardinals]
+    $\mu$ is a
+    \begin{itemize}
+        \item \textbf{limit cardinal} iff for all cardinals $\kappa < \mu$, $\kappa^+ < \mu$.
+        \item \textbf{strong limit cardinal} iff for all cardinals $\kappa < \mu$, $2^{\kappa} < \mu$.
+    \end{itemize}
+\end{boxdefinition}
+
+A cardinal can be a limit while still being reachable in fewer steps than its size, which is what cofinality measures.
+
+\begin{boxdefinition}[Cofinality]
+    % [CORRECTED] was: ``of a set $A$'' --- ``unbounded in $A$'' needs an order on $A$, and the notes only take cofinalities of ordinals
+    The \textbf{cofinality} of an ordinal $A$, denoted $\cf(A)$, is the least $\abs{B}$ such that there is a function $f : B \to A$ whose image $f[B]$ is unbounded in $A$.
+\end{boxdefinition}
+
+The cardinals that cannot be reached in fewer steps get a name.
+
+\begin{boxdefinition}[Regularity/Singularity]
+    A cardinal $\mu$ is \textbf{regular} if $\cf(\mu) = \mu$. If $\mu$ is not regular, we say $\mu$ is \textbf{singular}.
+\end{boxdefinition}
+
+Putting these together gives the cardinals we are after.
+
+\begin{boxdefinition}[Weak/Strong Inaccessibility]
+    We say a cardinal $\mu$ is
+    \begin{itemize}
+        \item \textbf{weakly inaccessible} iff $\mu$ is an uncountable, regular limit cardinal.
+        \item \textbf{strongly inaccessible} iff $\mu$ is an uncountable, regular, strong limit cardinal.
+    \end{itemize}
+\end{boxdefinition}
+
+A strongly inaccessible cardinal is a fixed point of the $\beth$ function.
+
+\begin{boxproposition} \label{Ch3:Prop:Inaccessible_Beth}
+    If $\mu$ is strongly inaccessible, then $\beth_{\mu} = \mu$.
+\end{boxproposition}
+\begin{proof}
+    By induction, $\beth_{\alpha} \geq \alpha$ for every ordinal $\alpha$, so $\beth_{\mu} \geq \mu$.
+
+    It's enough to show that $\forall \alpha < \mu$, $\beth_{\alpha} < \mu$, because the fact that $\mu$ is a limit ordinal means that, by definition, $\beth_{\mu} = \sup_{\alpha < \mu} \beth_{\alpha}$.
+
+    Now perform induction on $\alpha < \mu$.
+    
+    Base case: $\beth_0 < \mu$ because $\beth_0 = \omega$ and $\mu$ is uncountable.
+
+    Successor case: if $\alpha + 1 < \mu$ and $\beth_{\alpha} < \mu$, then $\beth_{\alpha + 1} = 2^{\beth_{\alpha}} < \mu$, because $\beth_{\alpha}$ is a cardinal below $\mu$ and $\mu$ is a strong limit.
+
+    Limit case: if $\alpha < \mu$ is a limit and $\beth_{\gamma} < \mu$ for all $\gamma < \alpha$, then $\beth_{\alpha} = \sup_{\gamma < \alpha} \beth_{\gamma}$ is a supremum of $\abs{\alpha} < \mu$ many ordinals below $\mu$, so it is below $\mu$, as $\mu$ is regular.
+\end{proof}
+
+With these, all the axioms hold at once.
+
+\begin{boxcorollary}
+    If $M$ is strongly inaccessible, then $\sigma^{V_M}$ for all axioms $\sigma$ of $\ZFC$.
+\end{boxcorollary}
