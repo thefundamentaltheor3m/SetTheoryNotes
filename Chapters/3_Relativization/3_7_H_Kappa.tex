@@ -1,0 +1,331 @@
+\section{The Sets $H_{\kappa}$}
+
+The levels $V_{\alpha}$ are cut out by rank. We now cut out sets by size instead---hereditarily, so that a set is small only if everything below it is. We will work in $\ZFC$ because we need choice to be able to work comfortably with cardinalities.
+
+\subsection{Hereditary Cardinality}
+
+We measure a set by the size of its transitive closure.
+
+\begin{boxdefinition}[$H_{\kappa}$]
+    For each cardinal $\kappa \geq \omega$, define the class
+    \begin{align*}
+        H_{\kappa} = \setst{z}{\abs{\trcl{\set{z}}} < \kappa}
+    \end{align*}
+\end{boxdefinition}
+
+Note that
+\begin{align*}
+    \trcl{\set{z}} = \set{z} \cup \trcl{z}
+\end{align*}
+so
+\begin{align*}
+    \abs{\trcl{\set{z}}} = 1 \+ \abs{\trcl{z}}
+\end{align*}
+
+We can also unwind $\trcl{z}$ one level further, through the members of $z$.
+
+% [CORRECTED] was: $\bigcup_{x \in z} \trcl{\set{z}}$ --- true, but only because the index $x$ never appears, so it says nothing; the uses below need $\trcl{\set{x}}$
+\begin{boxproposition}
+    For all sets $z$,
+    \begin{align*}
+        \trcl{\set{z}} = \set{z} \cup \bigcup_{x \in z} \trcl{\set{x}}
+    \end{align*}
+\end{boxproposition}
+
+Nothing is assumed about $z$ here: it need not be transitive, let alone an ordinal.
+
+\begin{boxlemma}
+    Each $H_{\kappa}$ is a transitive class and, if $\kappa < \lambda$, then $H_{\kappa} \subsetneq H_{\lambda}$.
+\end{boxlemma}
+\begin{proof}
+    \hfill
+    \begin{description}
+        \item[\underline{Transitivity.}] Let $z \in H_{\kappa}$ and $y \in z$. Then $y \in \trcl{\set{z}}$, so $\trcl{\set{z}}$ is a transitive set with $y$ as a member, and so it contains the smallest such set: $\trcl{\set{y}} \ssq \trcl{\set{z}}$. Hence $\abs{\trcl{\set{y}}} \leq \abs{\trcl{\set{z}}} < \kappa$, and $y \in H_{\kappa}$.
+
+        \item[\underline{Monotonicity.}] If $\kappa < \lambda$, then $\abs{\trcl{\set{z}}} < \kappa$ implies $\abs{\trcl{\set{z}}} < \lambda$, so $H_{\kappa} \ssq H_{\lambda}$. The inclusion is strict because $\kappa \in H_{\lambda} \setminus H_{\kappa}$: $\trcl{\set{\kappa}} = \kappa + 1$ (it is transitive and has $\kappa$ as a member, and any transitive set with $\kappa$ as a member contains $\kappa$ and all its members), and $\abs{\kappa + 1} = \kappa$, as $\kappa$ is infinite, which is below $\lambda$ but not below $\kappa$.
+    \end{description}
+\end{proof}
+
+In particular, the members of $H_{\kappa}$ have small rank.
+
+\begin{boxlemma}
+    For all $\kappa$, $H_{\kappa} \subseteq V_{\kappa}$.
+\end{boxlemma}
+\begin{proof}
+    Let $z \in H_{\kappa}$. We will show that $z \in V_{\kappa}$. Let
+    \begin{align*}
+        \sigma = \setst{\rank{y}}{y \in \trcl{\set{z}}}
+    \end{align*}
+    Then $\sigma$ is a set of ordinals and $\rank{z} = \max(\sigma)$.
+
+    We claim that $\sigma$ is a transitive set. Indeed, if not, then we would have some $\alpha < \beta$ such that $\beta = \min\of{\sigma \setminus \alpha}$. Pick $y \in \trcl{\set{z}}$ such that $\rank{y} = \beta$. Then, $\forall x \in y$, since $x \in \trcl{\set{y}}$ and $\rank{x} < \rank{y}$, we conclude that $\rank{x} < \alpha$. Then, by the rank formula,
+    \begin{align*}
+        \beta = \rank{y} = \sup_{x \in y}\of{\rank{x} + 1} \leq \alpha
+    \end{align*}
+    This is a contradiction! So $\sigma$ is transitive as desired.
+
+    This then tells us that $\sigma = \rank{z} + 1$: a transitive set of ordinals is an ordinal, and an ordinal whose largest element is $\rank{z}$ is $\rank{z} + 1$.
+    Then, we get
+    \begin{align*}
+        \abs{\sigma} \leq \sigma < \abs{\sigma}^+ \leq \abs{\trcl{\set{z}}}^+ \leq \kappa
+    \end{align*}
+    so $\rank{z} < \kappa$.
+\end{proof}
+
+So $H_{\kappa}$ is cut out of a set.
+
+\begin{boxcorollary}
+    Each $H_{\kappa}$ is a set.
+\end{boxcorollary}
+\begin{proof}
+    Just apply comprehension.
+\end{proof}
+
+The first two of these get names of their own.
+
+\begin{boxdefinition}
+    Define $\HF := H_{\omega}$ and $\HC := H_{\omega_1}$
+\end{boxdefinition}
+
+We will show that $\HC$ is a model of $\ZFwoP$. In fact, so is $H_{\kappa^+}$ for each cardinal $\kappa$.
+
+\begin{boxlemma}
+    $\HF = V_{\omega}$
+\end{boxlemma}
+\begin{proof}
+    We just saw that $\HF \ssq V_{\omega}$. Given some $z \in V_{\omega}$, pick $n < \omega$ such that $z \in V_n$. Then
+    \begin{align*}
+        \abs{\trcl{\set{z}}} \leq \abs{V_n} < \omega
+    \end{align*}
+    so $z \in \HF$.
+\end{proof}
+
+The ordinals in $H_{\kappa}$ are the ones we would expect.
+
+\begin{boxlemma}
+    $\OR \cap H_{\kappa} = \kappa$
+\end{boxlemma}
+\begin{proof}
+    If $\alpha \in \OR$, then $\trcl{\set{\alpha}} = \alpha + 1$, because $\alpha + 1 = \alpha \cup \set{\alpha}$ is transitive and has $\alpha$ as a member, and any transitive set with $\alpha$ as a member contains $\alpha$ and all its members. So $\alpha \in H_{\kappa}$ iff $\abs{\alpha + 1} < \kappa$.
+
+    If $\alpha < \kappa$, then $\alpha + 1 < \kappa$ too, because $\kappa$ is an infinite cardinal and so a limit ordinal; so $\abs{\alpha + 1} \leq \alpha + 1 < \kappa$. If $\alpha \geq \kappa$, then $\abs{\alpha + 1} \geq \abs{\kappa} = \kappa$. So the ordinals in $H_{\kappa}$ are exactly those below $\kappa$.
+\end{proof}
+
+So $H_{\kappa}$ and $V_{\alpha}$ can only coincide when the indices do.
+
+\begin{boxlemma}
+    If $H_{\kappa} = V_{\alpha}$, then $\kappa = \alpha$. 
+\end{boxlemma}
+
+Here is a useful lemma.
+
+\begin{boxlemma}
+    If $\kappa$ is regular, then
+    \begin{align*}
+        H_{\kappa} = \setst{z}{\forall x \in \trcl{\set{z}}, \, \abs{x} < \kappa}
+    \end{align*}
+\end{boxlemma}
+\begin{proof}
+    Call the RHS $I$. We show $H_{\kappa} = I$.
+
+    \begin{description}
+        \item[\underline{$H_{\kappa} \ssq I$.}] Let $z \in H_{\kappa}$ and $x \in \trcl{\set{z}}$. Then $x \ssq \trcl{\set{z}}$ and $\abs{x} \le \abs{\trcl{\set{z}}} < \kappa$.
+
+        \item[\underline{$H_{\kappa} \supseteq I$.}] We apply $\in$-induction. Ie, we assume that for $x \in z$, since $x \in I$ (by transitivity of $I$), $x \in H_{\kappa}$, and therefore, $\abs{\trcl{\set{x}}} < \kappa$.
+
+        Performing the induction, we calculate
+        \begin{align*}
+            \abs{\trcl{\set{z}}} \le 1 \+ \bigoplus_{x \in z} \underbrace{\abs{\trcl{\set{x}}}}_{< \kappa}
+        \end{align*}
+        As $z \in I$, $\abs{z} < \kappa$. So we are summing $< \kappa$ many cardinals that are all $< \kappa$, resulting in something $< \kappa$.
+    \end{description}
+\end{proof}
+
+\subsection{The Axioms in $H_{\kappa}$}
+
+So now let's ask ourselves what Axioms of ZFC hold in these $H_{\kappa}$.
+
+\begin{boxlemma}
+    The following ZFC axioms hold in all $H_{\kappa}$:
+    \begin{enumerate}
+        \item Extensionality
+        \item Comprehension
+        \item Pairing
+        \item Union
+        \item Choice
+        \item Foundation \textit{(if we assume foundation in $V$)}
+    \end{enumerate}
+\end{boxlemma}
+\begin{proof} \hfill
+    \begin{enumerate}
+        \item $H_{\kappa}$ is transitive.
+        \item If $A \in H_{\kappa}$ and $B \ssq A$, then $B \in H_{\kappa}$.
+        % [CORRECTED] items 3 and 4 were both: ``Essentially just because $H_{\kappa}$ is a set.'' --- that a class is a set gives no member of it containing $x$ and $y$ (eg, $2 = \set{0, 1}$ is a transitive set in which Pairing fails); what is needed is closure of $H_{\kappa}$ under pairs and unions
+        \item If $x, y \in H_{\kappa}$, then $\set{x, y} \in H_{\kappa}$, since $\trcl{\set{\set{x, y}}} = \set{\set{x, y}} \cup \trcl{\set{x}} \cup \trcl{\set{y}}$ has cardinality below $\kappa$, as $\kappa$ is infinite.
+        \item If $A \in H_{\kappa}$, then $\bigcup A \in H_{\kappa}$, since $\bigcup A \ssq \trcl{A}$, and so $\trcl{\set{\bigcup A}} \ssq \set{\bigcup A} \cup \trcl{A}$.
+        \item Let $A \in H_{\kappa}$. Pick a well-ordering $R$ of $A$ (assuming AC in $V$). Then, as $R \ssq A \times A$, $R \in H_{\kappa}$. Use downwards $\Pi_1$-absoluteness to see that
+        \begin{align*}
+            \brac{(A, R) \text{ is a well-ordering}}^{H_{\kappa}}
+        \end{align*}
+        % the lecture did not argue item 6, Foundation
+        \item \sorry
+    \end{enumerate}
+\end{proof}
+
+Infinity needs $\kappa$ to be large enough to contain $\omega$.
+
+\begin{boxlemma}
+    Infinity holds in $H_{\kappa}$ iff $\kappa > \omega$.
+\end{boxlemma}
+\begin{proof}
+    Follows from the fact that $\kappa > \omega \lr \omega \in H_{\kappa}$.
+\end{proof}
+
+Replacement is where the regularity of $\kappa$ comes in.
+
+\begin{boxlemma} \label{Ch3:Lemma:H_Kappa_Replacement}
+    If $\kappa = \cf(\kappa)$ (ie, $\kappa$ is regular), then each axiom $\sigma$ of the Replacement scheme holds relativized to $H_{\kappa}$, ie, $\sigma^{H_{\kappa}}$.
+\end{boxlemma}
+\begin{proof}
+    If $A \in H_{\kappa}$ and $f : A \to H_{\kappa}$, then, letting $B = \range\of{f}$, we have
+    \begin{align*}
+        \abs{\trcl{\set{B}}}
+        &= \abs{\set{B} \cup \bigcup_{x \in A} \trcl{\set{f(x)}}} \\
+        &\leq 1 \+ \underbrace{\sum_{x \in A}}_{\text{fewer than } \kappa \text{ terms}} \underbrace{\abs{\trcl{\set{f(x)}}}}_{\text{each } < \kappa} \\
+        &< \kappa
+    \end{align*}
+    There are strictly fewer than $\kappa$ terms because $A \ssq \trcl{\set{A}}$, and a sum of fewer than $\kappa$ cardinals, each below $\kappa$, is below $\kappa$ because $\kappa$ is regular. So $B \in H_{\kappa}$.
+
+    This is exactly what Replacement in $H_{\kappa}$ needs. If $A, \bar{z} \in H_{\kappa}$ and each $x \in A$ has a unique $y \in H_{\kappa}$ with $\vp^{H_{\kappa}}\of{x, y, \bar{z}}$, let $f(x)$ be that $y$; $f$ is a set by Replacement in $V$, as $A \ssq H_{\kappa}$, and $B = \range\of{f} \in H_{\kappa}$ is the witness the axiom asks for.
+\end{proof}
+
+Power Set, on the other hand, fails at every successor cardinal.
+
+\begin{boxlemma}
+    If $\lambda = \kappa^+$, then
+    \begin{align*}
+        \parenth{\neg \text{(Power Set)}}^{H_{\lambda}}
+    \end{align*}
+\end{boxlemma}
+\begin{proof}
+    $\Powset(\kappa) \ssq H_{\lambda}$ but $\Powset(\kappa) \notin H_{\lambda}$.
+\end{proof}
+
+In fact, we can say exactly when it holds.
+
+\begin{boxlemma} \label{Ch3:Lemma:H_Kappa_Power_Set}
+    TFAE:
+    \begin{enumerate}[label = (\arabic*)]
+        \item $(\text{Power Set})^{H_{\lambda}}$
+        \item $\lambda$ is a strong limit
+    \end{enumerate}
+\end{boxlemma}
+\begin{proof} \hfill
+    \begin{description}
+        \item[\underline{$(2) \to (1)$.}] Assume $(2)$. Let $A \in H_{\lambda}$. Then
+        \begin{align*}
+            \abs{\trcl{\set{\Powset(A)}}}
+            = \abs{\set{\Powset(A)} \cup \Powset(A) \cup \trcl{A}}
+            \leq 1 \+ 2^{\abs{A}} \+ \abs{\trcl{A}}
+            < \lambda
+        \end{align*}
+
+        \item[\underline{$\neg(2) \to \neg(1)$.}] We show, effectively, that if $\kappa < \lambda$ is a cardinal with $2^{\kappa} \geq \lambda$, then $\kappa \in H_{\lambda}$ and $\Powset(\kappa) \ssq H_{\lambda}$ but $\Powset(\kappa) \notin H_{\lambda}$, so Power Set fails in $H_{\lambda}$.
+    \end{description}
+\end{proof}
+
+Putting all this together, we get the following.
+
+\begin{boxcorollary} \hfill
+    \begin{enumerate}
+        \item $H_{\omega} = V_{\omega}$ models $\ZFCwoI$
+        \item $H_{\omega_1} = H_{\omega_1}$ and all other $H_{\omega_2}, H_{\omega_3}, \ldots$ model $\ZFCwoP$
+    \end{enumerate}
+\end{boxcorollary}
+
+The first cardinal not covered by the corollary is $\aleph_{\omega}$, which is singular, and it shows that the regularity hypothesis in \Cref{Ch3:Lemma:H_Kappa_Replacement} cannot be dropped.
+
+\begin{boxexample}[$H_{\aleph_{\omega}}$]
+    Everything but Replacement and Power Set holds in $H_{\aleph_{\omega}}$: Extensionality, Comprehension, Pairing, Union, Choice and Foundation hold in every $H_{\kappa}$, and Infinity holds because $\aleph_{\omega} > \omega$.
+
+    Replacement fails. There's a formula $\vp\of{u, v}$ so that, for all $n \in \omega$ and $\kappa \in H_{\aleph_{\omega}}$,
+    \begin{align*}
+        \vp\of{n, \kappa}^{H_{\aleph_{\omega}}} \lr \kappa = \aleph_n
+    \end{align*}
+    Namely, $\vp\of{n, \kappa}$ says that there is a function $g$ with domain $n + 1$ such that $g(0) = \omega$, each $g(i + 1)$ is the least cardinal above $g(i)$, and $g(n) = \kappa$. This relativizes correctly because the witness $\grpres{\aleph_i}{i \leq n}$ lies in $H_{\aleph_{\omega}}$, and because an ordinal below $\aleph_{\omega}$ is a cardinal in $H_{\aleph_{\omega}}$ iff it is one in $V$, as every bijection between two ordinals below $\aleph_{\omega}$ lies in $H_{\aleph_{\omega}}$. So $\vp$ defines $f : n \mapsto \aleph_n$ over $H_{\aleph_{\omega}}$, on the domain $\omega \in H_{\aleph_{\omega}}$, but $f \notin H_{\aleph_{\omega}}$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}]
+            \drawcone{2}{4.5}{$H_{\aleph_{\omega}}$}
+            \node[dot, label = {left:$\omega$}] (w) at (0.1, 0.7) {};
+            \node[dot, label = {left:$\aleph_n$}] (a) at (-0.5, 3.2) {};
+            \draw[->, thick] (w) to[bend right = 60] node[right] {$f : n \mapsto \aleph_n$} (a);
+        \end{tikzpicture}
+    \end{figure}
+    Indeed, any $B$ with every $\aleph_n \in B$ has $\aleph_{\omega} = \bigcup_{n < \omega} \aleph_n \ssq \trcl{\set{B}}$, so $\abs{\trcl{\set{B}}} \geq \aleph_{\omega}$ and $B \notin H_{\aleph_{\omega}}$. So no set in $H_{\aleph_{\omega}}$ collects the values of $f$.
+
+    Whether Power Set holds in $H_{\aleph_{\omega}}$ is, by \Cref{Ch3:Lemma:H_Kappa_Power_Set}, the question of whether $\aleph_{\omega}$ is a strong limit, which $\ZFC$ does not settle.
+\end{boxexample}
+
+\subsection{$\Sigma_1$-Correctness}
+
+The most useful property of the $H_{\kappa}$ is that they are right about every $\Sigma_1$ statement, and proving it uses the satisfaction relation of \Cref{Ch3:Sec:Satisfaction}.
+
+\begin{boxtheorem} \label{Ch3:Thm:H_Kappa_Sigma1}
+    If $\kappa$ is an uncountable cardinal, then $H_{\kappa} \prec_{\Sigma_1} V$.
+\end{boxtheorem}
+
+\begin{remark}
+    This means that for each $\Sigma_1$ formula $\vp\of{\bar{u}}$ and each matching $\bar{x} \in H_{\kappa}$, $\vp\of{\bar{x}}^{H_{\kappa}} \lr \vp\of{\bar{x}}^V$. In other words, it means $\Sigma_1$-formulae are absolute for $H_{\kappa}$. We also say, ``$H_{\kappa}$ is $\Sigma_1$-correct in $V$.''
+\end{remark}
+
+Note that $H_{\kappa} \prec_{\Sigma_1} V$ means $\Sigma_1$ formulas are absolute between $H_{\kappa}$ and $V$. We borrow model theoretic notation for being an elementary substructure, but note that this is the model theory we know in the ``outside world'', not the model theory we have inside of $V$.
+
+\begin{proof}
+    We already know upwards absoluteness, so the only remaining question is downwards absoluteness.
+
+    Suppose $\vp(u)$ is the formula $\exists v\parenth{\psi\of{u, v}}$, with $\psi$ $\Delta_0$. Suppose $x \in H_{\kappa}$ is so that $\vp\of{x}$.
+
+    We need to show that
+    \begin{align*}
+        \parenth{\exists v\parenth{\psi\of{x, v}}}^{H_{\kappa}}
+    \end{align*}
+
+    Pick any $y$ such that $\psi\of{x, y}$. Let $N = \trcl{\set{x, y}}$. Then $x, y \in N$ and $N$ is transitive. By $\Delta_0$ absoluteness, we know $\psi(x, y)^N$. Can write ``$N \models \psi(x, y)$''.
+
+    % [FILLED] the proof from here on is supplied; the lecture broke off at the application of Downwards Löwenheim-Skolem
+    Apply Downwards Löwenheim-Skolem to find $Z \prec N$ with $\trcl{\set{x}} \ssq Z$ and $\abs{Z} \leq \abs{\trcl{\set{x}}} + \aleph_0$. As $x \in H_{\kappa}$ and $\kappa$ is uncountable, $\abs{Z} < \kappa$.
+
+    $N$ is transitive, so Extensionality holds in $N$, and hence in $Z \prec N$; so $\in$ is extensional on $Z$. It is also well-founded and set-like there, so by the Mostowski Collapse Theorem Scheme (\Cref{Ch2:Thm:Mostowski}) there is a transitive set $M$ and an isomorphism $\pi : \parenth{Z, \in} \to \parenth{M, \in}$, given by $\pi(z) = \setst{\pi(w)}{w \in z \cap Z}$. Two things about $\pi$:
+    \begin{itemize}
+        \item $\pi(w) = w$ for every $w \in \trcl{\set{x}}$. Indeed, by $\in$-induction: such a $w$ is a subset of the transitive set $\trcl{\set{x}} \ssq Z$, so $w \cap Z = w$, and $\pi(w) = \setst{\pi(v)}{v \in w} = w$. In particular, $\pi(x) = x$.
+        \item $\abs{M} = \abs{Z} < \kappa$.
+    \end{itemize}
+
+    Now $N \models \exists v \, \psi\of{x, v}$, so, as $Z \prec N$ and $x \in Z$, there is $y' \in Z$ with $Z \models \psi\of{x, y'}$. Applying the isomorphism, $M \models \psi\of{x, \pi(y')}$, ie, $\psi\of{x, \pi(y')}^M$. As $M$ is transitive and $\psi$ is $\Delta_0$, $\Delta_0$-absoluteness gives $\psi\of{x, \pi(y')}$.
+
+    Finally, $\pi(y') \in M$ and $M$ is transitive, so $\trcl{\set{\pi(y')}} \ssq M$ and $\abs{\trcl{\set{\pi(y')}}} \leq \abs{M} < \kappa$. So $\pi(y') \in H_{\kappa}$, and as $H_{\kappa}$ is transitive, $\Delta_0$-absoluteness gives $\psi\of{x, \pi(y')}^{H_{\kappa}}$. So $\parenth{\exists v \, \psi\of{x, v}}^{H_{\kappa}}$.
+\end{proof}
+
+This has a consequence for the levels of the $V$-hierarchy, through the $\beth$-fixed points.
+
+Recall that $\setst{\kappa}{\kappa = \beth_{\kappa}}$ is a club class of cardinals. It is closed because the $\beth$ operation is ``continuous'': if $\lambda$ is a limit of $\beth$-fixed points, then, as $\alpha \mapsto \beth_{\alpha}$ is increasing, $\beth_{\lambda} = \sup_{\alpha < \lambda} \beth_{\alpha}$ is also the supremum of $\beth_{\kappa} = \kappa$ over the fixed points $\kappa < \lambda$, which is $\lambda$. So a sup of $\beth$-fixed points is a $\beth$-fixed point. It is unbounded because, given any $\alpha$, the sequence $\kappa_0 = \alpha$, $\kappa_{n + 1} = \beth_{\kappa_n}$ is non-decreasing (as $\beth_{\gamma} \geq \gamma$) and its supremum $\lambda \geq \alpha$ is a fixed point: either the sequence is eventually constant, at a fixed point, or $\lambda$ is a limit and $\beth_{\lambda} = \sup_{n} \beth_{\kappa_n} = \sup_n \kappa_{n + 1} = \lambda$.
+
+We also saw that if $\mu$ is a strongly inaccessible cardinal, then $\mu = \beth_{\mu}$ (\Cref{Ch3:Prop:Inaccessible_Beth}).
+
+We have seen that $H_{\kappa} \prec_{\Sigma_1} V$ for all uncountable cardinals $\kappa$. It follows that for such $\kappa$, $\kappa = \beth_{\kappa}$ iff $H_{\kappa} = V_{\kappa}$, which in turn implies that $V_{\kappa} \prec_{\Sigma_1} V$.
+
+Observe that $V_{\kappa} \prec_{\Sigma_1} V$ is \underline{not} a formula in the language of set theory. But $\kappa = \beth_{\kappa}$ and $H_{\kappa} = V_{\kappa}$ \textit{are}. By comprehension, put
+\begin{align*}
+    C_1 = \setst{\kappa}{\kappa = \beth_{\kappa}} = \setst{\kappa}{\kappa \text{ is uncountable and } H_{\kappa} = V_{\kappa}}
+\end{align*}
+Then $C_1$ is a class. Writing $C_1 = \setst{\kappa}{V_{\kappa} \prec_{\Sigma_1} V}$ is problematic.
+
+Note that $C_1$ is club in $\OR$. Indeed, we proved that the set of $\beth$-fixed points contains a club class of ordinals. Define a class function $f : \OR \to \OR$ by
+\begin{itemize}
+    \item $f(0) = \beth_0$
+    \item $f(\alpha + 1) = \beth_{f(\alpha) + 1}$
+    \item $f(\beta) = \sup_{\alpha < \beta} f(\alpha)$
+\end{itemize}
+% [CORRECTED] was: ``for every limit $\beta \in \lim\of{\range\of{f}}$, then $\beta = f(\beta) = \beth_{\beta}$'' --- $f$ is strictly increasing, so $f(\beta) > \beta$ in general (eg, $\beta = f(\omega)$); what holds is that the values of $f$ at limits, which are exactly the limit points of its range, are $\beth$-fixed points
+The range of $f$ is a cub and, for every limit ordinal $\beta$, $f(\beta) = \beth_{f(\beta)}$; that is, every element of $\lim\of{\range\of{f}}$\footnote{This is the class of limit points of $\range(f)$, and as we know, the class of limit points of a club is a club} is a $\beth$-fixed point. So $C_1$ contains a club. So $C_1$ is unbounded. Moreover, $C_1$ is closed. So it's a club in $\OR$.

@@ -1,0 +1,250 @@
+\section{Absoluteness} \label{Ch3:Sec:Absoluteness}
+
+\subsection{Absoluteness Theorems}
+
+We will constantly be comparing what a formula says in a smaller class with what it says in a bigger one, so we give the possible outcomes names.
+
+\begin{boxdefinition}[Absoluteness]
+    Let $M \ssq N$ be classes and let $\vp\of{\bar{u}}$ be a formula. We say $\vp\of{\bar{u}}$ is
+    \begin{itemize}
+        \item \textbf{downwards absolute} from $N$ to $M$ iff for all $\bar{x} \in M^{<\omega}$ matching $\bar{u}$, $\vp^N\of{\bar{x}} \to \vp^M\of{\bar{x}}$.
+        \item \textbf{upwards absolute} from $M$ to $N$ iff for all $\bar{x} \in M^{<\omega}$ matching $\bar{u}$, $\vp^M\of{\bar{x}} \to \vp^N\of{\bar{x}}$.
+        \item \textbf{absolute} between $M$ and $N$ iff it is both, ie, iff for all $\bar{x} \in M^{<\omega}$ matching $\bar{u}$, $\vp^M\of{\bar{x}} \lr \vp^N\of{\bar{x}}$.
+    \end{itemize}
+    When $N = V$, we just say $\vp\of{\bar{u}}$ is downwards absolute, upwards absolute or absolute \textbf{for $M$}.
+\end{boxdefinition}
+
+We will want to relativize classes as well as formulae, and it is convenient to have notation for it.
+
+\begin{boxnotation}
+    Say $M$ is a transitive class and $A$ another class. Say $A = \setst{x}{\vp(x)}$. We might write $A^M$ to mean $\setst{x \in M}{\vp^M(x)}$ even though it may depend on the choice of $\varphi$ with this notation.
+
+    $A^M$ is what $M$ thinks $A$ is. When it agrees with $A \cap M$, ie, when $\vp(x)$ is absolute for $M$, we say $A$ is \textbf{absolute} for $M$.
+\end{boxnotation}
+
+We will use this constantly: in \Cref{Ch3:Subsec:Recursion} we ask whether a class function $G$ defined by recursion satisfies $G^M = G \restriction \parenth{A \cap M}$, and in \Cref{Ch3:Subsec:Ordinals} whether $\OR^M = \OR \cap M$.
+
+Every absoluteness theorem we prove will have an assumption that the smaller model (or sometimes, both models) are transitive. There are no absoluteness theorems in this course that do not mention transitivity, and it is a common mistake to try and apply them in cases where there isn't transitivity.
+
+\begin{boxlemma}[$\Delta_0$-Absoluteness]
+    Let $M$ and $N$ be classes\footnote{possibly proper classes, possibly sets}, with $M \ssq N$. Assume $M$ is transitive. Then, for every $\Delta_0$ formula $\varphi\of{\bar{u}}$ and $\bar{x} \in M^{<\omega}$ (matching $\bar{u}$ in length),
+    \begin{align*}
+        \varphi^M\of{\bar{x}} \lr \varphi^N\of{\bar{x}}
+    \end{align*}
+    That is, $\varphi\of{\bar{u}}$ is absolute between $M$ and $N$.
+\end{boxlemma}
+\begin{proof}
+    We argue by induction on the complexity of $\varphi\of{\bar{u}}$.
+
+    \begin{itemize}
+        \item \underline{Atomic Case.} Note that
+        \begin{align*}
+            \parenth{u_0 = u_1}^M
+            \qquad
+            u_0 = u_1
+            \qquad
+            \parenth{u_0 = u_1}^N
+        \end{align*}
+        are all exactly the same. Similarly,
+        \begin{align*}
+            \parenth{u_0 \in u_1}^M
+            \qquad
+            u_0 \in u_1
+            \qquad
+            \parenth{u_0 \in u_1}^N
+        \end{align*}
+        are all exactly the same.
+
+        \item \underline{Propositional Case.} If $\varphi$ is some propositional combination of $\varphi_0$ and $\varphi_1$, then the statement for $\vp$ is clear from the induction hypotheses for $\vp_0$ and $\vp_1$.
+
+        \item \underline{Bounded Quantifiers.} Say $\vp\of{\bar{u}}$ is of the form $\exists v \in w \, \parenth{\psi\of{\bar{u}, v, w}}$. (This is enough, because bounded universal can be formulated as a negation of a bounded existential, and the propositional case covers negations.)
+
+        Let $\bar{x} \in M^{<\omega}$ and $z \in M$. Then, the following are equivalent:
+        \begin{itemize}
+            \item $\brac{\exists v \in z, \, \psi\of{\bar{x}, v, z}}^M$
+            \item There is $y \in z \cap M$ such that $\psi^M\of{\bar{x}, y, z}$
+            \item There is $y \in z$ such that $\psi^M\of{\bar{x}, y, z}$ (because $M$ is transitive, so $z = z \cap M$)
+            \item There is $y \in z \cap N$ such that $\psi^M\of{\bar{x}, y, z}$ (because $z \ssq M \ssq N$, so $z = z \cap N$)
+            \item There is $y \in z \cap N$ such that $\psi^N\of{\bar{x}, y, z}$
+            \item $\brac{\exists v \in z, \, \psi\of{\bar{x}, v, z}}^N$
+        \end{itemize}
+    \end{itemize}
+\end{proof}
+
+One level up, we only get one direction each.
+
+\begin{boxlemma}
+    In the same situation as above, we have upward absoluteness from $M$ to $N$ for $\Sigma_1$ formulae and downward absoluteness from $N$ to $M$ for $\Pi_1$ formulae.
+\end{boxlemma}
+
+Relative to a theory, the same holds for formulae that the theory proves equivalent to these shapes.
+
+\begin{boxlemma}
+    Let $T$ be a theory and $M \ssq N$ be models of $T$ (with $M$ transitive). Then,
+    \begin{itemize}
+        \item $\Sigma_1^T$ formulae are upwards-absolute
+        \item $\Pi_1^T$ formulae are downwards-absolute
+        \item $\Delta_1^T$ formulae are absolute
+    \end{itemize}
+\end{boxlemma}
+
+\subsection{Finite Sets}
+
+For the rest of this section, let $M$ be a transitive class model of $\ZFwoP$. We start with the finite sets.
+
+\begin{boxlemma}
+    $[M]^{< \omega} \ssq M$.
+\end{boxlemma}
+\begin{proof}
+    Given $x_1, \ldots, x_n \in M$, $\set{x_1, \ldots, x_n} = \bigcup_{j=1}^{n} \set{x_j}$.
+\end{proof}
+
+The formula ``$A$ is finite'' is absolute for $M$. In fact, we can do better.
+
+\begin{boxlemma}
+    For each $n < \omega$, the formula ``$\abs{A} = n$'' is absolute for $M$.
+\end{boxlemma}
+\begin{proof}
+    \hfill 
+    \begin{description}
+        \item[\underline{Upwards absoluteness.}] Say $f \in M$ and
+        \begin{align*}
+            \parenth{f : n \iso A}^M
+        \end{align*}
+        where $f : n \iso A$ means $f$ is injective and surjective.
+
+        We know that $f : n \iso A$ because we already know it is absolute.
+
+        \item[\underline{Downwards absoluteness.}] We have that $f : n \iso A$ in $V$. But $f \ssq_{\text{finite}} n \times A \ssq M$. And indeed we've checked already that Cartesian products are absolute.
+
+        Then, by the previous lemma, $f \in M$.
+
+        Now again, by $\Delta_0$-absoluteness,
+        \begin{align*}
+            \parenth{f : n \iso A}^M
+        \end{align*}
+    \end{description}
+\end{proof}
+
+Being finite and having a given finite size are the same thing, so we get the following for free.
+
+\begin{boxlemma}
+    ``$A$ infinite'' is absolute for $M$.
+\end{boxlemma}
+\begin{proof}
+    Clear from previous.
+\end{proof}
+
+The power set of a finite set is also computed correctly.
+
+\begin{boxlemma}
+    If $A \in M$ and $A$ is finite (in both $M$ and $V$), then $\Powset(A) \in M$. Therefore, $A \mapsto \Powset(A)$, restricted to finite sets $A$, is an absolute class function for $M$. % [CORRECTED] ``restricted to finite sets $A$'' inserted --- for infinite $A$ it fails, eg, $\Powset(\omega) \notin \HC$
+
+    For the remainder of this argument, let's work in $M$.
+    
+    We argue by recursion. We have that $A$ is finite, so there is some $n < \omega$ and $f : n \iso A$. Denote by $2^n$ the set of all $n$-tuples of $0$s and $1$s. For each $x \in 2^n$, write
+    \begin{align*}
+        B_x = \setst{f(i)}{x_i = 1} \ssq A
+    \end{align*}
+    In particular, we have a mapping $x \mapsto B_x$. Finally, we can conclude that
+    \begin{align*}
+        \Powset(A) = \setst{B_x}{x \in 2^n}
+    \end{align*}
+\end{boxlemma}
+
+\subsection{Absoluteness of Recursive Definitions} \label{Ch3:Subsec:Recursion}
+
+Often, we have $(A, R)$ well-founded and set-like, and some $F : A \times V \to V$. We then define $G : A \to V$ by recursion so that
+\begin{align*}
+    \forall y \in A, \, G(y) = F\of{y, G \restriction \setst{x}{x \, R \, y}}
+\end{align*}
+Now, we'd like to know that if the ``data'' above is absolute, then so is $G$. How do we show this?
+
+Ok, let's list our assumptions (recalling that a class function is absolute iff the defining formula is absolute, and also $M$ is closed under the values):
+\begin{itemize}
+    \item $A$ and $R$ are absolute
+    \item $F$ is an absolute class function
+    \item $y \mapsto \setst{x}{x \, R \, y}$ is an absolute class function
+\end{itemize}
+We can conclude from this the following two lemmas.
+
+\begin{boxlemma}
+    $\brac{\text{$(A, R)$ is set-like and well-founded}}^M$
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    Note that $(A, R)$ is well-founded iff
+    \begin{align*}
+        \forall S, \, \brac{\emptyset \ne S \ssq A \to \exists x \in S, \, \forall y \in S,\, \neg \parenth{y \, R \, x}}
+    \end{align*}
+    We can essentially rewrite the expression inside brackets using quantifiers that are bounded over $(A, R)$ (subject to the universal $\forall S$). The bracketed expression is absolute between $M$ and $V$, and the universal out front makes it downwards absolute from $V$ to $M$.
+
+    Note that set-like is downwards absolute from $V$ to $M$ because we assumed that $y \mapsto \setst{x}{x \, R \, y}$ and $(A, R)$ are all absolute.
+\end{proof}
+
+With that, $G$ is computed correctly in $M$.
+
+\begin{boxlemma}
+    $G$ is absolute for $M$. In particular, for every $y \in A^M$,
+    \begin{align*}
+        G^M(y) = F^M\of{y, G^M \restriction \setst{x}{x \, R^M y}}
+    \end{align*}
+    and
+    \begin{align*}
+        G^M = G \restriction A^M = G \restriction \parenth{A \cap M}
+    \end{align*}
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    Just show that for all $y$ in $A^M = A \cap M$, we have $G^M(y) = G(y)$ by induction on $y$.
+\end{proof}
+
+There are many useful applications of absoluteness.
+
+\begin{boxexample}[Defining Ordinal Arithmetic]
+    There are many ways we can use absoluteness to define ordinal arithmetic.
+    \begin{itemize}
+        \item \underline{Defining it recursively.} For example, we can define $\alpha + 0 = \alpha$, $\alpha + \parenth{\beta + 1} = \parenth{\alpha + \beta} + 1$, and if $\gamma$ is a limit ordinal, we can define $\alpha + \gamma := \sup_{\beta < \gamma}\of{\alpha + \beta}$.
+
+        \item \underline{Defining it using Mostowski Collapse of well-orderings.} For example, we can define
+        \begin{align*}
+            \alpha + \beta :=
+            \type\of{\parenth{\parenth{\set{0} \times \alpha} \cup \parenth{\set{1} \times \beta}, <_{\lex}}}
+        \end{align*}
+        Note that $\type$ is the range of the Mostowski Collapse. Indeed,
+        \begin{align*}
+            G(y) = \setst{G(x)}{x <_{\lex} y}
+        \end{align*}
+        is absolute.
+    \end{itemize}
+\end{boxexample}
+
+\subsection{Ordinals in Transitive Models} \label{Ch3:Subsec:Ordinals}
+
+% One final remark for today. We know that $M$ is a transitive class. If $M$ is a proper class, then $\OR^M = \OR$. If $M$ is a set, then $\OR^M \in \OR$ (ie, if $M$ is a set, then as a set of ordinals that is transitive, it must itself be a 
+
+If $M$ is a transitive model of $\ZFwoP$, we claim that the statement ``$\alpha$ is an ordinal'' is absolute for $M$. % [CORRECTED] was: ``$\alpha$ is absolute for $M$'' --- absoluteness is a property of formulae, and what the next display unpacks is the formula ``$\alpha$ is an ordinal'\,'
+
+But what does it even mean? It means
+\begin{align*}
+    \OR^M = \OR \cap M
+\end{align*}
+As $M$ is transitive, $\OR^M$ is transitive, so either $\OR^M \in \OR$ or $\OR^M = \OR$. It turns out:
+\begin{enumerate}
+    \item $\OR^M \in \OR$ iff $M$ is a set
+    \item $\OR^M = \OR$ iff $M$ is a proper class
+\end{enumerate}
+To see this, note that foundation is equivalent to $(V, \in)$ being well-founded. It's clear that $(V, \in)$ is set-like: if $y$ is a set, then everything that is $\in$-below $y$ is just $y$, which is a set. So by the Theorem Scheme on Recursion (which is true in $\ZFwoP$), we have a class function $G : V \to \OR$ such that $\forall y$, $G(y) = \sup_{x \in y}\of{G(x) + 1}$.
+
+Now if we also give ourselves the power set axiom, then we can define the $V$-hierarchy, and conclude that $G(y) = \rank{y}$. But without power sets, \textit{we cannot even define the $V$-hierarchy}, so there is no meaningful notion of rank!
+
+By the theorem scheme on absoluteness of recursively defined class functions, $G$ is an absolute class function for $M$. In other words, $G^M = G \restriction M$. Also, $G^M : M \to \OR^M$ is surjective. % [FILLED] the surjectivity and the two cases of the dichotomy are argued here; the lecture asserted them
+Indeed, each value of $G^M$ is an ordinal in $M$, and $G(\alpha) = \alpha$ for every ordinal $\alpha$, by induction: $G(\alpha) = \sup_{\beta < \alpha}\of{G(\beta) + 1} = \sup_{\beta < \alpha}\of{\beta + 1} = \alpha$. So every $\alpha \in \OR^M = \OR \cap M$ is $G^M(\alpha)$.
+
+This gives both halves of the dichotomy.
+\begin{itemize}
+    \item If $M$ is a set, then $\OR \cap M = G[M]$ is a set by Replacement, and a transitive set of ordinals is an ordinal, so $\OR^M \in \OR$.
+    \item If $M$ is a proper class, suppose $\OR \cap M$ were a set, hence an ordinal $\alpha$. In $V$ we do have Power Set, so $G(y) = \rank{y}$ for every $y$. So, for every $y \in M$, $\rank{y} = G^M(y) \in \OR \cap M = \alpha$, ie, $y \in V_{\alpha}$. Then $M \ssq V_{\alpha}$, and $M$ would be a set by Comprehension. So $\OR^M$ is a transitive proper class of ordinals, which can only be $\OR$.
+\end{itemize}
+
+Now let's study the uncountable ordinals in $M$.
+
+Denote by $\omega_1^M$ what ``$M$ thinks'' is the least uncountable ordinal. If $\parenth{\omega_1 \text{ exists}}^M$, ie, if the notion of the existence of the least uncountable ordinal is even definable in $M$, then $\omega_1^M \leq \omega_1$ (where $\le$ is just the usual $\le$ on ordinals---recall that $\OR$ is absolute, which means precisely that whatever a class \textit{thinks} is an ordinal is, indeed, an ordinal in $V$).
