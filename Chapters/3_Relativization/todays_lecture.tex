@@ -2,3 +2,202 @@
 % it: it is \input from the chapter file, so the Overleaf preview builds them live. Once the
 % material has been placed into the sections, /integrate empties the file again and leaves
 % this header behind. Do not delete the file or its \input line.
+
+\section{Gödel's Constructible Universe} % [CLAUDE] do we really not have this anywhere?
+
+Define the class function $A \mapsto \D(A)$ by
+\begin{align*}
+    \D(A) = \setst{X \ssq A}{X \text{ is definable with parameters from $A$ over the structure $(A, \in)$}}
+\end{align*}
+
+\begin{boxdefinition}[The $L$-Hierarchy]
+    Define $L_0 = 0$, $L_{\alpha + 1} = \D\of{L_{\alpha}}$ for all ordinals $\alpha$, and for all limit ordinals $\beta$, $L_{\beta} = \bigcup_{\alpha < \beta} L_{\alpha}$. Then define the universe $L = \bigcup_{\alpha \in \OR} L_{\alpha}$.
+\end{boxdefinition}
+
+We can show that $\grpres{L_{\alpha}}{\alpha \in \OR}$ is a hierarchy of sets, ie, $L_{\alpha} \subset L_{\beta}$ for $\alpha < \beta$, and each $L_{\alpha}$ is a transitive set. We can also check that $L_{\alpha} \cap \OR = \alpha$.
+
+\begin{boxlemma}[Properties of the Class Function $A \mapsto \D(A)$] \hfill
+    \begin{enumerate}
+        \item $A \mapsto \D\of{A}$ is defined in $\ZFwoP$.
+        \item $A \mapsto \D\of{A}$ is absolute for transitive class models of $\ZFwoP$.
+    \end{enumerate}
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    We defined formulae to be certain members of $\HF$: ``$\vp$ is a formula'' is absolute.
+    \sorry\todo{digest content from lecture} % [CLAUDE] don't fill this in for me
+\end{proof}
+
+\begin{boxlemma}
+    If $A$ is finite, then $\D(A) = \Powset(A)$.
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    Just unfold the definitions.
+\end{proof}
+
+\begin{boxcorollary}
+    For all $n \leq \omega$, $L_n = V_n$.
+\end{boxcorollary}
+\begin{proof}[Proof sketch]
+    Consider $n = 0$, $n$ successor and $n = \omega$, in all cases we're ok.
+\end{proof}
+
+Let's now talk briefly about cardinality. Note that we will not assume choice here, so in particular, we cannot conclude every set has a cardinality. So we need to think about things in terms of well-orderings.
+
+\begin{boxlemma}
+    If $A$ has a cardinality and it's infinite, then $\D(A)$ has a cardinality and $\abs{\D(A)} = \abs{A}$.
+\end{boxlemma}
+\begin{proof}
+    Say $\abs{A} = \alpha$. Notice that
+    \begin{align*}
+        \abs{\D(A)} \leq \abs{\underbrace{\text{Formulae}}_{\text{countable}} \times A^{<\omega}} = \abs{A}
+    \end{align*}
+\end{proof}
+
+\begin{boxcorollary}
+    Each $L_{\alpha}$ has a cardinality and, for $\alpha \geq \omega$, $\abs{L_{\alpha}} = \abs{\alpha}$.
+\end{boxcorollary}
+\begin{proof}[Proof sketch]
+    Argue by recursion on $\alpha \in \OR$. Base and successor cases are not hard. For the limit case, just end-extend all well-orderings $L_{\alpha}$ for $\alpha < \beta$, $\beta$ being some limit ordinal. This gives a well-ordering.
+\end{proof}
+
+With this we end our discussion of cardinality.
+
+\begin{boxlemma}
+    For all $\alpha \in \OR$, $L_{\alpha} \ssq V_{\alpha}$.
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    $\D(A) \ssq \Powset(A)$.
+\end{proof}
+
+We now come to the most important theorem about $L$. We work in $\ZF$.
+
+\begin{boxtheorem}[Gödel]
+    For each axiom $\sigma$ of $\ZFC \cup \GCH$, we have $\sigma^{L}$.
+\end{boxtheorem}
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item \underline{Extensionality.} $L$ is transitive.
+
+        \item \underline{Pairing.} Let $x, y \in L$. Pick $\alpha \in \OR$ such that $x, y \in L_{\alpha}$. Then $\set{x, y} \in \D\of{L_{\alpha}} = L_{\alpha + 1} \subset L$.
+
+        \item \underline{Comprehension.} Let $A \in L$, $\bar{y} \in L$, $B = \setst{x \in A}{\vp^L\of{x, \bar{y}}}$. We need $B \in L$.
+
+        Apply the Reflection Theorem Scheme to the $L$-hierarchy to find $\alpha$ such that $\vp$ is absolute between $L_{\alpha}$ and $L$. We can do this with $A \in L_{\alpha}$ and $\bar{y} \in L_{\alpha}$.
+
+        Then, since $A \ssq L_{\alpha}$,
+        \begin{align*}
+            B
+            = \setst{x \in L_{\alpha}}{L_{\alpha} \models \parenth{x \in A \land \vp\of{x, \bar{y}}}}
+            \in \D\of{L_{\alpha}} = L_{\alpha + 1} \subset L
+        \end{align*}
+
+        \item \underline{Unions.} Let Let $\mathcal{F} \in L$. Pick $\alpha$ such that $\mathcal{F} \in L_{\alpha}$. Then,
+        \begin{align*}
+            \bigcup \mathcal{F}
+            = \setst{\sorry}{\sorry}
+        \end{align*}
+    \end{itemize}
+\end{proof}
+
+% 23 Oct
+
+% [CLAUDE] some of this is recap. When you /integrate, also deduplicate this. Teach yourself that there might sometimes be duplication, and when that occurs, you should deduplicate but have helpful reminders (if the repeated fragments occur too far from their previous (more like first) occurrence).
+
+We said that the class fuctions $A \mapsto \D(A)$ and $\alpha \mapsto L_{\alpha}$ are absolute for transitive class models of $\ZFwoP$.
+
+This implies that if $M$ is such a model, then either $\OR \cap M = \OR$ and $L^M = L$ or $\OR \cap M = \alpha \in \OR$ and $L^M = L_{\alpha}$.
+
+In fact, there is a finite subtheory of $\ZFwoP$ that's enough for this.
+
+We indicated how to define a well-ordering $<_{\alpha}$ of $L_{\alpha}$ by recursion on $\alpha \in \OR$:
+\begin{itemize}
+    \item $<_0 = \emptyset$
+    \item For $x, y \in L_{\alpha + 1} = \D\of{L_{\alpha}}$, put $x <_{\alpha + 1} y$ iff one of the following occurs:
+    \begin{enumerate}
+        \item $x, y \in L_{\alpha}$ and $x <_{\alpha} y$
+        \item $x \in L_{\alpha}$ and $y \in L_{\alpha + 1} \setminus L_{\alpha}$
+        \item $x, y \in L_{\alpha + 1} \setminus L_{\alpha}$ and $(k, p) <_{\lex} (l, q)$, where $(k, p)$ is the lexicographically least pair in $\omega \times L_{\alpha}^{< \omega}$ such that if $\vp$ is the $k$th formula, then $x = \setst{z \in L_{\alpha}}{L_{\alpha} \models \vp(z, p)}$, and $(l, q)$ is the analogous thing for $y$
+    \end{enumerate}
+    Note that $<_{\alpha + 1}$ end-extends $<_{\alpha}$.
+    
+    \item For limit ordinals $\beta$, put
+    \begin{align*}
+        <_{\beta} = \bigcup_{\alpha < \beta} <_{\alpha}
+    \end{align*}
+\end{itemize}
+This works: $\alpha \mapsto <_{\alpha}$ is definable without parameters; moreover, it is absolute for transitive models of a certain finite subtheory of $\ZFwoP$. Call this theory $T$ for today. % [CLAUDE] make this local notation or something.
+
+Notice that if we put
+\begin{align*}
+    <_{L} = \bigcup_{\alpha \in \OR} <_{\alpha}
+\end{align*}
+then $<_L$ is a class well-ordering of $L$. Note that it is set-like, extensional and well-founded, so it admits a Mostowski Collapse. This Mostowski Collapse turns out to simply be $\OR$.
+
+For any transitive class model $M$ of $T$ ($T$ being the finite subtheory of $\ZFwoP$ that gives us the $<_{\alpha}$s),
+\begin{align*}
+    \parenth{<_L}^M
+    = \begin{cases}
+        <_L & \text{ if } \OR \cap M = \OR \\
+        <_{\alpha} & \text{ if } \OR \cap M = \alpha
+    \end{cases}
+\end{align*}
+
+\begin{boxtheorem}[using $\ZF$ in $V$]
+    $(\AC)^L$
+\end{boxtheorem}
+\begin{proof}
+    
+\end{proof}
+
+% [CLAUDE] make this a theorem. Also add macros for \HOD and \OD (and if I really haven't defined them anywhere, define them explicitly and add a reminder here as to how they're defined).
+Note that given any $x \in L$, we have some $\xi \in \OR$ such that $x$ is the $\xi$th member of $L$ according to $<_L$. In other words, if $G : (L, <_L) \simeq \OR$ then $G(x) = \xi$. Thus, $x$ is definable from $\xi$, so $x \in \OD$. Since $L$ is transitive, $x \in \HOD$. This calculation is absolute down to $L$. So $\HOD^L = L$.
+
+\begin{boxtheorem}[Working in $L$]
+    $(\GCH)^L$. Ie,
+    \begin{align*}
+        \parenth{\text{For all infinite cardinals $\kappa$, } \kappa^+ = 2^{\kappa}}^L
+    \end{align*}
+\end{boxtheorem}
+\begin{proof}[Proof, working in $L$ and keeping in mind that $L^L = L$]
+    Let $\lambda$ be an infinite cardinal. We will show that $H_{\lambda} = L_{\lambda}$. This will be enough because if we have any infinite cardinal $\kappa$, setting $\lambda = \kappa^+$, we get that
+    \begin{align*}
+        \Powset(\kappa) \ssq H_{\lambda} = L_{\lambda}
+    \end{align*}
+    meaning that
+    \begin{align*}
+        2^{\kappa} = \abs{\Powset(\kappa)} \leq \abs{L_{\lambda}} = \abs{\lambda} = \lambda = \kappa^+
+    \end{align*}
+    And of course the other inequality is always true in $V$, in $L$, everywhere.
+
+    So now let's prove that $H_{\lambda} = L_{\lambda}$ for all infinite cardinals $\lambda$.
+
+    Fix an infinite cardinal $\lambda$. We already know that
+    \begin{align*}
+        H_{\omega} = V_{\omega} = L_{\omega}
+    \end{align*}
+    so we may assume that $\lambda$ is uncountable.
+    \begin{itemize}
+        \item \underline{$L_{\lambda} \ssq H_{\lambda}$.} Let $z \in L_{\lambda}$. Pick $\alpha < \lambda$ such that $z \in L_{\alpha}$. Then certainly $\trcl{\set{z}} \ssq L_{\alpha}$. So
+        \begin{align*}
+            \abs{\trcl{\set{z}}} \leq \abs{L_{\alpha}} = \abs{\alpha}\leq \alpha < \lambda
+        \end{align*}
+        So $z \in H_{\lambda}$.
+
+        \item \underline{$H_{\lambda} \ssq L_{\lambda}$.} Let $z \in H_{\lambda}$. Recall our finite subtheory $T$ of $\ZFwoP$, maybe augmented with $V = L$. % [CLAUDE] add a reminder of what T is
+        By the reflection theorem scheme, there's some $\beta$ such that $z \in L_{\beta}$ and $\sigma^{L_{\beta}}$ for all $\sigma \in T$ and $(V = L)^{L_{\beta}}$. So $L_{\beta} \models T$ and $(V = L)^{L_{\beta}}$.
+
+        Observe: $\trcl{\set{z}} \ssq L_{\beta}$ and $\abs{\trcl{\set{z}}} < \lambda$. By Downwards Löwenheim-Skolem, we have some $X \preceq L_{\beta}$ with $\abs{X} < \lambda$ and $\trcl{\set{z}} \ssq X$. Let $G : X \simeq M$ be the Mostowski Collapse of $X$, so $M$ is a transitive model of $T$. Since $\trcl{\set{z}} \ssq X$, we know that
+        \begin{align*}
+            G \restriction \trcl{\set{z}} = \id \restriction \trcl{\set{z}}
+        \end{align*}
+        In particular, $G(z) = z \in M$.
+
+        As $L_{\beta} \models V = L$, we also have $M \models V = L$. In other words, $(V = L)^M$. This says that $V^M = L^M$, which says $M = L_{\alpha}$ where $\alpha = \OR \cap M$. Therefore, $z \in L_{\alpha}$ and $\abs{X} = \abs{M} = \abs{L_{\alpha}} = \abs{\alpha}$, and this is less than $\lambda$, so $\alpha < \lambda$. 
+    \end{itemize}
+\end{proof}
+
+We do something very interesting in the above proof: we take some nice level of the $L$ hierarchy (which we get by downwards Löwenheim-Skolem), we take an elementary substructure, then take its Mostowski collapse, and we end up with \textit{another} level of the $L$ hierarchy.
+
+It turns out that this is not true of the $V$- or the $H$-hierarchy. This phenomenon is known as \textbf{condensation}. % [CLAUDE] make this a box definition.
+
