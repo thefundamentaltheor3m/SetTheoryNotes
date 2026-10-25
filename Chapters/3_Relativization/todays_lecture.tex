@@ -240,7 +240,8 @@ By the Reflection Theorem Scheme, this is what we wanted: for each formula $\vp\
     \begin{align*}
         2^{\kappa} = \abs{\Powset(\kappa)} \leq \abs{L_{\lambda}} = \abs{\lambda} = \lambda = \kappa^+
     \end{align*}
-    And of course the other inequality is always true in $V$, in $L$, everywhere.
+    % [CORRECTED] was: ``always true in $V$, in $L$, everywhere'' --- $\kappa^+ \leq 2^{\kappa}$ needs choice (ZF alone does not prove $\aleph_1 \leq 2^{\aleph_0}$), and $V$ is only assumed to satisfy $\ZF$ here; it does hold in $L$, which is all the proof needs
+    And of course the other inequality is always true in $L$, as in any model of $\ZFC$.
 
     So now let's prove that $H_{\lambda} = L_{\lambda}$ for all infinite cardinals $\lambda$.
 
@@ -250,7 +251,8 @@ By the Reflection Theorem Scheme, this is what we wanted: for each formula $\vp\
     \end{align*}
     so we may assume that $\lambda$ is uncountable.
     \begin{itemize}
-        \item \underline{$L_{\lambda} \ssq H_{\lambda}$.} Let $z \in L_{\lambda}$. Pick $\alpha < \lambda$ such that $z \in L_{\alpha}$. Then certainly $\trcl{\set{z}} \ssq L_{\alpha}$. So
+        % [CORRECTED] was: ``Pick $\alpha < \lambda$ such that $z \in L_{\alpha}$'' --- $\abs{L_{\alpha}} = \abs{\alpha}$ fails for finite $\alpha \geq 3$ (eg $\abs{L_3} = 4$); as $\lambda > \omega$ we may take $\alpha \geq \omega$
+        \item \underline{$L_{\lambda} \ssq H_{\lambda}$.} Let $z \in L_{\lambda}$. Pick $\alpha$ with $\omega \leq \alpha < \lambda$ such that $z \in L_{\alpha}$. Then certainly $\trcl{\set{z}} \ssq L_{\alpha}$. So
         \begin{align*}
             \abs{\trcl{\set{z}}} \leq \abs{L_{\alpha}} = \abs{\alpha}\leq \alpha < \lambda
         \end{align*}
@@ -269,7 +271,8 @@ By the Reflection Theorem Scheme, this is what we wanted: for each formula $\vp\
     \end{itemize}
 \end{proof}
 
-We do something very interesting in the above proof: we take some nice level of the $L$ hierarchy (which we get by downwards Löwenheim-Skolem), we take an elementary substructure, then take its Mostowski collapse, and we end up with \textit{another} level of the $L$ hierarchy.
+% [CORRECTED] was: ``some nice level of the $L$ hierarchy (which we get by downwards Löwenheim-Skolem), we take an elementary substructure'' --- in the proof the level comes from the reflection theorem scheme and the elementary substructure from Löwenheim-Skolem
+We do something very interesting in the above proof: we take some nice level of the $L$ hierarchy (which we get by the reflection theorem scheme), we take an elementary substructure (which we get by downwards Löwenheim-Skolem), then take its Mostowski collapse, and we end up with \textit{another} level of the $L$ hierarchy.
 
 It turns out that this is not true of the $V$- or the $H$-hierarchy. The phenomenon has a name.
 
