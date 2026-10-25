@@ -126,10 +126,13 @@ We now come to the most important theorem about $L$. We work in $\ZF$.
         \end{align*}
 
         \item \underline{Unions.} Let Let $\mathcal{F} \in L$. Pick $\alpha$ such that $\mathcal{F} \in L_{\alpha}$. Then,
+        % [FILLED] the set-builder and the justification after it; the lecture left both sides of the set-builder blank
         \begin{align*}
             \bigcup \mathcal{F}
-            = \setst{\sorry}{\sorry}
+            = \setst{x \in L_{\alpha}}{L_{\alpha} \models \exists y \, \parenth{y \in \mathcal{F} \land x \in y}}
+            \in \D\of{L_{\alpha}} = L_{\alpha + 1} \subset L
         \end{align*}
+        Indeed, $L_{\alpha}$ is transitive, so every $y \in \mathcal{F}$ lies in $L_{\alpha}$, and then so does every $x \in y$. So $\bigcup \mathcal{F} \ssq L_{\alpha}$, and for $x \in L_{\alpha}$, $L_{\alpha} \models \exists y \, \parenth{y \in \mathcal{F} \land x \in y}$ iff some $y \in \mathcal{F}$ has $x \in y$. In particular $\bigcup \mathcal{F}$ is a member of $L$ containing every member of $\mathcal{F}$ as a subset, which is what the Axiom of Unions asks of $L$.
 
         % Transcribed from the board photographs.
         \item \underline{Power Set.} Let $A \in L$. We need $\Powset(A) \cap L \in L$. It is enough to show that there is some $B \in L$ with $\Powset(A) \cap L \ssq B$.
