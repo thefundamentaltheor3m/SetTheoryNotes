@@ -3,7 +3,7 @@
 % material has been placed into the sections, /integrate empties the file again and leaves
 % this header behind. Do not delete the file or its \input line.
 
-\section{Gödel's Constructible Universe} % [CLAUDE] do we really not have this anywhere?
+\section{Gödel's Constructible Universe}
 
 Define the class function $A \mapsto \D(A)$ by
 \begin{align*}
@@ -56,8 +56,6 @@ We can show that $\grpres{L_{\alpha}}{\alpha \in \OR}$ is a hierarchy of sets, i
         \exists a_1 \in A \, \forall a_2 \in A \, \exists a_3 \in A \cdots Q a_n \in A \, \psi
     \end{align*}
     The absoluteness of the recursive definition says more than this: it is the class function $\parenth{A, \vp, \bar{a}} \mapsto \set{0, 1}$ that is absolute.
-
-    \sorry\todo{digest content from lecture} % [CLAUDE] don't fill this in for me
 \end{proof}
 
 \begin{boxlemma}
@@ -181,7 +179,11 @@ We indicated how to define a well-ordering $<_{\alpha}$ of $L_{\alpha}$ by recur
         <_{\beta} = \bigcup_{\alpha < \beta} <_{\alpha}
     \end{align*}
 \end{itemize}
-This works: $\alpha \mapsto <_{\alpha}$ is definable without parameters; moreover, it is absolute for transitive models of a certain finite subtheory of $\ZFwoP$. Call this theory $T$ for today. % [CLAUDE] make this local notation or something.
+This works: $\alpha \mapsto <_{\alpha}$ is definable without parameters; moreover, it is absolute for transitive models of a certain finite subtheory of $\ZFwoP$. We fix a name for it.
+
+\begin{boxnotation}
+    For the rest of this section, $T$ will denote a finite subtheory of $\ZFwoP$ such that $\alpha \mapsto L_{\alpha}$ and $\alpha \mapsto <_{\alpha}$ are both absolute for transitive models of $T$.
+\end{boxnotation}
 
 Notice that if we put
 \begin{align*}
@@ -206,8 +208,22 @@ For any transitive class model $M$ of $T$ ($T$ being the finite subtheory of $\Z
     Let $A \in L$. Pick $\alpha$ such that $A \in L_{\alpha}$. Then $A \ssq L_{\alpha}$. Let $R = <_{\alpha} \cap \parenth{A \times A}$. Since $\parenth{<_{\alpha}}^L = <_{\alpha}$, we know $R \in L$. We know $(A, R)$ is a well-ordering. This is $\Pi_1$, hence downward absolute to $L$.
 \end{proof}
 
-% [CLAUDE] make this a theorem. Also add macros for \HOD and \OD (and if I really haven't defined them anywhere, define them explicitly and add a reminder here as to how they're defined).
-Note that given any $x \in L$, we have some $\xi \in \OR$ such that $x$ is the $\xi$th member of $L$ according to $<_L$. In other words, if $G : (L, <_L) \simeq \OR$ then $G(x) = \xi$. Thus, $x$ is definable from $\xi$, so $x \in \OD$. Since $L$ is transitive, $x \in \HOD$. This calculation is absolute down to $L$. So $\HOD^L = L$.
+The well-ordering $<_L$ also tells us that every constructible set can be defined from an ordinal. To say this, we need the classes of sets definable from ordinals. We cannot just say ``$x$ is definable from finitely many ordinals'', as there is no formula expressing definability (cf. \Cref{Ch3:Sec:Satisfaction}); so we ask for a definition over some $V_{\alpha}$ instead.
+
+\begin{boxdefinition}[Ordinal Definability]
+    A set $x$ is \textbf{ordinal definable} iff there are an ordinal $\alpha$ with $x \in V_{\alpha}$, a formula $\vp\of{u, \bar{v}}$ and ordinals $\bar{\xi} \in \alpha^{<\omega}$ such that $x$ is the unique $y \in V_{\alpha}$ with $V_{\alpha} \models \vp\of{y, \bar{\xi}}$. We write $\OD$ for the class of ordinal definable sets.
+
+    A set $x$ is \textbf{hereditarily ordinal definable} iff $\trcl{\set{x}} \ssq \OD$. We write $\HOD$ for the class of hereditarily ordinal definable sets.
+\end{boxdefinition}
+
+By the Reflection Theorem Scheme, this is what we wanted: for each formula $\vp\of{u, \bar{v}}$, if $\bar{\xi}$ are ordinals and $x$ is the unique set with $\vp\of{x, \bar{\xi}}$, then reflecting $\vp$ to a level $V_{\alpha}$ with $x, \bar{\xi} \in V_{\alpha}$ shows $x \in \OD$. Conversely, a set in $\OD$ is defined in $V$ from the ordinals $\alpha$ and $\bar{\xi}$ by the formula ``$u \in V_{\alpha}$ and $V_{\alpha} \models \vp\of{u, \bar{\xi}}$''.
+
+\begin{boxtheorem}
+    $L \ssq \HOD$, and $\HOD^L = L$.
+\end{boxtheorem}
+\begin{proof}
+    Note that given any $x \in L$, we have some $\xi \in \OR$ such that $x$ is the $\xi$th member of $L$ according to $<_L$. In other words, if $G : (L, <_L) \simeq \OR$ then $G(x) = \xi$. Thus, $x$ is definable from $\xi$, so $x \in \OD$. Since $L$ is transitive, $x \in \HOD$. This calculation is absolute down to $L$. So $\HOD^L = L$.
+\end{proof}
 
 \begin{boxtheorem}[Working in $L$]
     $(\GCH)^L$. Ie,
@@ -240,7 +256,7 @@ Note that given any $x \in L$, we have some $\xi \in \OR$ such that $x$ is the $
         \end{align*}
         So $z \in H_{\lambda}$.
 
-        \item \underline{$H_{\lambda} \ssq L_{\lambda}$.} Let $z \in H_{\lambda}$. Recall our finite subtheory $T$ of $\ZFwoP$, maybe augmented with $V = L$. % [CLAUDE] add a reminder of what T is
+        \item \underline{$H_{\lambda} \ssq L_{\lambda}$.} Let $z \in H_{\lambda}$. Recall our finite subtheory $T$ of $\ZFwoP$, for whose transitive models $\alpha \mapsto L_{\alpha}$ and $\alpha \mapsto <_{\alpha}$ are absolute, maybe augmented with $V = L$.
         By the reflection theorem scheme, there's some $\beta$ such that $z \in L_{\beta}$ and $\sigma^{L_{\beta}}$ for all $\sigma \in T$ and $(V = L)^{L_{\beta}}$. So $L_{\beta} \models T$ and $(V = L)^{L_{\beta}}$.
 
         Observe: $\trcl{\set{z}} \ssq L_{\beta}$ and $\abs{\trcl{\set{z}}} < \lambda$. By Downwards Löwenheim-Skolem, we have some $X \preceq L_{\beta}$ with $\abs{X} < \lambda$ and $\trcl{\set{z}} \ssq X$. Let $G : X \simeq M$ be the Mostowski Collapse of $X$, so $M$ is a transitive model of $T$. Since $\trcl{\set{z}} \ssq X$, we know that
@@ -255,5 +271,9 @@ Note that given any $x \in L$, we have some $\xi \in \OR$ such that $x$ is the $
 
 We do something very interesting in the above proof: we take some nice level of the $L$ hierarchy (which we get by downwards Löwenheim-Skolem), we take an elementary substructure, then take its Mostowski collapse, and we end up with \textit{another} level of the $L$ hierarchy.
 
-It turns out that this is not true of the $V$- or the $H$-hierarchy. This phenomenon is known as \textbf{condensation}. % [CLAUDE] make this a box definition.
+It turns out that this is not true of the $V$- or the $H$-hierarchy. The phenomenon has a name.
+
+\begin{boxdefinition}[Condensation]
+    The phenomenon that the Mostowski collapse of an elementary substructure of a suitable level of the $L$-hierarchy---such as the $L_{\beta}$ in the proof above, with $L_{\beta} \models T$ and $(V = L)^{L_{\beta}}$---is again a level of the $L$-hierarchy is known as \textbf{condensation}.
+\end{boxdefinition}
 
