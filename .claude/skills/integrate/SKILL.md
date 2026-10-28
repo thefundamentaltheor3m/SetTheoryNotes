@@ -235,6 +235,13 @@ note which commit or which unstaged hunk it came from.
 Keep the ledger for the rest of the run. It is the only guard against silently dropping
 something, and the inbox is emptied at the end, so an unledgered item is a lost item.
 
+**Mark every item that repeats something.** Lectures repeat themselves: the first ten
+minutes recap the last lecture, a result is restated before it is used, and board
+photographs transcribed after the fact say again what was typed live. A repeat of
+material already in the notes, or of an earlier item in the same diff, is still a
+ledger item — record which original it repeats. That is what makes deduplicating it
+in step 4 visible rather than a silent drop.
+
 ### 2. Read the surrounding notes
 
 - `TOPICS.md` — the running topic map (see below). The primary placement authority.
@@ -290,6 +297,30 @@ would leave the notes a pile of lectures.
 **Never delete a statement.** Not a duplicate, not a triviality, not an aside. If two
 lectures state the same result, merge them into one environment, keep the stronger or
 better-worded statement, and say so in the report.
+
+#### When the lecture repeats itself
+
+Integrating a recap as though it were new leaves the notes saying the same thing twice,
+a few pages apart and in slightly different words. **Deduplicate**: the material lands
+once, where it belongs, which is usually where it first occurred.
+
+- **The first occurrence stays.** If the repeat is the better version — more precise,
+  more general, carrying a hypothesis the first lacked — fold the improvement into the
+  first occurrence (the merge the rule above asks for) rather than keeping both.
+  Anything the repeat genuinely adds, a consequence or a remark the first occurrence
+  lacked, goes in beside the first.
+- **Far from the original, leave a reminder.** If the place the lecture repeated
+  something is far from where it now lives — another section, another chapter, or
+  simply far enough that a reader would have to page back — replace the repeat with a
+  one-sentence reminder in the notes' own voice that points at the original: "Recall
+  from \Cref{…} that …". If the two are a paragraph or so apart, drop the repeat
+  outright: a reminder of something the reader has just read is padding.
+- **Whether two passages repeat each other is a mathematical judgment, not a textual
+  one.** The same statement in different words is a repeat. Two statements that look
+  alike but differ in a hypothesis or a quantifier are not, and the difference is the
+  point; keep both, and if they seem to conflict, flag it for `/check-correctness`.
+- **Every repeat is accounted for in the report**: what it repeated, and whether it was
+  dropped, merged, or replaced by a reminder.
 
 #### Expository style, in brief
 
@@ -464,6 +495,8 @@ Close with:
   when they review the pull request.
 - Where each group of material went.
 - Every existing passage you moved or rewrote, and why.
+- Every repeat you deduplicated, what it repeated, and the reminder that replaced it,
+  if any.
 - The linking prose you added.
 - Anything left unplaced or flagged, and the build result.
 

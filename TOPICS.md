@@ -281,6 +281,33 @@ on.**
           photographs), and the corollary that ZFC proves
           each finite fragment has a countable transitive
           model.
+
+3.9 Gödel's Constructible Universe                           [undated, before
+    The operation D, the L-hierarchy, and Gödel's theorem      2026-10-23, and
+    that L satisfies ZFC + GCH, by way of a definable          2026-10-23]
+    well-ordering of L. Partly transcribed from board          3_9_Constructible.tex
+    photographs.
+    3.9.1 Definable Subsets
+          D(A) unfolded (n-th formula, parameters from
+          A^{<omega}); ZF - P suffices for it to exist; its
+          absoluteness; D(A) = P(A) for finite A.
+    3.9.2 The L-Hierarchy
+          L_alpha and L; Gödel's goal, and D slowing the
+          V-hierarchy down; L_n = V_n for n <= omega;
+          without choice, |D(A)| = |A| and |L_alpha| =
+          |alpha|; L_alpha subset V_alpha.
+    3.9.3 The Axioms in L
+          Gödel's theorem, every ZF axiom checked in L
+          (Unions % [FILLED]); L^L = L, L^M = L_{OR cap M},
+          and L subset M for any transitive proper class
+          model M of ZF.
+    3.9.4 A Well-Ordering of L                               [2026-10-23]
+          <_alpha and <_L; the theory T (a boxnotation
+          scoped to 3.9); AC^L; OD and HOD, defined here at
+          the author's request; L subset HOD, HOD^L = L.
+    3.9.5 The Generalized Continuum Hypothesis in L          [2026-10-23]
+          H_lambda = L_lambda in L, hence GCH^L; the
+          condensation that the proof uses, named.
 ```
 
 The material of 3.4-3.8 arrived in one inbox across three commits (2026-09-23,
@@ -294,6 +321,34 @@ Three `% [CORRECTED]` markers sit in 3.2, all from the correctness pass of 2026-
 and all on the same argument: the transfer scheme's non-emptiness hypothesis, its
 restriction to sentences, and the hypothesis carried on the left of the corollary's
 display. Each quotes what it replaced.
+
+3.9 is the author's own heading, `\section{Gödel's Constructible Universe}`, written live
+with `% [CLAUDE] do we really not have this anywhere?` beside it. The answer: only as
+the preview in chapter 1's opening prose, which 3.9 now points back to. The heading
+is kept as written. The five subsection titles are the integration's: the author
+wrote none below the section.
+
+The material arrived in one commit, `eb7e087` ("week after fall break", 2026-10-23),
+with a `% 23 Oct` marker partway down. What precedes the marker is undated: it is the
+lecture or lectures of that week before 23 Oct, and it fills 3.9.1-3.9.3. Thirteen
+board photographs came with the pass, and the boards never typed up are transcribed
+and marked as such in the source. The 23 Oct lecture opened with a recap of
+absoluteness and L^M, which the author asked to have deduplicated. It is folded into
+the first occurrence, the paragraph after Gödel's theorem: its two-case form of
+L^M = L_{OR cap M} and its "finite subtheory of ZF - P" are kept, and the rest is
+dropped.
+
+The proof sketch of the absoluteness of A |-> D(A) had the author's `% [CLAUDE] don't
+fill this in for me` on its `\sorry\todo{digest content from lecture}`. The first run
+of this pass took the board photograph of that proof to be the content the `\todo`
+asked for, and transcribed it in place of the marker. That is the decision in these
+notes most likely to want reverting.
+
+Three `% [CORRECTED]` markers sit in 3.9.5, from the correctness pass of 2026-10-25:
+kappa^+ <= 2^kappa holds in L but is not provable in the ZF assumed of V; alpha >= omega
+in L_lambda subset H_lambda, as |L_alpha| = |alpha| fails for finite alpha; and the
+level L_beta in the condensation remark comes from reflection, not Löwenheim-Skolem.
+Each quotes what it replaced.
 
 ## Deliberate deviations
 
@@ -365,10 +420,6 @@ Topics a lecture pointed at without reaching. Not sections, and not to be promot
 sections until a lecture supplies content.
 
 ```
-Gödel's constructible universe L, and a model of ZFC in which CH holds.
-    Promised in the chapter 1 intro prose, "something we will explore in great
-    detail in this course". [date not recorded]
-
 Formalizations of set theory inside models of set theory, and the internal
 versus external perspective. "At some point, we will study these things in
 detail", in 1.4. [date not recorded]
@@ -399,7 +450,9 @@ the scheme in the lemma that relativization carries proofs, which the author
 introduced with "we can show that". [2026-09-14]
 ```
 
-Reached, and so no longer signposts: Foundation iff V = WF (promised in 1.4.2, proved
+Reached, and so no longer signposts: Gödel's constructible universe L and a model of
+ZFC in which CH holds (promised in the chapter 1 intro prose, built in 3.9 by
+2026-10-23); Foundation iff V = WF (promised in 1.4.2, proved
 in 1.4.3 on 2026-09-02); induction and recursion along well-founded set-like class
 relations (promised by chapter 2's title on 2026-09-02, delivered in 2.1.2-2.1.3 on
 2026-09-05); the general Mostowski Collapse Theorem (promised in 1.2.2 and by chapter
@@ -418,6 +471,16 @@ and the Infinity claim (3.5.2); V_mu |= ZFC for inaccessible mu (3.5.4); H_kappa
 V_alpha implies kappa = alpha (3.7.1); R in H_kappa in the Choice item of the
 axioms lemma (3.7.2); the Fact scheme (3.6). The Foundation item of the H_kappa
 axioms lemma is marked \sorry, as is the unbounded half of 3.8.1.
+
+Signposted by the lectures on L (3.9), before and on 2026-10-23: the "lots of other
+stuff" L satisfies beyond ZFC + GCH, in Gödel's goal; condensation for levels of L in
+general, of which 3.9.5 proves only the instance its proof needs, and its failure for
+the V- and H-hierarchies, which is asserted. Stated without proof and left unmarked:
+that the L_alpha form a hierarchy with L_alpha cap OR = alpha; the existence of the
+finite subtheory T of ZF - P; the direction |D(A)| >= |A| of the cardinality
+lemma, whose proof gives only <=; and |L_beta| = |beta| at limit beta in the
+corollary after it, which the sketch does not argue and whose obvious argument (a
+union of |beta| sets of size |beta|) needs choice. A \sorry would be in order there.
 
 ## Unplaced
 
@@ -509,6 +572,20 @@ theory.                                  and the axioms in transitive classes, a
                                          would sit naturally beside 3.1, but that
                                          moves settled material. Recommend /organize.
                                          [2026-10-08]
+
+Chapter 3 now has nine sections, one     3.9 is Gödel's L: its own objects (D, the
+over the corpus maximum, and 3.9 is a    L-hierarchy, <_L, OD and HOD, condensation)
+fourth body of theory.                   and its own destination (L |= ZFC + GCH).
+                                         By ORGANIZATION.md that is a chapter, and
+                                         the inference note at the top of this file
+                                         has been predicting one since chapter 2.
+                                         The author wrote \section, not \chapter,
+                                         so this pass placed it as 3.9. Recommend
+                                         /organize: open chapter 4, Gödel's
+                                         Constructible Universe, from 3.9, its
+                                         five subsections becoming sections (and
+                                         4_Another_Chapter moving on to 5).
+                                         [2026-10-28]
 ```
 
 ## Template scaffolding
