@@ -3,7 +3,8 @@
 % material has been placed into the sections, /integrate empties the file again and leaves
 % this header behind. Do not delete the file or its \input line.
 
-Before proceeding further, let's note that working in ZFC and proving $\varphi$ is tantamount to working in ZFC with the further assumption that $V = L$ (ie, assuming $\forall x \exists y \parenth{x \in L_{\alpha}}$) and proving $\varphi$. The reason for this is that $L^L = L$.
+% [CORRECTED] was: ``working in ZFC and proving $\varphi$'' --- as written this would make $\ZFC$ prove everything $\ZFC + V = L$ proves, $V = L$ itself included; what $L^L = L$ gives is that $\ZFC \vdash \varphi^L$ iff $\ZFC + V = L \vdash \varphi$
+Before proceeding further, let's note that working in ZFC and proving $\varphi^L$ is tantamount to working in ZFC with the further assumption that $V = L$ (ie, assuming $\forall x \exists \alpha \parenth{x \in L_{\alpha}}$) and proving $\varphi$. The reason for this is that $L^L = L$.
 
 Recall that to prove GCH in $L$, we showed that $H_{\lambda}^L = L_{\lambda}$ for every infinite cardinal $\lambda$ of $L$.
 
@@ -50,6 +51,7 @@ Note that $x \not<_{L} y$ iff $\exists M$ countable and transitive with $x, y \i
 
 % 30 Oct
 
+% [CORRECTED] was: ``where $y \in L_{\alpha}$'', with no bound on $\alpha$ --- an arbitrary $L_{\alpha}$ containing $y$ need not be countable; one with $\alpha < \omega_1$ exists because $H_{\omega_1} = L_{\omega_1}$ in $L$
 Assume $V = L$. Last time, we saw that
 \begin{align*}
     <_L \cap \parenth{\omom \times \omom}
@@ -58,7 +60,7 @@ is a $\Delta^1_2$ well-ordering of $\omom$. Note that it has type $\omega_1$: fo
 \begin{align*}
     \setst{x}{x <_L y} \ssq L_{\alpha}
 \end{align*}
-where $y \in L_{\alpha}$, so countability of $L_{\alpha}$ means that $\setst{x}{x <_L y}$ is countable, and the only well-ordering that is uncountable but whose every initial segment is countable is $\omega_1$.
+where $y \in L_{\alpha}$ for some $\alpha < \omega_1$ (as $y \in H_{\omega_1} = L_{\omega_1}$), so countability of $L_{\alpha}$ means that $\setst{x}{x <_L y}$ is countable, and the only well-ordering that is uncountable but whose every initial segment is countable is $\omega_1$.
 
 Look at $<_L \cap \parenth{\R \times \R}$. Ie, view $\omom$ as the actual set of reals. This is also a $\Delta^1_2$ well-ordering of $\R$ of type $\omega_1$, and we will want a shorter name for it.
 
@@ -135,7 +137,8 @@ Suslin's Hypothesis says ``YES''. This is often abbreviated $\SH$. A counterexam
     If $V = L$, then there exists a Suslin line.
 \end{boxtheorem}
 
-In other words, $\SH$ holds in $L$.
+% [CORRECTED] was: ``$\SH$ holds in $L$'' --- Jensen's theorem gives a Suslin line in $L$, so it is $\neg\SH$ that holds there, which is what the corollary below needs
+In other words, $\neg\SH$ holds in $L$.
 
 \begin{boxcorollary}
     If $\ZFC$ is consistent, then so is $\ZFC \cup \set{\neg\SH}$.
