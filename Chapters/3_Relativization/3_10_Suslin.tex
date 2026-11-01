@@ -1,0 +1,70 @@
+\section{Suslin's Problem}
+
+We now put $L$ to work on a question about the real line which, on its face, has nothing to do with set theory.
+
+\subsection{Dense Linear Orderings without Endpoints}
+
+Here are some simple facts about dense linear orderings without endpoints. We should be able to prove these using prior knowledge.
+
+We will abbreviate ``Dense Linear Ordering without Endpoints'' DLO (WE will be implicit).
+
+\begin{boxlemma}
+    Up to isomorphism, $\Q$ is the unique countable DLO.
+\end{boxlemma}
+
+As a reminder, this is a back-and-forth argument; if we have $\Q$ and another one, then we build an isomorphism by going back and forth.
+
+The reals have a characterization of the same kind.
+
+\begin{boxlemma}
+    Up to isomorphism, $\R$ is the unique DLO that is separable (ie, admits a countable, dense subset) and complete (ie, has the least upper-bound property).
+\end{boxlemma}
+
+As a reminder, if $\parenth{\SS, <_{\SS}}$ is a DLO that's separable and complete, then we get an isomorphism between the dense countable subsets by the previous one, then using the LUB property, we extend that to an isomorphism on the entirety of the two sets.
+
+Suslin's question is about a weakening of separability.
+
+\begin{boxdefinition}[Countable Chain Condition]
+    A DLO satisfies the \textbf{countable chain condition (CCC)} if every family of pairwise disjoint open intervals is countable.
+\end{boxdefinition}
+
+This is indeed weaker.
+
+\begin{boxlemma}
+    Every separable DLO satisfies the CCC.
+\end{boxlemma}
+
+\subsection{Suslin's Question}
+
+Suslin asked the following question:
+\begin{quote}
+    Is every complete DLO satisfying the CCC isomorphic to $\R$?
+\end{quote}
+Suslin's Hypothesis says ``YES''. This is often abbreviated $\SH$. A counterexample to $\SH$ is called a Suslin Line. In other words, $\SH$ says that there are no Suslin lines.
+
+Whether there are any turns out to depend on the universe of sets.
+
+\begin{boxtheorem}[Jensen, 1960s]
+    If $V = L$, then there exists a Suslin line.
+\end{boxtheorem}
+
+% [CORRECTED] was: ``$\SH$ holds in $L$'' --- Jensen's theorem gives a Suslin line in $L$, so it is $\neg\SH$ that holds there, which is what the corollary below needs
+In other words, $\neg\SH$ holds in $L$. Since $L$ is a model of $\ZFC$ in which $V = L$ holds, the following is immediate.
+
+\begin{boxcorollary}
+    If $\ZFC$ is consistent, then so is $\ZFC \cup \set{\neg\SH}$.
+\end{boxcorollary}
+
+The other half cannot come from $L$, since $\SH$ fails there.
+
+\begin{boxtheorem}[Solovay--Tennenbaum]
+    If $\ZFC$ is consistent, then so is $\ZFC \cup \set{\SH}$.
+\end{boxtheorem}
+
+There is a name for a statement that a theory can neither prove nor refute.
+
+\begin{boxdefinition}[Independence]
+    Let $\Gamma$ be a theory and $\sigma$ a sentence. We say that $\sigma$ is \textbf{independent of $\Gamma$} if $\Gamma \nvdash \sigma$ and $\Gamma \nvdash \neg\sigma$, ie, if $\Gamma \cup \set{\sigma}$ and $\Gamma \cup \set{\neg\sigma}$ are both consistent.
+\end{boxdefinition}
+
+We thus say that $\SH$ is independent of $\ZFC$, as long as $\ZFC$ is consistent: by the corollary and the theorem above, $\ZFC \cup \set{\neg\SH}$ and $\ZFC \cup \set{\SH}$ are then both consistent.
