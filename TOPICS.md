@@ -308,6 +308,28 @@ on.**
     3.9.5 The Generalized Continuum Hypothesis in L          [2026-10-23]
           H_lambda = L_lambda in L, hence GCH^L; the
           condensation that the proof uses, named.
+                                                             [+ late Oct]
+          The Condensation Lemma stated for any level
+          L_beta |= T, and its elementary-embedding form.
+    3.9.6 A Delta^1_2 Well-Ordering of the Reals             [late Oct and
+          Proving phi^L in ZFC versus phi in ZFC + V = L;      2026-10-30]
+          <_L on omega^omega is Delta_1 over HC, so
+          Delta^1_2, of type omega_1; restricted to R it is
+          not Lebesgue measurable (local notation, figure).
+
+3.10 Suslin's Problem                                        [2026-10-30]
+    The question, and its independence: Jensen gives a       3_10_Suslin.tex
+    Suslin line in L, Solovay--Tennenbaum the consistency
+    of SH. Independence defined, at the author's request.
+    3.10.1 Dense Linear Orderings without Endpoints
+          Q and R characterized; the CCC; separable
+          implies CCC.
+    3.10.2 Suslin's Question
+
+3.11 Trees                                                   [2026-10-30]
+    Trees of arbitrary height: height and levels, normal      3_11_Trees.tex
+    trees (with figures for splitting and for
+    extensionality at limits), branches.
 ```
 
 The material of 3.4-3.8 arrived in one inbox across three commits (2026-09-23,
@@ -343,6 +365,18 @@ fill this in for me` on its `\sorry\todo{digest content from lecture}`. The firs
 of this pass took the board photograph of that proof to be the content the `\todo`
 asked for, and transcribed it in place of the marker. That is the decision in these
 notes most likely to want reverting.
+
+The material of 3.9.5's tail through 3.11 arrived in one commit, `27853bc` ("save",
+2026-10-31), with a `% 30 Oct` marker partway down. What precedes the marker is the
+undated lecture of that week, 26 or 28 Oct, and fills the tail of 3.9.5 and the first
+half of 3.9.6. The 30 Oct lecture opened by recapping its last result, and that recap
+has been dropped, as it sat a paragraph after the original. Its opening "Recall that to
+prove GCH in L, we showed H_lambda^L = L_lambda" was also dropped, since the proof sits
+just above. Both section headings, `\section{Suslin's Problem}` and `\section{Trees}`,
+and both subsection headings under the first, are the author's and are kept as written.
+Three `% [CORRECTED]` markers sit in 3.9.6 and one in 3.10.2, from the correctness pass
+of 2026-10-31: phi^L for phi in the remark on V = L; alpha < omega_1 for the level
+holding a real; and not-SH, not SH, in L.
 
 Three `% [CORRECTED]` markers sit in 3.9.5, from the correctness pass of 2026-10-25:
 kappa^+ <= 2^kappa holds in L but is not provable in the ZF assumed of V; alpha >= omega
@@ -482,6 +516,15 @@ lemma, whose proof gives only <=; and |L_beta| = |beta| at limit beta in the
 corollary after it, which the sketch does not argue and whose obvious argument (a
 union of |beta| sets of size |beta|) needs choice. A \sorry would be in order there.
 
+Signposted by the lectures of late October, and stated without proof: that <_L on
+omega^omega is Sigma^1_2, "from a homework exercise" (Sigma_1 over HC is Sigma^1_2);
+the Condensation Lemma for levels of L in general (3.9.5), which answers part of the
+signpost above but is stated rather than proved; Jensen's theorem that V = L gives a
+Suslin line; Solovay--Tennenbaum's Con(ZFC + SH). The facts on DLOs and the CCC in
+3.10.1 come with reminders of their proofs, or none, and are left unmarked, as the
+lecture called them prior knowledge. Trees arrived straight after Suslin's question,
+with no stated connection to it yet.
+
 ## Unplaced
 
 Nothing.
@@ -586,6 +629,21 @@ fourth body of theory.                   and its own destination (L |= ZFC + GCH
                                          five subsections becoming sections (and
                                          4_Another_Chapter moving on to 5).
                                          [2026-10-28]
+
+Chapter 3 now has eleven sections, and   3.10 (Suslin's problem) and 3.11 (trees)
+3.10-3.11 are not about relativization   are about linear orders and trees, with L
+at all.                                  only as the source of a Suslin line. They
+                                         are a fifth body of theory, and with 3.9
+                                         as chapter 4 they would make a natural
+                                         chapter 5 (Suslin's problem, or
+                                         combinatorics in L). The author wrote
+                                         \section, not \chapter, both times, so
+                                         this pass placed them as 3.10 and 3.11
+                                         and added a clause to the chapter's intro
+                                         prose. The chapter 3 title is now
+                                         inaccurate for its last three sections.
+                                         Recommend /organize, together with the
+                                         3.9 entry above. [2026-10-31]
 ```
 
 ## Template scaffolding

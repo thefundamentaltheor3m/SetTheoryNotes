@@ -299,3 +299,91 @@ It turns out that this is not true of the $V$- or the $H$-hierarchy. The phenome
 \begin{boxdefinition}[Condensation]
     The phenomenon that the Mostowski collapse of an elementary substructure of a suitable level of the $L$-hierarchy---such as the $L_{\beta}$ in the proof above, with $L_{\beta} \models T$ and $(V = L)^{L_{\beta}}$---is again a level of the $L$-hierarchy is known as \textbf{condensation}.
 \end{boxdefinition}
+
+The condensation used in that proof can be stated once and for all, for any level of the $L$-hierarchy satisfying enough of $\ZFwoP$.
+
+\begin{boxlemma}[Condensation Lemma]
+    Let $T$ be some finite subtheory of $\ZFwoP$ such that for transitive class models of $T$,
+    \begin{align*}
+        A \mapsto \D(A)
+        \qquad \qquad
+        \alpha \mapsto L_{\alpha}
+        \qquad \qquad
+        \alpha \mapsto <_{\alpha}
+        \qquad \qquad
+        L
+        \qquad \qquad
+        <_L
+    \end{align*}
+    are all absolute. By the reflection theorem (scheme), $\setst{\beta}{L_{\beta} \models T}$ is unbounded in $\OR$. Given $L_{\beta} \models T$ and $X \preceq L_{\beta}$, if $M \simeq X$ and $M$ is transitive, then $M = L_{\alpha}$, where $\alpha = \OR \cap M$.
+\end{boxlemma}
+
+Here's another way to view the condensation lemma.
+
+Given a transitive $M$ and an elementary embedding $\pi : M \inj L_{\beta}$ (for some $\beta$ as above), we conclude that there is some $\alpha \leq \beta$ such that $M = L_{\alpha}$. In the statement above, $X = \ran(\pi)$, with $\pi$ being the inverse of the Mostowski collapse of $X$.
+
+\subsection{A $\Delta^1_2$ Well-Ordering of the Reals}
+
+% [CORRECTED] was: ``working in ZFC and proving $\varphi$'' --- as written this would make $\ZFC$ prove everything $\ZFC + V = L$ proves, $V = L$ itself included; what $L^L = L$ gives is that $\ZFC \vdash \varphi^L$ iff $\ZFC + V = L \vdash \varphi$
+Before proceeding further, let's note that working in ZFC and proving $\varphi^L$ is tantamount to working in ZFC with the further assumption that $V = L$ (ie, assuming $\forall x \exists \alpha \parenth{x \in L_{\alpha}}$) and proving $\varphi$. The reason for this is that $L^L = L$. Throughout this subsection, we assume $V = L$.
+
+Let's now ask ourselves the following question: how complex is $<_L$ restricted to $\omom$? Denote $<_{\omom} = <_L \cap \parenth{\omom \times \omom}$.
+
+Working in $L$, we know that for every $x, y \in \omom$, $x <_L y$ iff there is a countable, transitive $M$ with $x, y \in M$ such that
+\begin{align*}
+    M \models T \cup \set{V = L, x <_L y}
+\end{align*}
+This is in turn equivalent to
+\begin{align*}
+    \HC \models \exists M \text{ transitive, countable} \st x, y \in M \text{ and } M \models T \cup \set{V = L, x <_L y}
+\end{align*}
+This shows that $<_{\omom}$ is $\Sigma_1$ definable over $\HC$ without parameters. It will follow from a homework exercise that $<_{\omom}$ is $\Sigma_2^1$ (lightface).
+
+Note that $x \not<_{L} y$ iff $\exists M$ countable and transitive with $x, y \in M$ and $M \models T \cup \set{V = L, x \not<_L y}$. This shows:
+\begin{itemize}
+    \item $\not<_{\omom}$ is $\Sigma_1^{\HC}$
+    \item $<_{\omom}$ is $\Pi_1^{\HC}$
+    \item $<_{\omom}$ is $\Delta_1^{\HC}$, thus $\Delta^1_2$
+\end{itemize}
+
+So $<_{\omom}$ is a $\Delta^1_2$ well-ordering of $\omom$. Note that it has type $\omega_1$: for each $y$,
+\begin{align*}
+    \setst{x}{x <_L y} \ssq L_{\alpha}
+\end{align*}
+% [CORRECTED] was: ``where $y \in L_{\alpha}$'', with no bound on $\alpha$ --- an arbitrary $L_{\alpha}$ containing $y$ need not be countable; one with $\alpha < \omega_1$ exists because $H_{\omega_1} = L_{\omega_1}$ in $L$
+where $y \in L_{\alpha}$ for some $\alpha < \omega_1$ (as $y \in H_{\omega_1} = L_{\omega_1}$), so countability of $L_{\alpha}$ means that $\setst{x}{x <_L y}$ is countable, and the only well-ordering that is uncountable but whose every initial segment is countable is $\omega_1$.
+
+Look at $<_L \cap \parenth{\R \times \R}$. Ie, view $\omom$ as the actual set of reals. This is also a $\Delta^1_2$ well-ordering of $\R$ of type $\omega_1$, and we will want a shorter name for it.
+
+\begin{boxnotation}
+    For the rest of this subsection, $\nsg$ will denote $<_L \cap \parenth{\R \times \R}$.
+\end{boxnotation}
+
+\begin{boxlemma}
+    $<_L \cap \parenth{\R \times \R}$ is a non-Lebesgue measurable subset of $\R \times \R$.
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    For a given $y$, the set $\setst{x}{x <_L y}$ is countable, therefore has measure zero. So if $\nsg$ is Lebesgue measurable, then it must have Lebesgue measure zero.
+    
+    However, for a given $x$, $\setst{y}{x <_L y}$ is cocountable, hence has measure $\infty$. So if $\nsg$ is Lebesgue measurable, it must have measure $\infty$.
+
+    So $\nsg$ cannot be measurable, because if it is, then these things would both be true, which is impossible! (Note that there is some Fubini going on here because the point is that in both cases, we are getting the measure of the same set, ie, the Lebesgue measure of $\nsg$ \textit{is} the first one ($0$) and the second one ($\infty$).)
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[every node/.style = {font = \small}]
+            \draw[->] (0, 0) -- (5, 0) node[right] {$x$};
+            \draw[->] (0, 0) -- (0, 4.5) node[above] {$y$};
+            \draw[dashed, gray] (0, 3.2) -- (4.6, 3.2);
+            \node[left] at (0, 3.2) {$y_0$};
+            \foreach \x in {0.3, 0.7, 1.2, 1.9, 2.3, 3.4, 3.9, 4.3}
+                \fill (\x, 3.2) circle (1.5pt);
+            \node[right, align = left] at (4.7, 3.2) {$\setst{x}{x \nsg y_0}$ \\ countable, measure $0$};
+            \draw[very thick] (2.8, 0) -- (2.8, 4.2);
+            \foreach \y in {0.7, 1.6, 2.4, 3.8}
+                \draw[fill = white] (2.8, \y) circle (1.5pt);
+            \node[below] at (2.8, 0) {$x_0$};
+            \node[right, align = left] at (2.9, 1.2) {$\setst{y}{x_0 \nsg y}$ \\ cocountable, measure $\infty$};
+        \end{tikzpicture}
+    \end{figure}
+    Integrating the measures of the horizontal sections over $y$ gives $0$; integrating the measures of the vertical sections over $x$ gives $\infty$. By Fubini, both would have to be the measure of $\nsg$.
+\end{proof}

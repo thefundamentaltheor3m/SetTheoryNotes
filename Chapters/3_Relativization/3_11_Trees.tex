@@ -1,0 +1,67 @@
+\section{Trees}
+
+So far, we've only looked at trees on $\omega$ or trees on some other set. These are subtrees of $\parenth{{^{<\omega}\Omega, \subsetneq}}$. Here is the general notion.
+
+\begin{boxdefinition}[Tree]
+    $\parenth{T, <_T}$ is a \textbf{tree} iff it's a strict partial ordering (transitive and irreflexive) and, for all $y \in T$, $\setst{x}{x <_T y}$ is well-ordered by $<_T$.
+\end{boxdefinition}
+
+Fix a tree $\parenth{T, <_T}$.
+
+Each node of a tree sits at some height, and the nodes at the same height make up a level.
+
+\begin{boxdefinition}[Height and Levels]
+    For $y \in T$, define
+    \begin{align*}
+        \height_T(y) &= \type\of{\setst{x}{x <_T y}, <_T} \\
+        \level_{\alpha}(T) &= \setst{y \in T}{\height_T(y) = \alpha} \\
+        \height(T) &= \text{the least $\alpha$ such that $\level_{\alpha}(T) = \emptyset$}
+    \end{align*}
+    We call $\height_T(y)$ the \textbf{height} of $y$, $\level_{\alpha}(T)$ the \textbf{$\alpha$th level} of $T$, and $\height(T)$ the \textbf{height} of $T$.
+\end{boxdefinition}
+
+We will mostly care about trees that are as well-behaved as possible.
+
+\begin{boxdefinition}[Normal Tree]
+    We say $\parenth{T, <_T}$ is \textbf{normal} iff
+    \begin{enumerate}
+        \item $T$ has a unique root
+        \item Splitting to the next level: given $x$ with $\height(x) = \alpha$, there are $y, z \in \level_{\alpha + 1}(T)$ such that $y \neq z$ and $x <_T y, z$.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}]
+                \draw[dashed, gray] (-2, 0) -- (2, 0) node[right, black] {$\level_{\alpha}(T)$};
+                \draw[dashed, gray] (-2, 1.5) -- (2, 1.5) node[right, black] {$\level_{\alpha + 1}(T)$};
+                \draw[dotted] (0, -1) -- (0, 0);
+                \node[dot, label = {right:$x$}] (x) at (0, 0) {};
+                \node[dot, label = {above:$y$}] (y) at (-0.8, 1.5) {};
+                \node[dot, label = {above:$z$}] (z) at (0.8, 1.5) {};
+                \draw (x) -- (y);
+                \draw (x) -- (z);
+            \end{tikzpicture}
+        \end{figure}
+        \item Extensions at every higher level: $\forall \alpha < \height(T)$, $\forall \beta$ with $\alpha < \beta < \height(T)$, $\forall x \in \level_{\alpha}(T)$, $\exists y \in \level_{\beta}(T)$ such that $x <_T y$.
+        \item Extensionality at limit levels\footnote{so far, in homework, we've only seen trees with at most $\omega$ many levels; here, we're not assuming this of every tree}: given a limit ordinal $\alpha < \height(T)$, if $y, z \in \level_{\alpha}(T)$ and $\setst{x}{x <_T y} = \setst{x}{x <_T z}$, then $y = z$. So the following picture, in which $y \neq z$ sit on a limit level above exactly the same nodes, cannot occur in a normal tree.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}]
+                \foreach \h in {0, 1, 1.7, 2.15, 2.45}
+                    \node[dot] at (0, \h) {};
+                \draw (0, 0) -- (0, 2.45);
+                \node at (0, 2.85) {$\vdots$};
+                \draw[dashed, gray] (-2, 4) -- (2, 4) node[right, black] {$\level_{\alpha}(T)$, $\alpha$ limit};
+                \node[dot, label = {above:$y$}] (y) at (-0.8, 4) {};
+                \node[dot, label = {above:$z$}] (z) at (0.8, 4) {};
+                \draw[dotted] (0, 3.2) -- (y);
+                \draw[dotted] (0, 3.2) -- (z);
+                \node[left, align = right] at (-0.3, 1.1) {$\setst{x}{x <_T y}$ \\ $= \setst{x}{x <_T z}$};
+            \end{tikzpicture}
+        \end{figure}
+    \end{enumerate}
+\end{boxdefinition}
+
+Finally, branches are the paths through a tree, of any length.
+
+\begin{boxdefinition}[Branch]
+    A \textbf{branch} of a tree $\parenth{T, <_T}$ is a subset $b \subset T$ such that $\forall y \in b$, $\forall x <_T y$, $x \in b$ and $b$ is linearly ordered (equivalently, well-ordered) by $<_T$. We say $b$ is an \textbf{$\alpha$-branch} if $\type\of{b, <_T} = \alpha$.
+\end{boxdefinition}
