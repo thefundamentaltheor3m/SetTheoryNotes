@@ -2,3 +2,152 @@
 % it: it is \input from the chapter file, so the Overleaf preview builds them live. Once the
 % material has been placed into the sections, /integrate empties the file again and leaves
 % this header behind. Do not delete the file or its \input line.
+
+Before proceeding further, let's note that working in ZFC and proving $\varphi$ is tantamount to working in ZFC with the further assumption that $V = L$ (ie, assuming $\forall x \exists y \parenth{x \in L_{\alpha}}$) and proving $\varphi$. The reason for this is that $L^L = L$.
+
+Recall that to prove GCH in $L$, we showed that $H_{\lambda}^L = L_{\lambda}$ for every infinite cardinal $\lambda$ of $L$.
+
+The main tool we used to do this can be expressed as follows.
+
+\begin{boxlemma}[Condensation Lemma]
+    Let $T$ be some finite subtheory of $\ZFwoP$ such that for transitive class models of $T$,
+    \begin{align*}
+        A \mapsto \D(A)
+        \qquad \qquad
+        \alpha \mapsto L_{\alpha}
+        \qquad \qquad
+        \alpha \mapsto <_{\alpha}
+        \qquad \qquad
+        L
+        \qquad \qquad
+        <_L
+    \end{align*}
+    are all absolute. By the reflection theorem (scheme), $\setst{\beta}{L_{\beta} \models T}$ is unbounded in $\OR$. Given $L_{\beta} \models T$ and $X \preceq L_{\beta}$, if $M \simeq X$ and $M$ is transitive, then $M = L_{\alpha}$, where $\alpha = \OR \cap M$.
+\end{boxlemma}
+
+Here's another way to view the condensation lemma.
+
+Given a transitive $M$ and an elementary embedding $\pi : M \inj L_{\beta}$ (for some $\beta$ as above), we conclude that there is some $\alpha \leq \beta$ such that $M = L_{\alpha}$. In the statement above, $X = \ran(\pi)$, with $\pi$ being the inverse of the Mostowski collapse of $X$.
+
+Let's now ask ourselves the following question: how complex is $<_L$ restricted to $\omom$? Denote $<_{\omom} = <_L \cap \parenth{\omom \times \omom}$.
+
+Working in $L$, we know that for every $x, y \in \omom$, $x <_L y$ iff there is a countable, transitive $M$ with $x, y \in M$ such that
+\begin{align*}
+    M \models T \cup \set{V = L, x <_L y}
+\end{align*}
+This is in turn equivalent to
+\begin{align*}
+    \HC \models \exists M \text{ transitive, countable} \st x, y \in M \text{ and } M \models T \cup \set{V = L, x <_L y}
+\end{align*}
+This shows that $<_{\omom}$ is $\Sigma_1$ definable over $\HC$ without parameters. It will follow from a homework exercise that $<_{\omom}$ is $\Sigma_2^1$ (lightface).
+
+Note that $x \not<_{L} y$ iff $\exists M$ countable and transitive with $x, y \in M$ and $M \models T \cup \set{V = L, x \not<_L y}$. This shows:
+\begin{itemize}
+    \item $\not<_{\omom}$ is $\Sigma_1^{\HC}$
+    \item $<_{\omom}$ is $\Pi_1^{\HC}$
+    \item $<_{\omom}$ is $\Delta_1^{\HC}$, thus $\Delta^1_2$
+\end{itemize}
+
+% 30 Oct
+
+Assume $V = L$. Last time, we saw that
+\begin{align*}
+    <_L \cap \parenth{\omom \times \omom}
+\end{align*}
+is a $\Delta^1_2$ well-ordering of $\omom$. Note that it has type $\omega_1$: for each $y$,
+\begin{align*}
+    \setst{x}{x <_L y} \ssq L_{\alpha}
+\end{align*}
+where $y \in L_{\alpha}$, so countability of $L_{\alpha}$ means that $\setst{x}{x <_L y}$ is countable, and the only well-ordering that is uncountable but whose every initial segment is countable is $\omega_1$.
+
+Look at $<_L \cap \parenth{\R \times \R}$. Denote it $\nsg$ for today's lecture. Ie, view $\omom$ as the actual set of reals. This is also a $\Delta^1_2$ well-ordering of $\R$ of type $\omega_1$. % [CLAUDE] either make this local notation or remove it everywhere and just replace it with the full form
+
+\begin{boxlemma}
+    $<_L \cap \parenth{\R \times \R}$ is a non-Lebesgue measurable subset of $\R \times \R$.
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    For a given $y$, the set $\setst{x}{x <_L y}$ is countable, therefore has measure zero. So if $\nsg$ is Lebesgue measurable, then it must have Lebesgue measure zero.
+    
+    However, for a given $x$, $\setst{y}{x <_L y}$ is cocountable, hence has measure $\infty$. So if $\nsg$ is Lebesgue measurable, it must have measure $\infty$.
+
+    So $\nsg$ cannot be measurable, because if it is, then these things would both be true, which is impossible! (Note that there is some Fubini going on here because the point is that in both cases, we are getting the measure of the same set, ie, the Lebesgue measure of $\nsg$ \textit{is} the first one ($0$) and the second one ($\infty$).) % [CLAUDE] illustrate
+\end{proof}
+
+\section{Suslin's Problem}
+
+\subsection{Dense Linear Orderings without Endpoints}
+
+Here are some simple facts about dense linear orderings without endpoints. We should be able to prove these using prior knowledge.
+
+We will abbreviate ``Dense Linear Ordering without Endpoints'' DLO (WE will be implicit).
+
+\begin{boxlemma}
+    Up to isomorphism, $\Q$ is the unique countable DLO.
+\end{boxlemma}
+
+As a reminder, this is a back-and-forth argument; if we have $\Q$ and another one, then we build an isomorphism by going back and forth.
+
+\begin{boxlemma}
+    Up to isomorphism, $\R$ is the unique DLO that is separable (ie, admits a countable, dense subset) and complete (ie, has the least upper-bound property).
+\end{boxlemma}
+
+As a reminder, if $\parenth{\SS, <_{\SS}}$ is a DLO that's separable and complete, then we get an isomorphism between the dense countable subsets by the previous one, then using the LUB property, we extend that to an isomorphism on the entirety of the two sets.
+
+\begin{boxdefinition}[Countable Chain Condition]
+    A DLO satisfies the \textbf{countable chain condition (CCC)} if every family of pairwise disjoint open intervals is countable.
+\end{boxdefinition}
+
+\begin{boxlemma}
+    Every separable DLO satisfies the CCC.
+\end{boxlemma}
+
+\subsection{Suslin's Question}
+
+Suslin asked the following question:
+\begin{quote}
+    Is every complete DLO satisfying the CCC isomorphic to $\R$?
+\end{quote}
+Suslin's Hypothesis says ``YES''. This is often abbreviated $\SH$. A counterexample to $\SH$ is called a Suslin Line. In other words, $\SH$ says that there are no Suslin lines.
+
+\begin{boxtheorem}[Jensen, 1960s]
+    If $V = L$, then there exists a Suslin line.
+\end{boxtheorem}
+
+In other words, $\SH$ holds in $L$.
+
+\begin{boxcorollary}
+    If $\ZFC$ is consistent, then so is $\ZFC \cup \set{\neg\SH}$.
+\end{boxcorollary}
+
+\begin{boxtheorem}[Solovay-Tenenbaum]
+    If $\ZFC$ is consistent, then so is $\ZFC \cup \set{\SH}$.
+\end{boxtheorem}
+
+We thus say that $\SH$ is \textbf{independent of $\ZFC$}. % [CLAUDE] make a boxdefinition for what independence means
+
+\section{Trees}
+
+$\parenth{T, <_T}$ is a tree iff it's a strict partial ordering (transitive and irreflexive) and, for all $y \in T$, $\setst{x}{x <_T y}$ is well-ordered by $<_T$.
+
+So far, we've only looked at trees on $\omega$ or trees on some other set. These are subtrees of $\parenth{{^{<\omega}\Omega, \subsetneq}}$.
+
+Fix a tree $\parenth{T, <_T}$.
+
+For $y \in T$, define % [CLAUDE] make this a box definition - all three into one box is fine, separate is fine too
+\begin{align*}
+    \height_T(y) &= \type\of{\setst{x}{x <_T y}, <_T} \\
+    \level_{\alpha}(T) &= \setst{y \in T}{\height_T(y) = \alpha} \\
+    \height(T) &= \text{the least $\alpha$ such that $\level_{\alpha}(T) = \emptyset$}
+\end{align*}
+
+We say $\parenth{T, <_T}$ is \textbf{normal} iff
+\begin{enumerate}
+    \item $T$ has a unique root
+    \item Splitting to the next level: given $x$ with $\height(x) = \alpha$, there are $y, z \in \level_{\alpha + 1}(T)$ such that $y \neq z$ and $x <_T y, z$. % [CLAUDE] illustrate
+    \item Extensions at every higher level: $\forall \alpha < \height(T)$, $\forall \beta$ iwth $\alpha < \beta < \ht(T)$, $\forall x \in \level_{\alpha}(T)$, $\exists y \in \level_{\beta}(T)$ such that $x <_T y$.
+    \item Extensionality at limit levels\footnote{so far, in homework, we've only seen trees with at most $\omega$ many levels; here, we're not assuming this of every tree}: given a limit ordinal $\alpha < \height(T)$, if $y, z \in \level_{\alpha}(T)$ and $\setst{x}{x <_T y} = \setst{x}{x <_T z}$, then $y = z$. % [CLAUDE] illustrate
+\end{enumerate}
+
+\begin{boxdefinition}[Branch]
+    A \textbf{branch} of a tree $\parenth{T, <_T}$ is a subset $b \subset T$ such that $\forall y \in b$, $\forall x <_T y$, $x \in b$ and $b$ is linearly ordered (equivalently, well-ordered) by $<_T$. We say $b$ is an \textbf{$\alpha$-branch} if $\type\of{b, <_T} = \alpha$.
+\end{boxdefinition}
