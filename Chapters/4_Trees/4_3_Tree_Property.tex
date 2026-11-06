@@ -1,0 +1,33 @@
+\section{The Tree Property}
+
+We now measure trees against a cardinal: both how tall they are and how wide their levels can be.
+
+\begin{boxdefinition}[$\lambda$-Tree]
+    Let $\lambda$ be an infinite cardinal and $\parenth{T, <_T}$ be a tree. Then $T$ is a \textbf{$\lambda$-tree} iff $T$ has height $\lambda$ and $\forall \alpha < \lambda$, $\abs{\level_{\alpha}\of{T}} < \lambda$.
+\end{boxdefinition}
+
+Such a tree is as tall as $\lambda$ but every level of it is small, and the question is whether it must have a branch running all the way up.
+
+\begin{boxdefinition}[Tree Property]
+    $\lambda$ has the \textbf{tree property} (often abbreviated TP) if every normal $\lambda$-tree has a $\lambda$-branch.
+\end{boxdefinition}
+
+The trees that witness a failure of the tree property have a name.
+
+\begin{boxdefinition}[Aronszajn Tree]
+    A \textbf{$\lambda$-Aronszajn Tree} (often abbreviated $\lambda$-A-tree) is a normal $\lambda$-tree with no $\lambda$-branch.
+\end{boxdefinition}
+
+Thus $\lambda$ has the TP iff there are no $\lambda$-A-trees. At the first two infinite cardinals, the answers go opposite ways.
+
+\begin{boxtheorem}[K\H{o}nig]
+    $\omega$ has the TP.
+\end{boxtheorem}
+
+One cardinal up, it fails.
+
+\begin{boxtheorem}[Aronszajn]
+    $\omega_1$ does \textit{not} have the TP.
+\end{boxtheorem}
+
+Proofs can be found in Ernest's book~\cite[Theorems 5.17 and 5.30]{Schimmerling} and in Kunen~\cite[Chapter II, Lemma 5.7 and Theorem 5.9]{Kunen}.
