@@ -65,3 +65,33 @@ Finally, branches are the paths through a tree, of any length.
 \begin{boxdefinition}[Branch]
     A \textbf{branch} of a tree $\parenth{T, <_T}$ is a subset $b \subset T$ such that $\forall y \in b$, $\forall x <_T y$, $x \in b$ and $b$ is linearly ordered (equivalently, well-ordered) by $<_T$. We say $b$ is an \textbf{$\alpha$-branch} if $\type\of{b, <_T} = \alpha$.
 \end{boxdefinition}
+
+Two nodes of a tree may or may not lie on a common branch.
+
+\begin{boxdefinition}[Comparability and Incomparability]
+    Given a tree $T$, we say $x$ and $y$ are \textbf{comparable} (written $x \parallel y$) iff $x \leq_T y$ or $y \leq_T x$. Else, we say $x$ and $y$ are \textbf{incomparable} and write $x \perp y$.
+\end{boxdefinition}
+
+Sets of pairwise incomparable nodes will matter a great deal.
+
+\begin{boxdefinition}[Antichain]
+    $A \ssq T$ is an \textbf{antichain} (often abbreviated ac) if $\forall x, y \in A$, $x \neq y$ implies $x \perp y$.
+\end{boxdefinition}
+
+The levels are the basic example.
+
+\begin{boxexample}
+    For every $\alpha$, $\level_{\alpha}\of{T}$ is an antichain.
+\end{boxexample}
+
+An antichain may also be as large as possible.
+
+\begin{boxdefinition}[Maximal Antichain]
+    An antichain $A \ssq T$ in a tree $T$ is \textbf{maximal} iff
+    \begin{enumerate}
+        \item $A$ is an antichain
+        \item There's no antichain $B$ with $B \supsetneq A$
+    \end{enumerate}
+\end{boxdefinition}
+
+Note: if $A$ is a maximal antichain then for every $x \in T$, there's some $a \in A$ such that $a \parallel x$. Otherwise, $A \cup \set{x} = B$ would be an antichain.

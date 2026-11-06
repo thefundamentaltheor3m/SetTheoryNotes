@@ -317,19 +317,6 @@ on.**
           Delta^1_2, of type omega_1; restricted to R it is
           not Lebesgue measurable (local notation, figure).
 
-3.10 Suslin's Problem                                        [2026-10-30]
-    The question, and its independence: Jensen gives a       3_10_Suslin.tex
-    Suslin line in L, Solovay--Tennenbaum the consistency
-    of SH. Independence defined, at the author's request.
-    3.10.1 Dense Linear Orderings without Endpoints
-          Q and R characterized; the CCC; separable
-          implies CCC.
-    3.10.2 Suslin's Question
-
-3.11 Trees                                                   [2026-10-30]
-    Trees of arbitrary height: height and levels, normal      3_11_Trees.tex
-    trees (with figures for splitting and for
-    extensionality at limits), branches.
 ```
 
 The material of 3.4-3.8 arrived in one inbox across three commits (2026-09-23,
@@ -383,6 +370,70 @@ kappa^+ <= 2^kappa holds in L but is not provable in the ZF assumed of V; alpha 
 in L_lambda subset H_lambda, as |L_alpha| = |alpha| fails for finite alpha; and the
 level L_beta in the condensation remark comes from reflection, not Löwenheim-Skolem.
 Each quotes what it replaced.
+
+## 4. Trees and Suslin's Problem  ->  `Chapters/4_Trees/`
+
+Opened on 2026-11-06 at the author's explicit instruction, written as a directive in
+the lecture's raw notes: "I suspect trees will be moved to a new chapter (well, even
+if /organise doesn't, I'm explicitly asking you to do this)". It took 3.10 and 3.11
+with it, since the lecture's destination -- a Suslin tree from diamond -- is the
+combinatorial half of Suslin's problem. The placeholder gave up the number 4 and is
+now `Chapters/5_Another_Chapter/`. The inbox moved with the course: **type into
+`Chapters/4_Trees/todays_lecture.tex` from now on.** The chapter file carries two
+sentences of intro prose and nothing chapter-wide.
+
+```
+4.1 Suslin's Problem                                         [2026-10-30]
+    (was 3.10) The question, and its independence: Jensen    4_1_Suslin.tex
+    gives a Suslin line in L, Solovay--Tennenbaum the
+    consistency of SH. Independence defined, at the
+    author's request.
+    4.1.1 Dense Linear Orderings without Endpoints
+          Q and R characterized; the CCC; separable
+          implies CCC.
+    4.1.2 Suslin's Question
+
+4.2 Trees                                                    [2026-10-30,
+    (was 3.11) Trees of arbitrary height: height and          + 2026-11-05]
+    levels, normal trees (with figures for splitting and     4_2_Trees.tex
+    for extensionality at limits), branches; then
+    comparability, antichains, the levels as antichains,
+    and maximal antichains.                                  [+ 2026-11-05]
+
+4.3 The Tree Property                                        [2026-11-05]
+    lambda-trees, the tree property, lambda-Aronszajn trees; 4_3_Tree_Property.tex
+    Konig (omega has the TP) and Aronszajn (omega_1 does
+    not), with references to Schimmerling and Kunen for
+    the proofs. No subsections.
+
+4.4 The Diamond Principle                                    [2026-11-05]
+    Diamond_lambda(E) and its abbreviations; a diamond        4_4_Diamond.tex
+    sequence guesses bounded sets stationarily often, so
+    diamond_lambda gives 2^{<lambda} = lambda and diamond
+    gives CH; the S_X are almost disjoint; Solovay's
+    splitting theorem, recalled. No subsections.
+
+4.5 Suslin Trees                                             [2026-11-05]
+    4.5.1 Characterizing Suslin Trees                        4_5_Suslin_Trees.tex
+          A gap (\sorry) where the raw notes say "fill in
+          from phone pictures" and "state jensen's theorem";
+          then: Suslin iff normal omega_1-tree with no
+          uncountable antichain.
+    4.5.2 A Suslin Tree from Diamond
+          The construction: invariants, T_0 to T_3 (figures),
+          the successor-of-a-successor step (board
+          photograph, with figure), limits; breaks off at
+          "All that remains is" (\sorry).
+```
+
+The material arrived in one commit, `73c2466` ("save", 2026-11-05), with no date
+written in the file; it is the lecture or lectures of 2 and 4 Nov, recorded under the
+commit date. Two of the sixteen board photographs supplied with the pass belong to it
+and are transcribed inside the construction; twelve are boards of the lectures on L,
+already in 3.9; two are unplaced (see `## Unplaced`). All the headings in chapter 4
+past 4.2 are the integration's: the author wrote none in this lecture. "Souslin" in the
+raw notes is spelled Suslin, as in 4.1. One `% [CORRECTED]` marker sits in 4.5.2, from
+the correctness pass of 2026-11-06: the successor-of-a-successor step for finite beta.
 
 ## Deliberate deviations
 
@@ -525,9 +576,28 @@ Suslin line; Solovay--Tennenbaum's Con(ZFC + SH). The facts on DLOs and the CCC 
 lecture called them prior knowledge. Trees arrived straight after Suslin's question,
 with no stated connection to it yet.
 
+Signposted by the lecture of 2026-11-05, and stated without proof: Konig's and
+Aronszajn's theorems (4.3, with book references); the lemma that a diamond sequence
+guesses bounded sets stationarily often, its corollary, and the characterization of
+Suslin trees by antichains (4.4, 4.5.1). Solovay's splitting theorem is "recalled",
+but nothing in the notes states it earlier, and "stationary" and "club" for subsets of
+a cardinal are used throughout 4.4 without having been defined. The definition of a
+Suslin tree and a statement of Jensen's theorem are missing (\sorry in 4.5.1), as is
+the end of the construction (\sorry in 4.5.2): the successor-of-a-limit step, where
+the diamond sequence is used, and why the union is a Suslin tree. The construction
+also needs normality as an invariant, which the lecture's list of three omits.
+
 ## Unplaced
 
-Nothing.
+Two board photographs supplied with the post-lecture pass of 2026-11-06, which match
+nothing in the raw notes of that lecture or any earlier one, and whose date is unknown:
+
+- Partial elementary embeddings s : n -> |B|, the tree T of them on |B|, "T is
+  illfounded iff there is an elementary embedding |A| -> |B|", and the absoluteness of
+  that ill-foundedness to a transitive M with T^M = T.
+- The partition relation mu -> (lambda)^1_kappa; "lambda is regular iff lambda ->
+  (lambda)^1_kappa for all 0 < kappa < lambda"; and a TFAE for lambda strongly
+  inaccessible, (2) -> (1) -> (3) -> (4) -> (2), with item 3 erased from the board.
 
 One gap rather than an unplaced item, a lecture that broke off mid-sentence and sits
 where it stopped as a `\sorry` with a comment rather than being guessed at:
