@@ -121,9 +121,34 @@ Note: if $A $is a maximal antichain then for every $x \in T$, there's some $a \i
     % [CLAUDE] illustrate this below
     This is how we define successor trees. \\
 
+    % Transcribed from the board photographs.
+    Now consider the successor of a successor level. Say $\delta = \gamma + 1 = \parenth{\beta + 1} + 1$. How do we define $\parenth{T_{\delta}, <_{\delta}}$ based on $\parenth{T_{\gamma}, <_{\gamma}}$? We know (by the recursion hypothesis) that the universe of $T_{\gamma}$ is a countable ordinal. So $\level_{\beta}\of{T_{\gamma}}$ can be listed as $\xi_n$ for $n < \omega$. Define $T_{\delta}$ by putting $T_{\gamma} + 2n$ and $T_{\gamma} + 2n + 1$ above $\xi_n$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}]
+            \draw (0, 0) -- (-2.2, 3) -- (2.2, 3) -- cycle;
+            \draw (-1.95, 2.65) -- (1.95, 2.65);
+            \node[left] at (-2.2, 2.85) {$\level_{\beta}\of{T_{\gamma}}$};
+            \node[right] at (2.2, 2.85) {$T_{\gamma} = T_{\beta + 1}$};
+            \node[dot, label = {below:$\xi_n$}] (x) at (0.2, 2.82) {};
+            \node[dot, label = {above:$T_{\gamma} + 2n$}] (y) at (-0.6, 4) {};
+            \node[dot, label = {above:$T_{\gamma} + 2n + 1$}] (z) at (1.2, 4) {};
+            \draw (x) -- (y);
+            \draw (x) -- (z);
+        \end{tikzpicture}
+    \end{figure}
+    We see that $T_{\delta}$ (the universe) is $T_{\gamma} + \omega$. \\
+
     At every limit ordinal $\beta < \omega_1$, define
     \begin{align*}
         \parenth{T_{\beta}, <_{\beta}} := \parenth{\bigcup_{\alpha < \beta} T_{\alpha}, \bigcup_{\alpha < \beta} <_{\alpha}}
     \end{align*}
     In particular, we now know $\parenth{T_{\omega}, <_{\omega}}$. It's easy to see that $\parenth{T_{\omega}, <_{\omega}} \simeq {^{<\omega}2}$.
+
+    % Transcribed from the board photographs.
+    All that remains is
+    \begin{enumerate}
+        \item how to define $\parenth{T_{\delta}, <_{\delta}}$ when $\delta = \gamma + 1$ and $\gamma$ is a limit ordinal, and
+        \item why it works.
+    \end{enumerate}
 \end{boxconstruction}
