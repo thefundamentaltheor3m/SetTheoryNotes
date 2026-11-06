@@ -1,0 +1,53 @@
+\section{Definable Subsets}
+
+The universe is built by iterating one operation, which takes the subsets of a set that the set itself can define.
+
+% Transcribed from the board photographs supplied with the post-lecture pass of 25 Oct 2026, as were the other passages below carrying this comment; these boards were not typed up during the lecture.
+\begin{boxdefinition}[Definable Subsets]
+    Define the class function $A \mapsto \D(A)$ by
+    \begin{align*}
+        \D(A) = \setst{X \ssq A}{X \text{ is definable with parameters from $A$ over the structure $(A, \in)$}}
+    \end{align*}
+    Ie, $X \in \D(A)$ iff there are $\bar{a} \in A^{<\omega}$ and $n < \omega$ such that, letting $\vp$ be the $n$th formula, we have that
+    \begin{align*}
+        X = \setst{b \in A}{(A, \in) \models \vp\of{b, \bar{a}}}
+    \end{align*}
+\end{boxdefinition}
+
+Recall that $(A, \in) \models \vp\of{b, \bar{a}}$ can be written $A \models \vp\of{b, \bar{a}}$, and that this holds iff $\vp\of{b, \bar{a}}^A$ (\Cref{Ch3:Lemma:Satisfaction_Relativization}).
+
+We don't need the Power Set Axiom to know that $\D(A)$ exists for all $A$, ie, $\ZFwoP$ is enough. Use Replacement to know that $\D(A)$ is the range of the class function
+\begin{align*}
+    \parenth{\bar{a}, n} \mapsto \text{the subset of $A$ defined by the $n$th formula and parameters $\bar{a}$}
+\end{align*}
+Its domain is contained in $A^{<\omega} \times \omega$, so it's a set. By Replacement, we know the range is a set.
+
+That is the first half of the following lemma, and the second half is what will let us compute $\D$ inside transitive models.
+
+\begin{boxlemma}[Properties of the Class Function $A \mapsto \D(A)$] \label{Ch4:Lemma:D_Absolute} \hfill
+    \begin{enumerate}
+        \item $A \mapsto \D\of{A}$ is defined in $\ZFwoP$.
+        \item $A \mapsto \D\of{A}$ is absolute for transitive class models of $\ZFwoP$.
+    \end{enumerate}
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    We defined formulae to be certain members of $\HF$: ``$\vp$ is a formula'' is absolute.
+
+    % Transcribed from the board photographs.
+    We defined $A \models \vp\of{\bar{a}}$, for a formula $\vp$ and $\bar{a} \in A^{<\omega}$, by recursion on the complexity of $\vp$. This is absolute.
+
+    Also note that $A \models \exists a_1 \, \forall a_2 \, \exists a_3 \cdots Q a_n \, \psi$, with $\psi$ quantifier-free, is equivalent to the $\Delta_0$ formula
+    \begin{align*}
+        \exists a_1 \in A \, \forall a_2 \in A \, \exists a_3 \in A \cdots Q a_n \in A \, \psi
+    \end{align*}
+    The absoluteness of the recursive definition says more than this: it is the class function $\parenth{A, \vp, \bar{a}} \mapsto \set{0, 1}$ that is absolute.
+\end{proof}
+
+On finite sets, $\D$ is nothing new.
+
+\begin{boxlemma}
+    If $A$ is finite, then $\D(A) = \Powset(A)$.
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    Just unfold the definitions.
+\end{proof}
