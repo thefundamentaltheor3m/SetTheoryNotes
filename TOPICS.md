@@ -33,7 +33,18 @@ What earns a chapter, a section and a subsection: `.claude/ORGANIZATION.md`.
      prose and still wants a chapter of its own when it arrives, and chapter 3 is much of
      what a construction like L needs -- L is built by relativizing the definability
      operation, and absoluteness, which 3.3 is the setup for, is how one proves anything
-     about it. Chapter 1 stays the recap it says it is. -->
+     about it. Chapter 1 stays the recap it says it is.
+
+     That chapter has now arrived, as chapter 4 (2026-11-06), and the prediction about
+     what it would need was right: its sections lean on chapter 3 throughout. Chapter 5,
+     Trees and Suslin's Problem, was opened the same day at the author's instruction.
+     So the notes now read: groundwork, tools, the language of relativization, the
+     model those tools build (L), and then what L is put to work on (combinatorics:
+     Suslin lines, trees, diamond). The next thing chapter 5 looks set to need is
+     Jensen's theorem that diamond holds in L, which would sit on the boundary between
+     chapters 4 and 5; the obvious home is 5.4 or 5.5, citing back into chapter 4.
+     Large cardinals and partition relations (one unplaced board photograph) may yet
+     want a chapter of their own. -->
 
 ## 1. A Recap of Undergraduate Set Theory  ->  `Chapters/1_Intro/`
 
@@ -113,8 +124,8 @@ recap. The chapter file carries two sentences of intro prose and nothing chapter
 The opening was finished on 2026-09-05: the template's placeholder chapter gave up the
 number 2 (it has since been pushed on to 4; see `## Template scaffolding`), and the
 inbox moved to `Chapters/2_Induction/todays_lecture.tex`. It has since moved on to
-chapter 3 -- **the path to type into is now
-`Chapters/3_Relativization/todays_lecture.tex`.**
+chapter 3 and then chapter 5 -- **the path to type into is now
+`Chapters/5_Trees/todays_lecture.tex`.**
 
 ```
 2.1 Induction and Recursion                                  [2026-09-02,
@@ -180,10 +191,9 @@ takes the section's title, and the section's three subsections are its three sec
 none lost. The chapter file carries two paragraphs of intro prose and nothing
 chapter-wide.
 
-`Chapters/3_Another_Chapter/` gave up the number 3 and is now
-`Chapters/4_Another_Chapter/`, still commented out in `main.tex`. The inbox moved
-with the course: **type into `Chapters/3_Relativization/todays_lecture.tex` from now
-on.**
+`Chapters/3_Another_Chapter/` gave up the number 3 and became
+`Chapters/4_Another_Chapter/` (now `Chapters/6_Another_Chapter/`), still commented out in `main.tex`. The inbox moved
+with the course to chapter 3, and has since moved on to chapter 5.
 
 ```
 3.1 Relativization to a Class                                [2026-09-14]
@@ -281,42 +291,6 @@ on.**
           photographs), and the corollary that ZFC proves
           each finite fragment has a countable transitive
           model.
-
-3.9 Gödel's Constructible Universe                           [undated, before
-    The operation D, the L-hierarchy, and Gödel's theorem      2026-10-23, and
-    that L satisfies ZFC + GCH, by way of a definable          2026-10-23]
-    well-ordering of L. Partly transcribed from board          3_9_Constructible.tex
-    photographs.
-    3.9.1 Definable Subsets
-          D(A) unfolded (n-th formula, parameters from
-          A^{<omega}); ZF - P suffices for it to exist; its
-          absoluteness; D(A) = P(A) for finite A.
-    3.9.2 The L-Hierarchy
-          L_alpha and L; Gödel's goal, and D slowing the
-          V-hierarchy down; L_n = V_n for n <= omega;
-          without choice, |D(A)| = |A| and |L_alpha| =
-          |alpha|; L_alpha subset V_alpha.
-    3.9.3 The Axioms in L
-          Gödel's theorem, every ZF axiom checked in L
-          (Unions % [FILLED]); L^L = L, L^M = L_{OR cap M},
-          and L subset M for any transitive proper class
-          model M of ZF.
-    3.9.4 A Well-Ordering of L                               [2026-10-23]
-          <_alpha and <_L; the theory T (a boxnotation
-          scoped to 3.9); AC^L; OD and HOD, defined here at
-          the author's request; L subset HOD, HOD^L = L.
-    3.9.5 The Generalized Continuum Hypothesis in L          [2026-10-23]
-          H_lambda = L_lambda in L, hence GCH^L; the
-          condensation that the proof uses, named.
-                                                             [+ late Oct]
-          The Condensation Lemma stated for any level
-          L_beta |= T, and its elementary-embedding form.
-    3.9.6 A Delta^1_2 Well-Ordering of the Reals             [late Oct and
-          Proving phi^L in ZFC versus phi in ZFC + V = L;      2026-10-30]
-          <_L on omega^omega is Delta_1 over HC, so
-          Delta^1_2, of type omega_1; restricted to R it is
-          not Lebesgue measurable (local notation, figure).
-
 ```
 
 The material of 3.4-3.8 arrived in one inbox across three commits (2026-09-23,
@@ -331,15 +305,66 @@ and all on the same argument: the transfer scheme's non-emptiness hypothesis, it
 restriction to sentences, and the hypothesis carried on the left of the corollary's
 display. Each quotes what it replaced.
 
-3.9 is the author's own heading, `\section{Gödel's Constructible Universe}`, written live
+## 4. Gödel's Constructible Universe  ->  `Chapters/4_Constructible/`
+
+Opened on 2026-11-06 by `/organize`, at the author's request ("and then /organize"),
+out of 3.9, which the structural-pressure entry of 2026-10-28 had recommended. L has
+its own objects (D, the L-hierarchy, <_L, OD and HOD, condensation) and its own
+destination (L |= ZFC + GCH): a body of theory, not a line of enquiry within
+relativization. The six subsections of 3.9 became its six sections, so no title was
+invented and none lost; the section's opening paragraph became the chapter's intro
+prose, with "this chapter" now "\Cref{Ch3:CH}". The boxnotation for T now reads "for the
+rest of this chapter" (it was "section", meaning all of 3.9, and 4.5 uses T), and the
+local notation in 4.6 "for the rest of this section" (it was "subsection"). Five labels
+went from `Ch3:` to `Ch4:`.
+
+```
+4.1 Definable Subsets                                        [undated, before
+    D(A) unfolded (n-th formula, parameters from              2026-10-23]
+    A^{<omega}); ZF - P suffices for it to exist; its        4_1_Definable.tex
+    absoluteness; D(A) = P(A) for finite A. Partly
+    transcribed from board photographs.
+
+4.2 The L-Hierarchy                                          [undated, before
+    L_alpha and L; Gödel's goal, and D slowing the             2026-10-23]
+    V-hierarchy down; L_n = V_n for n <= omega; without      4_2_L_Hierarchy.tex
+    choice, |D(A)| = |A| and |L_alpha| = |alpha|;
+    L_alpha subset V_alpha.
+
+4.3 The Axioms in L                                          [undated, before
+    Gödel's theorem, every ZF axiom checked in L (Unions       2026-10-23]
+    % [FILLED]); L^L = L, L^M = L_{OR cap M}, and L subset    4_3_Axioms_In_L.tex
+    M for any transitive proper class model M of ZF.
+
+4.4 A Well-Ordering of L                                     [2026-10-23]
+    <_alpha and <_L; the theory T (a boxnotation scoped to    4_4_Well_Ordering.tex
+    the rest of the chapter); AC^L; OD and HOD, defined
+    here at the author's request; L subset HOD, HOD^L = L.
+
+4.5 The Generalized Continuum Hypothesis in L                [2026-10-23,
+    H_lambda = L_lambda in L, hence GCH^L; the condensation    + late Oct]
+    that the proof uses, named; the Condensation Lemma       4_5_GCH.tex
+    stated for any level L_beta |= T, and its
+    elementary-embedding form.
+
+4.6 A Delta^1_2 Well-Ordering of the Reals                   [late Oct and
+    Proving phi^L in ZFC versus phi in ZFC + V = L; <_L on     2026-10-30]
+    omega^omega is Delta_1 over HC, so Delta^1_2, of type    4_6_Reals.tex
+    omega_1; restricted to R it is not Lebesgue measurable
+    (local notation, figure).
+```
+
+All six sections have no subsections; see `## Deliberate deviations`.
+
+The chapter is the author's own heading, `\section{Gödel's Constructible Universe}`, written live
 with `% [CLAUDE] do we really not have this anywhere?` beside it. The answer: only as
-the preview in chapter 1's opening prose, which 3.9 now points back to. The heading
-is kept as written. The five subsection titles are the integration's: the author
-wrote none below the section.
+the preview in chapter 1's opening prose, which the chapter now points back to. The heading
+was kept as written for 3.9 and is now the chapter's title. The six section titles
+were the integration's subsection titles: the author wrote none below the heading.
 
 The material arrived in one commit, `eb7e087` ("week after fall break", 2026-10-23),
 with a `% 23 Oct` marker partway down. What precedes the marker is undated: it is the
-lecture or lectures of that week before 23 Oct, and it fills 3.9.1-3.9.3. Thirteen
+lecture or lectures of that week before 23 Oct, and it fills 4.1-4.3. Thirteen
 board photographs came with the pass, and the boards never typed up are transcribed
 and marked as such in the source. The 23 Oct lecture opened with a recap of
 absoluteness and L^M, which the author asked to have deduplicated. It is folded into
@@ -353,73 +378,75 @@ of this pass took the board photograph of that proof to be the content the `\tod
 asked for, and transcribed it in place of the marker. That is the decision in these
 notes most likely to want reverting.
 
-The material of 3.9.5's tail through 3.11 arrived in one commit, `27853bc` ("save",
+The material of 4.5's tail through 5.2 (then 3.9.5's tail through 3.11) arrived in one commit, `27853bc` ("save",
 2026-10-31), with a `% 30 Oct` marker partway down. What precedes the marker is the
-undated lecture of that week, 26 or 28 Oct, and fills the tail of 3.9.5 and the first
-half of 3.9.6. The 30 Oct lecture opened by recapping its last result, and that recap
+undated lecture of that week, 26 or 28 Oct, and fills the tail of 4.5 and the first
+half of 4.6. The 30 Oct lecture opened by recapping its last result, and that recap
 has been dropped, as it sat a paragraph after the original. Its opening "Recall that to
 prove GCH in L, we showed H_lambda^L = L_lambda" was also dropped, since the proof sits
 just above. Both section headings, `\section{Suslin's Problem}` and `\section{Trees}`,
 and both subsection headings under the first, are the author's and are kept as written.
-Three `% [CORRECTED]` markers sit in 3.9.6 and one in 3.10.2, from the correctness pass
+Three `% [CORRECTED]` markers sit in 4.6 and one in 5.1.2, from the correctness pass
 of 2026-10-31: phi^L for phi in the remark on V = L; alpha < omega_1 for the level
 holding a real; and not-SH, not SH, in L.
 
-Three `% [CORRECTED]` markers sit in 3.9.5, from the correctness pass of 2026-10-25:
+Three `% [CORRECTED]` markers sit in 4.5, from the correctness pass of 2026-10-25:
 kappa^+ <= 2^kappa holds in L but is not provable in the ZF assumed of V; alpha >= omega
 in L_lambda subset H_lambda, as |L_alpha| = |alpha| fails for finite alpha; and the
 level L_beta in the condensation remark comes from reflection, not Löwenheim-Skolem.
 Each quotes what it replaced.
 
-## 4. Trees and Suslin's Problem  ->  `Chapters/4_Trees/`
+## 5. Trees and Suslin's Problem  ->  `Chapters/5_Trees/`
 
 Opened on 2026-11-06 at the author's explicit instruction, written as a directive in
 the lecture's raw notes: "I suspect trees will be moved to a new chapter (well, even
 if /organise doesn't, I'm explicitly asking you to do this)". It took 3.10 and 3.11
 with it, since the lecture's destination -- a Suslin tree from diamond -- is the
-combinatorial half of Suslin's problem. The placeholder gave up the number 4 and is
-now `Chapters/5_Another_Chapter/`. The inbox moved with the course: **type into
-`Chapters/4_Trees/todays_lecture.tex` from now on.** The chapter file carries two
+combinatorial half of Suslin's problem. The placeholder gave up the number 4 and
+became `Chapters/5_Another_Chapter/`. Renumbered from 4 to 5 by the `/organize` pass of
+the same day, which opened chapter 4 for L; the placeholder is now
+`Chapters/6_Another_Chapter/`. The inbox moved with the course: **type into
+`Chapters/5_Trees/todays_lecture.tex` from now on.** The chapter file carries two
 sentences of intro prose and nothing chapter-wide.
 
 ```
-4.1 Suslin's Problem                                         [2026-10-30]
-    (was 3.10) The question, and its independence: Jensen    4_1_Suslin.tex
+5.1 Suslin's Problem                                         [2026-10-30]
+    (was 3.10) The question, and its independence: Jensen    5_1_Suslin.tex
     gives a Suslin line in L, Solovay--Tennenbaum the
     consistency of SH. Independence defined, at the
     author's request.
-    4.1.1 Dense Linear Orderings without Endpoints
+    5.1.1 Dense Linear Orderings without Endpoints
           Q and R characterized; the CCC; separable
           implies CCC.
-    4.1.2 Suslin's Question
+    5.1.2 Suslin's Question
 
-4.2 Trees                                                    [2026-10-30,
+5.2 Trees                                                    [2026-10-30,
     (was 3.11) Trees of arbitrary height: height and          + 2026-11-05]
-    levels, normal trees (with figures for splitting and     4_2_Trees.tex
+    levels, normal trees (with figures for splitting and     5_2_Trees.tex
     for extensionality at limits), branches; then
     comparability, antichains, the levels as antichains,
     and maximal antichains.                                  [+ 2026-11-05]
 
-4.3 The Tree Property                                        [2026-11-05]
-    lambda-trees, the tree property, lambda-Aronszajn trees; 4_3_Tree_Property.tex
+5.3 The Tree Property                                        [2026-11-05]
+    lambda-trees, the tree property, lambda-Aronszajn trees; 5_3_Tree_Property.tex
     Konig (omega has the TP) and Aronszajn (omega_1 does
     not), with references to Schimmerling and Kunen for
     the proofs. No subsections.
 
-4.4 The Diamond Principle                                    [2026-11-05]
-    Diamond_lambda(E) and its abbreviations; a diamond        4_4_Diamond.tex
+5.4 The Diamond Principle                                    [2026-11-05]
+    Diamond_lambda(E) and its abbreviations; a diamond        5_4_Diamond.tex
     sequence guesses bounded sets stationarily often, so
     diamond_lambda gives 2^{<lambda} = lambda and diamond
     gives CH; the S_X are almost disjoint; Solovay's
     splitting theorem, recalled. No subsections.
 
-4.5 Suslin Trees                                             [2026-11-05]
-    4.5.1 Characterizing Suslin Trees                        4_5_Suslin_Trees.tex
+5.5 Suslin Trees                                             [2026-11-05]
+    5.5.1 Characterizing Suslin Trees                        5_5_Suslin_Trees.tex
           A gap (\sorry) where the raw notes say "fill in
           from phone pictures" and "state jensen's theorem";
           then: Suslin iff normal omega_1-tree with no
           uncountable antichain.
-    4.5.2 A Suslin Tree from Diamond
+    5.5.2 A Suslin Tree from Diamond
           The construction: invariants, T_0 to T_3 (figures),
           the successor-of-a-successor step (board
           photograph, with figure), limits; breaks off at
@@ -430,9 +457,9 @@ The material arrived in one commit, `73c2466` ("save", 2026-11-05), with no date
 written in the file; it is the lecture or lectures of 2 and 4 Nov, recorded under the
 commit date. Two of the sixteen board photographs supplied with the pass belong to it
 and are transcribed inside the construction; twelve are boards of the lectures on L,
-already in 3.9; two are unplaced (see `## Unplaced`). All the headings in chapter 4
-past 4.2 are the integration's: the author wrote none in this lecture. "Souslin" in the
-raw notes is spelled Suslin, as in 4.1. One `% [CORRECTED]` marker sits in 4.5.2, from
+already in 3.9; two are unplaced (see `## Unplaced`). All the headings in chapter 5
+past 5.2 are the integration's: the author wrote none in this lecture. "Souslin" in the
+raw notes is spelled Suslin, as in 5.1. One `% [CORRECTED]` marker sits in 5.5.2, from
 the correctness pass of 2026-11-06: the successor-of-a-successor step for finite beta.
 
 ## Deliberate deviations
@@ -497,6 +524,36 @@ enquiry with a destination.                 test, not the section test. It is a 
                                             section; or, if it does not, 3.1 and 3.2
                                             merge into one section with two subsections.
                                             [2026-09-15]
+Chapter 3 has eight sections, the corpus    Re-read on 2026-11-06, after L and trees
+maximum, across three groups (formulae,     left it. All eight answer the chapter's
+absoluteness and the axioms, models of      question -- what is true in a class, and
+fragments of ZFC).                          which classes satisfy which axioms -- and
+                                            3.6-3.8 are the payoff of 3.1-3.5 rather
+                                            than a new vocabulary: H_kappa, V_alpha and
+                                            reflection are classes in which the
+                                            relativized axioms are checked. Splitting
+                                            off "models of fragments" would be a bet the
+                                            author has not made. Ends if a later lecture
+                                            develops models of set theory for their own
+                                            sake (elementary chains, ultrapowers,
+                                            forcing extensions), at which point 3.6-3.8
+                                            want to move with it. 3.6 next to 3.1 was
+                                            considered and declined: 3.6 contrasts
+                                            relativization with satisfaction, and needs
+                                            3.5's examples to say why. [2026-11-06]
+
+Chapter 4's six sections have no            They were the six subsections of 3.9,
+subsections.                                each one idea, and promoting them wholesale
+                                            was the move that invented no headings. The
+                                            same as chapter 3 at its opening. Ends when
+                                            a section acquires a second idea (most
+                                            likely 4.5, if condensation is proved in
+                                            general). [2026-11-06]
+
+5.3 and 5.4 have no subsections.            Each is one line of enquiry with one
+                                            destination (which cardinals have the tree
+                                            property; what diamond implies), placed on
+                                            2026-11-06 from one lecture. [2026-11-06]
 ```
 
 ## Signposted
@@ -536,7 +593,7 @@ introduced with "we can show that". [2026-09-14]
 ```
 
 Reached, and so no longer signposts: Gödel's constructible universe L and a model of
-ZFC in which CH holds (promised in the chapter 1 intro prose, built in 3.9 by
+ZFC in which CH holds (promised in the chapter 1 intro prose, built in chapter 4 by
 2026-10-23); Foundation iff V = WF (promised in 1.4.2, proved
 in 1.4.3 on 2026-09-02); induction and recursion along well-founded set-like class
 relations (promised by chapter 2's title on 2026-09-02, delivered in 2.1.2-2.1.3 on
@@ -557,9 +614,9 @@ V_alpha implies kappa = alpha (3.7.1); R in H_kappa in the Choice item of the
 axioms lemma (3.7.2); the Fact scheme (3.6). The Foundation item of the H_kappa
 axioms lemma is marked \sorry, as is the unbounded half of 3.8.1.
 
-Signposted by the lectures on L (3.9), before and on 2026-10-23: the "lots of other
+Signposted by the lectures on L (chapter 4), before and on 2026-10-23: the "lots of other
 stuff" L satisfies beyond ZFC + GCH, in Gödel's goal; condensation for levels of L in
-general, of which 3.9.5 proves only the instance its proof needs, and its failure for
+general, of which 4.5 proves only the instance its proof needs, and its failure for
 the V- and H-hierarchies, which is asserted. Stated without proof and left unmarked:
 that the L_alpha form a hierarchy with L_alpha cap OR = alpha; the existence of the
 finite subtheory T of ZF - P; the direction |D(A)| >= |A| of the cardinality
@@ -569,21 +626,21 @@ union of |beta| sets of size |beta|) needs choice. A \sorry would be in order th
 
 Signposted by the lectures of late October, and stated without proof: that <_L on
 omega^omega is Sigma^1_2, "from a homework exercise" (Sigma_1 over HC is Sigma^1_2);
-the Condensation Lemma for levels of L in general (3.9.5), which answers part of the
+the Condensation Lemma for levels of L in general (4.5), which answers part of the
 signpost above but is stated rather than proved; Jensen's theorem that V = L gives a
 Suslin line; Solovay--Tennenbaum's Con(ZFC + SH). The facts on DLOs and the CCC in
-3.10.1 come with reminders of their proofs, or none, and are left unmarked, as the
+5.1.1 come with reminders of their proofs, or none, and are left unmarked, as the
 lecture called them prior knowledge. Trees arrived straight after Suslin's question,
 with no stated connection to it yet.
 
 Signposted by the lecture of 2026-11-05, and stated without proof: Konig's and
-Aronszajn's theorems (4.3, with book references); the lemma that a diamond sequence
+Aronszajn's theorems (5.3, with book references); the lemma that a diamond sequence
 guesses bounded sets stationarily often, its corollary, and the characterization of
-Suslin trees by antichains (4.4, 4.5.1). Solovay's splitting theorem is "recalled",
+Suslin trees by antichains (5.4, 5.5.1). Solovay's splitting theorem is "recalled",
 but nothing in the notes states it earlier, and "stationary" and "club" for subsets of
-a cardinal are used throughout 4.4 without having been defined. The definition of a
-Suslin tree and a statement of Jensen's theorem are missing (\sorry in 4.5.1), as is
-the end of the construction (\sorry in 4.5.2): the successor-of-a-limit step, where
+a cardinal are used throughout 5.4 without having been defined. The definition of a
+Suslin tree and a statement of Jensen's theorem are missing (\sorry in 5.5.1), as is
+the end of the construction (\sorry in 5.5.2): the successor-of-a-limit step, where
 the diamond sequence is used, and why the union is a Suslin tree. The construction
 also needs normality as an invariant, which the lecture's list of three omits.
 
@@ -638,16 +695,17 @@ number, the inbox moved with the course, and the two labels that changed chapter
 rewritten together with their cross-references. Recorded by the run that placed the
 material, acted on by the next one.
 
-```
-The course itself is not written up.        Chapter 1 is undergraduate revision and
-                                            chapter 2 its first tools; the material
-                                            21-602 is heading for -- L, and whatever
-                                            follows -- has no home yet. Whether that is
-                                            a gap or simply where the notes have got to
-                                            is the author's to say, and not something
-                                            /organize can fix by rearranging what
-                                            exists.
+Discharged on 2026-11-06: 3.9 was a fourth body of theory inside chapter 3, and
+3.10-3.11 a fifth. The post-lecture pass of that day opened chapter 4, Trees and
+Suslin's Problem, out of 3.10 and 3.11, at the author's explicit instruction; the
+`/organize` pass that followed it opened chapter 4, Gödel's Constructible Universe,
+out of 3.9, its six subsections becoming sections, and pushed trees on to chapter 5.
+Chapter 3's intro prose no longer promises L, Suslin's problem or trees, and points
+at chapter 4 instead. Also discharged: "the course itself is not written up", which
+predated chapter 3 and is no longer true now that L and what follows it have chapters
+of their own.
 
+```
 "R-closed" and "R-closure" are used but     2.1.2 defines the R-closure of a set by its
 never defined in a box.                     construction inside a proof, and 2.1.3
                                             glosses "R-closed" inline in the definition
@@ -685,35 +743,9 @@ theory.                                  and the axioms in transitive classes, a
                                          would sit naturally beside 3.1, but that
                                          moves settled material. Recommend /organize.
                                          [2026-10-08]
-
-Chapter 3 now has nine sections, one     3.9 is Gödel's L: its own objects (D, the
-over the corpus maximum, and 3.9 is a    L-hierarchy, <_L, OD and HOD, condensation)
-fourth body of theory.                   and its own destination (L |= ZFC + GCH).
-                                         By ORGANIZATION.md that is a chapter, and
-                                         the inference note at the top of this file
-                                         has been predicting one since chapter 2.
-                                         The author wrote \section, not \chapter,
-                                         so this pass placed it as 3.9. Recommend
-                                         /organize: open chapter 4, Gödel's
-                                         Constructible Universe, from 3.9, its
-                                         five subsections becoming sections (and
-                                         4_Another_Chapter moving on to 5).
-                                         [2026-10-28]
-
-Chapter 3 now has eleven sections, and   3.10 (Suslin's problem) and 3.11 (trees)
-3.10-3.11 are not about relativization   are about linear orders and trees, with L
-at all.                                  only as the source of a Suslin line. They
-                                         are a fifth body of theory, and with 3.9
-                                         as chapter 4 they would make a natural
-                                         chapter 5 (Suslin's problem, or
-                                         combinatorics in L). The author wrote
-                                         \section, not \chapter, both times, so
-                                         this pass placed them as 3.10 and 3.11
-                                         and added a clause to the chapter's intro
-                                         prose. The chapter 3 title is now
-                                         inaccurate for its last three sections.
-                                         Recommend /organize, together with the
-                                         3.9 entry above. [2026-10-31]
+                                         Re-read by /organize on 2026-11-06, with L
+                                         and trees gone, and left: see `## Deliberate
+                                         deviations`.
 ```
 
 ## Template scaffolding
@@ -721,7 +753,7 @@ at all.                                  only as the source of a Suslin line. Th
 Placeholder content from [Lecture-Notes-Template-2026][tpl], still standing.
 
 ```
-Chapters/4_Another_Chapter/      placeholder chapter, two placeholder sections, still
+Chapters/6_Another_Chapter/      placeholder chapter, two placeholder sections, still
                                  carrying the template's titles. Nothing has displaced
                                  its content, so nothing has been deleted -- but its
                                  \input in main.tex is commented out, because until
@@ -732,8 +764,10 @@ Chapters/4_Another_Chapter/      placeholder chapter, two placeholder sections, 
                                  the space in the old directory name went with it. Then
                                  from 3 to 4 on 2026-09-15, when the real chapter 3
                                  needed that one. It takes the next free number again
-                                 each time a real chapter arrives.
-                                 [2026-08-31, renumbered 2026-09-05 and 2026-09-15]
+                                 each time a real chapter arrives: to 5 and then 6 on
+                                 2026-11-06, for chapters 4 and 5.
+                                 [2026-08-31, renumbered 2026-09-05, 2026-09-15 and
+                                 2026-11-06]
 Chapters/Appendices/             placeholder, \input commented out in main.tex
 ```
 

@@ -1,0 +1,58 @@
+\section{The $L$-Hierarchy}
+
+Now we iterate $\D$ through the ordinals, exactly as we iterated $\Powset$ to build the $V$-hierarchy.
+
+\begin{boxdefinition}[The $L$-Hierarchy]
+    Define $L_0 = 0$, $L_{\alpha + 1} = \D\of{L_{\alpha}}$ for all ordinals $\alpha$, and for all limit ordinals $\beta$, $L_{\beta} = \bigcup_{\alpha < \beta} L_{\alpha}$. Then define the universe $L = \bigcup_{\alpha \in \OR} L_{\alpha}$.
+\end{boxdefinition}
+
+% Transcribed from the board photographs.
+
+One big goal (Gödel): working in $\ZF$, show that $L$ is a transitive class model of $\ZFC + \GCH +$ lots of other stuff. Also, if $M$ is any transitive proper class model of $\ZF$, then $L = L^M \ssq M$.
+
+Intuition: in the $V$-hierarchy, we jump from the countable $V_{\omega} = \HF$ to the uncountable $V_{\omega + 1} = \Powset\of{V_{\omega}}$ in one step. Also, assuming $\AC$ in $V$, $\abs{V_{\omega + 1}} = 2^{\aleph_0}$, and we can't tell how big $2^{\aleph_0}$ is!
+
+We'll see that $L_{\omega} = \HF = V_{\omega}$, but $L_{\omega + 1} = \D\of{L_{\omega}}$ is also countable. Why? Count formulae and parameters from $L_{\omega}$. By using $\D$ instead of $\Powset$, we slow things way down: there's hope of understanding and answering questions.
+
+We can show that $\grpres{L_{\alpha}}{\alpha \in \OR}$ is a hierarchy of sets (\Cref{Ch3:Def:Hierarchy}), ie, $L_{\alpha} \subset L_{\beta}$ for $\alpha < \beta$, and each $L_{\alpha}$ is a transitive set. We can also check that $L_{\alpha} \cap \OR = \alpha$.
+
+Since $\D$ agrees with $\Powset$ on finite sets, the two hierarchies agree for as long as their levels stay finite, and a little beyond.
+
+\begin{boxcorollary}
+    For all $n \leq \omega$, $L_n = V_n$.
+\end{boxcorollary}
+\begin{proof}[Proof sketch]
+    Consider $n = 0$, $n$ successor and $n = \omega$, in all cases we're ok.
+\end{proof}
+
+Let's now talk briefly about cardinality. Note that we will not assume choice here, so in particular, we cannot conclude every set has a cardinality. So we need to think about things in terms of well-orderings.
+
+\begin{boxlemma}
+    If $A$ has a cardinality and it's infinite, then $\D(A)$ has a cardinality and $\abs{\D(A)} = \abs{A}$.
+\end{boxlemma}
+\begin{proof}
+    Say $\abs{A} = \alpha$. Notice that
+    \begin{align*}
+        \abs{\D(A)} \leq \abs{\underbrace{\text{Formulae}}_{\text{countable}} \times A^{<\omega}} = \abs{A}
+    \end{align*}
+\end{proof}
+
+Iterating this through the $L$-hierarchy gives the size of every level.
+
+\begin{boxcorollary} \label{Ch4:Cor:L_Alpha_Cardinality}
+    Each $L_{\alpha}$ has a cardinality and, for $\alpha \geq \omega$, $\abs{L_{\alpha}} = \abs{\alpha}$.
+\end{boxcorollary}
+\begin{proof}[Proof sketch]
+    Argue by recursion on $\alpha \in \OR$. Base and successor cases are not hard. For the limit case, just end-extend all well-orderings of $L_{\alpha}$ for $\alpha < \beta$, $\beta$ being some limit ordinal. This gives a well-ordering.
+\end{proof}
+
+With this we end our discussion of cardinality.
+
+Finally, the $L$-hierarchy never outgrows the $V$-hierarchy.
+
+\begin{boxlemma}
+    For all $\alpha \in \OR$, $L_{\alpha} \ssq V_{\alpha}$.
+\end{boxlemma}
+\begin{proof}[Proof sketch]
+    $\D(A) \ssq \Powset(A)$.
+\end{proof}

@@ -1,0 +1,57 @@
+\section{The Axioms in $L$}
+
+We now come to the most important theorem about $L$. We work in $\ZF$.
+
+\begin{boxtheorem}[Gödel] \label{Ch4:Thm:Godel}
+    For each axiom $\sigma$ of $\ZFC \cup \GCH$, we have $\sigma^{L}$.
+\end{boxtheorem}
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item \underline{Extensionality.} $L$ is transitive.
+
+        \item \underline{Pairing.} Let $x, y \in L$. Pick $\alpha \in \OR$ such that $x, y \in L_{\alpha}$. Then $\set{x, y} \in \D\of{L_{\alpha}} = L_{\alpha + 1} \subset L$.
+
+        \item \underline{Comprehension.} Let $A \in L$, $\bar{y} \in L$, $B = \setst{x \in A}{\vp^L\of{x, \bar{y}}}$. We need $B \in L$.
+
+        Apply the Reflection Theorem Scheme (\Cref{Ch3:Thm:Reflection}) to the $L$-hierarchy to find $\alpha$ such that $\vp$ is absolute between $L_{\alpha}$ and $L$. We can do this with $A \in L_{\alpha}$ and $\bar{y} \in L_{\alpha}$.
+
+        Then, since $A \ssq L_{\alpha}$,
+        \begin{align*}
+            B
+            = \setst{x \in L_{\alpha}}{L_{\alpha} \models \parenth{x \in A \land \vp\of{x, \bar{y}}}}
+            \in \D\of{L_{\alpha}} = L_{\alpha + 1} \subset L
+        \end{align*}
+
+        \item \underline{Unions.} Let $\mathcal{F} \in L$. Pick $\alpha$ such that $\mathcal{F} \in L_{\alpha}$. Then,
+        % [FILLED] the set-builder and the justification after it; the lecture left both sides of the set-builder blank
+        \begin{align*}
+            \bigcup \mathcal{F}
+            = \setst{x \in L_{\alpha}}{L_{\alpha} \models \exists y \, \parenth{y \in \mathcal{F} \land x \in y}}
+            \in \D\of{L_{\alpha}} = L_{\alpha + 1} \subset L
+        \end{align*}
+        Indeed, $L_{\alpha}$ is transitive, so every $y \in \mathcal{F}$ lies in $L_{\alpha}$, and then so does every $x \in y$. So $\bigcup \mathcal{F} \ssq L_{\alpha}$, and for $x \in L_{\alpha}$, $L_{\alpha} \models \exists y \, \parenth{y \in \mathcal{F} \land x \in y}$ iff some $y \in \mathcal{F}$ has $x \in y$. In particular $\bigcup \mathcal{F}$ is a member of $L$ containing every member of $\mathcal{F}$ as a subset, which is what the Axiom of Unions asks of $L$.
+
+        % Transcribed from the board photographs.
+        \item \underline{Power Set.} Let $A \in L$. We need $\Powset(A) \cap L \in L$. It is enough to show that there is some $B \in L$ with $\Powset(A) \cap L \ssq B$.
+
+        In $V$, consider the class function $X \mapsto$ the least $\xi$ such that $X \in L_{\xi}$, with domain $\Powset(A) \cap L$. By Replacement in $V$ (plus stuff), we know there's some $\alpha$ such that $\forall X \in \Powset(A) \cap L \, \parenth{X \in L_{\alpha}}$. Take $B = L_{\alpha} \in L$; this works.
+
+        \item \underline{Replacement.} Assume $A, \bar{z} \in L$ and $\forall x \in A \, \exists! y \in L \, \vp^L\of{x, y, \bar{z}}$. Pick $\alpha$ such that $A, \bar{z} \in L_{\alpha}$. Consider the class function
+        \begin{align*}
+            x \mapsto \text{the least $\xi$ such that } \exists y \in L_{\xi} \, \vp^L\of{x, y, \bar{z}}
+        \end{align*}
+        By Replacement in $V$, there's some $\beta$ such that all such $\xi$s are $< \beta$. Then $L_{\beta} \in L$ and $\forall x \in A \, \exists y \in L_{\beta} \, \vp^L\of{x, y, \bar{z}}$.
+
+        \item \underline{Foundation.} $L \ssq V = \WF$.
+
+        \item \underline{Infinity.} $\omega \in L$.
+    \end{itemize}
+    That covers every axiom of $\ZF$. Choice and $\GCH$ take more work: they are \Cref{Ch4:Thm:AC_In_L} and \Cref{Ch4:Thm:GCH_In_L} below.
+\end{proof}
+
+% Transcribed from the board photographs, and merged with the recap that opened the lecture of 23 Oct.
+
+So now we know $L$ models $\ZF$. By the absoluteness of $A \mapsto \D(A)$ and $\alpha \mapsto L_{\alpha}$ (\Cref{Ch4:Lemma:D_Absolute} and \Cref{Ch3:Subsec:Recursion}), $L^L = L$, and $L^M = L_{\OR \cap M}$ for every transitive class model $M$ of $\ZFwoP$: either $\OR \cap M = \OR$ and $L^M = L$, or $\OR \cap M = \alpha \in \OR$ and $L^M = L_{\alpha}$. In fact, there is a finite subtheory of $\ZFwoP$ that's enough for this.
+
+In particular, if $M$ is a transitive proper class model of $\ZF$, then $\OR \cap M = \OR$ (\Cref{Ch3:Subsec:Ordinals}), so $L = L^M \ssq M$: this is the second half of Gödel's goal.

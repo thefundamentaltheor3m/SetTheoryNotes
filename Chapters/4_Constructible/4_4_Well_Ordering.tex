@@ -1,0 +1,67 @@
+\section{A Well-Ordering of $L$}
+
+In the proof of \Cref{Ch4:Cor:L_Alpha_Cardinality}, we indicated how to define a well-ordering $<_{\alpha}$ of $L_{\alpha}$ by recursion on $\alpha \in \OR$. Here it is in full.
+\begin{itemize}
+    \item $<_0 = \emptyset$
+    \item For $x, y \in L_{\alpha + 1} = \D\of{L_{\alpha}}$, put $x <_{\alpha + 1} y$ iff one of the following occurs:
+    \begin{enumerate}
+        \item $x, y \in L_{\alpha}$ and $x <_{\alpha} y$
+        \item $x \in L_{\alpha}$ and $y \in L_{\alpha + 1} \setminus L_{\alpha}$
+        \item $x, y \in L_{\alpha + 1} \setminus L_{\alpha}$ and $(k, p) <_{\lex} (l, q)$, where $(k, p)$ is the lexicographically least pair in $\omega \times L_{\alpha}^{< \omega}$ such that if $\vp$ is the $k$th formula, then $x = \setst{z \in L_{\alpha}}{L_{\alpha} \models \vp(z, p)}$, and $(l, q)$ is the analogous thing for $y$
+    \end{enumerate}
+    Note that $<_{\alpha + 1}$ end-extends $<_{\alpha}$.
+
+    \item For limit ordinals $\beta$, put
+    \begin{align*}
+        <_{\beta} = \bigcup_{\alpha < \beta} <_{\alpha}
+    \end{align*}
+\end{itemize}
+This works: $\alpha \mapsto <_{\alpha}$ is definable without parameters; moreover, it is absolute for transitive models of a certain finite subtheory of $\ZFwoP$. We fix a name for it.
+
+\begin{boxnotation}
+    For the rest of this chapter, $T$ will denote a finite subtheory of $\ZFwoP$ such that $\alpha \mapsto L_{\alpha}$ and $\alpha \mapsto <_{\alpha}$ are both absolute for transitive models of $T$.
+\end{boxnotation}
+
+Notice that if we put
+\begin{align*}
+    <_{L} = \bigcup_{\alpha \in \OR} <_{\alpha}
+\end{align*}
+then $<_L$ is a class well-ordering of $L$. Note that it is set-like, extensional and well-founded, so it admits a Mostowski Collapse. This Mostowski Collapse turns out to simply be $\OR$.
+
+For any transitive class model $M$ of $T$,
+\begin{align*}
+    \parenth{<_L}^M
+    = \begin{cases}
+        <_L & \text{ if } \OR \cap M = \OR \\
+        <_{\alpha} & \text{ if } \OR \cap M = \alpha
+    \end{cases}
+\end{align*}
+
+The first thing this buys us is Choice in $L$.
+
+\begin{boxtheorem}[using $\ZF$ in $V$] \label{Ch4:Thm:AC_In_L}
+    $(\AC)^L$
+\end{boxtheorem}
+\begin{proof}
+    % Transcribed from the board photographs.
+    Let $A \in L$. Pick $\alpha$ such that $A \in L_{\alpha}$. Then $A \ssq L_{\alpha}$. Let $R = <_{\alpha} \cap \parenth{A \times A}$. Since $\parenth{<_{\alpha}}^L = <_{\alpha}$, we know $R \in L$. We know $(A, R)$ is a well-ordering. This is $\Pi_1$, hence downward absolute to $L$.
+\end{proof}
+
+The well-ordering $<_L$ also tells us that every constructible set can be defined from an ordinal. To say this, we need the classes of sets definable from ordinals. We cannot just say ``$x$ is definable from finitely many ordinals'', as there is no formula expressing definability (cf. \Cref{Ch3:Sec:Satisfaction}); so we ask for a definition over some $V_{\alpha}$ instead.
+
+\begin{boxdefinition}[Ordinal Definability]
+    A set $x$ is \textbf{ordinal definable} iff there are an ordinal $\alpha$ with $x \in V_{\alpha}$, a formula $\vp\of{u, \bar{v}}$ and ordinals $\bar{\xi} \in \alpha^{<\omega}$ such that $x$ is the unique $y \in V_{\alpha}$ with $V_{\alpha} \models \vp\of{y, \bar{\xi}}$. We write $\OD$ for the class of ordinal definable sets.
+
+    A set $x$ is \textbf{hereditarily ordinal definable} iff $\trcl{\set{x}} \ssq \OD$. We write $\HOD$ for the class of hereditarily ordinal definable sets.
+\end{boxdefinition}
+
+By the Reflection Theorem Scheme, this is what we wanted: for each formula $\vp\of{u, \bar{v}}$, if $\bar{\xi}$ are ordinals and $x$ is the unique set with $\vp\of{x, \bar{\xi}}$, then reflecting $\vp$ to a level $V_{\alpha}$ with $x, \bar{\xi} \in V_{\alpha}$ shows $x \in \OD$. Conversely, a set in $\OD$ is defined in $V$ from the ordinals $\alpha$ and $\bar{\xi}$ by the formula ``$u \in V_{\alpha}$ and $V_{\alpha} \models \vp\of{u, \bar{\xi}}$''.
+
+So $L$ sits inside $\HOD$, and $L$ knows it.
+
+\begin{boxtheorem}
+    $L \ssq \HOD$, and $\HOD^L = L$.
+\end{boxtheorem}
+\begin{proof}
+    Note that given any $x \in L$, we have some $\xi \in \OR$ such that $x$ is the $\xi$th member of $L$ according to $<_L$. In other words, if $G : (L, <_L) \simeq \OR$ then $G(x) = \xi$. Thus, $x$ is definable from $\xi$, so $x \in \OD$. Since $L$ is transitive, $x \in \HOD$. This calculation is absolute down to $L$. So $\HOD^L = L$.
+\end{proof}
