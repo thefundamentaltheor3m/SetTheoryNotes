@@ -1,12 +1,12 @@
-\section{Relativizing the Axioms of $\ZFC$}
+\section{Relativising the Axioms of $\ZFC$}
 
-We now put absoluteness to work on the axioms themselves, asking which of them hold relativized to which transitive classes. This is what \Cref{Ch3:Thm:ZF_Relativizes_To_WF} needed for $\WF$, and it also finds models of large fragments of $\ZFC$ among the levels of the $V$-hierarchy.
+We now put absoluteness to work on the axioms themselves, asking which of them hold relativised to which transitive classes. This is what \Cref{Ch3:Thm:ZF_Relativizes_To_WF} needed for $\WF$, and it also finds models of large fragments of $\ZFC$ among the levels of the $V$-hierarchy.
 
 \subsection{The First Few Axioms}
 
-For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativized to $M$.
+For this discussion, fix a class $M$. Let's list out the axioms of $\ZFwoF$, relativised to $M$.
 
-We start with Extensionality, which relativized to $M$ reads
+We start with Extensionality, which relativised to $M$ reads
 \begin{align*}
     \brac{\forall A \forall B \brac{\forall x \parenth{x \in A \lr x \in B} \to A = B}}^M
 \end{align*}
@@ -33,11 +33,11 @@ Comprehension needs $M$ to contain enough subsets of its members.
     If $M$ is closed under subsets, ie, $A \in M$ and $B \ssq A$ imply $B \in M$, then $(\text{Comprehension})^M$.
 \end{boxlemma}
 \begin{proof} % [FILLED] the analysis of Comprehension^M, and the closure condition that secures it, are supplied here; the lecture broke off after the transitivity assumption
-    For each formula $\vp\of{x, \bar{y}}$, the corresponding instance relativized to $M$ is
+    For each formula $\vp\of{x, \bar{y}}$, the corresponding instance relativised to $M$ is
     \begin{align*}
         \forall A \in M \, \forall \bar{y} \in M \, \exists B \in M \, \forall x \in M \brac{x \in B \lr \parenth{x \in A \land \vp^M\of{x, \bar{y}}}}
     \end{align*}
-    As $M$ is transitive, any such $B$ and the given $A$ are subsets of $M$, so the bracket pins $B$ down completely: it must be $\setst{x \in A}{\vp^M\of{x, \bar{y}}}$. So Comprehension relativizes to $M$ iff each of these sets lies in $M$, and in particular it does whenever $M$ is closed under subsets.
+    As $M$ is transitive, any such $B$ and the given $A$ are subsets of $M$, so the bracket pins $B$ down completely: it must be $\setst{x \in A}{\vp^M\of{x, \bar{y}}}$. So Comprehension relativises to $M$ iff each of these sets lies in $M$, and in particular it does whenever $M$ is closed under subsets.
 \end{proof}
 
 From now on, assume $(\text{Comprehension})^M$ as well.
@@ -48,7 +48,7 @@ Pairing only needs $M$ to be closed under pairs.
     If $\set{x, y} \in M$ for all $x, y \in M$, then $(\text{Pairing})^M$.
 \end{boxlemma}
 \begin{proof} % [FILLED] the lecture left Pairing blank
-    Relativized to $M$, Pairing says
+    Relativised to $M$, Pairing says
     \begin{align*}
         \forall x \in M \, \forall y \in M \, \exists A \in M \, \parenth{x \in A \land y \in A}
     \end{align*}
@@ -72,7 +72,7 @@ At $V_{\omega}$, Replacement holds as well.
 Above $V_{\omega}$, a limit level need not satisfy Replacement.
 
 \begin{boxnexample}[$V_{\omega + \omega}$]
-    We can show that Replacement does not relativize to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
+    We can show that Replacement does not relativise to $V_{\omega + \omega}$. Indeed, consider the class function $G : n \mapsto \omega + n$. It's definable in two ways:
     \begin{enumerate}
         % [CORRECTED] was: $\exists g \brac{\dom(g) = n + 1 \land g(0) = w \land g(i + 1) = g(i) \cup \set{g(i) = g(i) + 1 \land g(n) = S}}$ --- $i$ was never quantified, the brace closed around $g(n) = S$, $w$ stood for $\omega$, and nothing said $g$ is a function, so it did not express $S = \omega + n$
         \item $G(n) = S$ iff $\exists g \brac{g \text{ is a function} \land \dom{g} = n + 1 \land g(0) = \omega \land \forall i < n \, \parenth{g(i + 1) = g(i) \cup \set{g(i)}} \land g(n) = S}$
@@ -81,7 +81,7 @@ Above $V_{\omega}$, a limit level need not satisfy Replacement.
     \end{enumerate}
     Both say that $S$ is the last value of the function $g$ on $n + 1$ that starts at $\omega$ and takes a successor at each step, and in both, everything after the unbounded quantifier over $g$ is $\Delta_0$ in $g$, $n$, $S$ and the parameter $\omega$. So the first is $\Sigma_1$ and the second is $\Pi_1$.
 
-    Now fix $n < \omega$. The unique $g$ in question is $\setst{\parenth{i, \omega + i}}{i \leq n}$, and each of its pairs lies in $V_{\omega + n + 3}$, so $g \in V_{\omega + n + 4} \ssq V_{\omega + \omega}$. Hence, for $S \in V_{\omega + \omega}$, the first formula relativized to $V_{\omega + \omega}$ holds iff $S = \omega + n$: the witness $g$ is available inside $V_{\omega + \omega}$, and the $\Delta_0$ part means the same thing there as in $V$ by $\Delta_0$-absoluteness. (The second formula relativizes correctly too, by downward absoluteness of $\Pi_1$ formulae, so it does not matter which definition we use.)
+    Now fix $n < \omega$. The unique $g$ in question is $\setst{\parenth{i, \omega + i}}{i \leq n}$, and each of its pairs lies in $V_{\omega + n + 3}$, so $g \in V_{\omega + n + 4} \ssq V_{\omega + \omega}$. Hence, for $S \in V_{\omega + \omega}$, the first formula relativised to $V_{\omega + \omega}$ holds iff $S = \omega + n$: the witness $g$ is available inside $V_{\omega + \omega}$, and the $\Delta_0$ part means the same thing there as in $V$ by $\Delta_0$-absoluteness. (The second formula relativises correctly too, by downward absoluteness of $\Pi_1$ formulae, so it does not matter which definition we use.)
 
     So the hypothesis of the instance of Replacement for this formula, with $A = \omega \in V_{\omega + \omega}$ and parameter $\omega$, holds in $V_{\omega + \omega}$. If the conclusion did too, we would have $B \in V_{\omega + \omega}$ with $\omega + n \in B$ for every $n < \omega$. But $B \in V_{\omega + k + 1}$ for some $k < \omega$, so $B \ssq V_{\omega + k}$, and then $\omega + k \in V_{\omega + k}$, ie, $\rank{\omega + k} < \omega + k$, which is absurd since ordinals are their own ranks.
 \end{boxnexample}
@@ -108,9 +108,9 @@ We know the following:
 \end{itemize}
 In particular, $\F^{\WF}$ and $\F^{V_{\alpha}}$.
 
-Finally, for infinity, we can show that if $\omega \in M$, then infinity relativizes to $M$; in particular, infinity relativizes to $\WF$ and to $V_{\alpha}$ for $\alpha > \omega$ a limit.
+Finally, for infinity, we can show that if $\omega \in M$, then infinity relativises to $M$; in particular, infinity relativises to $\WF$ and to $V_{\alpha}$ for $\alpha > \omega$ a limit.
 
-We're now done showing that every axiom of $\ZF$ without infinity relativizes to $V_{\omega}$, and furthermore, that every axiom of $\ZF$ relativizes to $\WF$. As we saw earlier, this is what gives us \Cref{Ch3:Cor:Con_ZF}: if $\ZFwoF$ is consistent, then so is $\ZF$.
+We're now done showing that every axiom of $\ZF$ without infinity relativises to $V_{\omega}$, and furthermore, that every axiom of $\ZF$ relativises to $\WF$. As we saw earlier, this is what gives us \Cref{Ch3:Cor:Con_ZF}: if $\ZFwoF$ is consistent, then so is $\ZF$.
 
 \subsection{Choice}
 
@@ -120,7 +120,7 @@ We want to show, effectively, that
 \begin{align*}
     \brac{\forall A \exists R \parenth{(A, R) \text{ is a w.o.}}}^M
 \end{align*}
-% [CORRECTED] was: ``This is equivalent to $\forall A \in M, \, \exists R \in M \, \brac{\parenth{(A, R) \text{ is a w.o.}}}^M$ because \ldots'' --- that equivalence holds by the definition of relativization, so the reason given did no work; the absoluteness is what transfers ``w.o.'' from $V$ down to $M$, which is how the argument below uses it
+% [CORRECTED] was: ``This is equivalent to $\forall A \in M, \, \exists R \in M \, \brac{\parenth{(A, R) \text{ is a w.o.}}}^M$ because \ldots'' --- that equivalence holds by the definition of relativisation, so the reason given did no work; the absoluteness is what transfers ``w.o.'' from $V$ down to $M$, which is how the argument below uses it
 This follows from
 \begin{align*}
     \forall A \in M, \, \exists R \in M \, \parenth{(A, R) \text{ is a w.o.}}
@@ -148,7 +148,7 @@ Being a well-ordering is in fact also $\Sigma_1$, over a weak enough theory, so 
     If we denote by $T$ the theory consisting of $\ZF$ without power sets and infinity, the statement ``$(A, R)$ is a w.o.'' is also $\Sigma_1^T$.
 \end{boxlemma}
 \begin{proof}
-    $(A, R)$ is a w.o. iff there is some $F : A \to \OR$ such that $\forall x, y \in A \parenth{x \, R \, y \to F(x) < F(y)}$ % [FILLED] the rest of the proof is supplied here; the lecture stated the characterization and stopped
+    $(A, R)$ is a w.o. iff there is some $F : A \to \OR$ such that $\forall x, y \in A \parenth{x \, R \, y \to F(x) < F(y)}$ % [FILLED] the rest of the proof is supplied here; the lecture stated the characterisation and stopped
     and $(A, R)$ is a l.o. From left to right, take $F$ to be the collapsing map of \Cref{Ch1:Thm:Mostowski_WO}, which is order-preserving with ordinal values; its construction is a recursion along a well-ordering of a set, and uses Replacement but neither Power Set nor Infinity. From right to left, given a nonempty $S \ssq A$, the set $F[S]$ is a nonempty set of ordinals, so it has a least element $F(x)$ with $x \in S$, and no $y \in S$ has $y \, R \, x$, as that would give $F(y) < F(x)$.
 
     So, in $T$, ``$(A, R)$ is a w.o.'' is equivalent to
