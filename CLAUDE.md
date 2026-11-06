@@ -12,8 +12,8 @@ There is no code, no tests, and no linter — the deliverable is `main.pdf`.
 
 **The course is over.** These notes are settled rather than accumulating, which
 changes which skills are worth reaching for: `/check-correctness`, `/fill-sorries`,
-`/address-comments`, `/organize` and `/americanise` all apply to finished notes, while
-`/post-lecture` and its `/integrate` phase need a lecture to process and so have
+`/address-comments` and `/organise` all apply to finished notes, while `/post-lecture`
+and its `/integrate` phase need a lecture to process and so have
 nothing to do here unless the author goes back and writes up material that never made
 it in.
 
@@ -41,8 +41,8 @@ Keep it refreshed when making substantive content changes.
 are consumed by the title block, then `\input`s the four preamble files in a fixed
 order, and they are not interchangeable:
 
-- `TeX_Setup/packages.tex` — all `\usepackage` calls, `hyperref` colors, `biblatex` + bib resource, TikZ libraries
-- `TeX_Setup/format.tex` — sans-serif default font, `fancyhdr` headers, 1.5 line spacing, `parskip` (no paragraph indents), color definitions
+- `TeX_Setup/packages.tex` — all `\usepackage` calls, `hyperref` colours, `biblatex` + bib resource, TikZ libraries
+- `TeX_Setup/format.tex` — sans-serif default font, `fancyhdr` headers, 1.5 line spacing, `parskip` (no paragraph indents), colour definitions
 - `TeX_Setup/environments.tex` — `amsthm` theorem declarations and the boxed variants
 - `TeX_Setup/shortcuts.tex` — all custom macros
 
@@ -58,7 +58,7 @@ Chapters/Appendices/         placeholder, \input commented out in main.tex
 ```
 
 Note `Chapters/2_Another Chapter/` contains a space in its path — quote paths when
-scripting over it. Clearing the placeholders is `/organize`'s job; never delete a
+scripting over it. Clearing the placeholders is `/organise`'s job; never delete a
 file that has acquired real content.
 
 Adding a chapter means: create the directory, write the chapter file with its section
@@ -73,12 +73,17 @@ boxed form in the notes** — that is what the existing content uses.
 - Cyan box: `boxdefinition`
 - Magenta box: `boxconvention`, `boxnotation`, `boxlnotation` (local notation), `boxabbrev`
 - Green/red box: `boxexample`, `boxnexample` (non-example), `boxcexample` (counterexample)
-- Gray/red box: `boxexercise`, `boxproblem`, `boxwarning`
+- Grey/red box: `boxexercise`, `boxproblem`, `boxwarning`
 
 Numbering: `theorem` and everything sharing its counter number per *section*;
 `remark`, `solution`, `convention`, `notation`, `warning`, `abbreviation` are unnumbered.
 Cross-reference with `cleveref` — **always `\Cref`, never `\cref`** — and label as
 `Ch<N>:<Kind>:<Name>`, with chapters as `Ch<N>:CH`.
+
+Spelling is **British** — *colouring*, *neighbourhood*, *relativisation* — in the
+notes, in `TOPICS.md`, and in these instructions alike. `.claude/STYLE.md` has the
+details, including which LaTeX keywords (`\color`, `center`, `gray`) and which labels
+are exempt.
 
 Two reference files under `.claude/` carry the conventions, and the skills point at
 them rather than restating them:
@@ -88,7 +93,7 @@ them rather than restating them:
   author's four sibling lecture-note repositories, which share this template and
   this style and are the corpus to imitate. Read it before writing any prose or
   math into the notes.
-- **`.claude/ORGANIZATION.md`** — where a passage *lives*: the generality ladder that
+- **`.claude/ORGANISATION.md`** — where a passage *lives*: the generality ladder that
   decides what earns a chapter, a section and a subsection, read off those same
   repositories, plus the naming conventions and the format and ownership of
   `TOPICS.md`. Read it before deciding where anything goes.
@@ -111,11 +116,10 @@ there rather than defining them inline.
 | `/fill-sorries` | `\sorry` markers | work out the mathematics; decide and report |
 | `/check-correctness` | what is already written | fix what is false; every change adjudicated |
 | `/integrate` | one lecture's raw notes | place new material; restructure only to build the chapter the author opened |
-| `/organize` | the notes as they stand | rearrange only; add and delete nothing |
-| `/americanise` | British spellings | spelling only; never the mathematics |
+| `/organise` | the notes as they stand | rearrange only; add and delete nothing |
 
-**Two of the seven have nothing to do here**, because the course is over.
-`/post-lecture` is the after-lecture pipeline — fill, address, check, respell, open the
+**Two of the six have nothing to do here**, because the course is over.
+`/post-lecture` is the after-lecture pipeline — fill, address, check, open the
 chapter if the lecture started one, integrate, on one branch — and `/integrate` is its
 last phase; both need a lecture to process. The reusable inbox they read from is
 `Chapters/1_Intro/todays_lecture.tex`, kept and emptied rather than deleted; it lives
@@ -150,7 +154,7 @@ and one written by a skill is work the next run will silently do. Never write an
 
 `\sorry` is the red marker for an unfilled gap — a proof not given, a case not
 covered, a development that broke off. `/fill-sorries` closes them, and it is the one
-skill authorized to work the mathematics out for itself rather than following an
+skill authorised to work the mathematics out for itself rather than following an
 instruction; it marks what it supplied with a `% [FILLED]` comment so the notes stay
 honest about which arguments came from the lecturer. **Read the comment lines around a
 `\sorry` before touching it**: a plain comment records where the lecture broke off and
@@ -167,7 +171,7 @@ an earlier lecture is still a job the author delegated, and age is not a reason 
 it. None are outstanding at present.
 
 `TOPICS.md` at the repo root is the running map of topic to chapter/section.
-`/organize` owns it; `/integrate` appends to it.
+`/organise` owns it; `/integrate` appends to it.
 
 ## Publishing
 

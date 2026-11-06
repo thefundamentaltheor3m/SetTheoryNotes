@@ -1,9 +1,9 @@
 ---
-name: organize
-description: Refactor the chapter, section and subsection structure of these lecture notes so that what is already written sits where it belongs, and maintain TOPICS.md as the record of that structure. Use when the notes have outgrown or drifted from their current arrangement — a section doing the work of three, a chapter whose title no longer describes its contents, material in the wrong place, a heading level that should not exist — or when TOPICS.md needs rebuilding. Also owns the mechanics of opening a new chapter — creating its directory and chapter file, moving the section files and the inbox into it, rewriting the \input lines in main.tex and the Ch<N> label prefixes. Triggers on "/organize", "organize the notes", "reorganize the chapters", "restructure this", "open a new chapter", "sort out TOPICS.md". Not for absorbing a new lecture: that is /integrate.
+name: organise
+description: Refactor the chapter, section and subsection structure of these lecture notes so that what is already written sits where it belongs, and maintain TOPICS.md as the record of that structure. Use when the notes have outgrown or drifted from their current arrangement — a section doing the work of three, a chapter whose title no longer describes its contents, material in the wrong place, a heading level that should not exist — or when TOPICS.md needs rebuilding. Also owns the mechanics of opening a new chapter — creating its directory and chapter file, moving the section files and the inbox into it, rewriting the \input lines in main.tex and the Ch<N> label prefixes. Triggers on "/organise", "/organize", "organise the notes", "organize the notes", "reorganise the chapters", "reorganize the chapters", "restructure this", "open a new chapter", "sort out TOPICS.md". Not for absorbing a new lecture: that is /integrate.
 ---
 
-# Organizing the notes
+# Organising the notes
 
 There is no syllabus for this course. The structure of `Chapters/` was therefore
 never designed — it accreted, one lecture at a time, and every lecture was placed
@@ -13,7 +13,7 @@ nothing and removing nothing.
 
 Read these first, in order:
 
-- `.claude/ORGANIZATION.md` — what earns a chapter, a section and a subsection, the
+- `.claude/ORGANISATION.md` — what earns a chapter, a section and a subsection, the
   naming conventions, and the format and ownership of `TOPICS.md`. **This skill's job
   is to make the document match that file** — which means matching its account of the
   generality ladder, not its size table.
@@ -23,11 +23,11 @@ Read these first, in order:
 
 ## Scope: what this skill is and is not
 
-`/organize` and `/integrate` share their format, their guiding principles and their
+`/organise` and `/integrate` share their format, their guiding principles and their
 respect for the author's mathematics. They do not share a scope, and confusing the
 two is the main way either can do damage.
 
-| | `/integrate` | `/organize` |
+| | `/integrate` | `/organise` |
 | --- | --- | --- |
 | Input | one lecture's raw notes | the notes as they already stand |
 | Adds material | yes, that is the point | **never** |
@@ -45,7 +45,7 @@ Restructuring that loses a sentence has failed, however much better the outline
 looks.
 
 If the notes contain a `Lecture_*.tex` staging file, this skill is the wrong one —
-that file is `/integrate`'s. Say so and stop. Running `/organize` first on unintegrated
+that file is `/integrate`'s. Say so and stop. Running `/organise` first on unintegrated
 material would restructure around content that is about to move anyway.
 
 ## Procedure
@@ -60,7 +60,7 @@ sentence for a heading, that is your first finding.
 
 Then, for each unit: its title, its file, and whether the sentence you wrote matches
 the title. Sizes are worth noting in passing but they decide nothing; see
-`ORGANIZATION.md` on how little they are worth.
+`ORGANISATION.md` on how little they are worth.
 
 Also record
 
@@ -77,7 +77,7 @@ unrecorded item is an item at risk.
 ### 2. Read the corpus, not just the notes
 
 The standard is the author's other notes, not your instincts about how a textbook
-should look. `ORGANIZATION.md` summarizes them, but when a specific call is close —
+should look. `ORGANISATION.md` summarises them, but when a specific call is close —
 is this one subsection or two? does this deserve a section? — go and look at how a
 comparable piece of material is handled in [TopologyNotes][t], [LogicNotes][l],
 [RepTheoryEPFL][r] or [LieAlgebrasNotes][a]. Find the nearest analog and follow it.
@@ -116,7 +116,7 @@ everything it touches is indistinguishable from noise, and the author has to rev
 every line of it.
 
 Where the notes cannot satisfy the norms at all — early in a course they cannot —
-apply the self-healing rule from `ORGANIZATION.md`: favor the arrangement whose
+apply the self-healing rule from `ORGANISATION.md`: favour the arrangement whose
 deviations resolve themselves as lectures arrive, and record the deviation in
 `TOPICS.md` with the condition that will end it.
 
@@ -135,11 +135,11 @@ states:
   [Opening a new chapter](#opening-a-new-chapter) for what that commits you to;
 - every renumbering the move causes, and every `\Cref` that will need checking;
 - the connecting prose to be rewritten, with a sentence on what each passage will
-  now have to do — a section that acquires a new neighbor usually needs its opening
+  now have to do — a section that acquires a new neighbour usually needs its opening
   sentence changed;
 - anything you have decided to leave alone despite it being off-norm, and why.
 
-Structure is editorial judgment and the author is the editor. Restructuring is also
+Structure is editorial judgement and the author is the editor. Restructuring is also
 the most expensive thing to undo in these notes, because it renumbers results. Never
 skip this step, even when the diagnosis looks unarguable.
 
@@ -176,7 +176,7 @@ asked you to rename is churn that shows up in the diff and helps nobody.
 becomes `1_3_<Abbrev>.tex`, and its `\input` moves with it. Use `git mv` so the
 rename is visible in the diff rather than appearing as a delete plus an add. Quote
 paths: some directory names contain spaces. Chapter 1's directory stays `1_Intro`
-regardless of the chapter's title — see `ORGANIZATION.md`. Opening a chapter is more
+regardless of the chapter's title — see `ORGANISATION.md`. Opening a chapter is more
 than a rename, and has its own procedure below.
 
 **No subsubsections, ever.** If the plan wanted one, the section above it was wrong.
@@ -202,7 +202,7 @@ all of the following, in this order.** Read symmetrically, the same procedure
 renumbers or renames an existing one.
 
 Let `<N>` be the number the new chapter takes and `<Abbrev>` the short CamelCase or
-Snake_Case abbreviation of its title, per `ORGANIZATION.md`.
+Snake_Case abbreviation of its title, per `ORGANISATION.md`.
 
 1. **Free the number first.** No two directories under `Chapters/` may carry the same
    `<N>_` prefix. If a template placeholder is sitting on it — `Chapters/2_Another
@@ -255,7 +255,7 @@ Snake_Case abbreviation of its title, per `ORGANIZATION.md`.
    procedure, below: the
    chapter, its directory, what moved into it and from where, and — if it was opened at
    a heading the author wrote live — that fact and the words they wrote, which are the
-   justification for the bet. `ORGANIZATION.md` is explicit that a chapter *is* a bet
+   justification for the bet. `ORGANISATION.md` is explicit that a chapter *is* a bet
    on where the course is going, so the reason for opening it belongs on the record
    beside it.
 
@@ -268,8 +268,8 @@ authorship — if the run before yours would not have had to fix it, it is yours
 
 ### 6. Rebuild TOPICS.md
 
-`/organize` owns this file; rewrite it to describe the new structure, in the format
-`ORGANIZATION.md` specifies. In particular:
+`/organise` owns this file; rewrite it to describe the new structure, in the format
+`ORGANISATION.md` specifies. In particular:
 
 - the leading inference note about where the structure looks to be heading, marked as
   inference and left open for the next run to disagree with;
@@ -313,9 +313,9 @@ authorship — if the run before yours would not have had to fix it, it is yours
 Never restructure directly on `main`.
 
 ```bash
-git checkout -b organize/<short-description>
-git add -A && git commit    # subject: "Reorganize <what>"
-git push -u origin organize/<short-description>
+git checkout -b organise/<short-description>
+git add -A && git commit    # subject: "Reorganise <what>"
+git push -u origin organise/<short-description>
 ```
 
 Then attempt the PR — `gh` is on some of the author's machines and not others, so
@@ -323,7 +323,7 @@ check rather than assume:
 
 ```bash
 gh auth status
-gh pr create --base main --title "Reorganize <what>" --body-file <file>
+gh pr create --base main --title "Reorganise <what>" --body-file <file>
 ```
 
 Write the body to a file so it survives shell quoting, and put the diagnosis and the
@@ -333,7 +333,7 @@ on `main` breaks the published PDF. If `gh` is unavailable, say so and print the
 compare URL instead:
 
 ```
-https://github.com/thefundamentaltheor3m/SetTheoryNotes/compare/main...organize/<short-description>
+https://github.com/thefundamentaltheor3m/SetTheoryNotes/compare/main...organise/<short-description>
 ```
 
 ## Report back
