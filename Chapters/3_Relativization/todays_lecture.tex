@@ -5,21 +5,33 @@
 
 % [CLAUDE] run an /organise pass after you finish /integrate - I suspect trees will be moved to a new chapter (well, even if /organise doesn't, I'm explicitly asking you to do this)
 
-% [CLAUDE] make the following boxed environments
+\begin{boxdefinition}[$\lambda$-Tree]
+    Let $\lambda$ be an infinite cardinal and $\parenth{T, <_T}$ be a tree. Then $T$ is a \textbf{$\lambda$-tree} iff $T$ has height $\lambda$ and $\forall \alpha < \lambda$, $\abs{\level_{\alpha}\of{T}} < \lambda$.
+\end{boxdefinition}
 
-Let $\lambda$ be an infinite cardinal and $\parenth{T, <_T}$ be a tree. Then $T$ is a $\lambda$-tree iff $T$ has height $\lambda$ and $\forall \alpha < \lambda$, $\abs{\level_{\alpha}\of{T}} < \lambda$.
+The question is whether such a tree must have a branch running all the way up.
 
-$\lambda$ has the \textbf{tree property} (often abbreviated TP) if every normal $\lambda$-tree has a $\lambda$-branch.
+\begin{boxdefinition}[Tree Property]
+    $\lambda$ has the \textbf{tree property} (often abbreviated TP) if every normal $\lambda$-tree has a $\lambda$-branch.
+\end{boxdefinition}
 
-A \textbf{$\lambda$-Aronszajn Tree} (often abbreviated $\lambda$-A-tree) is a normal $\lambda$-tree with no $\lambda$-branch.
+The trees that witness a failure of the tree property have a name.
 
-Thus $\lambda$ has the TP iff there are no $\lambda$-A-trees.
+\begin{boxdefinition}[Aronszajn Tree]
+    A \textbf{$\lambda$-Aronszajn Tree} (often abbreviated $\lambda$-A-tree) is a normal $\lambda$-tree with no $\lambda$-branch.
+\end{boxdefinition}
 
-K\H{o}nig's Theorem: $\omega$ has the TP.
+Thus $\lambda$ has the TP iff there are no $\lambda$-A-trees. At the first two infinite cardinals, the answers go opposite ways.
 
-Aronszajn's Theorem: $\omega_1$ does \textit{not} have the TP.
+\begin{boxtheorem}[K\H{o}nig]
+    $\omega$ has the TP.
+\end{boxtheorem}
 
-Proofs can be found in Ernest's book and in Kuhnen. % [CLAUDE] go through my google drive for Ernest's book and Kuhnen (both in the shared 21-602 fall 2026 folder) and add precise references - eg. chapter thing, lemma thing
+\begin{boxtheorem}[Aronszajn]
+    $\omega_1$ does \textit{not} have the TP.
+\end{boxtheorem}
+
+Proofs can be found in Ernest's book~\cite[Theorems 5.17 and 5.30]{Schimmerling} and in Kunen~\cite[Chapter II, Lemma 5.7 and Theorem 5.9]{Kunen}.
 
 \begin{boxdefinition}[Comparability and Incomparability]
     Given a tree $T$, we say $x$ and $y$ are \textbf{comparable} (written $x \parallel y$) iff $x \leq_T y$ or $y \leq_T x$. Else, we say $x$ and $y$ are \textbf{incomparable} and write $x \perp y$.
@@ -116,9 +128,27 @@ Note: if $A $is a maximal antichain then for every $x \in T$, there's some $a \i
     \begin{align*}
         \parenth{T_2, <_2} := \parenth{\set{0, 1, 2}, \set{(0, 1), (0, 2)}}
     \end{align*}
-    % [CLAUDE] illustrate this below
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}, grow' = up, level distance = 1.1cm, sibling distance = 1.6cm]
+            \node[dot, label = {below:$0$}] {}
+                child {node[dot, label = {above:$1$}] {}}
+                child {node[dot, label = {above:$2$}] {}};
+        \end{tikzpicture}
+    \end{figure}
     In similar fashion, we define $T_3$ to be the tree extending $T_2$ with the children of $1$ being $3$ and $4$ and the children of $2$ being $5$ and $6$.
-    % [CLAUDE] illustrate this below
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[dot/.style = {circle, fill, inner sep = 1.5pt}, every node/.style = {font = \small}, grow' = up, level distance = 1.1cm, level 1/.style = {sibling distance = 2.4cm}, level 2/.style = {sibling distance = 1.2cm}]
+            \node[dot, label = {below:$0$}] {}
+                child {node[dot, label = {left:$1$}] {}
+                    child {node[dot, label = {above:$3$}] {}}
+                    child {node[dot, label = {above:$4$}] {}}}
+                child {node[dot, label = {right:$2$}] {}
+                    child {node[dot, label = {above:$5$}] {}}
+                    child {node[dot, label = {above:$6$}] {}}};
+        \end{tikzpicture}
+    \end{figure}
     This is how we define successor trees. \\
 
     % Transcribed from the board photographs.
@@ -131,8 +161,8 @@ Note: if $A $is a maximal antichain then for every $x \in T$, there's some $a \i
             \node[left] at (-2.2, 2.85) {$\level_{\beta}\of{T_{\gamma}}$};
             \node[right] at (2.2, 2.85) {$T_{\gamma} = T_{\beta + 1}$};
             \node[dot, label = {below:$\xi_n$}] (x) at (0.2, 2.82) {};
-            \node[dot, label = {above:$T_{\gamma} + 2n$}] (y) at (-0.6, 4) {};
-            \node[dot, label = {above:$T_{\gamma} + 2n + 1$}] (z) at (1.2, 4) {};
+            \node[dot, label = {above:$T_{\gamma} + 2n$}] (y) at (-1, 4) {};
+            \node[dot, label = {above:$T_{\gamma} + 2n + 1$}] (z) at (1.5, 4) {};
             \draw (x) -- (y);
             \draw (x) -- (z);
         \end{tikzpicture}
