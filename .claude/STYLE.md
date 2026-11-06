@@ -19,7 +19,7 @@ wrong.
 The single test for anything you write: **could the author have written it?** Not
 "is it correct", not "is it thorough" — those are necessary. Seamless is the bar.
 
-This file is about how a passage *reads*. Its companion, `.claude/ORGANIZATION.md`,
+This file is about how a passage *reads*. Its companion, `.claude/ORGANISATION.md`,
 is about where a passage *lives* — what earns a chapter, a section and a subsection,
 measured over the same corpus, plus the file-naming conventions and the format of
 `TOPICS.md`. Heading titles and file names are covered there, not here.
@@ -32,14 +32,14 @@ state what it means for a net to converge." The `we` is the author and reader
 walking through the material together, not a passive-voice screen.
 
 **Every boxed environment is introduced by prose, usually one sentence.** This is the
-most recognizable feature of the notes: results are almost never stacked back to
+most recognisable feature of the notes: results are almost never stacked back to
 back. The bridging sentence says what is coming and, when it can, why:
 
 > We have already encountered a trivial family of solvable Lie algebras.
 >
 > There is also a less trivial example.
 >
-> We have a special term for Lie algebras for which the derived series stabilizes at $0$.
+> We have a special term for Lie algebras for which the derived series stabilises at $0$.
 >
 > This gives us a natural relationship between nilpotency and solvability.
 >
@@ -63,10 +63,21 @@ stuck get spelled out. The author writes to be re-read months later, so the *ide
 an argument is always visible even when the arithmetic is terse. Do not pad; do not
 write "Note that", "It is important to observe that", or "In other words" as filler.
 
-**American spelling**, and it matters here: *coloring*, *neighborhood*,
-*generalization*, *organized*, *stabilizes*, *centralizer*, *characterization*.
-The `/americanise` skill exists to enforce this; run it if a lecture's raw notes
-came in with British spellings.
+**British spelling**, and it matters here: *colouring*, *neighbourhood*,
+*generalisation*, *organised*, *stabilises*, *centraliser*, *characterisation*,
+*relativisation*. The author writes it by habit, so it is what the raw notes arrive
+in; anything an assistant writes into the notes, `TOPICS.md` or these instructions
+should match. File and directory names follow it too (`Chapters/3_Relativisation/`),
+but LaTeX's own spellings are fixed and stay as they are: `\color`, `xcolor`,
+`tcolorbox`, `\begin{center}`, `\centering`, `itemize`, TikZ's `gray`. So do labels:
+three in chapter 3 (`Ch3:Thm:ZF_Relativizes_To_WF`,
+`Ch3:Lemma:Relativization_Preserves_Proofs`, `Ch3:Lemma:Satisfaction_Relativization`)
+predate the switch and keep their spelling, since renaming a label is churn nobody
+reads.
+
+(The notes were American from the first post-lecture pass to 2026-11-06; that was
+reverted, and the `/americanise` skill that enforced it is gone. Old commit messages
+and pull requests from that period still say *relativization* and `/organize`.)
 
 **Abbreviations used inline, unpunctuated:** `ie,` `eg,` `cf.` `TFAE`, `WLOG`.
 
@@ -100,7 +111,7 @@ sentence are not followed by a blank line when the sentence continues.
 
 **Boxed environments always**, never the plain `theorem`/`definition`/`example`
 forms. The full family is in `TeX_Setup/environments.tex`; `CLAUDE.md` lists them by
-color. Frequency across the corpus, which is a good prior for what to reach for:
+colour. Frequency across the corpus, which is a good prior for what to reach for:
 `boxdefinition` ≫ `boxlemma` ≈ `boxexample` > `boxtheorem` ≈ `boxproposition` >
 `boxconvention` > `boxcorollary` > `boxnotation` > `boxcexample` > `boxexercise` >
 `boxwarning` > `boxnexample`.
@@ -187,10 +198,10 @@ follows, which any new macro must follow too:
 - **Delimiters auto-size.** `\parenth`, `\brac`, `\set`, `\setst{elts}{cond}`,
   `\abs`, `\norm`, `\floor`, `\ceil`, `\cycl`, `\oc`, `\co` — all `\left…\right`.
   Bare `(`…`)` around a nontrivial expression is a style error.
-- **`p`-prefix for a parenthesized operator:** `\pgcd`, `\plcm`, `\pdim`, `\pker`,
+- **`p`-prefix for a parenthesised operator:** `\pgcd`, `\plcm`, `\pdim`, `\pker`,
   `\pim`, `\pdet`, `\pdeg`, `\psin`, `\psup`, `\pchar`. The lecture-1 addition
   `\dist{v_0, u}` follows this shape.
-- **`of`-suffix for parenthesized function application:** `\fof`, `\gof`, `\Tof`,
+- **`of`-suffix for parenthesised function application:** `\fof`, `\gof`, `\Tof`,
   `\varphiof`, `\muof`, `\Powset`. Plus the bare `\of{…}` for "apply whatever
   precedes".
 - **`\!` before the delimiter** in every operator macro, so `\rank{A}` sets as
@@ -217,11 +228,11 @@ not number.
 
 **Reusable pictures become macros in the `% TIKZ:` block of `shortcuts.tex`**, not
 inline TikZ repeated at each use site. The existing precedents are `\drawplane`
-(gridded, labeled axes), `\drawsquare{halfwidth}` (the labeled square that the
+(gridded, labelled axes), `\drawsquare{halfwidth}` (the labelled square that the
 dihedral-group discussion reuses), and `\labeledpoint{x}{y}{dx}{dy}{label}`. This is
 the pattern to follow for any family of picture the course draws more than once —
 cycle and complete graphs in combinatorics, Hasse diagrams in order theory, exact
-sequences in homological algebra — parameterized by the one thing that varies. Available libraries are listed in `TeX_Setup/packages.tex`:
+sequences in homological algebra — parameterised by the one thing that varies. Available libraries are listed in `TeX_Setup/packages.tex`:
 `positioning`, `cd`, `shapes.geometric`, `arrows`, `decorations.markings`.
 
 `cd` and `cd*` are the commutative-diagram environments (`tikzcd` wrapped in

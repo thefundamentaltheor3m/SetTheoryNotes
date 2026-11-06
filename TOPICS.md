@@ -1,7 +1,7 @@
 # Topics
 
-Where each topic lives. Owned by `/organize`; `/integrate` appends to it.
-What earns a chapter, a section and a subsection: `.claude/ORGANIZATION.md`.
+Where each topic lives. Owned by `/organise`; `/integrate` appends to it.
+What earns a chapter, a section and a subsection: `.claude/ORGANISATION.md`.
 
 <!-- INFERENCE, not a plan, and open for the next run to disagree with. 21-602 runs in
      Fall 2026. Chapter 1 is one long chapter of groundwork shaped as a ladder up the
@@ -10,7 +10,7 @@ What earns a chapter, a section and a subsection: `.claude/ORGANIZATION.md`.
      about it as a whole (OR and WF, ending in Foundation iff V = WF), then how big its
      levels are.
 
-     Chapter 2 leaves the ladder and generalizes. Its objects are class relations rather
+     Chapter 2 leaves the ladder and generalises. Its objects are class relations rather
      than membership, and its title names machinery -- induction, recursion, collapse --
      rather than more hierarchy. All three have now been delivered: the theorem schemes
      for proofs by induction and definitions by recursion along a well-founded set-like
@@ -21,7 +21,7 @@ What earns a chapter, a section and a subsection: `.claude/ORGANIZATION.md`.
      Chapter 3 was opened on 2026-09-15, out of the section the lecture of 14 Sep had
      been placed in. The previous version of this note predicted it: "the next lecture
      that is not an example of collapsing will probably be the start of chapter 3", and
-     relativization is that lecture. Its objects are neither sets nor class relations but
+     relativisation is that lecture. Its objects are neither sets nor class relations but
      *formulae* -- what it takes for one to be true in a class, and how far up the
      universe a formula has to look before we can tell -- and that is a body of theory
      with its own vocabulary rather than a fourth item on chapter 2's list. So the notes
@@ -31,14 +31,14 @@ What earns a chapter, a section and a subsection: `.claude/ORGANIZATION.md`.
      An earlier version of this note predicted chapter 2 would be Gödel's L. It was wrong
      about the order, not the destination: L is still promised by chapter 1's opening
      prose and still wants a chapter of its own when it arrives, and chapter 3 is much of
-     what a construction like L needs -- L is built by relativizing the definability
+     what a construction like L needs -- L is built by relativising the definability
      operation, and absoluteness, which 3.3 is the setup for, is how one proves anything
      about it. Chapter 1 stays the recap it says it is.
 
      That chapter has now arrived, as chapter 4 (2026-11-06), and the prediction about
      what it would need was right: its sections lean on chapter 3 throughout. Chapter 5,
      Trees and Suslin's Problem, was opened the same day at the author's instruction.
-     So the notes now read: groundwork, tools, the language of relativization, the
+     So the notes now read: groundwork, tools, the language of relativisation, the
      model those tools build (L), and then what L is put to work on (combinatorics:
      Suslin lines, trees, diamond). The next thing chapter 5 looks set to need is
      Jensen's theorem that diamond holds in L, which would sit on the boundary between
@@ -167,7 +167,7 @@ chapter 3 and then chapter 5 -- **the path to type into is now
           decreasing enumerations collapse onto (OR, <), giving
           a parameter-free class bijection. And, for any alpha,
           a countable X elementary in V_alpha (by DLS, inside
-          the ZFC formalization) collapses onto a countable
+          the ZFC formalisation) collapses onto a countable
           transitive M with G^{-1} : M -> V_alpha elementary --
           the countable-microcosm subroutine, with a figure.
 ```
@@ -179,7 +179,7 @@ which is what the entry under `## Unplaced` had predicted would happen.
 The lecture date is the one written in the file (`% 9 September`); the commit that
 brought it is dated 2026-09-10, the next day's sync. The written date is used.
 
-## 3. Relativization  ->  `Chapters/3_Relativization/`
+## 3. Relativisation  ->  `Chapters/3_Relativisation/`
 
 Opened on 2026-09-15, out of the section the lecture of 14 Sep had been placed in.
 The author wrote `\section{Relativisation}` live, with `% [CLAUDE] as usual, figure
@@ -196,7 +196,7 @@ chapter-wide.
 with the course to chapter 3, and has since moved on to chapter 5.
 
 ```
-3.1 Relativization to a Class                                [2026-09-14]
+3.1 Relativisation to a Class                                [2026-09-14]
     The recursion defining psi^A: atomic, propositional      3_1_Rel_To_Class.tex
     and quantifier steps, the variable renaming it needs
     in both directions, and how the atomic step changes
@@ -204,9 +204,9 @@ with the course to chapter 3, and has since moved on to chapter 5.
     No subsections.
 
 3.2 The Relative Consistency of ZF                           [2026-09-14]
-    What relativization is first used for. The theorem       3_2_Consistency.tex
+    What relativisation is first used for. The theorem       3_2_Consistency.tex
     scheme that ZF - F proves sigma^WF for every ZF axiom
-    including Foundation; the scheme that relativization
+    including Foundation; the scheme that relativisation
     carries proofs, for sentences and given a non-empty
     class; and the corollary, by contraposition, that
     Con(ZF - F) implies Con(ZF). No subsections.
@@ -238,7 +238,7 @@ with the course to chapter 3, and has since moved on to chapter 5.
           OR^M = OR cap M, an ordinal iff M is a set and OR
           otherwise; omega_1^M <= omega_1.
 
-3.5 Relativizing the Axioms of ZFC                           [2026-09-18 to
+3.5 Relativising the Axioms of ZFC                           [2026-09-18 to
     Which axioms hold in which transitive classes, and the    2026-09-23]
     consistency results that follow.                         3_5_Axioms.tex
     3.5.1 The First Few Axioms
@@ -255,8 +255,8 @@ with the course to chapter 3, and has since moved on to chapter 5.
           (Strong) limits, cofinality, regularity,            2026-09-23]
           inaccessibility; beth_mu = mu; V_mu |= ZFC.
 
-3.6 Relativization vs Satisfaction                           [undated, between
-    The formalized |=, how it differs from phi^M (sets         2026-09-30 and
+3.6 Relativisation vs Satisfaction                           [undated, between
+    The formalised |=, how it differs from phi^M (sets         2026-09-30 and
     only), the Fact scheme relating the two, and why no        2026-10-05]
     formula can define definability. No subsections.         3_6_Satisfaction.tex
     Partly transcribed from board photographs.
@@ -267,7 +267,7 @@ with the course to chapter 3, and has since moved on to chapter 5.
     3.7.1 Hereditary Cardinality
           H_kappa, trcl identities, transitivity, H_kappa
           inside V_kappa, HF = V_omega, HC, OR cap H_kappa =
-          kappa, and the regular-kappa characterization.
+          kappa, and the regular-kappa characterisation.
     3.7.2 The Axioms in H_kappa                              [2026-09-30]
           Everything but Replacement and Power Set;
           Replacement for regular kappa; Power Set iff a
@@ -307,11 +307,11 @@ display. Each quotes what it replaced.
 
 ## 4. Gödel's Constructible Universe  ->  `Chapters/4_Constructible/`
 
-Opened on 2026-11-06 by `/organize`, at the author's request ("and then /organize"),
+Opened on 2026-11-06 by `/organise`, at the author's request ("and then /organise"),
 out of 3.9, which the structural-pressure entry of 2026-10-28 had recommended. L has
 its own objects (D, the L-hierarchy, <_L, OD and HOD, condensation) and its own
 destination (L |= ZFC + GCH): a body of theory, not a line of enquiry within
-relativization. The six subsections of 3.9 became its six sections, so no title was
+relativisation. The six subsections of 3.9 became its six sections, so no title was
 invented and none lost; the section's opening paragraph became the chapter's intro
 prose, with "this chapter" now "\Cref{Ch3:CH}". The boxnotation for T now reads "for the
 rest of this chapter" (it was "section", meaning all of 3.9, and 4.5 uses T), and the
@@ -341,7 +341,7 @@ went from `Ch3:` to `Ch4:`.
     the rest of the chapter); AC^L; OD and HOD, defined
     here at the author's request; L subset HOD, HOD^L = L.
 
-4.5 The Generalized Continuum Hypothesis in L                [2026-10-23,
+4.5 The Generalised Continuum Hypothesis in L                [2026-10-23,
     H_lambda = L_lambda in L, hence GCH^L; the condensation    + late Oct]
     that the proof uses, named; the Condensation Lemma       4_5_GCH.tex
     stated for any level L_beta |= T, and its
@@ -403,7 +403,7 @@ the lecture's raw notes: "I suspect trees will be moved to a new chapter (well, 
 if /organise doesn't, I'm explicitly asking you to do this)". It took 3.10 and 3.11
 with it, since the lecture's destination -- a Suslin tree from diamond -- is the
 combinatorial half of Suslin's problem. The placeholder gave up the number 4 and
-became `Chapters/5_Another_Chapter/`. Renumbered from 4 to 5 by the `/organize` pass of
+became `Chapters/5_Another_Chapter/`. Renumbered from 4 to 5 by the `/organise` pass of
 the same day, which opened chapter 4 for L; the placeholder is now
 `Chapters/6_Another_Chapter/`. The inbox moved with the course: **type into
 `Chapters/5_Trees/todays_lecture.tex` from now on.** The chapter file carries two
@@ -416,7 +416,7 @@ sentences of intro prose and nothing chapter-wide.
     consistency of SH. Independence defined, at the
     author's request.
     5.1.1 Dense Linear Orderings without Endpoints
-          Q and R characterized; the CCC; separable
+          Q and R characterised; the CCC; separable
           implies CCC.
     5.1.2 Suslin's Question
 
@@ -441,7 +441,7 @@ sentences of intro prose and nothing chapter-wide.
     splitting theorem, recalled. No subsections.
 
 5.5 Suslin Trees                                             [2026-11-05]
-    5.5.1 Characterizing Suslin Trees                        5_5_Suslin_Trees.tex
+    5.5.1 Characterising Suslin Trees                        5_5_Suslin_Trees.tex
           A gap (\sorry) where the raw notes say "fill in
           from phone pictures" and "state jensen's theorem";
           then: Suslin iff normal omega_1-tree with no
@@ -486,7 +486,7 @@ Chapter 2 had one section until 2026-09-10. Set-like relations, induction and
 
 1.2 is short (40 lines) against a           It is two nameable ideas and the author
 corpus median of 148.                       named them. Splitting or padding it would
-                                            be size-driven, which ORGANIZATION.md
+                                            be size-driven, which ORGANISATION.md
                                             forbids. No condition: this is simply
                                             where the material stopped.
 
@@ -500,12 +500,12 @@ corpus IQR of 99-229.                       section: its destination is the two 
                                             a section of their own.
 
 Chapter 3 is one lecture long, and none     Deliberate, and the cheaper of the two
-of its three sections has a subsection.     mistakes available. ORGANIZATION.md says a
+of its three sections has a subsection.     mistakes available. ORGANISATION.md says a
                                             chapter with too few sections self-heals --
                                             the next lecture adds 3.4 and nothing
                                             already written moves -- while fusing two
                                             lines of enquiry into one heading does not.
-                                            Keeping relativization inside chapter 2
+                                            Keeping relativisation inside chapter 2
                                             would have been the second kind. Subsections
                                             arrive when a section acquires a second idea;
                                             3.3 will be first, since the Levy hierarchy
@@ -531,7 +531,7 @@ fragments of ZFC).                          which classes satisfy which axioms -
                                             3.6-3.8 are the payoff of 3.1-3.5 rather
                                             than a new vocabulary: H_kappa, V_alpha and
                                             reflection are classes in which the
-                                            relativized axioms are checked. Splitting
+                                            relativised axioms are checked. Splitting
                                             off "models of fragments" would be a bet the
                                             author has not made. Ends if a later lecture
                                             develops models of set theory for their own
@@ -539,7 +539,7 @@ fragments of ZFC).                          which classes satisfy which axioms -
                                             forcing extensions), at which point 3.6-3.8
                                             want to move with it. 3.6 next to 3.1 was
                                             considered and declined: 3.6 contrasts
-                                            relativization with satisfaction, and needs
+                                            relativisation with satisfaction, and needs
                                             3.5's examples to say why. [2026-11-06]
 
 Chapter 4's six sections have no            They were the six subsections of 3.9,
@@ -562,15 +562,15 @@ Topics a lecture pointed at without reaching. Not sections, and not to be promot
 sections until a lecture supplies content.
 
 ```
-Formalizations of set theory inside models of set theory, and the internal
+Formalisations of set theory inside models of set theory, and the internal
 versus external perspective. "At some point, we will study these things in
 detail", in 1.4. [date not recorded]
 
 Consistency of ZF + "there is a countable union of pairs with no cardinality".
     Asserted, not proved, in 1.5.2. [2026-08-31]
 
-Formalizing all of mathematics in ZFC, Model Theory included, and the downwards
-Löwenheim-Skolem Theorem inside that formalization. 2.2.3 leans on both and
+Formalising all of mathematics in ZFC, Model Theory included, and the downwards
+Löwenheim-Skolem Theorem inside that formalisation. 2.2.3 leans on both and
 says "we will do this eventually in this course". Sharpens the 1.4 signpost
 above, which was about the internal/external perspective in general. [2026-09-11]
 
@@ -588,7 +588,7 @@ sentence gestures at it. [2026-09-14]
 The proof of the theorem scheme that ZF - F proves sigma^WF for every ZF
 axiom. Stated in 2.3.2 and used immediately; the lecture gave no proof and
 left no \sorry, so this is an unmarked gap rather than a marked one. Same for
-the scheme in the lemma that relativization carries proofs, which the author
+the scheme in the lemma that relativisation carries proofs, which the author
 introduced with "we can show that". [2026-09-14]
 ```
 
@@ -635,7 +635,7 @@ with no stated connection to it yet.
 
 Signposted by the lecture of 2026-11-05, and stated without proof: Konig's and
 Aronszajn's theorems (5.3, with book references); the lemma that a diamond sequence
-guesses bounded sets stationarily often, its corollary, and the characterization of
+guesses bounded sets stationarily often, its corollary, and the characterisation of
 Suslin trees by antichains (5.4, 5.5.1). Solovay's splitting theorem is "recalled",
 but nothing in the notes states it earlier, and "stationary" and "club" for subsets of
 a cardinal are used throughout 5.4 without having been defined. The definition of a
@@ -698,7 +698,7 @@ material, acted on by the next one.
 Discharged on 2026-11-06: 3.9 was a fourth body of theory inside chapter 3, and
 3.10-3.11 a fifth. The post-lecture pass of that day opened chapter 4, Trees and
 Suslin's Problem, out of 3.10 and 3.11, at the author's explicit instruction; the
-`/organize` pass that followed it opened chapter 4, Gödel's Constructible Universe,
+`/organise` pass that followed it opened chapter 4, Gödel's Constructible Universe,
 out of 3.9, its six subsections becoming sections, and pushed trees on to chapter 5.
 Chapter 3's intro prose no longer promises L, Suslin's problem or trees, and points
 at chapter 4 instead. Also discharged: "the course itself is not written up", which
@@ -713,7 +713,7 @@ never defined in a box.                     construction inside a proof, and 2.1
                                             used across several results introduced in a
                                             boxdefinition. Supplying one is mathematics
                                             the lecture did not write, so it is not
-                                            /organize's; a % [CLAUDE] directive from the
+                                            /organise's; a % [CLAUDE] directive from the
                                             author would let /address-comments do it.
                                             [2026-09-05]
 
@@ -724,12 +724,12 @@ boxdefinition.                               discussion is deliberately informal
                                              term used across several results
                                              introduced in a boxdefinition, and this
                                              one is promised heavy future use. Whether
-                                             to promote it is a judgment about how
+                                             to promote it is a judgement about how
                                              formal the course means to be here, and
                                              /integrate is not the pass to make it.
                                              [2026-09-11]
 
-Chapter 3 has eight sections, the        3.1-3.3 are about formulae (relativization
+Chapter 3 has eight sections, the        3.1-3.3 are about formulae (relativisation
 corpus maximum, and three bodies of      and complexity), 3.4-3.5 about absoluteness
 theory.                                  and the axioms in transitive classes, and
                                          3.6-3.8 about models of fragments of ZFC
@@ -741,9 +741,9 @@ theory.                                  and the axioms in transitive classes, a
                                          so this pass did not either. Separately,
                                          3.6 is one idea with no subsections and
                                          would sit naturally beside 3.1, but that
-                                         moves settled material. Recommend /organize.
+                                         moves settled material. Recommend /organise.
                                          [2026-10-08]
-                                         Re-read by /organize on 2026-11-06, with L
+                                         Re-read by /organise on 2026-11-06, with L
                                          and trees gone, and left: see `## Deliberate
                                          deviations`.
 ```
@@ -771,7 +771,7 @@ Chapters/6_Another_Chapter/      placeholder chapter, two placeholder sections, 
 Chapters/Appendices/             placeholder, \input commented out in main.tex
 ```
 
-Clearing either is `/organize`'s, and only once the author confirms nothing is planned
+Clearing either is `/organise`'s, and only once the author confirms nothing is planned
 for them. Three of the four sibling repositories keep an `Appendices/` directory, two of
 those with the `\input` still commented out, so leaving that one standing is in keeping
 rather than an oversight.
